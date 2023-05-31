@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+a{
+	text-decoration: none;
+}
+
+body{
+    /* overflow-x: hidden; */
+    font-family: 'Mulish', sans-serif;
+}
+
+header{
+    padding: 8px;
+    background: #B6E4EB;
+    background: linear-gradient(90deg, #e9fcff 2%, #4785B2 77%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header img{
+    width: 90px;
+}
+
+.conta{
+    padding: 10px;
+    color: #fff;
+    font-size: 30px;
+    transition: 0.3s;
+}
+
+.conta:hover{
+	color: #FFF34F;
+    font-size: 35px;
+    transition: 0.3s;
+}
+
+.nav a:link, .nav a:visited{
+	color: #fff;
+	padding: 8px 12px;
+    font-size: 28px;
+    transition: 0.3s;
+    border-radius: 5%;
+}
+
+.nav a:hover{
+	color: #00ADA8;
+	background: #fff;
+    transition: 0.3s;
+}
+
+
+/* ------------------------GAMBIARRAS (ema)------------------------------- */
+.page-footer{
+    width: 100%;
+    /* height: 50px; */
+    margin: auto;
+    bottom: 0;
+    position:relative;
+    background-color: #205981 !important;
+}
