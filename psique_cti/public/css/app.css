@@ -3,6 +3,11 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+
+    /* qubrar a linha de texto */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 a{
@@ -10,7 +15,7 @@ a{
 }
 
 body{
-    /* overflow-x: hidden; */
+    overflow-x: hidden;
     font-family: 'Mulish', sans-serif;
 }
 
@@ -28,17 +33,26 @@ header img{
     width: 90px;
 }
 
-.conta{
+.icones a{
     padding: 10px;
     color: #fff;
     font-size: 30px;
     transition: 0.3s;
 }
 
-.conta:hover{
+.icones a:hover{
 	color: #FFF34F;
     font-size: 35px;
     transition: 0.3s;
+}
+
+.nav span{
+    color: #fff;
+	padding: 8px 12px;
+    font-size: 28px;
+    transition: 0.3s;
+    border-radius: 5%;
+    margin-top: 0.6px;
 }
 
 .nav a:link, .nav a:visited{
@@ -55,13 +69,251 @@ header img{
     transition: 0.3s;
 }
 
+/* --------------------------------------- PARALLAX ---------------------------------------- */
+.wrapper{
+    width: 100%;
+    margin: 0 auto; /*uma margem de 0 em cima e embaixo e automática na esquerda e na direita*/
+}
+
+main{
+    display: block;
+    background-color: #fff;
+}
+
+.container-parallax{
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+section.module p{
+    margin-bottom: 40px;
+}
+
+section.module:last-child{
+    margin-bottom: 0;
+}
+
+section.module h2{
+    margin-bottom: 40px;
+    font-size: 30px;
+}
+
+section.module.content{
+    padding: 40px 0;
+    background: #f9f297;
+}
+
+section.module.parallax{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh !important;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /*cria o efeito do parallax*/
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-bacground-size: cover;
+}
+
+section.module.parallax:after{
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 8;
+    background: -moz-linear-gradient(to bottom, rgba(0,0,0,0) 0, rgba(0,0,0,0) 40%, #000 100%);  
+    background: -webkit-linear-gradient(to bottom, rgba(0,0,0,0) 0, rgba(0,0,0,0) 40%, #000 100%);
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0, rgba(0,0,0,0) 40%, #000 100%);
+}
+
+section.module.parallax-1{
+    background-image: url("../img/aaa.jpg");
+}
+
+section.module.parallax-2{
+    background-image: url("../img/equipe.jpg");
+}
+
+
+section.module.parallax h1{
+    color: #fff;
+    text-align: center;
+    font-size: 78px;
+    z-index: 50;
+    text-transform: uppercase;
+}
+
+/* ------------------------------------- LOGIN -------------------------------------------- */
+.caixa_login_1{
+    width: 550px;
+    height: 550px;
+    margin: 2% auto;
+    padding: 1%;    
+    background-color: #003b63;
+    border-radius: 10%;
+    box-shadow: 8px 5px 2px 1px rgba(0, 0, 0, 0.4);
+}
+
+.caixa_login_2{
+    padding: 2% 0;
+    margin: 2% auto;
+    width: 500px;
+    height: 500px;
+    background-color: #7297b08e;
+    border-radius: 10%;
+    text-align: center;
+}
+
+.caixa_login_2 img{
+    width: 30px;
+}
+
+.caixa_login_2 h1{
+    font-size: 80px;
+    font-weight: bold;
+    padding-bottom: 0;
+}
+
+.caixa_login_2 p{
+    font-size: 30px;
+}
+
+/* ---------------------------Cadastro------------------------------------*/
+.box{
+    display: flex;
+    width: 930px;
+    margin: 10px auto;
+}
+
+.img-box{
+    background-color: #4785b2b3;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-radius: 20px 0 0 20px;
+}
+
+.img-box img{
+    width: 100%;
+}
+
+.form-box{
+    background-color:  #4785b2b3;
+    backdrop-filter: blur(40px);
+    padding: 30px 40px;
+    width: 50%;
+    border-radius: 0 20px 20px 0;
+}
+
+.form-box p{
+    font-size: 20px;
+    color: #3d3d3d;
+}
+
+.form-box p a{
+    color: #003b63;
+    text-decoration: none;
+}
+
+.form-box form{
+    margin: 20px 0;
+}
+
+form .input-group{
+    margin-bottom: 15px;
+}
+
+form .input-group label{
+    color: #3d3d3d;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+
+/* form .input-group input{
+    width: 100%;
+    height: 47px;
+    background-color: rgba(255, 255, 255, 0.32);
+    border-radius: 20px;
+    outline: none;
+    border: 2px solid transparent;
+    padding: 15px;
+    font-size: 15px;
+    color: #616161;
+    transition: all 0.4s ease;
+} */
+
+/* form .input-group input:focus{
+    border-color: #ff008869;
+} */
+
+form .input-group button{
+    width: 100%;
+    height: 47px;
+    background: #003b63;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    margin-top: 15px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+@media (max-width:930px){
+    .img-box{
+        display: none;
+    }
+    .box{
+        width: 700px;
+    }
+    .form-box{
+        width: 100%;
+        border-radius: 20px;
+    }
+}
+
+@media (max-witdh:500px){
+    .w50{
+        width: 100%;
+        padding: 0;
+    }
+}
 
 /* ------------------------GAMBIARRAS (ema)------------------------------- */
 .page-footer{
     width: 100%;
-    /* height: 50px; */
     margin: auto;
     bottom: 0;
-    position:relative;
+    position: relative;
     background-color: #205981 !important;
+}
+
+form .input-group input{
+    border-bottom: 2px solid #6c757d !important;
+}
+
+.form-box h2{
+    font-size: 45px !important;
+}
+
+/* .linha{
+    width: 100%;
+    border-bottom: 2px solid #000000;
+} */
+
+.linha{
+    background-color: #4785B2;
+    height: 1%;
+    /* margin-bottom: 2%; */
+    width: 80%;
 }

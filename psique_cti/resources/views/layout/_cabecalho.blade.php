@@ -18,32 +18,31 @@
   <script src="https://kit.fontawesome.com/58fe79a519.js" crossorigin="anonymous"></script>
 
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-  {{-- <img src="{{!! asset('css/app.css') }}" alt=""> --}}
+  <link rel="shortcut icon" href="{{ asset('img/icone_cf.png') }}">
 
 </head>
 
 <body>
-    {{-- <nav>
-        <div class="nav-wrapper #f50057 pink accent-3">
-          <a href="#" class="brand-logo"><img src="pasta_imagens_nseiondefica/logo_completa_sf.png" alt="psiquê"></a>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Mural</a></li>
-            <li><a href="#">Agenda</a></li>
-          </ul>
-        </div>
-      </nav>     --}}
 
   <header>
     <a href="index.html"><img src="{{ asset('img/logo_completa_sf.png') }}" alt="psiquê"></a>
 
     <div class="nav">
-      <a href="{{ asset('index') }}">Home</a>
+      <a href="/index">Home</a>
       
-      <a href="{{ asset('mural') }}">Mural</a>
-      {{-- <a href="paginas/mural.html">Mural</a> --}}
+      <span>|</span>
+
+      <a href="/mural">Mural</a>
+
+      <span>|</span>
+
+      <a href="/contato">Contato</a>
+      
     </div>
 
-    <a href="#" class="conta"><i class="fa-solid fa-user"></i></a>
-    
+    <div class="icones">
+      <a href="/login"><i class="fa-solid fa-user"></i></a>
+      <a href="#"><i class="fa-solid fa-circle-half-stroke"></i></a>
+    </div>
+
   </header>

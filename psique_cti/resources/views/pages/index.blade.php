@@ -4,30 +4,41 @@
     
 @section('conteudo')
     
-    {{-- <div class="parallax-container">
-        <div class="parallax"><img src="{{ asset('img/aaa.jpg') }}"></div>
-    </div>
-    <div class="row">
-        <div class="col s12 m5">
-            <div class="card-panel teal">
-                <span class="white-text">Aqui vai ficarão os textinhos explicativos do site 
-                I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
-                </span>
-            </div>
-        </div>
-    </div> --}}
+    <div class="wrapper">
+        <main>
+            <section class="module parallax parallax-1">
+                <h1>Bem-vindo!</h1>
+            </section>
 
-    <div class="parallax-container">
-        <div class="parallax"><img src="{{ asset('img/aaa.jpg') }}"></div>
-    </div>
-    <div class="section white">
-        <div class="row container">
-            <h2 class="header">Parallax</h2>
-            <p class="grey-text text-darken-3 lighten-3">Parallax is an effect where the background content or image in this case, is moved at a different speed than the foreground content while scrolling.</p>
-        </div>
-    </div>
-    <div class="parallax-container">
-        <div class="parallax"><img src="{{ asset('img/aaa.jpg') }}"></div>
+            <section class="module content">
+                <div class="container-parallax">
+                    <h2>Sobre o projeto</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore aliquid maxime ex sit, eum dolorem harum neque repellendus iste minima recusandae quos doloremque, numquam sunt? Mollitia saepe corporis architecto est.
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore aliquid maxime ex sit, eum dolorem harum neque repellendus iste minima recusandae quos doloremque, numquam sunt? Mollitia saepe corporis architecto est.
+                    </p>
+                </div>
+            </section>    
+
+            <section class="module parallax parallax-2">
+                <h1>Equipe</h1>
+            </section>
+
+            <section class="module content">
+                <div class="container-parallax">
+                    <h2>Sobre nós</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore aliquid maxime ex sit, eum dolorem harum neque repellendus iste minima recusandae quos doloremque, numquam sunt? Mollitia saepe corporis architecto est.
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Inventore aliquid maxime ex sit, eum dolorem harum neque repellendus iste minima recusandae quos doloremque, numquam sunt? Mollitia saepe corporis architecto est.
+                    </p>
+                </div>
+            </section>
+            
+        </main>
     </div>
 
     
@@ -37,10 +48,12 @@
             <img src="{{ asset('img/icone.png') }}" width="50px" alt="">
         </a>
         <ul>
-            <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
-            <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
-            <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
-            <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+            <li><a class="btn-floating red"><i class="fa-regular fa-face-sad-cry"></i></a></li>
+            {{-- <li><a class="btn-floating red"><i class="fa-regular fa-face-sad-cry"></i></a></li> --}}
+            <li><a class="btn-floating #fbc02d yellow darken-2"><i class="fa-regular fa-face-meh"></i></a></li>
+            {{-- <li><a class="btn-floating #fbc02d yellow darken-2"><i class="fa-regular fa-face-meh"></i></a></li> --}}
+            <li><a class="btn-floating blue"><i class="fa-regular fa-face-smile"></i></a></li>            
+            <li><a class="btn-floating green"><i class="fa-regular fa-face-laugh-wink"></i></a></li>
         </ul>
   </div>
           

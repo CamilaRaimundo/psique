@@ -23,6 +23,18 @@ Route::get('/index', function () {
     return view('pages.index');
 });
 
-Route::get('/index', function () {
-    return view('pages.index');
+Route::get('/mural', function () {
+    return view('pages.mural');
+});
+
+Route::get('/contato', function () {
+    return view('pages.contato');
+});
+
+Route::get('/login', function () {
+    return view('pages.login');
+});
+
+Route::get('/cad', function () {
+    return view('pages.cad');
 });
