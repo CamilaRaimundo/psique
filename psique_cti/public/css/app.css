@@ -17,11 +17,25 @@ a{
 body{
     overflow-x: hidden;
     font-family: 'Mulish', sans-serif;
+    /* cursor: url("../img/icone_sf.png"), auto; */
 }
 
+.linha{
+    width: 80%;
+    border: 1px solid #2f2d2d;
+    margin: 5% auto;
+}
+
+.linha-branca{
+    width: 80%;
+    border: 1px solid #fff;
+    margin: 5% auto;
+}
+
+/* ---------------------------- CABEÇALHO ------------------------------------- */
 header{
     padding: 8px;
-    background: #B6E4EB;
+    /* background: #B6E4EB; */
     background: linear-gradient(90deg, #e9fcff 2%, #4785B2 77%);
     width: 100%;
     display: flex;
@@ -69,7 +83,37 @@ header img{
     transition: 0.3s;
 }
 
-/* --------------------------------------- PARALLAX ---------------------------------------- */
+/* --------------------------------------- RODAPÉ ------------------------------------------ */
+footer{
+    width: 100%;
+    height: auto;
+    padding: 2%;
+    position: relative;
+    bottom: 0px;
+    background-color: #205981;
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 3%, rgba(0, 0, 0, 0.3) 100%);    
+    color: #fff;
+    display: grid; 
+    place-items: center;
+}
+
+footer a{
+    text-decoration: none;
+    color: #fff;
+}
+
+footer a:hover{
+    text-decoration: none;
+    color: #00ADA8;
+    transition: 0.3s;
+}
+
+.copyright{
+    font-size: 10px;
+    margin-top: 1%;
+}
+
+/* --------------------------------------- PARALLAX (index) ---------------------------------------- */
 .wrapper{
     width: 100%;
     margin: 0 auto; /*uma margem de 0 em cima e embaixo e automática na esquerda e na direita*/
@@ -88,7 +132,7 @@ main{
 }
 
 section.module p{
-    margin-bottom: 40px;
+    margin-bottom: 15px;
 }
 
 section.module:last-child{
@@ -102,7 +146,7 @@ section.module h2{
 
 section.module.content{
     padding: 40px 0;
-    background: #f9f297;
+    background: #fffab8;
 }
 
 section.module.parallax{
@@ -128,19 +172,20 @@ section.module.parallax:after{
     width: 100%;
     position: absolute;
     z-index: 8;
+
+    /* funções para rodasr em outros navegadores */
     background: -moz-linear-gradient(to bottom, rgba(0,0,0,0) 0, rgba(0,0,0,0) 40%, #000 100%);  
     background: -webkit-linear-gradient(to bottom, rgba(0,0,0,0) 0, rgba(0,0,0,0) 40%, #000 100%);
     background: linear-gradient(to bottom, rgba(0,0,0,0) 0, rgba(0,0,0,0) 40%, #000 100%);
 }
 
 section.module.parallax-1{
-    background-image: url("../img/aaa.jpg");
+    background-image: url("../img/smile2.jpg");
 }
 
 section.module.parallax-2{
     background-image: url("../img/equipe.jpg");
 }
-
 
 section.module.parallax h1{
     color: #fff;
@@ -151,31 +196,51 @@ section.module.parallax h1{
 }
 
 /* ------------------------------------- LOGIN -------------------------------------------- */
+
+.login_img img{
+    width: 800px;
+    margin-right: 50px;
+}
+.container_login{
+    width: 100%;
+    background-color: #fff;
+    background-image: url('../img/fundo.png');
+    background: cover; /*imagem completa todo o fundo*/
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
 .caixa_login_1{
     width: 550px;
     height: 550px;
-    margin: 2% auto;
-    padding: 1%;    
     background-color: #003b63;
     border-radius: 10%;
-    box-shadow: 8px 5px 2px 1px rgba(0, 0, 0, 0.4);
+    box-shadow: 8px 5px 2px 1px rgba(0, 0, 0, 0.4); /*fazer sombra*/
+    display: flex;
+
+    /* Alinha ao centro horizontalmente */
+    justify-content: center;
+    /* Alinha ao centro verticalmente */
+    align-items: center;
 }
 
 .caixa_login_2{
-    padding: 2% 0;
-    margin: 2% auto;
     width: 500px;
     height: 500px;
     background-color: #7297b08e;
     border-radius: 10%;
     text-align: center;
+    color: #fff;
+    padding: 1%;
 }
 
 .caixa_login_2 img{
     width: 30px;
 }
 
-.caixa_login_2 h1{
+.caixa_login_2 h2{
     font-size: 80px;
     font-weight: bold;
     padding-bottom: 0;
@@ -185,7 +250,7 @@ section.module.parallax h1{
     font-size: 30px;
 }
 
-/* ---------------------------Cadastro------------------------------------*/
+/* --------------------------------------- CADASTRO -----------------------------------------*/
 .box{
     display: flex;
     width: 930px;
@@ -227,11 +292,25 @@ section.module.parallax h1{
     margin: 20px 0;
 }
 
-form .input-group{
+form .input_group{
     margin-bottom: 15px;
 }
 
-form .input-group label{
+form .input_group input{
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #6c757d;
+    outline: none;
+    height: 3rem;
+    width: 100%;
+    font-size: 16px;
+}
+.input_group input::placeholder{
+    color: #fff;
+}
+
+form .input_group label{
     color: #3d3d3d;
     font-weight: bold;
     display: block;
@@ -239,24 +318,7 @@ form .input-group label{
     font-size: 15px;
 }
 
-/* form .input-group input{
-    width: 100%;
-    height: 47px;
-    background-color: rgba(255, 255, 255, 0.32);
-    border-radius: 20px;
-    outline: none;
-    border: 2px solid transparent;
-    padding: 15px;
-    font-size: 15px;
-    color: #616161;
-    transition: all 0.4s ease;
-} */
-
-/* form .input-group input:focus{
-    border-color: #ff008869;
-} */
-
-form .input-group button{
+form .input_group button{
     width: 100%;
     height: 47px;
     background: #003b63;
@@ -269,6 +331,7 @@ form .input-group button{
     font-size: 16px;
 }
 
+/* responsividade */
 @media (max-width:930px){
     .img-box{
         display: none;
@@ -289,31 +352,155 @@ form .input-group button{
     }
 }
 
-/* ------------------------GAMBIARRAS (ema)------------------------------- */
-.page-footer{
+/* --------------------------------- TRIAGEM ---------------------------------------- */
+.box-triagem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #fff;
+    background-image: url('../img/fundo.png');
+    background: cover; /*imagem completa todo o fundo*/
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+.form-box-triagem{
+    background-color:  #4785b2b3;
+    backdrop-filter: blur(40px);
+    padding: 30px 40px;
+    width: 50%;
+    border-radius: 20px;
+    margin: 10px;
+    box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.4); 
+}
+
+.form-box-triagem h2{
+    text-align: center;
+    color: #212529;
+    font-size: 45px;
+    font-weight: bold
+}
+
+.form-box-triagem p{
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.form-select{
+    height: 40px;
+    background-color: #f4efad;
+}
+
+/* --------------------------------- CONTATO ------------------------------------------ */    
+.container-contato{
     width: 100%;
-    margin: auto;
-    bottom: 0;
-    position: relative;
-    background-color: #205981 !important;
+    background-color: #fff;
+    background-image: url('../img/fundo.png');
+    background: cover; /*imagem completa todo o fundo*/
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+
+    /* Alinha ao centro horizontalmente */
+    justify-content: center;
+    /* Alinha ao centro verticalmente */
+    align-items: center;
 }
 
-form .input-group input{
-    border-bottom: 2px solid #6c757d !important;
+.caixa_contato_1{
+    width: 550px;
+    height: 570px;
+    background-color: #003b63;
+    border-radius: 10%;
+    box-shadow: 8px 5px 2px 1px rgba(0, 0, 0, 0.4); /*fazer sombra*/
+    display: flex;
+
+    /* Alinha ao centro horizontalmente */
+    justify-content: center;
+    /* Alinha ao centro verticalmente */
+    align-items: center;
 }
 
-.form-box h2{
-    font-size: 45px !important;
+.caixa_contato_2{
+    width: 500px;
+    height: 520px;
+    background-color: #7297b08e;
+    border-radius: 10%;
+    color: #fff;
+    padding: 1%;
+    text-align: center;
 }
 
-/* .linha{
-    width: 100%;
-    border-bottom: 2px solid #000000;
-} */
+.caixa_contato_2 h2{
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+}
 
-.linha{
-    background-color: #4785B2;
-    height: 1%;
-    /* margin-bottom: 2%; */
+.caixa_contato_3{
+    background-color: #ffffffb1;
     width: 80%;
+    height: 62%;
+    border-radius: 5%;
+    margin: auto;
+    color: #000;
+    justify-content: center;
+    padding: 2%;
 }
+
+.caixa_contato_3 button{
+    margin: 1%;
+}
+
+/* ------------------------------------ MURAL --------------------------------------------- */
+.container-mural{
+    width: 100%;
+    display: block;
+    padding: 2%;
+    background-color: #fff;
+    background-image: url('../img/fundo.png');
+    background: cover; /*imagem completa todo o fundo*/
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+.titulo-mural{
+    text-align: center;
+    font-weight: bold;
+    background-color: #003b63;
+    border-radius: 5%;
+    color: #e9fcff;
+    height: 50px;
+    align-items: center;
+    size: 50px;
+}
+
+.card{
+    background: #fffab8;
+    margin-bottom: 1%;
+}
+
+.card-title{
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+/* ------------------------------------- ERROR 404 ---------------------------------------- */
+.container-404{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-404 img{
+    width: 100vh;
+}
+
+    

@@ -3,15 +3,17 @@
 @section('titulo', 'Login')
     
 @section('conteudo')
-
-    {{-- <div class="wrapper_login">     --}}
+    <div class="container_login"> 
+        <div class="login_img">
+            <img src="{{ asset('img/login-img.png') }}" alt="">    
+        </div>
+        
         <div class="caixa_login_1">
             <div class="caixa_login_2">
+                <h2>Login</h2>
+                <div class="linha-branca"></div>
                 <p>Bem-vind<img src="{{ asset('img/icone_sf.png') }}"></p>
-
-                <h1>Login</h1>
             </div>
-
         </div>
-    {{-- </div> --}}
+    </div>
 @endsection
