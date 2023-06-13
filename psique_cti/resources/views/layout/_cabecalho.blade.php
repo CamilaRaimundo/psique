@@ -25,7 +25,7 @@
 <body>
 
   <header>
-    <a href="index.html"><img src="{{ asset('img/logo_completa_sf.png') }}" alt="psiquê"></a>
+    <a href="/index"><img src="{{ asset('img/logo_completa_sf.png') }}" alt="psiquê"></a>
 
     <div class="nav">
       <a href="/index">Home</a>

@@ -17,8 +17,11 @@ a{
 body{
     overflow-x: hidden;
     font-family: 'Mulish', sans-serif;
+    /* cursor: url("../img/icone_sf.png"), auto; */
 }
 
+
+/* ---------------------------- CABEÇALHO ------------------------------------- */
 header{
     padding: 8px;
     background: #B6E4EB;
@@ -45,6 +48,11 @@ header img{
     font-size: 35px;
     transition: 0.3s;
 }
+
+/* .nav{
+    position: sticky;
+    top: 0;
+} */
 
 .nav span{
     color: #fff;
@@ -88,7 +96,7 @@ main{
 }
 
 section.module p{
-    margin-bottom: 40px;
+    margin-bottom: 15px;
 }
 
 section.module:last-child{
@@ -102,7 +110,7 @@ section.module h2{
 
 section.module.content{
     padding: 40px 0;
-    background: #f9f297;
+    background: #fffab8;
 }
 
 section.module.parallax{
@@ -128,19 +136,20 @@ section.module.parallax:after{
     width: 100%;
     position: absolute;
     z-index: 8;
+
+    /* funções para rodasr em outros navegadores */
     background: -moz-linear-gradient(to bottom, rgba(0,0,0,0) 0, rgba(0,0,0,0) 40%, #000 100%);  
     background: -webkit-linear-gradient(to bottom, rgba(0,0,0,0) 0, rgba(0,0,0,0) 40%, #000 100%);
     background: linear-gradient(to bottom, rgba(0,0,0,0) 0, rgba(0,0,0,0) 40%, #000 100%);
 }
 
 section.module.parallax-1{
-    background-image: url("../img/aaa.jpg");
+    background-image: url("../img/fundo_cérebro.jpg");
 }
 
 section.module.parallax-2{
     background-image: url("../img/equipe.jpg");
 }
-
 
 section.module.parallax h1{
     color: #fff;
@@ -151,31 +160,62 @@ section.module.parallax h1{
 }
 
 /* ------------------------------------- LOGIN -------------------------------------------- */
+
+.login_img img{
+    width: 800px;
+    margin-right: 50px;
+}
+.container_login{
+    width: 100%;
+    background-color: #fff;
+    background-image: url('../img/fundo.png');
+    background: cover; /*imagem completa todo o fundo*/
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+
+    /* Alinha ao centro horizontalmente */
+    /* justify-content: center; */
+    /* Alinha ao centro verticalmente */
+    align-items: center;
+}
+
+
 .caixa_login_1{
     width: 550px;
     height: 550px;
-    margin: 2% auto;
-    padding: 1%;    
     background-color: #003b63;
     border-radius: 10%;
-    box-shadow: 8px 5px 2px 1px rgba(0, 0, 0, 0.4);
+    box-shadow: 8px 5px 2px 1px rgba(0, 0, 0, 0.4); /*fazer sombra*/
+    display: flex;
+
+    /* Alinha ao centro horizontalmente */
+    justify-content: center;
+    /* Alinha ao centro verticalmente */
+    align-items: center;
+}
+
+.linha{
+    width: 80%;
+    border: 1px solid #fff;
+    margin: 5% auto;
 }
 
 .caixa_login_2{
-    padding: 2% 0;
-    margin: 2% auto;
     width: 500px;
     height: 500px;
     background-color: #7297b08e;
     border-radius: 10%;
     text-align: center;
+    color: #fff;
+    padding: 1%;
 }
 
 .caixa_login_2 img{
     width: 30px;
 }
 
-.caixa_login_2 h1{
+.caixa_login_2 h2{
     font-size: 80px;
     font-weight: bold;
     padding-bottom: 0;
@@ -185,7 +225,7 @@ section.module.parallax h1{
     font-size: 30px;
 }
 
-/* ---------------------------Cadastro------------------------------------*/
+/* --------------------------------------- CADASTRO -----------------------------------------*/
 .box{
     display: flex;
     width: 930px;
@@ -269,6 +309,7 @@ form .input-group button{
     font-size: 16px;
 }
 
+/* responsividade */
 @media (max-width:930px){
     .img-box{
         display: none;
@@ -289,6 +330,9 @@ form .input-group button{
     }
 }
 
+/* --------------------------------- MURAL ------------------------------------------ */    
+
+
 /* ------------------------GAMBIARRAS (ema)------------------------------- */
 .page-footer{
     width: 100%;
@@ -306,14 +350,4 @@ form .input-group input{
     font-size: 45px !important;
 }
 
-/* .linha{
-    width: 100%;
-    border-bottom: 2px solid #000000;
-} */
-
-.linha{
-    background-color: #4785B2;
-    height: 1%;
-    /* margin-bottom: 2%; */
-    width: 80%;
-}
+    

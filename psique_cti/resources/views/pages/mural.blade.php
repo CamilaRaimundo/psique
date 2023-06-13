@@ -3,5 +3,5 @@
 @section('titulo', 'Mural')
     
 @section('conteudo')
-    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
 @endsection

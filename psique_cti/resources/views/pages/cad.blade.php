@@ -5,7 +5,7 @@
 @section('conteudo')
     <div class="box">
         <div class="img-box">
-            <img src="{{ asset('img/logo_completa_sf.png') }}" alt="">
+            <img src="{{ asset('img/cad_img.png') }}" alt="">
         </div>
 
         <div class="form-box">
@@ -14,7 +14,7 @@
             <form action="#">
                 <div class="input-group">
                     <label for="nome">Nome Completo</label>
-                    <input type="text" id="nome" placeholder="Nome Completo" required>
+                    <input type="text" id="nome" placeholder="Digite seu nome completo" required>
                 </div>
 
                 <div class="input-group">
@@ -24,12 +24,12 @@
 
                 <div class="input-group">
                     <label for="dataNasc">Data de Nascimento</label>
-                    <input type="date" style="color:#ced4da" id="dataNasc" placeholder="Nome Completo" required>
+                    <input type="date" style="color:#ced4da" id="dataNasc" required>
                 </div>
 
                 <div class="input-group">
                     <label for="turma">Turma</label>
-                    <input type="text" id="turma" placeholder="Nome Completo" required>
+                    <input type="text" id="turma" placeholder="Digite sua turma" required>
                 </div>
 
                 <div class="input-group">
