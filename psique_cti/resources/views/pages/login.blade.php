@@ -11,7 +11,7 @@
         <div class="caixa_login_1">
             <div class="caixa_login_2">
                 <h2>Login</h2>
-                <div class="linha"></div>
+                <div class="linha-branca"></div>
                 <p>Bem-vind<img src="{{ asset('img/icone_sf.png') }}"></p>
             </div>
         </div>

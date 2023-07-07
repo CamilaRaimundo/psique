@@ -25,7 +25,7 @@ Route::get('/login', function () {
 });
 
 Route::get('/cadastro', function () {
-    return view('pages.cad');
+    return view('pages.cadastro');
 });
 
 Route::get('/triagem', function () {

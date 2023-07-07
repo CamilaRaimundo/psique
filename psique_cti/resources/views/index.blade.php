@@ -37,20 +37,17 @@
     </div>
 
     
-    <div class="fixed-action-btn">
+    {{-- <div class="fixed-action-btn">
         <a class="btn-floating btn-large yellow">
-            {{-- <i class="large material-icons">mode_edit</i> --}}
             <img src="{{ asset('img/icone.png') }}" width="50px" alt="">
         </a>
         <ul>
             <li><a class="btn-floating red"><i class="fa-regular fa-face-sad-cry"></i></a></li>
-            {{-- <li><a class="btn-floating red"><i class="fa-regular fa-face-sad-cry"></i></a></li> --}}
             <li><a class="btn-floating #fbc02d yellow darken-2"><i class="fa-regular fa-face-meh"></i></a></li>
-            {{-- <li><a class="btn-floating #fbc02d yellow darken-2"><i class="fa-regular fa-face-meh"></i></a></li> --}}
             <li><a class="btn-floating blue"><i class="fa-regular fa-face-smile"></i></a></li>            
             <li><a class="btn-floating green"><i class="fa-regular fa-face-laugh-wink"></i></a></li>
         </ul>
-  </div>
+    </div> --}}
           
 
 @endsection
