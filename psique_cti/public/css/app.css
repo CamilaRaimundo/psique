@@ -455,51 +455,52 @@ form .input_group button{
 }
 
 /* ------------------------------------ MURAL --------------------------------------------- */
-/* .container-mural{
+.container-mural{
     width: 100%;
+    display: block;
+    padding: 2%;
     background-color: #fff;
     background-image: url('../img/fundo.png');
     background: cover; /*imagem completa todo o fundo*/
-    /* background-repeat: no-repeat;
+    background-repeat: no-repeat;
     min-height: 100vh;
-    display: flex; */
+}
 
-    /* Alinha ao centro horizontalmente */
-    /* justify-content: center; */
-    /* Alinha ao centro verticalmente */
-    /* align-items: center; */
-/* } */
-/* .sem_publi{
-    height: 62vh;
-    width: 100%;
-    background-image: url('../img/fundo.png');
+.titulo-mural{
     text-align: center;
-    padding: 11%;
-    margin: auto;
-} */
-/* 
-.eventos{
+    font-weight: bold;
+    background-color: #003b63;
+    border-radius: 5%;
+    color: #e9fcff;
+    height: 50px;
+    align-items: center;
+    size: 50px;
+}
+
+.card{
+    background: #fffab8;
+    margin-bottom: 1%;
+}
+
+.card-title{
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+/* ------------------------------------- ERROR 404 ---------------------------------------- */
+.container-404{
     display: flex;
-    max-width: 80%;
-    margin: auto;
+    justify-content: center;
+    align-items: center;
+}
 
-} */
-
-/* .titulo_evento{ */
-    /* width: 100%;
-    margin: auto; */
-    /* background-color: #000; */
-    /* position: ; */
-    /* display: block; */
-
-
-/* } */
-
-/* .card{
-    margin: 2%;
-    min-width: 500px;
-} */
-
-
+.container-404 img{
+    width: 100vh;
+}
 
     

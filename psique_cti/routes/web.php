@@ -31,3 +31,7 @@ Route::get('/cadastro', function () {
 Route::get('/triagem', function () {
     return view('pages.triagem');
 });
+
+Route::get('/homepsico', function () {
+    return view('pages.psico.home');
+});
