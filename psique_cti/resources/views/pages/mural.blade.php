@@ -23,60 +23,66 @@
     </div>
 
     <div class="container text-center">
-      <div class="row">
-        <div class="col">
-          {{-- card --}}
-          <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-              <div class="col-md-4">
-                <img src="{{ asset('img/smile.jpg') }}" class="img-fluid rounded-start" alt="...">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+      <div class="row justify-content-md-center">
+
+          <div class="col-md-auto">
+            {{-- card --}}
+            <div class="card mb-3" style="max-width: 500px;">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img src="{{ asset('img/smile.jpg') }}" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                  </div>
                 </div>
               </div>
             </div>
+
           </div>
-        </div> <!--col-->
-        <div class="col">
-          {{-- card --}}
-          <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-              <div class="col-md-4">
-                <img src="{{ asset('img/smile.jpg') }}" class="img-fluid rounded-start" alt="...">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+
+          <div class="col-md-auto">
+            {{-- card --}}
+            <div class="card mb-3" style="max-width: 500px;">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img src="{{ asset('img/smile.jpg') }}" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                  </div>
                 </div>
               </div>
             </div>
+
           </div>
-        </div> <!--col-->
-        <div class="col">
-          {{-- card --}}
-          <div class="card mb-3" style="max-width: 540px;">
-            <div class="row g-0">
-              <div class="col-md-4">
-                <img src="{{ asset('img/smile.jpg') }}" class="img-fluid rounded-start" alt="...">
+
+          <div class="col-md-auto">
+            {{-- card --}}
+            <div class="card mb-3" style="max-width: 500px;">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img src="{{ asset('img/smile.jpg') }}" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+                  </div>
+                </div>
               </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-                </div> {{-- card-body --}} 
-              </div> {{-- col-md-8 --}}
-            </div> <!--row g-0-->
-          </div> {{-- card --}}
-        </div> <!--col-->
-      </div> <!--row-->
-    </div> {{-- container --}}
+            </div>
+
+          </div>
+      </div>
+    </div>
 
     {{-- if(há artigos) --> exibir --}}
     <div class="titulo-mural">
