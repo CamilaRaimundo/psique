@@ -4,6 +4,9 @@
     
 @section('conteudo')
   <div class="container-contato">
+    {{-- <div class="img-box-contato">
+    <img src="{{ asset('img/contato-img.png') }}" width="40%" alt="">
+  </div> --}}
     <div class="caixa_contato_1">
       <div class="caixa_contato_2">
         <h2>Contato</h2>
@@ -21,7 +24,7 @@
             </div>
 
             <div class="form-floating">
-              <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 200px"></textarea>
+              <textarea class="form-control" id="floatingTextarea2" style="height: 200px"></textarea>
               <label for="floatingTextarea2">Conteúdo</label>
             </div> 
 
@@ -30,5 +33,6 @@
         </div> <!-- caixa_contato_3 -->
       </div> <!-- caixa_contato_2 -->
     </div> <!-- caixa_contato_1 -->
+    
   </div> <!--container-contato-->
 @endsection

@@ -14,12 +14,12 @@
             <form action="#">
                 <div class="input_group">
                     <label for="nome">Nome Completo</label>
-                    <input type="text" id="nome" placeholder="Digite seu nome completo" required>
+                    <input type="text" id="nome" class="cursor_blocked" placeholder="Digite seu nome completo" required readonly>
                 </div>
 
                 <div class="input_group">
                     <label for="email">E-mail</label>
-                    <input type="email" id="email" placeholder="usuario@gmail.com" required>
+                    <input type="email" id="email" class="cursor_blocked" placeholder="usuario@gmail.com" required readonly>
                 </div>
 
                 <div class="input_group">
@@ -50,9 +50,9 @@
                     <select class="form-select" id="inputGroupSelect01" required>
                       {{-- <option selected></option> --}}
                       <option value="1" selected>Informática A</option>
-                      <option value="1">Informática B</option>
-                      <option value="2">Eletrônica</option>
-                      <option value="3">Mâcanica</option>
+                      <option value="2">Informática B</option>
+                      <option value="3">Eletrônica</option>
+                      <option value="4">Mâcanica</option>
                     </select>
                 </div>
 

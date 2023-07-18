@@ -41,9 +41,9 @@
       
     </div>
 
-    <div class="icones">
-      <a href="/login"><i class="fa-solid fa-user"></i></a>
-      <a href="#"><i class="fa-solid fa-circle-half-stroke"></i></a>
+    <div>
+      <a href="/cadastro" class="icones-padrao"><i class="fa-solid fa-user" ></i></a>
+      <a href="#" class="icones-padrao"><i class="fa-solid fa-circle-half-stroke"></i></a>
     </div>
 
   </header>
