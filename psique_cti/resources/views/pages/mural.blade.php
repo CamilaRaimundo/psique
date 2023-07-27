@@ -43,7 +43,20 @@
                   
                   {{-- if(section == profissional) --}}
                   <div class="icones_mural">
-                    <a href=""><i class="fa-solid fa-delete-left"></i></a>
+
+                    <button class="delete"><i class="fa-solid fa-delete-left"></i></button>
+
+                    <div class="popup-wrapper">
+                      <div class="popup">
+                        <div class="popup-content">
+                          <h2>Confirmação</h2>
+                          <p>Você tem certeza que deseja excluir permanentemente este evento?</p>
+                          <button class="popup-close">Cancelar</button>  
+                          <button class="btn-confirma">Confirmar</button>
+                        </div>
+                      </div>
+                    </div>
+
                     <a href="/editarevento"><i class="fa-solid fa-pen-to-square"></i></a>
                   </div>
                 </div>
@@ -89,7 +102,19 @@
                   <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
                   {{-- if(section == profissional) --}}
                   <div class="icones_mural">
-                    <a href=""><i class="fa-solid fa-delete-left"></i></a>
+                    <button class="delete"><i class="fa-solid fa-delete-left"></i></button>
+
+                    <div class="popup-wrapper">
+                      <div class="popup">
+                        <div class="popup-content">
+                          <h2>Confirmação</h2>
+                          <p>Você tem certeza que deseja excluir permanentemente este evento?</p>
+                          <button class="popup-close">Cancelar</button>  
+                          <button class="btn-confirma">Confirmar</button>
+                        </div>
+                      </div>
+                    </div>
+                    
                     <a href=""><i class="fa-solid fa-pen-to-square"></i></a>
                   </div>
                 </div>
@@ -116,7 +141,20 @@
       <div class="card-body">
         {{-- if(section == profissional) --}}
         <div class="icones_mural">
-          <a href=""><i class="fa-solid fa-delete-left"></i></a>
+          <button class="delete"><i class="fa-solid fa-delete-left"></i></button>
+
+          <div class="popup-wrapper">
+            <div class="popup">
+              {{-- <div class="popup-close">x</div> --}}
+              <div class="popup-content">
+                <h2>Confirmação</h2>
+                <p>Você tem certeza que deseja excluir permanentemente este evento?</p>
+                <button class="popup-close">Cancelar</button>  
+                <button class="btn-confirma">Confirmar</button>
+              </div>
+            </div>
+          </div>
+
           <a href="/editartigo"><i class="fa-solid fa-pen-to-square"></i></a>
         </div>
 
@@ -137,7 +175,18 @@
       <div class="card-body">
         {{-- if(section == profissional) --}}
         <div class="icones_mural">
-          <a href=""><i class="fa-solid fa-delete-left"></i></a>
+          <button class="delete"><i class="fa-solid fa-delete-left"></i></button>
+          <div class="popup-wrapper">
+            <div class="popup">
+              <div class="popup-content">
+                <h2>Confirmação</h2>
+                <p>Você tem certeza que deseja excluir permanentemente este evento?</p>
+                <button class="popup-close">Cancelar</button>  
+                <button class="btn-confirma">Confirmar</button>
+              </div>
+            </div>
+          </div>
+
           <a href=""><i class="fa-solid fa-pen-to-square"></i></a>
         </div>
         <h5 class="card-title">Título do artigo</h5>

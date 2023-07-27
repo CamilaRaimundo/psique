@@ -2,6 +2,7 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
+  <meta name="theme-color" content="#003b63">
   <title>@yield('titulo')</title>
 
   <!-- Import Google Icon Font -->
@@ -42,7 +43,7 @@
     </div>
 
     <div>
-      <a href="/cadastro" class="icones-padrao"><i class="fa-solid fa-user" ></i></a>
+      <a href="/login" class="icones-padrao"><i class="fa-solid fa-user" ></i></a>
       <a href="#" class="icones-padrao"><i class="fa-solid fa-circle-half-stroke"></i></a>
     </div>
 
