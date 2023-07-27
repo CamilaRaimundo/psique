@@ -52,7 +52,7 @@
                       <option value="1" selected>Informática A</option>
                       <option value="1">Informática B</option>
                       <option value="2">Eletrônica</option>
-                      <option value="3">Mâcanica</option>
+                      <option value="3">Mecânica</option>
                     </select>
                 </div>
 
