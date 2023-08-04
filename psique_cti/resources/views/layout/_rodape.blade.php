@@ -125,7 +125,7 @@
     })
   </script>
 
-  <!-- Meu Javascript -->
+  <!-- Javascript -->
   <script src="{{ asset('js/app.js') }}"></script>
   
   <!-- Javascript bootstrap -->
