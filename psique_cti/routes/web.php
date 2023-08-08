@@ -41,6 +41,10 @@ Route::post('/triagem',
 ['as'  =>'controller.triagem',
  'uses'=>'App\Http\Controllers\TriagemController@verificaMed']);
 
+ //Route::post('/triagem',
+//['as'  =>'controller.triagem',
+ //'uses'=>'App\Http\Controllers\TriagemController@verificaAcomp']);
+
 Route::get('/homepsico', function () {
     return view('pages.psico.home');
 });

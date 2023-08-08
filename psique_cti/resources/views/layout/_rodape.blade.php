@@ -102,7 +102,26 @@
 
   <!-- Meu Javascript -->
   <script src="{{ asset('js/script.js') }}"></script>
+
+
+  <script>
+    function requerido() {
+      var opmed = document.getElementById("inputGroupSelect02");
+      var campoMedicamento = document.getElementById("medicamento");
+      var idMedic = document.getElementById("idMedic");
   
+      if (opmed.value === "1-sim") {
+        idMedic.style.display = "block";
+        campoMedicamento.setAttribute("required", "required");
+      } else {
+        idMedic.style.display = "none";
+        campoMedicamento.removeAttribute("required");
+      }
+    }
+  </script>
+
+   
+
   <!-- Javascript bootstrap -->
   <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
   

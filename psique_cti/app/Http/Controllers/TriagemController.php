@@ -15,15 +15,15 @@ class TriagemController extends Controller
         
                 // Mensagens de erro personalizadas (opcional)
                 $mensagens = [
-                    'numero.required' => 'O campo é obrigatório.',
-                    'numero.integer' => 'O campo número deve ser um número inteiro.',
-                    'numero.numeric' => 'O campo deve ser um valor numérico.',
-                    'numero.min' => 'O valor do campo número deve ser maior ou igual a 1.',
-                    'numero.max' => 'O valor do campo número deve ser menor ou igual a 10.',
+                    'qtd_pessoas.required' => 'O campo é obrigatório.',
+                    'qtd_pessoas.integer' => 'O campo número deve ser um número inteiro.',
+                    'qtd_pessoas.numeric' => 'O campo deve ser um valor numérico.',
+                    'qtd_pessoas.min' => 'O valor do campo número deve ser maior ou igual a 1.',
+                    'qtd_pessoas.max' => 'O valor do campo número deve ser menor ou igual a 10.',
                 ];
         
                 // Executar a validação
-                $validator = Validator::make($request->all(), $regras, $mensagens);
+                $validator = Validator::make($req->all(), $regras, $mensagens);
         
                 // Verificar se a validação falhou
                 if ($validator->fails()) {
@@ -31,13 +31,28 @@ class TriagemController extends Controller
                 }
         
                 // Se a validação for bem-sucedida, faça algo aqui
-                // Por exemplo, $request->input('numero') contém o valor válido entre o intervalo
+                //$req->input('qtd_pessoas') //contém o valor válido entre o intervalo
         
                 return redirect()->back()->with('success', ' válido!');
             }
 
+        //public function verificaAcomp(Request $req)
+        //{
+          //  $req->validate([
+            //    'acompanhamento' => 'required_if:acompanhamento,1-sim',
+                // outras regras de validação para os outros campos, se houver
+            //], [
+              //  'acompanhamento.required_if' => 'O campo de acompanhamento é obrigatório quando a opção for "Sim".',
+                // outras mensagens de erro personalizadas, se houver
+            //]);
+    
+            // Se a validação passar, você pode processar os dados do formulário aqui
+    
+            // Redirecionar para alguma página de sucesso, por exemplo
+            //return redirect()->back()->with('success', 'Resposta válida!');
+       // }
       
-        public function validarMed(Request $req)
+        public function verificaMed(Request $req)
         {
             // Defina as regras de validação
             $regras = [
@@ -53,7 +68,7 @@ class TriagemController extends Controller
             ];
         
             // Executar a validação
-            $validator = Validator::make($request->all(), $regras, $mensagens);
+            $validator = Validator::make($req->all(), $regras, $mensagens);
         
             // Verificar se a validação falhou
             if ($validator->fails()) {

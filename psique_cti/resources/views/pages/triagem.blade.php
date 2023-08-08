@@ -6,6 +6,7 @@
     <div class="box-form1">
         <div class="form-box-form1">
             <h2>Triagem</h2>
+
             <div class="linha"></div>
             <p>Me ajude a te conhecer melhor!</p>
             <form action="{{ route('controller.triagem') }}" method="POST">
@@ -21,7 +22,7 @@
                 </div>
                   
                 <div class="input-group mb-3">
-                <select class="form-select" id="inputGroupSelect02">
+                <select class="form-select" id="inputGroupSelect01">
                      <option disabled selected>Escolha...</option> 
                     <option value="1-sim">Sim</option>
                     <option value="2-nao">Não</option>
@@ -34,35 +35,21 @@
                 </div>   
                   
                 <div class="input-group mb-3">
-                <select class="form-select" id="inputGroupSelect02" name="opcao_medicamento">
+                <select class="form-select" id="inputGroupSelect02" onchange="requerido()"  name="opcao_medicamento">
                     <option disabled selected>Escolha...</option>
                     <option value="1-sim">Sim</option>
                     <option value="2-nao">Não</option>
                 </select>
-
                 {{-- <label class="input-group-text" for="inputGroupSelect02">Opções</label> --}}
                 </div>
 
                 {{-- fazer uma condição em que se a resposta a cima for "sim", a descrição dos nomes será "required" --}}
-                <div class="input_group">
-                    <label for="medicamento">Se sim, quais?</label>
-                    <input type="text" id="medicamento" name= "medicamento" placeholder="Nome da medicação">
+               
+                <div class="input_group" id="idMedic">
+                <label for="medicamento">Se sim, quais?</label> 
+                <input type="text" id="medicamento" name= "medicamento" placeholder="Nome da medicação"> 
                 </div>
-
-                <script>
-                    var campoMedicamento = document.getElementById('campo-medicamento');
-                    var opcaoMedicamento = document.getElementById('inputGroupSelect02');
-                
-                    opcaoMedicamento.addEventListener('change', function() {
-                        var opcaoSelecionada = this.value;
-                
-                        if (opcaoSelecionada === '1-sim') {
-                            campoMedicamento.querySelector('input').required = true;
-                        } else {
-                            campoMedicamento.querySelector('input').required = false;
-                        }
-                    });
-                </script>
+               
 
                 <div class="input_group">
                     <label for="turma">A quanto tempo esses sentimentos estão te afligindo?</label>
