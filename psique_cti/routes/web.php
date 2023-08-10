@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Route;
 use App\Mail\TestMail;
 
 
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -20,10 +19,6 @@ Route::get('/index', function () {
 Route::get('/mural', function () {
     return view('pages.mural');
 });
-
-// Route::get('/contato', function() {
-//     Mail::to('test@email.com')->send(new TestMail());
-// });
 
 Route::get('/contato', [ContatoController::class, 'mostraForm'])->name('contato.mostrar');
 Route::post('/contato', [ContatoController::class, 'mandaEmail'])->name('contato.enviar');

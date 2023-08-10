@@ -13,11 +13,19 @@ class ContatoMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $user;
+
     /**
      * Create a new message instance.
      */
-    public function __construct(public string $name, public string $email, public string $content)
+    public function __construct($user)
     {
+        $this->user = $user;
+    }
+
+    public function build()
+    {
+        return $this->markdown('email.contact')->subject(config('app.name') , 'Fale conosco');
     }
 
     /**
@@ -27,7 +35,6 @@ class ContatoMail extends Mailable
     {
         return new Envelope(
             subject: 'Contato Mail',
-            replyTo: $this->email,
         );
     }
 
@@ -37,7 +44,7 @@ class ContatoMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            markdown: 'email.contact',
+            view: 'view.name',
         );
     }
 

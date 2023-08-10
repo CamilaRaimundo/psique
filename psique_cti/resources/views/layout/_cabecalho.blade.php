@@ -37,7 +37,7 @@
 
       <span>|</span>
 
-      <a href="/contato">Contato</a>
+      <a href="{{ route('contato.mostrar') }}">Contato</a>
       
     </div>
 
