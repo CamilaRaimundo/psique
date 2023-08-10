@@ -20,22 +20,9 @@ body{
     /* cursor: url("../img/icone_sf.png"), auto; */
 }
 
-.linha{
-    width: 80%;
-    border: 1px solid #2f2d2d;
-    margin: 5% auto;
-}
-
-.linha-branca{
-    width: 80%;
-    border: 1px solid #fff;
-    margin: 5% auto;
-}
-
 /* ---------------------------- CABEÇALHO ------------------------------------- */
 header{
     padding: 8px;
-    /* background: #B6E4EB; */
     background: linear-gradient(90deg, #e9fcff 2%, #4785B2 77%);
     width: 100%;
     display: flex;
@@ -45,19 +32,6 @@ header{
 
 header img{
     width: 90px;
-}
-
-.icones a{
-    padding: 10px;
-    color: #fff;
-    font-size: 30px;
-    transition: 0.3s;
-}
-
-.icones a:hover{
-	color: #FFF34F;
-    font-size: 35px;
-    transition: 0.3s;
 }
 
 .nav span{
@@ -113,6 +87,33 @@ footer a:hover{
     margin-top: 1%;
 }
 
+
+/* ---------------------------------------- DARK MODE ------------------------------------- */
+.dark-mode a{
+    text-decoration: none;
+    background-color: #212529; 
+}
+
+.dark-mode a:hover {
+    color:#4785B2;
+}
+    
+body.dark-mode {
+    background-color: #212529;
+    color:#899095;
+    transition: 0.3;
+    transform: matrix();
+}
+
+.dark-mode header{
+    background: linear-gradient(90deg, #f4efad 2%, #ffee00 );
+}
+
+.dark-mode footer{
+    background-color: #ffee00;
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 3%, rgba(0, 0, 0, 0.3) 100%);
+    color: #f4efad;
+}
 /* --------------------------------------- PARALLAX (index) ---------------------------------------- */
 .wrapper{
     width: 100%;
@@ -196,11 +197,6 @@ section.module.parallax h1{
 }
 
 /* ------------------------------------- LOGIN -------------------------------------------- */
-
-.login_img img{
-    width: 800px;
-    margin-right: 50px;
-}
 .container_login{
     width: 100%;
     background-color: #fff;
@@ -208,13 +204,36 @@ section.module.parallax h1{
     background: cover; /*imagem completa todo o fundo*/
     background-repeat: no-repeat;
     min-height: 100vh;
+    padding: 1%;
+
     display: flex;
     align-items: center;
 }
 
+.login_img{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login_img img{
+    width: 580px;
+}
+
+.login_caixas{
+    width: 100%;
+    display: flex;
+
+    /* Alinha ao centro horizontalmente */
+    justify-content: center;
+    /* Alinha ao centro verticalmente */
+    align-items: center;
+}
+
 .caixa_login_1{
-    width: 550px;
-    height: 550px;
+    width: 500px;
+    height: 500px;
     background-color: #003b63;
     border-radius: 10%;
     box-shadow: 8px 5px 2px 1px rgba(0, 0, 0, 0.4); /*fazer sombra*/
@@ -227,13 +246,22 @@ section.module.parallax h1{
 }
 
 .caixa_login_2{
-    width: 500px;
-    height: 500px;
+    width: 450px;
+    height: 450px;
     background-color: #7297b08e;
     border-radius: 10%;
     text-align: center;
     color: #fff;
     padding: 1%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.caixa_login_2 #buttonDiv{
+    display: flex;
+    justify-content: center;
 }
 
 .caixa_login_2 img{
@@ -241,7 +269,7 @@ section.module.parallax h1{
 }
 
 .caixa_login_2 h2{
-    font-size: 80px;
+    font-size: 4rem;
     font-weight: bold;
     padding-bottom: 0;
 }
@@ -253,13 +281,13 @@ section.module.parallax h1{
 /* --------------------------------------- CADASTRO -----------------------------------------*/
 .box{
     display: flex;
-    width: 930px;
+    width: 80%;
     margin: 10px auto;
 }
 
 .img-box{
     background-color: #4785b2b3;
-    width: 50%;
+    width: 100%;
     display: flex;
     align-items: center;
     padding: 20px;
@@ -274,7 +302,7 @@ section.module.parallax h1{
     background-color:  #4785b2b3;
     backdrop-filter: blur(40px);
     padding: 30px 40px;
-    width: 50%;
+    width: 100%;
     border-radius: 0 20px 20px 0;
 }
 
@@ -331,29 +359,8 @@ form .input_group button{
     font-size: 16px;
 }
 
-/* responsividade */
-@media (max-width:930px){
-    .img-box{
-        display: none;
-    }
-    .box{
-        width: 700px;
-    }
-    .form-box{
-        width: 100%;
-        border-radius: 20px;
-    }
-}
-
-@media (max-witdh:500px){
-    .w50{
-        width: 100%;
-        padding: 0;
-    }
-}
-
 /* --------------------------------- TRIAGEM ---------------------------------------- */
-.box-triagem{
+.box-form1{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -365,24 +372,26 @@ form .input_group button{
     min-height: 100vh;
 }
 
-.form-box-triagem{
+.form-box-form1{
     background-color:  #4785b2b3;
     backdrop-filter: blur(40px);
     padding: 30px 40px;
-    width: 50%;
+    /* width: 50%; */
     border-radius: 20px;
     margin: 10px;
     box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.4); 
+
+    margin: 1%;
 }
 
-.form-box-triagem h2{
+.form-box-form1 h2{
     text-align: center;
     color: #212529;
     font-size: 45px;
     font-weight: bold
 }
 
-.form-box-triagem p{
+.form-box-form1 p{
     text-align: center;
     font-size: 20px;
     font-weight: bold;
@@ -421,6 +430,8 @@ form .input_group button{
     justify-content: center;
     /* Alinha ao centro verticalmente */
     align-items: center;
+
+    /* margin: 2%; */
 }
 
 .caixa_contato_2{
@@ -432,6 +443,8 @@ form .input_group button{
     padding: 1%;
     text-align: center;
 }
+
+.caixa_contato_2
 
 .caixa_contato_2 h2{
     font-size: 40px;
@@ -470,7 +483,7 @@ form .input_group button{
     text-align: center;
     font-weight: bold;
     background-color: #003b63;
-    border-radius: 5%;
+    border-radius: 30px;
     color: #e9fcff;
     height: 50px;
     align-items: center;
@@ -487,10 +500,136 @@ form .input_group button{
 }
 
 
+/* -------------------------------------- FUNCIONALIDADES DO MURAL-------------------------- */
+/* adicionar (create) */
+input[type="file"]{
+    display: none;
+}
+
+.img_ilustrativa{
+    padding: 10px;
+    width: auto;
+    background-color: #003b63;
+    color: #FFF !important;
+    text-transform: uppercase;
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+/* Editar e excluir (update / delete) */
+.icones_mural a{
+    color: #252525;
+    font-size: 20px;
+    transition: 0.2s;
+    /* padding: 0.5%; */
+}
+
+.icones_mural a:hover{
+	color: #ffee00;
+    /* font-size: 25px; */
+    transition: 0.1s;
+}
+
+/* ----------------------------------------POP-UP---------------------------------------------- */
+.delete{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 20px;
+    color: #252525;
+}
+
+.delete:hover{
+    color: #ffee00;
+    transition: 0.1s;
+}
+
+.popup-wrapper{
+    display: none;
+    background: rgb(0, 0, 0, .5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.popup{
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+    margin: 10% auto;
+    padding: 20px;
+    background: white;
+    position: relative;
+    /* z-index: 10 !important; */
+}
 
 
+.popup-content button{
+    border: none;
+    background-color: transparent;
+}
 
+.btn-confirma{
+    background: rgb(94, 187, 0) !important;
+    color: #fff;
+    font-weight: bold;
+    padding: 2%;
+    margin: 1%;
+    /* font-size: 50px; */
+}
 
+.popup-close{
+    background: darkred !important;
+    color: #fff;
+    padding: 2%;
+    margin: 1%;
+}
+
+/* ------------------------------------- HOME PSICÓLOGO ----------------------------------- */
+
+.box_notificacao{
+    width: 40%;
+    min-height: 100vh;
+    padding: 1%;
+    border-right: solid 5px #fff565;
+    /* background-color: #fffab8;
+    background-image: linear-gradient(180deg, rgba(255, 245, 101, 0) 3%, #fff565 97%); */
+}
+.notificacao{
+    background: #003b63;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 1.5rem;
+
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    padding: 3%;
+    margin-bottom: 1%;
+}
+
+.notificacao p{
+    margin-bottom: 0;
+}
+
+.box_exibe_notificacao{
+    width: 60%;
+    height: 100vh;
+    /* background-color: #ffee00; */
+    /* padding: 1%; */
+    /* background-color:  #4785b2b3 !important; */
+    /* backdrop-filter: blur(40px); */
+}
+
+.box_exibe_notificacao iframe{
+    height: 100vh;
+}
 
 /* ------------------------------------- ERROR 404 ---------------------------------------- */
 .container-404{
@@ -503,4 +642,189 @@ form .input_group button{
     width: 100vh;
 }
 
+/* -----------------------------------------GENÉRICOS-------------------------------------- */
+.cursor_blocked{
+    cursor: not-allowed !important;
+}
+
+.linha{
+    width: 80%;
+    border: 1px solid #2f2d2d;
+    margin: 5% auto;
+}
+
+.linha-branca{
+    width: 80%;
+    border: 1px solid #fff;
+    margin: 5% auto;
+}
+
+.icones-padrao{
+    padding: 5px;
+    color: #fff;
+    font-size: 30px;
+    transition: 0.4s;
+}
+
+.icones-padrao button{
+    border: none;
+    background-color: transparent;
+    padding: 5px;
+    color: #fff;
+    font-size: 30px;
+    transition: 0.4s;
+}
+
+.icones-padrao button:hover{
+    color: #000;
+}
+
+.icones-padrao:hover{
+	color: #FFF34F;
+    font-size: 35px;
+    transition: 0.2s;
+}
+
+.pagina_vazia {
+    width: 100%;
+    background-color: #fff;
+    background-image: url('../img/fundo.png');
+    background: cover; /*imagem completa todo o fundo*/
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    padding: 2%;
+    display: block;
+
+    /* Alinha ao centro horizontalmente */
+    justify-content: center;
+    /* Alinha ao centro verticalmente */
+    align-items: center;
+
+    text-align: center;
+    font-weight: bold;
+}
+
+.container-padrao{
+    width: 100%;
+    background-color: #fff;
+    background-image: url('../img/fundo.png');
+    background: cover; /*imagem completa todo o fundo*/
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    /* padding: 2%; */
+    display: flex;
+
+    /* Alinha ao centro horizontalmente */
+    justify-content: center;
+    /* Alinha ao centro verticalmente */
+    align-items: center;
+
+    /* text-align: center;
+    font-weight: bold; */
+}
+
+/* ------------------------------------RESPONSIVIDADE--------------------------------- */
+/* Exemplo de uma Media Query para telas menores que 768px (como dispositivos móveis) */
+@media screen and (max-width: 1000px) {
+    /* estilos para telas menores */
+    .secao-ocultar {
+        display: none;
+    }
+
+    .centralizado{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+/* ---------------------------------------login */
+    .caixa_login_1{
+        width: 300px;
+        height: 300px;
+    }
     
+    .caixa_login_2{
+        width: 250px;
+        height: 250px;
+    }
+
+    .caixa_login_2 h2{
+        font-size: 3rem;
+    }
+
+    .caixa_login_2 img{
+        width: 20px;
+    }
+    
+    .caixa_login_2 p{
+        font-size: 20px;
+    }
+/* --------------------------------------contato */
+    .caixa_contato_1 {
+        width: 300px;
+        height: 540px;
+    }
+
+    .caixa_contato_2 {
+        width: 290px;
+        height: 520px;
+    }
+
+/* ---------------------------------------cadastro */
+    .img-box{
+        display: none;
+    }
+    .box{
+        min-height: 100vh;
+        width: 100%;
+        min-height: 100%;
+    }
+    .form-box{
+        width: 100%;
+        border-radius: 20px;
+    }
+    .w50{
+        width: 100%;
+        padding: 0;
+    }
+
+}
+
+/* Exemplo de uma Media Query para telas maiores que 768px (como tablets e desktops) */
+@media screen and (min-width: 1001px) {
+    /* estilos para telas maiores */
+    .caixa_login_1{
+        width: 400px;
+        height: 400px;
+        margin: auto;
+    }
+    
+    .caixa_login_2{
+        width: 350px;
+        height: 350px;
+    }
+
+  }
+
+  @media screen and (max-width: 600px) {
+    /* cabeçalho */
+    header img{
+        width: 40px;
+    }
+    
+    .nav span{
+        font-size: 15px;
+    }
+    
+    .nav a:link, .nav a:visited{
+        font-size: 15px;
+    }
+
+    .icones-padrao{
+        font-size: 15px;
+    }
+
+    .icones-padrao button{
+        font-size: 15px;
+    }
+  }

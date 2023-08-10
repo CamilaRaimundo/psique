@@ -4,6 +4,9 @@
     
 @section('conteudo')
   <div class="container-contato">
+    {{-- <div class="img-box-contato">
+    <img src="{{ asset('img/contato-img.png') }}" width="40%" alt="">
+  </div> --}}
     <div class="caixa_contato_1">
       <div class="caixa_contato_2">
         <h2>Contato</h2>

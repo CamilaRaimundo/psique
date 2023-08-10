@@ -3,8 +3,8 @@
 @section('titulo', 'Triagem')
     
 @section('conteudo')
-    <div class="box-triagem">
-        <div class="form-box-triagem">
+    <div class="box-form1">
+        <div class="form-box-form1">
             <h2>Triagem</h2>
             <div class="linha"></div>
             <p>Me ajude a te conhecer melhor!</p>
@@ -23,7 +23,7 @@
                 <select class="form-select" id="inputGroupSelect02">
                     {{-- <option selected>Escolha...</option> --}}
                     <option value="1-sim" selected>Sim</option>
-                    <option value="2-nao" >Não</option>
+                    <option value="2-nao">Não</option>
                 </select>
                 {{-- <label class="input-group-text" for="inputGroupSelect02">Opções</label> --}}
                 </div>
@@ -74,6 +74,8 @@
             </form>
         </div>
 
-        {{-- <img src="{{ asset('img/triagem_img.png') }}" width="40%" alt=""> --}}
+        <div class="login_img secao-ocultar">
+            <img src="{{ asset('img/triagem_img.png') }}" width="40%" alt="">
+        </div>
     </div>
 @endsection

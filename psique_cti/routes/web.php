@@ -38,3 +38,25 @@ Route::get('/triagem', function () {
 Route::get('/homepsico', function () {
     return view('pages.psico.home');
 });
+
+Route::get('/adicionartigo', function () {
+    return view('pages.psico.addartigo');
+});
+
+Route::get('/adicionaevento', function () {
+    return view('pages.psico.addevento');
+});
+
+Route::get('/editartigo', function () {
+    return view('pages.psico.editartigo');
+});
+
+Route::get('/editarevento', function () {
+    return view('pages.psico.editevento');
+});
+
+Route::get('/detalhesaluno', function () {
+    return view('pages.psico.detalhesaluno');
+});
+
+?>

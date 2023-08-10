@@ -3,23 +3,23 @@
 @section('titulo', 'Cadastro de aluno')
     
 @section('conteudo')
-    <div class="box">
+    <div class="box centralizado">
         <div class="img-box">
             <img src="{{ asset('img/cad_img.png') }}" alt="">
         </div>
 
         <div class="form-box">
-            <h2>Criar Conta</h2>
-            <p>Já se cadastrou? <a href="/login">Login</a> </p>
+            <h2>Informações adicionais</h2>
+            {{-- <p>Já se cadastrou? <a href="/login">Login</a> </p> --}}
             <form action="#">
                 <div class="input_group">
                     <label for="nome">Nome Completo</label>
-                    <input type="text" id="nome" placeholder="Digite seu nome completo" required>
+                    <input type="text" id="nome" class="cursor_blocked" placeholder="Fulaninho da Silva" required readonly>
                 </div>
 
                 <div class="input_group">
                     <label for="email">E-mail</label>
-                    <input type="email" id="email" placeholder="usuario@gmail.com" required>
+                    <input type="email" id="email" class="cursor_blocked" placeholder="usuario@gmail.com" required readonly>
                 </div>
 
                 <div class="input_group">
@@ -50,14 +50,14 @@
                     <select class="form-select" id="inputGroupSelect01" required>
                       {{-- <option selected></option> --}}
                       <option value="1" selected>Informática A</option>
-                      <option value="1">Informática B</option>
-                      <option value="2">Eletrônica</option>
-                      <option value="3">Mecânica</option>
+                      <option value="2">Informática B</option>
+                      <option value="3">Eletrônica</option>
+                      <option value="4">Mâcanica</option>
                     </select>
                 </div>
 
                 <div class="input_group">
-                    <button>Cadastrar</button>
+                    <button>Continuar</button>
                 </div>
             </form>
         </div>
