@@ -52,31 +52,31 @@ class TriagemController extends Controller
             //return redirect()->back()->with('success', 'Resposta válida!');
        // }
       
-        public function verificaMed(Request $req)
-        {
+        // public function verificaMed(Request $req)
+        // {
             // Defina as regras de validação
-            $regras = [
-                'opcao_medicamento' => 'required|in:1-sim,2-nao',
-                'medicamento' => 'required_if:opcao_medicamento,1-sim',
-            ];
+            // $regras = [
+                // 'opcao_medicamento' => 'required|in:1-sim,2-nao',
+                // 'medicamento' => 'required_if:opcao_medicamento,1-sim',
+            // ];
         
             // Mensagens de erro personalizadas (opcional)
-            $mensagens = [
-                'opcao_medicamento.required' => 'A resposta é obrigatória.',
-                'opcao_medicamento.in' => 'A resposta selecionada é inválida.',
-                'medicamento.required_if' => 'O campo medicamento é obrigatório quando a resposta for "Sim".',
-            ];
+            // $mensagens = [
+                // 'opcao_medicamento.required' => 'A resposta é obrigatória.',
+                // 'opcao_medicamento.in' => 'A resposta selecionada é inválida.',
+                // 'medicamento.required_if' => 'O campo medicamento é obrigatório quando a resposta for "Sim".',
+            // ];
         
             // Executar a validação
-            $validator = Validator::make($req->all(), $regras, $mensagens);
+            // $validator = Validator::make($req->all(), $regras, $mensagens);
         
             // Verificar se a validação falhou
-            if ($validator->fails()) {
-                return redirect()->back()->withErrors($validator)->withInput();
-            }
+            // if ($validator->fails()) {
+                // return redirect()->back()->withErrors($validator)->withInput();
+            // }
         
             // Se a validação for bem-sucedida, faça algo aqui
         
-            return redirect()->back()->with('success', 'Campos validados com sucesso!');
-        }
+            // return redirect()->back()->with('success', 'Campos validados com sucesso!');
+        // }
     }

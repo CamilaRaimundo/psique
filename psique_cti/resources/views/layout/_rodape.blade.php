@@ -118,8 +118,18 @@
         campoMedicamento.removeAttribute("required");
       }
     }
-  </script>
 
+    function verificarEnvio(event) {
+    var opacomp = document.getElementById("inputGroupSelect01");
+    var opmed = document.getElementById("inputGroupSelect02");
+
+    if (opacomp.value === "3-escolha" || opmed.value === "3-escolha") {
+      event.preventDefault(); // Impede o envio do formulário
+      alert("Selecione uma opção válida sobre o acompanhamento psicológico e o uso de medicamentos antes de enviar o formulário.");
+    }
+  }
+  </script>
+ 
    
 
   <!-- Javascript bootstrap -->

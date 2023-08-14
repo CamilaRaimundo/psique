@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use app\Http\Controllers\TriagemController;
+use app\Http\Controllers\ArtigosController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -41,17 +42,18 @@ Route::post('/triagem',
 ['as'  =>'controller.triagem',
  'uses'=>'App\Http\Controllers\TriagemController@verificaMed']);
 
- //Route::post('/triagem',
-//['as'  =>'controller.triagem',
- //'uses'=>'App\Http\Controllers\TriagemController@verificaAcomp']);
-
 Route::get('/homepsico', function () {
     return view('pages.psico.home');
 });
 
-Route::get('/adicionartigo', function () {
+Route::post('/adicionartigo', function () {
     return view('pages.psico.addartigo');
-});
+   });
+
+Route::get('/adicionartigo',
+['as'  =>'controller.artigo',
+ 'uses'=>'App\Http\Controllers\ArtigosController@verificaForm']);
+
 
 Route::get('/adicionaevento', function () {
     return view('pages.psico.addevento');

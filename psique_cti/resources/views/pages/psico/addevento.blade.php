@@ -27,7 +27,7 @@
 
             <div class="input_group">
                 <label for="dataehora_evento">Data e horário</label>
-                <input type="datetime-local" id="dataehora_evento" required>
+                <input type="datetime-local" id="dataehora_evento"  min= "01/08/2023 "required>
             </div>
 
             <div class="input_group">
