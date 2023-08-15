@@ -55,3 +55,8 @@ Route::get('/editarevento', function () {
 Route::get('/detalhesaluno', function () {
     return view('pages.psico.detalhesaluno');
 });
+
+// Admin
+Route::get('/Admin', function () {
+    return view('pages.admin.homeAdmin');
+});

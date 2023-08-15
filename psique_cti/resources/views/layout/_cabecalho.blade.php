@@ -58,7 +58,10 @@
     <a href="/index"><img src="{{ asset('img/logo_completa_sf.png') }}" alt="psiquê"></a>
 
     <div class="nav">
+      {{-- if(usuários comuns) --}}
       <a href="/index">Home</a>
+      {{-- else if (psicólogo) --}}
+      {{-- <a href="/homepsico">Home</a> --}}
       
       <span>|</span>
 
@@ -66,7 +69,10 @@
 
       <span>|</span>
 
+      {{-- if(usuários comuns) --}}
       <a href="/contato">Contato</a>
+      {{-- else if (psicólogo) --}}
+      {{-- <a href="/estatistica">Estatísticas</a> --}}
       
     </div>
 
@@ -76,16 +82,16 @@
     </div> --}}
 
     <div  class="icones-padrao">
-      <a href="/cadastro" class="icones-padrao"><i class="fa-solid fa-user" ></i></a>
+      <a href="/login" class="icones-padrao"><i class="fa-solid fa-user" ></i></a>
       <button onclick="darkMode()"><i class="fa-solid fa-circle-half-stroke"></i></button>
     </div>
 
-    <script>
+    {{-- <script>
       function darkMode() {
         var element = document.body;
         element.classList.toggle("dark-mode");
       }
-    </script>
+    </script> --}}
       
       {{--     </div> --}}
 

@@ -13,7 +13,7 @@
 
     {{-- else(com notificações) --}}
 
-    <div class="container-padrao">
+    <div class="container-home_pro">
         <div class="box_notificacao">
             <h1>Notificações</h1>
             <div class="notificacao">

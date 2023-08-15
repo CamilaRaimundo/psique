@@ -590,6 +590,18 @@ input[type="file"]{
 }
 
 /* ------------------------------------- HOME PSICÓLOGO ----------------------------------- */
+.container-home_pro{
+    width: 100%;
+    background-color: #fff;
+    background-image: url('../img/fundo.png');
+    background: cover; /*imagem completa todo o fundo*/
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
 
 .box_notificacao{
     width: 40%;
@@ -628,6 +640,17 @@ input[type="file"]{
 
 .box_exibe_notificacao iframe{
     height: 100vh;
+}
+
+/* --------------------------------------- ADMIN ------------------------------------------ */
+.container-admin{
+    width: 100%;
+    min-height: 100vh;
+    padding: 3%;
+    background-color: #fffbc1;    
+}
+.container-admin button{
+    margin-bottom: 3%;
 }
 
 /* ------------------------------------- ERROR 404 ---------------------------------------- */
@@ -701,25 +724,6 @@ input[type="file"]{
 
     text-align: center;
     font-weight: bold;
-}
-
-.container-padrao{
-    width: 100%;
-    background-color: #fff;
-    background-image: url('../img/fundo.png');
-    background: cover; /*imagem completa todo o fundo*/
-    background-repeat: no-repeat;
-    min-height: 100vh;
-    /* padding: 2%; */
-    display: flex;
-
-    /* Alinha ao centro horizontalmente */
-    justify-content: center;
-    /* Alinha ao centro verticalmente */
-    align-items: center;
-
-    /* text-align: center;
-    font-weight: bold; */
 }
 
 /* ------------------------------------RESPONSIVIDADE--------------------------------- */
