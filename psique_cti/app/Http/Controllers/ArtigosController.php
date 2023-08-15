@@ -8,6 +8,7 @@ use App\Models\Mural;
 
 class ArtigosController extends Controller
 {
+    //addartigo e editartigo
     public function verificaForm(Request $req)
     {
         // Defina as regras de validação para os campos
@@ -33,16 +34,23 @@ class ArtigosController extends Controller
         $validator = Validator::make($req->all(), $rules, $messages);
 
         // Redirecione de volta ao formulário se a validação falhar
+        // if ($validator->fails()) {
+        //     return redirect()->back()
+        //       ->withErrors($validator)
+        //         ->withInput();
+        // }
         if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
+            return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
         }
-
+    
+        // Process and save data (if validation passes)
+    
+        return response()->json(['success' => true], 200);
+    }
         // Se a validação passar, você pode processar e salvar os dados do formulário
         // no banco de dados ou em qualquer outra lógica relevante.
 
         // Redirecione para uma página de sucesso ou exiba uma mensagem de sucesso.
-        return redirect()->route('pages.psico.addartigo');
+        //return redirect()->route('pages.psico.addartigo');
     }
-}
+

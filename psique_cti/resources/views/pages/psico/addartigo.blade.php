@@ -10,6 +10,7 @@
         <p>Crie artigos ou recomendações para os alunos!</p>
 
         <form action="{{ route('controller.artigo') }}" method="POST">
+            {{ csrf_field() }} 
 
             <div class="input_group">
                 <label for="titulo_publicacao">Título da publicação</label>
@@ -19,6 +20,7 @@
             <div class="input_group">
                 <label for="autor_publicacao">Autor</label>
                 <input type="text" id="autor_publicacao" placeholder="Digite o autor do artigo" name="autor_publicacao" required>
+               <span class="error-message"></span>
             </div>
 
             <div class="input_group">

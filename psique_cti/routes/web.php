@@ -38,19 +38,19 @@ Route::post('/triagem',
 ['as'  =>'controller.triagem',
  'uses'=>'App\Http\Controllers\TriagemController@verifica']);
 
- Route::post('/triagem',
-['as'  =>'controller.triagem',
- 'uses'=>'App\Http\Controllers\TriagemController@verificaMed']);
+ //Route::post('/triagem',
+//['as'  =>'controller.triagem',
+ //'uses'=>'App\Http\Controllers\TriagemController@verificaMed']);
 
 Route::get('/homepsico', function () {
     return view('pages.psico.home');
 });
 
-Route::post('/adicionartigo', function () {
+Route::get('/adicionartigo', function () {
     return view('pages.psico.addartigo');
    });
 
-Route::get('/adicionartigo',
+Route::post('/adicionartigo',
 ['as'  =>'controller.artigo',
  'uses'=>'App\Http\Controllers\ArtigosController@verificaForm']);
 
@@ -62,6 +62,10 @@ Route::get('/adicionaevento', function () {
 Route::get('/editartigo', function () {
     return view('pages.psico.editartigo');
 });
+
+Route::post('/editartigo',
+['as'  =>'controller.artigo',
+ 'uses'=>'App\Http\Controllers\ArtigosController@verificaForm']);
 
 Route::get('/editarevento', function () {
     return view('pages.psico.editevento');
