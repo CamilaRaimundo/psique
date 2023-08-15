@@ -3,18 +3,18 @@
 @section('titulo', 'Cadastro de aluno')
     
 @section('conteudo')
-    <div class="box">
+    <div class="box centralizado">
         <div class="img-box">
             <img src="{{ asset('img/cad_img.png') }}" alt="">
         </div>
 
         <div class="form-box">
-            <h2>Criar Conta</h2>
-            <p>Já se cadastrou? <a href="/login">Login</a> </p>
+            <h2>Informações adicionais</h2>
+            {{-- <p>Já se cadastrou? <a href="/login">Login</a> </p> --}}
             <form action="#">
                 <div class="input_group">
                     <label for="nome">Nome Completo</label>
-                    <input type="text" id="nome" class="cursor_blocked" placeholder="Digite seu nome completo" required readonly>
+                    <input type="text" id="nome" class="cursor_blocked" placeholder="Fulaninho da Silva" required readonly>
                 </div>
 
                 <div class="input_group">
@@ -57,7 +57,7 @@
                 </div>
 
                 <div class="input_group">
-                    <button>Cadastrar</button>
+                    <button>Continuar</button>
                 </div>
             </form>
         </div>

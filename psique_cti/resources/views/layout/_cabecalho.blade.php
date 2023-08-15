@@ -21,29 +21,8 @@
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link rel="shortcut icon" href="{{ asset('img/icone_cf.png') }}">
 
+  
+
 </head>
 
 <body>
-
-  <header>
-    <a href="/index"><img src="{{ asset('img/logo_completa_sf.png') }}" alt="psiquê"></a>
-
-    <div class="nav">
-      <a href="/index">Home</a>
-      
-      <span>|</span>
-
-      <a href="/mural">Mural</a>
-
-      <span>|</span>
-
-      <a href="/contato">Contato</a>
-      
-    </div>
-
-    <div>
-      <a href="/cadastro" class="icones-padrao"><i class="fa-solid fa-user" ></i></a>
-      <a href="#" class="icones-padrao"><i class="fa-solid fa-circle-half-stroke"></i></a>
-    </div>
-
-  </header>
