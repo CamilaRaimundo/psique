@@ -86,6 +86,33 @@ footer a:hover{
     margin-top: 1%;
 }
 
+
+/* ---------------------------------------- DARK MODE ------------------------------------- */
+.dark-mode a{
+    text-decoration: none;
+    background-color: #212529; 
+}
+
+.dark-mode a:hover {
+    color:#4785B2;
+}
+    
+body.dark-mode {
+    background-color: #212529;
+    color:#899095;
+    transition: 0.3;
+    transform: matrix();
+}
+
+.dark-mode header{
+    background: linear-gradient(90deg, #f4efad 2%, #ffee00 );
+}
+
+.dark-mode footer{
+    background-color: #ffee00;
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 3%, rgba(0, 0, 0, 0.3) 100%);
+    color: #f4efad;
+}
 /* --------------------------------------- PARALLAX (index) ---------------------------------------- */
 .wrapper{
     width: 100%;
@@ -169,11 +196,6 @@ section.module.parallax h1{
 }
 
 /* ------------------------------------- LOGIN -------------------------------------------- */
-
-.login_img img{
-    width: 800px;
-    margin-right: 50px;
-}
 .container_login{
     width: 100%;
     background-color: #fff;
@@ -181,13 +203,36 @@ section.module.parallax h1{
     background: cover; /*imagem completa todo o fundo*/
     background-repeat: no-repeat;
     min-height: 100vh;
+    padding: 1%;
+
     display: flex;
     align-items: center;
 }
 
+.login_img{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login_img img{
+    width: 580px;
+}
+
+.login_caixas{
+    width: 100%;
+    display: flex;
+
+    /* Alinha ao centro horizontalmente */
+    justify-content: center;
+    /* Alinha ao centro verticalmente */
+    align-items: center;
+}
+
 .caixa_login_1{
-    width: 550px;
-    height: 550px;
+    width: 500px;
+    height: 500px;
     background-color: #003b63;
     border-radius: 10%;
     box-shadow: 8px 5px 2px 1px rgba(0, 0, 0, 0.4); /*fazer sombra*/
@@ -200,13 +245,22 @@ section.module.parallax h1{
 }
 
 .caixa_login_2{
-    width: 500px;
-    height: 500px;
+    width: 450px;
+    height: 450px;
     background-color: #7297b08e;
     border-radius: 10%;
     text-align: center;
     color: #fff;
     padding: 1%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.caixa_login_2 #buttonDiv{
+    display: flex;
+    justify-content: center;
 }
 
 .caixa_login_2 img{
@@ -214,7 +268,7 @@ section.module.parallax h1{
 }
 
 .caixa_login_2 h2{
-    font-size: 80px;
+    font-size: 4rem;
     font-weight: bold;
     padding-bottom: 0;
 }
@@ -226,7 +280,7 @@ section.module.parallax h1{
 /* --------------------------------------- CADASTRO -----------------------------------------*/
 .box{
     display: flex;
-    width: 930px;
+    width: 80%;
     margin: 10px auto;
 }
 
@@ -304,27 +358,6 @@ form .input_group button{
     font-size: 16px;
 }
 
-/* responsividade */
-@media (max-width:930px){
-    .img-box{
-        display: none;
-    }
-    .box{
-        width: 700px;
-    }
-    .form-box{
-        width: 100%;
-        border-radius: 20px;
-    }
-}
-
-@media (max-witdh:500px){
-    .w50{
-        width: 100%;
-        padding: 0;
-    }
-}
-
 /* --------------------------------- TRIAGEM ---------------------------------------- */
 .box-form1{
     display: flex;
@@ -342,7 +375,7 @@ form .input_group button{
     background-color:  #4785b2b3;
     backdrop-filter: blur(40px);
     padding: 30px 40px;
-    width: 50%;
+    /* width: 50%; */
     border-radius: 20px;
     margin: 10px;
     box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.4); 
@@ -384,24 +417,6 @@ form .input_group button{
     align-items: center;
 }
 
-/* .img-box-contato{
-    display: flex;
-    align-items: center;
-}
-
-@media (max-width:930px){
-    .img-box-contato{
-        display: none;
-    }
-}
-
-@media (max-witdh:500px){
-    .w50{
-        width: 100%;
-        padding: 0;
-    }
-} */
-
 .caixa_contato_1{
     width: 550px;
     height: 570px;
@@ -427,6 +442,8 @@ form .input_group button{
     padding: 1%;
     text-align: center;
 }
+
+.caixa_contato_2
 
 .caixa_contato_2 h2{
     font-size: 40px;
@@ -514,6 +531,64 @@ input[type="file"]{
     transition: 0.1s;
 }
 
+/* ----------------------------------------POP-UP---------------------------------------------- */
+.delete{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 20px;
+    color: #252525;
+}
+
+.delete:hover{
+    color: #ffee00;
+    transition: 0.1s;
+}
+
+.popup-wrapper{
+    display: none;
+    background: rgb(0, 0, 0, .5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.popup{
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+    margin: 10% auto;
+    padding: 20px;
+    background: white;
+    position: relative;
+    /* z-index: 10 !important; */
+}
+
+
+.popup-content button{
+    border: none;
+    background-color: transparent;
+}
+
+.btn-confirma{
+    background: rgb(94, 187, 0) !important;
+    color: #fff;
+    font-weight: bold;
+    padding: 2%;
+    margin: 1%;
+    /* font-size: 50px; */
+}
+
+.popup-close{
+    background: darkred !important;
+    color: #fff;
+    padding: 2%;
+    margin: 1%;
+}
+
 /* ------------------------------------- HOME PSICÓLOGO ----------------------------------- */
 
 .box_notificacao{
@@ -590,6 +665,19 @@ input[type="file"]{
     transition: 0.4s;
 }
 
+.icones-padrao button{
+    border: none;
+    background-color: transparent;
+    padding: 5px;
+    color: #fff;
+    font-size: 30px;
+    transition: 0.4s;
+}
+
+.icones-padrao button:hover{
+    color: #000;
+}
+
 .icones-padrao:hover{
 	color: #FFF34F;
     font-size: 35px;
@@ -634,42 +722,106 @@ input[type="file"]{
     font-weight: bold; */
 }
 
-/* --------------------POP-UP---------------------- */
-.delete{
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    font-size: 20px;
-    color: #252525;
+/* ------------------------------------RESPONSIVIDADE--------------------------------- */
+/* Exemplo de uma Media Query para telas menores que 768px (como dispositivos móveis) */
+@media screen and (max-width: 1000px) {
+    /* estilos para telas menores */
+    .secao-ocultar {
+        display: none;
+    }
+
+    .centralizado{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+/* ---------------------------------------login */
+    .caixa_login_1{
+        width: 300px;
+        height: 300px;
+    }
+    
+    .caixa_login_2{
+        width: 250px;
+        height: 250px;
+    }
+
+    .caixa_login_2 h2{
+        font-size: 3rem;
+    }
+
+    .caixa_login_2 img{
+        width: 20px;
+    }
+    
+    .caixa_login_2 p{
+        font-size: 20px;
+    }
+/* --------------------------------------contato */
+    .caixa_contato_1 {
+        width: 300px;
+        height: 540px;
+    }
+
+    .caixa_contato_2 {
+        width: 290px;
+        height: 520px;
+    }
+
+/* ---------------------------------------cadastro */
+    .img-box{
+        display: none;
+    }
+    .box{
+        min-height: 100vh;
+        width: 100%;
+        min-height: 100%;
+    }
+    .form-box{
+        width: 100%;
+        border-radius: 20px;
+    }
+    .w50{
+        width: 100%;
+        padding: 0;
+    }
+
 }
 
-.delete:hover{
-    color: #ffee00;
-    transition: 0.1s;
-}
+/* Exemplo de uma Media Query para telas maiores que 768px (como tablets e desktops) */
+@media screen and (min-width: 1001px) {
+    /* estilos para telas maiores */
+    .caixa_login_1{
+        width: 400px;
+        height: 400px;
+        margin: auto;
+    }
+    
+    .caixa_login_2{
+        width: 350px;
+        height: 350px;
+    }
 
-.popup-wrapper{
-    display: none;
-    background: rgb(0, 0, 0, .5);
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-}
+  }
 
-.popup{
-    text-align: center;
-    width: 100%;
-    max-width: 300px;
-    margin: 10% auto;
-    padding: 20px;
-    background: white;
-    position: relative;
-    /* z-index: 10 !important; */
-}
+  @media screen and (max-width: 600px) {
+    /* cabeçalho */
+    header img{
+        width: 40px;
+    }
+    
+    .nav span{
+        font-size: 15px;
+    }
+    
+    .nav a:link, .nav a:visited{
+        font-size: 15px;
+    }
 
+    .icones-padrao{
+        font-size: 15px;
+    }
 
 .popup-content button{
     border: none;
@@ -697,3 +849,7 @@ input[type="file"]{
     font-weight: bold;
 }
 
+    .icones-padrao button{
+        font-size: 15px;
+    }
+  }
