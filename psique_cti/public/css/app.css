@@ -692,3 +692,8 @@ input[type="file"]{
     margin: 1%;
 }
 
+.error{
+    color: red;
+    font-weight: bold;
+}
+

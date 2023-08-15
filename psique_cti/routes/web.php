@@ -12,7 +12,7 @@ Route::get('/index', function () {
     return view('index');
 });
 
-Route::get('/mural', function () {
+Route::post('/mural', function () {
     return view('pages.mural');
 });
 
@@ -28,7 +28,9 @@ Route::get('/cadastro', function () {
     return view('pages.cadastro');
 });
 
-Route::get('/triagem', function () {
+Route::post('/cadastro', 'App\Http\Controllers\CadastroController@processarFormulario')->name('cad');
+
+Route::post('/triagem', function () {
     return view('pages.triagem');
 });
 
@@ -43,6 +45,8 @@ Route::get('/adicionartigo', function () {
 Route::get('/adicionaevento', function () {
     return view('pages.psico.addevento');
 });
+
+Route::post('/adicionaevento', 'App\Http\Controllers\EventosController@postarEvento')->name('addeven');
 
 Route::get('/editartigo', function () {
     return view('pages.psico.editartigo');

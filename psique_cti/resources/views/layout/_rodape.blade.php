@@ -126,8 +126,52 @@
   </script>
 
   <!-- Meu Javascript -->
-  <script src="{{ asset('js/app.js') }}"></script>
-  
+   <script src="{{ asset('js/app.js') }}"></script>
+   <script>
+    function validaOpcoes(event) {
+        var opano = document.getElementById("ano");
+        var opcurso = document.getElementById("curso");
+
+        if (opano.value === "0" || opcurso.value === "0") {
+            event.preventDefault(); // Impede o envio do formulário
+            alert("Selecione uma opção válida para ano e curso.");
+        }
+    }
+
+    function validaIdade(event) {
+        const birthdateInput = document.getElementById("dataNasc");
+        const birthdate = birthdateInput.value;
+        const minAge = 13;
+        const maxAge = 100;
+
+        if (calculateAge(birthdate) < minAge) {
+            event.preventDefault(); // Impede o envio do formulário
+            alert("Você deve ter pelo menos 13 anos para enviar o formulário.");
+        } else if (calculateAge(birthdate) > maxAge) {
+            event.preventDefault(); // Impede o envio do formulário
+            alert("Você deve ter menos de 100 anos para enviar o formulário.");
+        }
+    }
+
+    function calculateAge(data_nascimento) {
+        const today = new Date();
+        const birthDate = new Date(data_nascimento);
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const month = today.getMonth() - birthDate.getMonth();
+        if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        return age;
+    }
+
+    document.getElementById("myForm").addEventListener("submit", function(event) {
+        validaOpcoes(event);
+        validaIdade(event);
+    });
+  </script>
+
+
+
   <!-- Javascript bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
   
