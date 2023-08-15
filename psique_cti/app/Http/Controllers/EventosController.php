@@ -13,7 +13,7 @@ class EventosController extends Controller
     {
         $validatedData = $request->validate([
             'titulo_evento' => 'required|string|max:255', 
-            'responsavel_evento' => 'required|integer|max:255',
+            'responsavel_evento' => 'required|regex:/^[A-Za-z\s\-_,.]+$/|max:255',
             'local_evento' => 'required|string|max:255',
             'dataehora_evento' => 'required|date',
             'limite_pessoas_evento' => 'integer|min:0',

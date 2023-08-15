@@ -30,7 +30,7 @@ Route::get('/cadastro', function () {
 
 Route::post('/cadastro', 'App\Http\Controllers\CadastroController@processarFormulario')->name('cad');
 
-Route::post('/triagem', function () {
+Route::get('/triagem', function () {
     return view('pages.triagem');
 });
 
