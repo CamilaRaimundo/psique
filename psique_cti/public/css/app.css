@@ -86,6 +86,33 @@ footer a:hover{
     margin-top: 1%;
 }
 
+
+/* ---------------------------------------- DARK MODE ------------------------------------- */
+.dark-mode a{
+    text-decoration: none;
+    background-color: #212529; 
+}
+
+.dark-mode a:hover {
+    color:#4785B2;
+}
+    
+body.dark-mode {
+    background-color: #212529;
+    color:#899095;
+    transition: 0.3;
+    transform: matrix();
+}
+
+.dark-mode header{
+    background: linear-gradient(90deg, #f4efad 2%, #ffee00 );
+}
+
+.dark-mode footer{
+    background-color: #ffee00;
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 3%, rgba(0, 0, 0, 0.3) 100%);
+    color: #f4efad;
+}
 /* --------------------------------------- PARALLAX (index) ---------------------------------------- */
 .wrapper{
     width: 100%;
@@ -183,7 +210,7 @@ section.module.parallax h1{
 }
 
 .login_img{
-    width: 50%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -194,7 +221,7 @@ section.module.parallax h1{
 }
 
 .login_caixas{
-    width: 50%;
+    width: 100%;
     display: flex;
 
     /* Alinha ao centro horizontalmente */
@@ -253,7 +280,7 @@ section.module.parallax h1{
 /* --------------------------------------- CADASTRO -----------------------------------------*/
 .box{
     display: flex;
-    width: 930px;
+    width: 80%;
     margin: 10px auto;
 }
 
@@ -331,27 +358,6 @@ form .input_group button{
     font-size: 16px;
 }
 
-/* responsividade */
-@media (max-width:930px){
-    .img-box{
-        display: none;
-    }
-    .box{
-        width: 700px;
-    }
-    .form-box{
-        width: 100%;
-        border-radius: 20px;
-    }
-}
-
-@media (max-witdh:500px){
-    .w50{
-        width: 100%;
-        padding: 0;
-    }
-}
-
 /* --------------------------------- TRIAGEM ---------------------------------------- */
 .box-form1{
     display: flex;
@@ -369,7 +375,7 @@ form .input_group button{
     background-color:  #4785b2b3;
     backdrop-filter: blur(40px);
     padding: 30px 40px;
-    width: 50%;
+    /* width: 50%; */
     border-radius: 20px;
     margin: 10px;
     box-shadow: 2px 2px 1px 1px rgba(0, 0, 0, 0.4); 
@@ -659,6 +665,19 @@ input[type="file"]{
     transition: 0.4s;
 }
 
+.icones-padrao button{
+    border: none;
+    background-color: transparent;
+    padding: 5px;
+    color: #fff;
+    font-size: 30px;
+    transition: 0.4s;
+}
+
+.icones-padrao button:hover{
+    color: #000;
+}
+
 .icones-padrao:hover{
 	color: #FFF34F;
     font-size: 35px;
@@ -717,6 +736,7 @@ input[type="file"]{
         align-items: center;
     }
 
+/* ---------------------------------------login */
     .caixa_login_1{
         width: 300px;
         height: 300px;
@@ -726,6 +746,47 @@ input[type="file"]{
         width: 250px;
         height: 250px;
     }
+
+    .caixa_login_2 h2{
+        font-size: 3rem;
+    }
+
+    .caixa_login_2 img{
+        width: 20px;
+    }
+    
+    .caixa_login_2 p{
+        font-size: 20px;
+    }
+/* --------------------------------------contato */
+    .caixa_contato_1 {
+        width: 300px;
+        height: 540px;
+    }
+
+    .caixa_contato_2 {
+        width: 290px;
+        height: 520px;
+    }
+
+/* ---------------------------------------cadastro */
+    .img-box{
+        display: none;
+    }
+    .box{
+        min-height: 100vh;
+        width: 100%;
+        min-height: 100%;
+    }
+    .form-box{
+        width: 100%;
+        border-radius: 20px;
+    }
+    .w50{
+        width: 100%;
+        padding: 0;
+    }
+
 }
 
 /* Exemplo de uma Media Query para telas maiores que 768px (como tablets e desktops) */
@@ -745,25 +806,24 @@ input[type="file"]{
   }
 
   @media screen and (max-width: 600px) {
-
     /* cabeçalho */
     header img{
-        width: 50px;
+        width: 40px;
     }
     
     .nav span{
-        font-size: 18px;
+        font-size: 15px;
     }
     
     .nav a:link, .nav a:visited{
-        font-size: 18px;
+        font-size: 15px;
     }
 
     .icones-padrao{
-        font-size: 18px;
+        font-size: 15px;
+    }
+
+    .icones-padrao button{
+        font-size: 15px;
     }
   }
-
-  
-  
-

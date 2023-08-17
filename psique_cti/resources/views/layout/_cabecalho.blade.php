@@ -24,11 +24,16 @@
   <link rel="shortcut icon" href="{{ asset('img/icone_cf.png') }}">
 
 
+<<<<<<< HEAD
   {{-- Login do Google --}}
+=======
+  {{-- Login do Google - JS --}}
+>>>>>>> 36aacd1be2214414dbeb8530d4c02cf1369aa50f
   <script src="https://accounts.google.com/gsi/client" async></script>
   <script>
     function handleCredentialResponse(response) {}
     window.onload = function () {
+<<<<<<< HEAD
       google.accounts.id.initialize({
         client_id: "221599725357-dan13di9kqn4esjv37raoqr6etuvbkl3.apps.googleusercontent.com",
         callback: handleCredentialResponse
@@ -48,6 +53,28 @@
       google.accounts.id.prompt(); // also display the One Tap dialog
     }
   </script>
+=======
+    google.accounts.id.initialize({
+      client_id: "221599725357-dan13di9kqn4esjv37raoqr6etuvbkl3.apps.googleusercontent.com",
+      callback: handleCredentialResponse
+    });
+    google.accounts.id.renderButton(
+      document.getElementById("buttonDiv"),
+      { 
+        theme: "outline", 
+        size: "large", 
+        class:"g_id_signin",
+        type: "standard",
+        shape: "pill",
+        text: "signin",
+        logo_alignment:"left"
+      } // customization attributes
+    );
+    google.accounts.id.prompt(); // also display the One Tap dialog
+  }
+</script>
+
+>>>>>>> 36aacd1be2214414dbeb8530d4c02cf1369aa50f
 
 </head>
 
@@ -69,10 +96,24 @@
       
     </div>
 
-    <div>
+    {{-- <div>
       <a href="/login" class="icones-padrao"><i class="fa-solid fa-user" ></i></a>
       <a href="#" class="icones-padrao"><i class="fa-solid fa-circle-half-stroke"></i></a>
+    </div> --}}
+
+    <div  class="icones-padrao">
+      <a href="/cadastro" class="icones-padrao"><i class="fa-solid fa-user" ></i></a>
+      <button onclick="darkMode()"><i class="fa-solid fa-circle-half-stroke"></i></button>
     </div>
+
+    <script>
+      function darkMode() {
+        var element = document.body;
+        element.classList.toggle("dark-mode");
+      }
+    </script>
+      
+      {{--     </div> --}}
 
   </header>
 
