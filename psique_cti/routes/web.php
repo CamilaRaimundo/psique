@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use app\Http\Controllers\TriagemController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,6 +32,10 @@ Route::get('/cadastro', function () {
 Route::get('/triagem', function () {
     return view('pages.triagem');
 });
+
+Route::post('/triagem',
+['as'  =>'controller.triagem',
+ 'uses'=>'App\Http\Controllers\TriagemController@verifica']);
 
 Route::get('/homepsico', function () {
     return view('pages.psico.home');

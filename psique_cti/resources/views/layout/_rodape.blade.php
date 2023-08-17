@@ -50,6 +50,34 @@
     })
   </script>
 
+  {{-- ----------------------------------TRIAGEM----------------------------------------- --}}
+  <script>
+    //triagem
+    function requerido() {
+      var opmed = document.getElementById("inputGroupSelect02");
+      var campoMedicamento = document.getElementById("medicamento");
+      var idMedic = document.getElementById("idMedic");
+  
+      if (opmed.value === "1-sim") {
+        idMedic.style.display = "block";
+        campoMedicamento.setAttribute("required", "required");
+      } else {
+        idMedic.style.display = "none";
+        campoMedicamento.removeAttribute("required");
+      }
+    }
+
+    function verificarEnvio(event) {
+      var opacomp = document.getElementById("inputGroupSelect01");
+      var opmed = document.getElementById("inputGroupSelect02");
+
+      if (opacomp.value === "3-escolha" || opmed.value === "3-escolha") {
+        event.preventDefault(); // Impede o envio do formulário
+        alert("Selecione uma opção válida sobre o acompanhamento psicológico e o uso de medicamentos antes de enviar o formulário.");
+      }
+    }
+  </script>
+
   <!-- Javascript -->
   <script src="{{ asset('js/app.js') }}"></script>
   
