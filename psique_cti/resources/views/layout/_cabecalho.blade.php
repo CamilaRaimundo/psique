@@ -60,8 +60,10 @@
     <div class="nav">
       {{-- if(usuários comuns) --}}
       <a href="/index">Home</a>
-      {{-- else if (psicólogo) --}}
+      {{-- else if(psicólogo) --}}
       {{-- <a href="/homepsico">Home</a> --}}
+      {{-- else if(Admin) --}}
+      {{-- <a href="/Admin">Home</a> --}}
       
       <span>|</span>
 

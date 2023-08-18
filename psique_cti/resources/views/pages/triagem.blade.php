@@ -69,6 +69,8 @@
             </form>
         </div>
 
-        <img src="{{ asset('img/triagem_img.png') }}" width="40%" alt="">
+        <div class="box_img1 secao-ocultar">
+            <img src="{{ asset('img/triagem_img.png') }}" width="40%" alt="">
+        </div>
     </div>
 @endsection
