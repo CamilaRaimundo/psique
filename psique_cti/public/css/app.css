@@ -487,11 +487,13 @@ form .input_group button{
     height: 50px;
     align-items: center;
     size: 50px;
+    margin-bottom: 1%;
 }
 
 .card{
     background: #fffab8;
-    margin-bottom: 1%;
+    /* margin-bottom: 1%; */
+    margin: 10px;
 }
 
 .card-title{
@@ -564,7 +566,6 @@ input[type="file"]{
     padding: 20px;
     background: white;
     position: relative;
-    /* z-index: 10 !important; */
 }
 
 
@@ -579,7 +580,6 @@ input[type="file"]{
     font-weight: bold;
     padding: 2%;
     margin: 1%;
-    /* font-size: 50px; */
 }
 
 .popup-close{
@@ -654,36 +654,33 @@ input[type="file"]{
 }
 
 /* --------------------------------------- EMOÇÕES --------------------------------------- */
-.emoji{
-    width: 200px;
-    /* height: 100px; */
-    padding: 5%;
-    justify-content: space-between;
-    background-color: #003b63;
-    /* color: #fff !important; */
-    font-size: 30px;
+.amarelinho{
+    background-color: #faf7c8 !important;
+}
+
+.caixa-emojis input[type='radio'] {
+    display: none;
+}
+
+.selecionar input:focus + label {
+    outline: 2px dotted #0099ff;
+}
+
+.selecionar input:checked + label {
+    outline: 5px solid #0099ff;
+    z-index: 100;
+}
+
+.reg{
+    background: #003b63; 
+    margin: 2%;   
+}
+
+.pergunta{
+    width: auto;
     border-radius: 20px;
-    cursor: pointer;
-    /* transition: all .3s ease-in-out ; */
-    margin: 2%;
-    
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 8px 5px 2px 1px rgba(0, 0, 0, 0.4); 
-}
-
-.emoji a{
-    color: #fff;
-    font-weight: bold;
-}
-
-.caixa-emoji{
-    display: flex;
-    /* align-items: center;
-    justify-content: center; */
-    /* width: 80%; */
+    backdrop-filter: blur(40px);
+    padding: 1%;
 }
 
 
@@ -750,12 +747,8 @@ input[type="file"]{
     min-height: 100vh;
     padding: 2%;
     display: block;
-
-    /* Alinha ao centro horizontalmente */
     justify-content: center;
-    /* Alinha ao centro verticalmente */
     align-items: center;
-
     text-align: center;
     font-weight: bold;
 }
