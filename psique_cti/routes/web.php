@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use app\Http\Controllers\TriagemController; //--> Triagem
 use app\Http\Controllers\ArtigosController; //--> Artigos
+use app\Http\Controllers\CadastroController; //--> Informações adicionais
+use app\Http\Controllers\EventosController; // --> Eventos
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,6 +29,8 @@ Route::get('/login', function () {
 Route::get('/cadastro', function () {
     return view('pages.cadastro');
 });
+
+Route::post('/cadastro', 'App\Http\Controllers\CadastroController@processarFormulario')->name('cad');
 
 Route::get('/triagem', function () {
     return view('pages.triagem');
@@ -66,6 +70,8 @@ Route::post('/editartigo',
 Route::get('/adicionaevento', function () {
     return view('pages.psico.addevento');
 });
+
+Route::post('/adicionaevento', 'App\Http\Controllers\EventosController@postarEvento')->name('addeven');
 
 Route::get('/editarevento', function () {
     return view('pages.psico.editevento');
