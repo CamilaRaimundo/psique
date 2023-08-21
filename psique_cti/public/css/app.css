@@ -677,12 +677,19 @@ input[type="file"]{
 }
 
 .pergunta{
-    width: auto;
+    width: 100%;
     border-radius: 20px;
     backdrop-filter: blur(40px);
     padding: 1%;
 }
 
+
+/* --------------------------------------- ESTATÍSTICAS ------------------- */
+.container-graphic{
+    width: 500px;
+    margin: 3%;
+    /* display: flex; */
+}
 
 /* ------------------------------------- ERROR 404 ---------------------------------------- */
 .container-404{

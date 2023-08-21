@@ -86,4 +86,11 @@ Route::get('/Admin', function () {
     return view('pages.admin.homeAdmin');
 });
 
+
+Route::get('/estatisticas', function () {
+    return view('pages.psico.graficos');
+});
+
+
+
 // Route::get('/testejoao',['as'=>'alunos','uses'=>'App\Http\Controllers\AlunosController@index']);
