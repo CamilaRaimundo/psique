@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('aluno');
             $table->string('mood');
             $table->foreign('aluno')->references('ra')->on('alunos')->onDelete('cascade');
-            $table->foreign('mood')->references('emocao')->on('mood')->onDelete('cascade');
-            $table->primary(['aluno', 'date', 'mood']);
+            $table->foreign('mood')->references('emocao')->on('moods')->onDelete('cascade');
+            $table->primary(['aluno', 'data', 'mood']);
             $table->timestamps();
 
             //DB::statement("ALTER TABLE aluno_mood ADD CONSTRAINT aluno_mood_new_pkey PRIMARY KEY (data, aluno, mood);");

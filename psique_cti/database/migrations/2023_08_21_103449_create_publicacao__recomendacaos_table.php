@@ -16,6 +16,7 @@ return new class extends Migration
             $table->date('data');
             $table->time('horario');
             $table->integer('n_participantes');
+            $table->id('id_mural');
             $table->foreign('id_mural')->references('id')->on('murais')->onDelete('cascade')->primary();
             $table->timestamps();
         });
