@@ -71,10 +71,14 @@
 
       <span>|</span>
 
+<<<<<<< HEAD
       {{-- if(usuários comuns) --}}
       <a href="/contato">Contato</a>
       {{-- else if (psicólogo) --}}
       {{-- <a href="/estatistica">Estatísticas</a> --}}
+=======
+      <a href="{{ route('contato.mostrar') }}">Contato</a>
+>>>>>>> 8bcb8238481b3ec9ee5b3350b04ec69ca8d56e14
       
     </div>
 

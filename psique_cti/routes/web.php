@@ -1,10 +1,14 @@
 <?php
 
+use App\Http\Controllers\ContatoController;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use app\Http\Controllers\TriagemController; //--> Triagem
 use app\Http\Controllers\ArtigosController; //--> Artigos
 use app\Http\Controllers\CadastroController; //--> Informações adicionais
 use app\Http\Controllers\EventosController; // --> Eventos
+use App\Mail\TestMail;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -18,9 +22,8 @@ Route::get('/mural', function () {
     return view('pages.mural');
 });
 
-Route::get('/contato', function () {
-    return view('pages.contato');
-});
+Route::get('/contato', [ContatoController::class, 'mostraForm'])->name('contato.mostrar');
+Route::post('/contato', [ContatoController::class, 'mandaEmail'])->name('contato.enviar');
 
 Route::get('/login', function () {
     return view('pages.login');

@@ -16,11 +16,11 @@ class Historico_aluno extends Model
         'acompanhamento',
         'medicamentos',
         'nome_medicamentos',
-        'ra',
+        'aluno',
     ];
 
-    public function aluno()
+    public function aluno(): BelongsTo
     {
-        return $this->belongsTo(Aluno::class, 'ra', 'ra');
+        return $this->belongsTo(Aluno::class, 'aluno', 'ra');
     }
 }
