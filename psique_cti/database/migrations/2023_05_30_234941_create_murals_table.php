@@ -11,10 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('murals', function (Blueprint $table) {
+        Schema::create('murais', function (Blueprint $table) {
             $table->id();
+            $table->string('titulo');
+            $table->string('descricao');
+            $table->string('autor');
+            $table->string('profissional');
+            $table->foreign('profissional')->references('cpf')->on('profissionais')->onDelete('cascade');
             $table->timestamps();
         });
+
+        DB::statement("ALTER TABLE murais ADD imagem BYTEA");
     }
 
     /**
@@ -22,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('murals');
+        Schema::dropIfExists('murais');
     }
 };
