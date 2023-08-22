@@ -12,7 +12,7 @@ class Aluno extends Model
     protected $fillable = [
         'curso',
         'nome',
-        'data_nasc',
+        'data_nascimento',
         'email',
     ];
 }

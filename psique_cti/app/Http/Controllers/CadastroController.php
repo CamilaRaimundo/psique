@@ -17,6 +17,29 @@ class CadastroController extends Controller
             'opcao_curso' => 'required|in:1,2,3,4',
         ]);
 
+        $cursos = [
+            1 => 'Informática A',
+            2 => 'Informática B',
+            3 => 'Eletrônica',
+            4 => 'Mecânica',
+        ];
+
+        $series = [
+            1 => 'Primeiro',
+            2 => 'Segundo',
+            3 => 'Terceiro',
+        ];
+
+        $aluno = new Aluno();
+
+        $aluno->data_nascimento = $validatedData['data_nascimento'];
+        //$aluno->serie = $series[$validatedData['opcao_serie']];
+        $aluno->curso = $cursos[$validatedData['opcao_curso']];
+        $aluno->nome = 'a';
+        $aluno->email = 'abc@teste';
+
+        $aluno->save();
+
         return view('pages.triagem');
     }
 }

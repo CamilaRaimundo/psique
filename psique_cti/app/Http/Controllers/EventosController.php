@@ -29,10 +29,24 @@ class EventosController extends Controller
             'mimes' => 'O campo :attribute deve ser um arquivo de imagem do tipo: :values.',
         ]);
 
+        $evento = new Mural();
+
+        $evento->titulo_evento = $validatedData['titulo_evento'];
+        $evento->responsavel_evento = $validatedData['responsavel_evento'];
+        $evento->local_evento = $validatedData['local_evento'];
+        $evento->dataehora_evento = $validatedData['dataehora_evento'];
+        $evento->limite_pessoas_evento = $validatedData['limite_pessoas_evento'];
+        $evento->link_evento = $validatedData['link_evento'];
+        $evento->descricao_evento = $validatedData['descricao_evento'];
+
+        if ($request->hasFile('img_ilustrativa')) {
+            $path = $request->file('img_ilustrativa')->store('event_images');
+            $evento->img_ilustrativa = $path;
+        }
+
+        $evento->save();
+
         return view('pages.mural');
-
-
-        //dd("Validation executed"); // Adicione esta linha para verificar se a validação está sendo executada
-        
+       
     }
 }
