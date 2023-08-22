@@ -23,6 +23,14 @@
                 </div>
 
                 <div class="input_group">
+                    <label for="ra">RA</label>
+                    <input type="text" id="ra" placeholder="XXXXXXX" name="ra" required value="{{ old('ra') }}">
+                    @error('ra')
+                        <span class="error">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="input_group">
                     <label for="dataNasc">Data de Nascimento</label>
                     <input type="date" id="dataNasc" name="data_nascimento" required value="{{ old('data_nascimento') }}">
                     @error('data_nascimento')
@@ -36,7 +44,7 @@
                 </div>
 
                 <div class="input-group mb-3">
-                    <select class="form-select" id="ano" name="opcao_serie" required>
+                    <select class="form-select" id="ano" name="opcao_serie" required value="{{ old('opcao_serie') }}">
                       <option disabled selected value="0">Escolha...</option>
                       <option value="1">Primeiro &#040;1º ano&#041;</option>
                       <option value="2">Segundo &#040;2º ano&#041;</option>
@@ -52,7 +60,7 @@
                 </div>
 
                 <div class="input-group mb-3">
-                  <select class="form-select" id="curso" name="opcao_curso" required>
+                  <select class="form-select" id="curso" name="opcao_curso" required value="{{ old('opcao_curso') }}">
                       <option disabled selected value="0">Escolha...</option>
                       <option value="1" >Informática A</option>
                       <option value="2">Informática B</option>

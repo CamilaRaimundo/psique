@@ -13,7 +13,8 @@ class Aluno extends Model
         'ra',
         'curso',
         'nome',
-        'data_nasc',
+        'data_nascimento',
+        'serie',
         'email',
     ];
 
