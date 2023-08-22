@@ -166,42 +166,6 @@
     });
 });
 
-
-//   document.addEventListener("DOMContentLoaded", function() {
-//     const form = document.querySelector("form");
-
-//     form.addEventListener("submit", function(event) {
-//         event.preventDefault();
-
-//         const formData = new FormData(form);
-
-//         // Check if the author field contains only numbers
-//         const authorField = formData.get("autor_publicacao");
-//         const isNumeric = /^\d+$/.test(authorField);
-
-//         if (isNumeric) {
-//             // If it contains only numbers, show the alert and prevent form submission
-//             alert("O campo do autor não pode conter apenas números.");
-//         } else {
-//             // If it doesn't contain only numbers, proceed with form submission
-//             fetch(form.getAttribute("action"), {
-//                 method: "POST",
-//                 body: formData,
-//                 headers: {
-//                     'X-CSRF-TOKEN': '{{ csrf_token() }}', // Include CSRF token
-//                 },
-//             })
-//             .then(response => response.json())
-//             .then(data => {
-//                 // Rest of your code for handling success and errors
-//             })
-//             .catch(error => {
-//                 console.error("Error:", error);
-//             });
-//         }
-//     });
-// });
-
   </script>
  
    
