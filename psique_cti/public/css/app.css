@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap');
 
+
+ 
+
 *{
     margin: 0;
     padding: 0;
@@ -14,10 +17,37 @@ a{
 	text-decoration: none;
 }
 
+
 body{
     overflow-x: hidden;
     font-family: 'Mulish', sans-serif;
+    /*criando uma variável de css */
+--bg-grey-light: #f5f5f5;
+/* cores de texto */
+  --text-white: #ffffff;
+  --text-dark: #142136;
+
+  /* cores de fundo */
+  --bg-grey-light: #f5f5f5;
+  --bg-white: #ffffff;
+  --bg-blue-dark: #142136;
+  --bg-indigo: #6366f1;
+
+/*usando a variavel de css */
+background-color: var(--bg-grey-light);
+
+
 }
+
+.dark {
+    --text-white: #e6e6e6;
+    --text-dark: #ffffff;
+  
+    --bg-grey-light: #142136;
+    --bg-white: #22395d;
+    --bg-blue-dark: #142136;
+    --bg-indigo: #7577e1;
+  }
 
 /* ---------------------------- CABEÇALHO ------------------------------------- */
 header{
@@ -87,32 +117,34 @@ footer a:hover{
 }
 
 
+
 /* ---------------------------------------- DARK MODE ------------------------------------- */
-.dark-mode a{
+.dark a{
     text-decoration: none;
     background-color: #212529; 
 }
 
-.dark-mode a:hover {
+.dark a:hover {
     color:#4785B2;
 }
     
-body.dark-mode {
+/* body.dark-mode {
     background-color: #212529;
     color:#899095;
     transition: 0.3;
     transform: matrix();
-}
+}*/
 
-.dark-mode header{
+.dark header{
     background: linear-gradient(90deg, #f4efad 2%, #ffee00 );
 }
 
-.dark-mode footer{
+.dark footer{
     background-color: #ffee00;
     background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 3%, rgba(0, 0, 0, 0.3) 100%);
     color: #f4efad;
 }
+
 /* --------------------------------------- PARALLAX (index) ---------------------------------------- */
 .wrapper{
     width: 100%;
