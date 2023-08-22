@@ -10,7 +10,7 @@
 
         <div class="form-box">
             <h2>Informações adicionais</h2>
-            <form onsubmit="validaEnvio(event)" action="{{ route('cad') }}" method="POST" id="myForm">
+            <form onsubmit="validaOpcoes(event)" action="{{ route('cad') }}" method="POST" id="myForm">
             {{ csrf_field() }}
                <div class="input_group">
                     <label for="nome">Nome Completo</label>
@@ -70,4 +70,48 @@
             </form>
         </div>
     </div>
+    
+    <script>
+    function validaOpcoes(event) {
+      var opano = document.getElementById("ano");
+      var opcurso = document.getElementById("curso");
+
+      if (opano.value === "0" || opcurso.value === "0") {
+        event.preventDefault(); // Impede o envio do formulário
+        alert("Selecione uma opção válida para ano e curso.");
+      }
+    }
+
+    function validaIdade(event) {
+      const birthdateInput = document.getElementById("dataNasc");
+      const birthdate = birthdateInput.value;
+      const minAge = 13;
+      const maxAge = 100;
+
+      if (calculateAge(birthdate) < minAge) {
+        event.preventDefault(); // Impede o envio do formulário
+        alert("Você deve ter pelo menos 13 anos para enviar o formulário.");
+      } else if (calculateAge(birthdate) > maxAge) {
+        event.preventDefault(); // Impede o envio do formulário
+        alert("Você deve ter menos de 100 anos para enviar o formulário.");
+      }
+    }
+
+    function calculateAge(data_nascimento) {
+      const today = new Date();
+      const birthDate = new Date(data_nascimento);
+      let age = today.getFullYear() - birthDate.getFullYear();
+      const month = today.getMonth() - birthDate.getMonth();
+      if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+      }
+      return age;
+    }
+
+    document.getElementById("myForm").addEventListener("submit", function(event) {
+      validaOpcoes(event);
+      validaIdade(event);
+    });
+  </script>
+
 @endsection

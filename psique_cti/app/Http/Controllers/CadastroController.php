@@ -35,7 +35,7 @@ class CadastroController extends Controller
         $aluno = new Aluno();
 
         $aluno->data_nascimento = $validatedData['data_nascimento'];
-        //$aluno->serie = $series[$validatedData['opcao_serie']];
+        $aluno->serie = $series[$validatedData['opcao_serie']];
         $aluno->curso = $cursos[$validatedData['opcao_curso']];
         $aluno->nome = 'a';
         $aluno->email = 'abc@teste';
@@ -43,5 +43,6 @@ class CadastroController extends Controller
         $aluno->save();
 
         return view('pages.triagem');
+        
     }
 }
