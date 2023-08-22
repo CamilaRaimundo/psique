@@ -9,7 +9,9 @@
         <div class="linha"></div>
         <p>Crie artigos ou recomendações para os alunos!</p>
 
-        <form action="#">
+        <form action="{{ route('controller.artigo') }}" method="POST">
+            {{ csrf_field() }} 
+
             <div class="input_group">
                 <label for="titulo_publicacao">Título da publicação</label>
                 <input type="text" id="titulo_publicacao" placeholder="Digite o título da publicação" required>
@@ -17,7 +19,8 @@
 
             <div class="input_group">
                 <label for="autor_publicacao">Autor</label>
-                <input type="text" id="autor_publicacao" placeholder="Digite o autor do artigo" required>
+                <input type="text" id="autor_publicacao" placeholder="Digite o autor do artigo" name="autor_publicacao" required>
+               <span class="error-message"></span>
             </div>
 
             <div class="input_group">
@@ -28,7 +31,7 @@
             <div class="input_group">
                 <label for="img_ilustrativa">Imagem ilustrativa &#040;jpg, jpeg ou png&#041;</label>
                 <label for="img_ilustrativa" class="img_ilustrativa">Escolha um arquivo</label>
-                <input type="file" id="img_ilustrativa" accept="image/png,image/jpeg,image/jpg">
+                <input type="file" id="img_ilustrativa" name="img_ilustrativa" accept="image/png,image/jpeg,image/jpg">
             </div>
 
             <div class="input_group">
@@ -45,7 +48,9 @@
         </form>
     </div>
 
-    <img src="{{ asset('img/publica_artigos-img.png') }}" width="40%" alt="">
+    <div class="box_img1 secao-ocultar">
+        <img src="{{ asset('img/publica_artigos-img.png') }}" width="40%" alt="">
+    </div>
     
 </div>
 @endsection

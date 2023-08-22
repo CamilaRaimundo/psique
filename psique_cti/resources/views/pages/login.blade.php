@@ -5,7 +5,7 @@
 @section('conteudo')
     <div class="container_login centralizado"> 
 
-        <div class="login_img secao-ocultar">
+        <div class="box_img1 secao-ocultar">
             <img src="{{ asset('img/login-img.png') }}" alt="">    
         </div>
         

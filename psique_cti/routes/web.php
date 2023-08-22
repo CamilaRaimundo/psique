@@ -1,12 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use app\Http\Controllers\TriagemController; //--> Triagem
+use app\Http\Controllers\ArtigosController; //--> Artigos
+use app\Http\Controllers\CadastroController; //--> Informações adicionais
+use app\Http\Controllers\EventosController; // --> Eventos
 
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/testejoao',['as'=>'alunos','uses'=>'App\Http\Controllers\AlunosController@index']);
 
 Route::get('/index', function () {
     return view('index');
@@ -34,13 +36,36 @@ Route::get('/triagem', function () {
     return view('pages.triagem');
 });
 
+Route::post('/triagem',
+['as'  =>'controller.triagem',
+ 'uses'=>'App\Http\Controllers\TriagemController@verifica']);
+
+Route::get('/emocoes', function () {
+    return view('pages.emocoes');
+});
+
+
+//  Psico
 Route::get('/homepsico', function () {
     return view('pages.psico.home');
 });
 
 Route::get('/adicionartigo', function () {
     return view('pages.psico.addartigo');
+   });
+
+Route::post('/adicionartigo',
+['as'  =>'controller.artigo',
+ 'uses'=>'App\Http\Controllers\ArtigosController@verificaForm']);
+
+
+Route::get('/editartigo', function () {
+    return view('pages.psico.editartigo');
 });
+
+Route::post('/editartigo',
+['as'  =>'controller.artigo',
+ 'uses'=>'App\Http\Controllers\ArtigosController@verificaForm']);
 
 Route::get('/adicionaevento', function () {
     return view('pages.psico.addevento');
@@ -59,3 +84,17 @@ Route::get('/editarevento', function () {
 Route::get('/detalhesaluno', function () {
     return view('pages.psico.detalhesaluno');
 });
+
+// Admin
+Route::get('/Admin', function () {
+    return view('pages.admin.homeAdmin');
+});
+
+
+Route::get('/estatisticas', function () {
+    return view('pages.psico.graficos');
+});
+
+
+
+// Route::get('/testejoao',['as'=>'alunos','uses'=>'App\Http\Controllers\AlunosController@index']);

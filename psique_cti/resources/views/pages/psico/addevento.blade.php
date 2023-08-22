@@ -85,7 +85,9 @@
         </form>
     </div>
 
-    <img src="{{ asset('img/publica_eventos-img.png') }}" width="40%" alt="">
+    <div class="box_img1 secao-ocultar">
+        <img src="{{ asset('img/publica_eventos-img.png') }}" width="40%" alt="">
+    </div>
     
 </div>
 @endsection
