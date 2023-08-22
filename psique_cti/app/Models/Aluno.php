@@ -13,6 +13,7 @@ class Aluno extends Model
         'curso',
         'nome',
         'data_nasc',
+        'serie',
         'email',
     ];
 
