@@ -17,15 +17,22 @@
         <div class="linha-branca"></div>
         
         <div class="caixa_contato_3">
-          <form action="#">
+          <form method="POST" action="{{ route('contato.enviar') }}">
+          @csrf
+
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Email:</span>
+            <input type="text" name="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
+          </div>
+
             <div class="input-group mb-3">
               <span class="input-group-text" id="inputGroup-sizing-default">Assunto:</span>
-              <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+              <input type="text" name="subject" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" required>
             </div>
 
             <div class="form-floating">
-              <textarea class="form-control" id="floatingTextarea2" style="height: 200px"></textarea>
-              <label for="floatingTextarea2">Conteúdo</label>
+              <textarea name="content" class="form-control" placeholder="Leave a comment here" style="height: 200px" required></textarea>
+              <label for="content">Conteúdo</label>
             </div> 
 
             <button type="submit" class="btn btn-outline-secondary">Enviar</button>
@@ -33,6 +40,5 @@
         </div> <!-- caixa_contato_3 -->
       </div> <!-- caixa_contato_2 -->
     </div> <!-- caixa_contato_1 -->
-    
   </div> <!--container-contato-->
 @endsection

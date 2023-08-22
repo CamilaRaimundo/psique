@@ -17,6 +17,7 @@ a{
 body{
     overflow-x: hidden;
     font-family: 'Mulish', sans-serif;
+    /* cursor: url("../img/icone_sf.png"), auto; */
 }
 
 /* ---------------------------- CABEÇALHO ------------------------------------- */

@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('profissionals', function (Blueprint $table) {
-            $table->id();
+        Schema::create('eventos', function (Blueprint $table) {
+            $table->string('link');
+            $table->id('id_mural');
+            $table->foreign('id_mural')->references('id')->on('murais')->onDelete('cascade')->primary();
             $table->timestamps();
         });
     }
@@ -22,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('profissionals');
+        Schema::dropIfExists('eventos');
     }
 };
