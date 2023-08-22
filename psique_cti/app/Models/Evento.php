@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Publicacao_Recomendacao extends Model
+class Evento extends Model
 {
-    protected $table = 'Publicacoes_Recomendacoes';
+    protected $table = 'eventos';
     protected $primaryKey = 'id_mural';
     protected $fillable = [
         'local_evento',

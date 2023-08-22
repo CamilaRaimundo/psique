@@ -32,14 +32,8 @@ class EventosController extends Controller
 
         $evento1 = new Mural();
 
-        $evento1->titulo_evento = $validatedData['titulo_evento'];
-        $evento1->responsavel_evento = $validatedData['responsavel_evento'];
-        $evento1->descricao_evento = $validatedData['descricao_evento'];
-
-        if ($request->hasFile('img_ilustrativa')) {
-            $path = $request->file('img_ilustrativa')->store('event_images');
-            $evento1->img_ilustrativa = $path;
-        }
+        $evento1->titulo = $validatedData['titulo_evento'];
+        $evento1->descricao = $validatedData['descricao_evento'];
 
         $evento1->save();
 
@@ -47,8 +41,14 @@ class EventosController extends Controller
 
         $evento2->local_evento = $validatedData['local_evento'];
         $evento2->dataehora_evento = $validatedData['dataehora_evento'];
+        $evento2->responsavel_evento = $validatedData['responsavel_evento'];
         $evento2->limite_pessoas_evento = $validatedData['limite_pessoas_evento'];
         $evento2->link_evento = $validatedData['link_evento'];
+
+        if ($request->hasFile('img_ilustrativa')) {
+            $path = $request->file('img_ilustrativa')->store('event_images');
+            $evento2->img_ilustrativa = $path;
+        }
 
         $evento2->save();
 
