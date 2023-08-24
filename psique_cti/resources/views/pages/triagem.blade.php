@@ -27,7 +27,6 @@
                     <option value="1-sim">Sim</option>
                     <option value="2-nao">Não</option>
                 </select>
-                {{-- <label class="input-group-text" for="inputGroupSelect02">Opções</label> --}}
                 </div>
 
                 <div class="input_group">
@@ -40,7 +39,6 @@
                     <option value="1-sim">Sim</option>
                     <option value="2-nao">Não</option>
                 </select>
-                {{-- <label class="input-group-text" for="inputGroupSelect02">Opções</label> --}}
                 </div>
 
                 {{-- fazer uma condição em que se a resposta a cima for "sim", a descrição dos nomes será "required" --}}
@@ -71,6 +69,8 @@
             </form>
         </div>
 
-        <img src="{{ asset('img/triagem_img.png') }}" width="40%" alt="">
+        <div class="box_img1 secao-ocultar">
+            <img src="{{ asset('img/triagem_img.png') }}" width="40%" alt="">
+        </div>
     </div>
 @endsection

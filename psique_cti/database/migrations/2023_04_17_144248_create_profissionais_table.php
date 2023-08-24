@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('encontros', function (Blueprint $table) {
-            $table->id();
-            $table->date('data');
-            $table->string('aluno');
-            $table->text('observacoes');
-            $table->string('profissional');
-            $table->foreign('profissional')->references('cpf')->on('profissionais')->onDelete('cascade');
+        Schema::create('profissionais', function (Blueprint $table) {
+            $table->string('crp');
+            $table->string('telefone');
+            $table->boolean('ativo');
+            $table->string('cpf')->primary();
+            $table->string('email');
+            $table->string('nome');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('encontros');
+        Schema::dropIfExists('profissionais');
     }
 };

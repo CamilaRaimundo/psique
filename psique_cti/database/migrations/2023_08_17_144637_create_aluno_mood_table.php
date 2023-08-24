@@ -11,17 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('historico_alunos', function (Blueprint $table) {
-            $table->id();
-            $table->integer('qtde_moradores');
-            $table->string('tempo_sentimentos');
-            $table->string('queixas');
-            $table->boolean('acompanhamento');
-            $table->boolean('medicamentos');
-            $table->string('nome_medicamentos');
+        Schema::create('aluno_mood', function (Blueprint $table) {
+            $table->date('data');
             $table->string('aluno');
+            $table->string('mood');
             $table->foreign('aluno')->references('ra')->on('alunos')->onDelete('cascade');
+            $table->foreign('mood')->references('emocao')->on('moods')->onDelete('cascade');
+            $table->primary(['aluno', 'data', 'mood']);
             $table->timestamps();
+
+            //DB::statement("ALTER TABLE aluno_mood ADD CONSTRAINT aluno_mood_new_pkey PRIMARY KEY (data, aluno, mood);");
+
         });
     }
 
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('historico_alunos');
+        Schema::dropIfExists('aluno_mood');
     }
 };

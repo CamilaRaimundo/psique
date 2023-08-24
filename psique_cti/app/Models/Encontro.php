@@ -7,5 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Encontros extends Model
 {
-    use HasFactory;
+    protected $fillable = [
+        'data',
+        'aluno',
+        'observacoes',
+        'profissional'
+    ];
+
+    public function profissional(): BelongsTo
+    {
+        return $this->belongsTo(Profissional::class, 'profissional', 'cpf');
+    }
 }

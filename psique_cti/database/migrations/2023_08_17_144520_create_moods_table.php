@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('encontros', function (Blueprint $table) {
-            $table->id();
-            $table->date('data');
-            $table->string('aluno');
-            $table->text('observacoes');
-            $table->string('profissional');
-            $table->foreign('profissional')->references('cpf')->on('profissionais')->onDelete('cascade');
+        Schema::create('moods', function (Blueprint $table) {
+            $table->string('emocao')->primary();
             $table->timestamps();
         });
     }
@@ -27,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('encontros');
+        Schema::dropIfExists('moods');
     }
 };

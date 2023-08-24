@@ -52,5 +52,4 @@ class ArtigosController extends Controller
 
         // Redirecione para uma página de sucesso ou exiba uma mensagem de sucesso.
         //return redirect()->route('pages.psico.addartigo');
-    }
-
+};

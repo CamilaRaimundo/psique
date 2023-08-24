@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('encontros', function (Blueprint $table) {
-            $table->id();
+        Schema::create('publicacao__recomendacaos', function (Blueprint $table) {
+            $table->string('local');
             $table->date('data');
-            $table->string('aluno');
-            $table->text('observacoes');
-            $table->string('profissional');
-            $table->foreign('profissional')->references('cpf')->on('profissionais')->onDelete('cascade');
+            $table->time('horario');
+            $table->integer('n_participantes');
+            $table->id('id_mural');
+            $table->foreign('id_mural')->references('id')->on('murais')->onDelete('cascade')->primary();
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('encontros');
+        Schema::dropIfExists('publicacao__recomendacaos');
     }
 };

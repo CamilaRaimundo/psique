@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Historico_aluno;
 
 class TriagemController extends Controller
 {
@@ -34,8 +35,27 @@ class TriagemController extends Controller
                 //$req->input('qtd_pessoas') //contém o valor válido entre o intervalo
         
                 return redirect()->back()->with('success', ' válido!');
-
-                //return view('index');
-            }
-           
     }
+
+    public function salvar(Request $req)
+    {
+    $dados = $req->all();
+    if(isset($dados['enviar'])){
+    $dados['enviar'] = 'sim';
+    }else{
+    $dados['enviar'] = 'nao';
+    }
+    if($req->hasFile('arquivo')){
+    $imagem = $req->file('arquivo');
+    $num = rand(1111,9999);
+    //$dir = "img/cursos/";
+    $ex = $imagem->guessClientExtension();
+    //$nomeImagem = "imagem_".$num.".".$ex;
+    //$imagem->move($dir,$nomeImagem);
+    //$dados['imagem'] = $dir."/".$nomeImagem;
+    //}
+    Triagem::create($dados);
+    return redirect()->route('index');
+    }
+}
+}
