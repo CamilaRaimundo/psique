@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tem extends Model
+class Aluno_Mood extends Model
 {
-    protected $table = 'tem';   //Aqui você define o nome da tabela, genericamente, o laravel
+    protected $table = 'aluno_mood';   //Aqui você define o nome da tabela, genericamente, o laravel
                                 //define por padrão o nome da tabela como sendo o nome da
                                 //classe no plural. Se quiser definir um, precisa por isso
 

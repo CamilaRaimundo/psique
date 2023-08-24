@@ -9,11 +9,11 @@ class Mood extends Model
 {
     protected $table = 'moods';
     
-    protected $primaryKey = 'emocoes';
+    protected $primaryKey = 'emocao';
 
     public $incrementing = false;
 
     protected $fillable = [
-        'emocoes',
+        'emocao',
     ];
 }
