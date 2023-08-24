@@ -23,11 +23,11 @@ class Mural extends Model
 
     public function Publicacao_Recomendacao() : HasMany
     {
-        return $this->hasMany(Publicacao_Recomendacao::class, 'id_mural', 'id');
+        return $this->hasOne(Publicacao_Recomendacao::class, 'id_mural', 'id');
     }
 
     public function Evento() : HasMany
     {
-        return $this->hasMany(Publicacao_Recomendacao::class, 'id_mural', 'id');
+        return $this->hasOne(Publicacao_Recomendacao::class, 'id_mural', 'id');
     }
 }
