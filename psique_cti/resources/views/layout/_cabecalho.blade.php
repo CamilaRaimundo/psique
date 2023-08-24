@@ -24,36 +24,11 @@
   <link rel="shortcut icon" href="{{ asset('img/icone_cf.png') }}">
 
 
-<<<<<<< HEAD
-  {{-- Login do Google --}}
-=======
   {{-- Login do Google - JS --}}
->>>>>>> 36aacd1be2214414dbeb8530d4c02cf1369aa50f
   <script src="https://accounts.google.com/gsi/client" async></script>
   <script>
     function handleCredentialResponse(response) {}
     window.onload = function () {
-<<<<<<< HEAD
-      google.accounts.id.initialize({
-        client_id: "221599725357-dan13di9kqn4esjv37raoqr6etuvbkl3.apps.googleusercontent.com",
-        callback: handleCredentialResponse
-      });
-      google.accounts.id.renderButton(
-        document.getElementById("buttonDiv"),
-        { 
-          theme: "outline", 
-          size: "large", 
-          class:"g_id_signin",
-          type: "standard",
-          shape: "pill",
-          text: "signin_with",
-          logo_alignment:"left"
-        }  // customization attributes
-      );
-      google.accounts.id.prompt(); // also display the One Tap dialog
-    }
-  </script>
-=======
     google.accounts.id.initialize({
       client_id: "221599725357-dan13di9kqn4esjv37raoqr6etuvbkl3.apps.googleusercontent.com",
       callback: handleCredentialResponse
@@ -74,7 +49,6 @@
   }
 </script>
 
->>>>>>> 36aacd1be2214414dbeb8530d4c02cf1369aa50f
 
 </head>
 

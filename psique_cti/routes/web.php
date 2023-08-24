@@ -14,7 +14,7 @@ Route::get('/index', function () {
     return view('index');
 });
 
-Route::post('/mural', function () {
+Route::get('/mural', function () {
     return view('pages.mural');
 });
 
