@@ -23,6 +23,7 @@ class EventosController extends Controller
             'descricao_evento' => 'required|string',
         ],
         [
+            
             'regex' => 'O campo :attribute não pode conter números.',
             'integer' => 'O campo :attribute deve ser um número inteiro.',
             'url' => 'O campo :attribute deve ser uma URL válida.',
