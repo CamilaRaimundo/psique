@@ -14,7 +14,7 @@ Route::get('/index', function () {
     return view('index');
 });
 
-Route::get('/mural', function () {
+Route::post('/mural', function () {
     return view('pages.mural');
 });
 
@@ -72,6 +72,10 @@ Route::get('/adicionaevento', function () {
 });
 
 Route::post('/adicionaevento', 'App\Http\Controllers\EventosController@postarEvento')->name('addeven');
+
+Route::get('/editartigo', function () {
+    return view('pages.psico.editartigo');
+});
 
 Route::get('/editarevento', function () {
     return view('pages.psico.editevento');

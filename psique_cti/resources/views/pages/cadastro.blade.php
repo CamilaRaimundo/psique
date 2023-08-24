@@ -24,7 +24,7 @@
 
                 <div class="input_group">
                     <label for="dataNasc">Data de Nascimento</label>
-                    <input type="date" id="dataNasc" name="data_nascimento" required value="{{ old('data_nascimento') }}">
+                    <input type="date" id="dataNasc" name="data_nascimento" required>
                     @error('data_nascimento')
                         <span class="error">{{ $message }}</span>
                     @enderror

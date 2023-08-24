@@ -50,119 +50,53 @@
     })
   </script>
 
-  {{-- ----------------------------------Isabelli----------------------------------------- --}}
-  <script>
-    //triagem
-    function requerido() {
-      var opmed = document.getElementById("inputGroupSelect02");
-      var campoMedicamento = document.getElementById("medicamento");
-      var idMedic = document.getElementById("idMedic");
-  
-      if (opmed.value === "1-sim") {
-        idMedic.style.display = "block";
-        campoMedicamento.setAttribute("required", "required");
-      } else {
-        idMedic.style.display = "none";
-        campoMedicamento.removeAttribute("required");
-      }
-    }
-
-    function verificarEnvio(event) {
-      var opacomp = document.getElementById("inputGroupSelect01");
-      var opmed = document.getElementById("inputGroupSelect02");
-
-      if (opacomp.value === "3-escolha" || opmed.value === "3-escolha") {
-        event.preventDefault(); // Impede o envio do formulário
-        alert("Selecione uma opção válida sobre o acompanhamento psicológico e o uso de medicamentos antes de enviar o formulário.");
-      }
-    }
-
-    //adicionar e editar artigo!!!!
-    document.addEventListener("DOMContentLoaded", function() {
-      const form = document.querySelector("form");
-
-      form.addEventListener("submit", function(event) {
-        event.preventDefault();
-
-        const formData = new FormData(form);
-
-        // Check if the author field contains only letters
-        const authorField = formData.get("autor_publicacao");
-        const containsOnlyLetters = /^[A-Za-z\s]+$/.test(authorField);
-
-        if (!containsOnlyLetters) {
-          // If it contains non-letter characters, show the alert and prevent form submission
-          alert("O campo do autor deve conter apenas letras.");
-        } 
-        
-        else{
-          // If it contains only letters, proceed with form submission
-          fetch(form.getAttribute("action"), {
-            method: "POST",
-            body: formData,
-            headers: {
-              'X-CSRF-TOKEN': '{{ csrf_token() }}', // Include CSRF token
-            },
-          })
-          .then(response => response.json())
-          .then(data => {
-            // Rest of your code for handling success and errors
-          })
-          .catch(error => {
-            console.error("Error:", error);
-          });
-        }
-      });
-    });
-  </script>
-
-  {{-- ---------------------------------------LUIZA---------------------------------- --}}
-  <script>
+  <!-- Meu Javascript -->
+   <script src="{{ asset('js/app.js') }}"></script>
+   <script>
     function validaOpcoes(event) {
-      var opano = document.getElementById("ano");
-      var opcurso = document.getElementById("curso");
+        var opano = document.getElementById("ano");
+        var opcurso = document.getElementById("curso");
 
-      if (opano.value === "0" || opcurso.value === "0") {
-        event.preventDefault(); // Impede o envio do formulário
-        alert("Selecione uma opção válida para ano e curso.");
-      }
+        if (opano.value === "0" || opcurso.value === "0") {
+            event.preventDefault(); // Impede o envio do formulário
+            alert("Selecione uma opção válida para ano e curso.");
+        }
     }
 
     function validaIdade(event) {
-      const birthdateInput = document.getElementById("dataNasc");
-      const birthdate = birthdateInput.value;
-      const minAge = 13;
-      const maxAge = 100;
+        const birthdateInput = document.getElementById("dataNasc");
+        const birthdate = birthdateInput.value;
+        const minAge = 13;
+        const maxAge = 100;
 
-      if (calculateAge(birthdate) < minAge) {
-        event.preventDefault(); // Impede o envio do formulário
-        alert("Você deve ter pelo menos 13 anos para enviar o formulário.");
-      } else if (calculateAge(birthdate) > maxAge) {
-        event.preventDefault(); // Impede o envio do formulário
-        alert("Você deve ter menos de 100 anos para enviar o formulário.");
-      }
+        if (calculateAge(birthdate) < minAge) {
+            event.preventDefault(); // Impede o envio do formulário
+            alert("Você deve ter pelo menos 13 anos para enviar o formulário.");
+        } else if (calculateAge(birthdate) > maxAge) {
+            event.preventDefault(); // Impede o envio do formulário
+            alert("Você deve ter menos de 100 anos para enviar o formulário.");
+        }
     }
 
     function calculateAge(data_nascimento) {
-      const today = new Date();
-      const birthDate = new Date(data_nascimento);
-      let age = today.getFullYear() - birthDate.getFullYear();
-      const month = today.getMonth() - birthDate.getMonth();
-      if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
-        age--;
-      }
-      return age;
+        const today = new Date();
+        const birthDate = new Date(data_nascimento);
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const month = today.getMonth() - birthDate.getMonth();
+        if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        return age;
     }
 
     document.getElementById("myForm").addEventListener("submit", function(event) {
-      validaOpcoes(event);
-      validaIdade(event);
+        validaOpcoes(event);
+        validaIdade(event);
     });
   </script>
 
-  <!-- Javascript -->
-  <script src="{{ asset('js/app.js') }}"></script>
-  
+
+
   <!-- Javascript bootstrap -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
   
