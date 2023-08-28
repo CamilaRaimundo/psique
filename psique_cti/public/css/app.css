@@ -703,6 +703,8 @@ input[type="file"]{
     width: 100vh;
 }
 
+
+
 /* -----------------------------------------GENÉRICOS-------------------------------------- */
 .cursor_blocked{
     cursor: not-allowed !important;
@@ -865,6 +867,32 @@ input[type="file"]{
     .icones-padrao{
         font-size: 15px;
     }
+
+.popup-content button{
+    border: none;
+    background-color: transparent;
+}
+
+.btn-confirma{
+    background: rgb(94, 187, 0) !important;
+    color: #fff;
+    font-weight: bold;
+    padding: 2%;
+    margin: 1%;
+    /* font-size: 50px; */
+}
+
+.popup-close{
+    background: darkred !important;
+    color: #fff;
+    padding: 2%;
+    margin: 1%;
+}
+
+.error{
+    color: red;
+    font-weight: bold;
+}
 
     .icones-padrao button{
         font-size: 15px;

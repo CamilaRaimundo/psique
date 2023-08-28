@@ -32,7 +32,7 @@
 
                 <div class="input_group">
                     <label for="limite_pessoas_evento">Há limite de pessoas?</label>
-                    <input type="text" id="limite_pessoas_evento" placeholder="Digite o limite de pessoas, caso haja">
+                    <input type="number" id="limite_pessoas_evento" placeholder="Digite o limite de pessoas, caso haja">
                 </div>
 
                 <div class="input_group">

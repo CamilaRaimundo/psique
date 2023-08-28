@@ -15,7 +15,8 @@ return new class extends Migration
             $table->string('ra')->primary();
             $table->string('curso');
             $table->string('nome');
-            $table->date('data_nasc');
+            $table->date('data_nascimento');
+            $table->string('serie');
             $table->string('email');
             $table->timestamps();
         });

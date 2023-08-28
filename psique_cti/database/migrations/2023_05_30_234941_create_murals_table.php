@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('titulo');
             $table->string('descricao');
-            $table->string('autor');
             $table->string('profissional');
             $table->foreign('profissional')->references('cpf')->on('profissionais')->onDelete('cascade');
             $table->timestamps();

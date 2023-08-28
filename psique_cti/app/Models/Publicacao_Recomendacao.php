@@ -7,17 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Publicacao_Recomendacao extends Model
 {
-    protected $table = 'Publicacoes_Recomendacoes';
-    protected $primaryKey = 'id_mural';
+    public $incrementing = false;
     protected $fillable = [
-        'local',
-        'data',
-        'horario',
-        'n_participantes',
+        'link',
+        'autor',
         'id_mural'
     ];
+    protected $primaryKey = 'id_mural';
 
-    public function mural() : BelongsTo
+    public function mural(): BelongsTo
     {
         return $this->belongsTo(Mural::class, 'id_mural', 'id');
     }

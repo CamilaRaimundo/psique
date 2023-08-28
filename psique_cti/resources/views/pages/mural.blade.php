@@ -3,12 +3,6 @@
 @section('titulo', 'Mural')
     
 @section('conteudo')
-  {{-- if (não há publicações) --}}
-  {{-- <div class="pagina_vazia">
-    <h3>Não há nenhuma publicação :&#040;</h3>
-    <p>Volte em breve para conferir!</p>
-    <img src="{{ asset('img/pipa-img.png') }}" width="35%" alt="">
-  </div> --}}
 
   {{-- else (quando houver publicações) --}}
   <div class="container-mural">

@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('eventos', function (Blueprint $table) {
+        Schema::create('publicacoes_recomendacoes', function (Blueprint $table) {
             $table->string('link');
+            $table->string('autor');
             $table->id('id_mural');
             $table->foreign('id_mural')->references('id')->on('murais')->onDelete('cascade')->primary();
             $table->timestamps();
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('eventos');
+        Schema::dropIfExists('publicacoes_recomendacoes');
     }
 };
