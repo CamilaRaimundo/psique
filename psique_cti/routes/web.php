@@ -3,10 +3,10 @@
 use App\Http\Controllers\ContatoController;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
-use app\Http\Controllers\TriagemController; //--> Triagem
-use app\Http\Controllers\ArtigosController; //--> Artigos
-use app\Http\Controllers\CadastroController; //--> Informações adicionais
-use app\Http\Controllers\EventosController; // --> Eventos
+use App\Http\Controllers\TriagemController; //--> Triagem
+use App\Http\Controllers\ArtigosController; //--> Artigos
+use App\Http\Controllers\CadastroController; //--> Informações adicionais
+use App\Http\Controllers\EventosController; // --> Eventos
 use App\Mail\TestMail;
 
 
@@ -43,10 +43,6 @@ Route::post('/triagem',
 ['as'  =>'controller.triagem',
  'uses'=>'App\Http\Controllers\TriagemController@verifica']);
 
- Route::post('/triagem',
-['as'  =>'controller.triagem',
- 'uses'=>'App\Http\Controllers\TriagemController@salvar']);
-
 Route::get('/emocoes', function () {
     return view('pages.emocoes');
 });
@@ -66,13 +62,17 @@ Route::post('/adicionartigo',
  'uses'=>'App\Http\Controllers\ArtigosController@verificaForm']);
 
 
-Route::get('/editartigo', function () {
+Route::post('/editartigo', function () {
     return view('pages.psico.editartigo');
 });
 
-Route::post('/editartigo',
-['as'  =>'controller.artigo',
- 'uses'=>'App\Http\Controllers\ArtigosController@verificaForm']);
+// Route::post('/editartigo',
+//     ['as'  =>'controller.artigo',
+//         'uses'=>'App\Http\Controllers\ArtigosController@verificaForm']);
+
+// Route::post('/editartigo',
+// ['as'  =>'controller.artigo',
+//  'uses'=>'App\Http\Controllers\ArtigosController@editarArtigo']);
 
 Route::get('/adicionaevento', function () {
     return view('pages.psico.addevento');

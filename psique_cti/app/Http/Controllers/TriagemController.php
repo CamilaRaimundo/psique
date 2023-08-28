@@ -12,7 +12,12 @@ class TriagemController extends Controller
     {
         $regras = [
             'qtd_pessoas' => 'required|numeric|min:1|max:10', // Substitua 10 e 100 pelos valores do intervalo desejado
-                ];
+            'opcao_acomp' => 'required',
+            'opcao_medicamento' => 'required',
+            'medicamento' => 'nullable',
+            'sentimentos' => 'required', 
+            'comentarios' => 'nullable',
+        ];
         
                 // Mensagens de erro personalizadas (opcional)
                 $mensagens = [
@@ -33,29 +38,31 @@ class TriagemController extends Controller
         
                 // Se a validação for bem-sucedida, faça algo aqui
                 //$req->input('qtd_pessoas') //contém o valor válido entre o intervalo
+
+                $acompanhamento = [
+                    1 => 'true',
+                    2 => 'false',
+                ];
         
-                return redirect()->back()->with('success', ' válido!');
+                $medicamentos = [
+                    1 => 'true',
+                    2 => 'false',
+                ];
+
+                $triagem = new Historico_aluno();
+
+                $triagem->qtde_moradores = $req->input('qtd_pessoas');
+                $triagem->tempo_sentimentos = $req->input('sentimentos');
+                $triagem->queixas = $req->input('comentarios');
+                $triagem->acompanhamento = $acompanhamento[$req->input('opcao_acomp')];
+                $triagem->medicamentos = $medicamentos[$req->input('opcao_medicamento')];
+                $triagem->nome_medicamentos = $req->input('medicamento');
+                
+                
+                
+                $triagem->save();
+                
+                return view('index');
     }
 
-    public function salvar(Request $req)
-    {
-    $dados = $req->all();
-    if(isset($dados['enviar'])){
-    $dados['enviar'] = 'sim';
-    }else{
-    $dados['enviar'] = 'nao';
-    }
-    if($req->hasFile('arquivo')){
-    $imagem = $req->file('arquivo');
-    $num = rand(1111,9999);
-    //$dir = "img/cursos/";
-    $ex = $imagem->guessClientExtension();
-    //$nomeImagem = "imagem_".$num.".".$ex;
-    //$imagem->move($dir,$nomeImagem);
-    //$dados['imagem'] = $dir."/".$nomeImagem;
-    //}
-    Triagem::create($dados);
-    return redirect()->route('index');
-    }
-}
 }
