@@ -62,7 +62,7 @@ Route::post('/adicionartigo',
  'uses'=>'App\Http\Controllers\ArtigosController@verificaForm']);
 
 
-Route::post('/editartigo', function () {
+Route::get('/editartigo', function () {
     return view('pages.psico.editartigo');
 });
 

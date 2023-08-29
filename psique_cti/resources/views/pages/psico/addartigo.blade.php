@@ -10,7 +10,8 @@
         <p>Crie artigos ou recomendações para os alunos!</p>
 
         <form action="{{ route('controller.artigo') }}" method="POST">
-            {{ csrf_field() }} 
+            {{-- {{ csrf_field() }}  --}}
+            @csrf
 
             <div class="input_group">
                 <label for="titulo_publicacao">Título da publicação</label>

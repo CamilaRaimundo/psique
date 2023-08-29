@@ -12,7 +12,7 @@ class ArtigosController extends Controller
     //addartigo e editartigo
     public function verificaForm(Request $req)
     {
-        dd($req->all());
+        //dd($req->all());
         // Defina as regras de validação para os campos
         $rules = [
             'titulo_publicacao' => 'required',
@@ -47,6 +47,7 @@ class ArtigosController extends Controller
         // Process and save data (if validation passes)
         $artigos1 = new Mural();
 
+
         $artigos1->descricao = $req->input('descricao_publicacao');
         $artigos1->titulo = $req->input('titulo_publicacao');
     
@@ -64,10 +65,13 @@ class ArtigosController extends Controller
         $artigos2->autor = $req->input('autor_publicacao');
     
         $artigos2->save();
+
+        //dd($artigos2);
     
         return view('pages.mural');
+        //return redirect()->route('pages.mural');
     }
-
+}
 
     // public function editarArtigo(Request $req, $id_mural)
     // {
@@ -92,4 +96,3 @@ class ArtigosController extends Controller
 
     //     return view('pages.mural');
     // }
-}
