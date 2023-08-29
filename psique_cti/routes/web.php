@@ -11,10 +11,6 @@ use App\Mail\TestMail;
 
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/index', function () {
     return view('index');
 });
 

@@ -689,7 +689,17 @@ input[type="file"]{
 .container-graphic{
     width: 500px;
     margin: 3%;
-    /* display: flex; */
+    display: flex;
+    align-items: center;
+    background-color: #7297b099;
+    border-radius: 20px;
+    padding: 2%;
+    /* background-image: radial-gradient(circle, rgba(0, 0, 0, 0) 50%, rgba(236, 215, 29, 0.36) 100%); */
+}
+
+.pie-chart{
+    color: #000;
+    font-weight: bold !important;
 }
 
 /* ------------------------------------- ERROR 404 ---------------------------------------- */
@@ -703,7 +713,116 @@ input[type="file"]{
     width: 100vh;
 }
 
+/* ---------------------------------------- DARK MODE ------------------------------------- */
 
+.dark .nav a:link, .dark .nav a:visited{
+
+    color:black;
+}
+
+.dark {
+    --text-white: #e6e6e6;
+    --text-dark: #ffffff;
+  
+    --bg-grey-light: #142136;
+    --bg-white: #22395d;
+    --bg-blue-dark: #142136;
+    --bg-indigo: #7577e1;
+  }
+
+  .dark .nav span{
+    color: #000;
+    padding: 8px 12px;
+    font-size: 28px;
+    transition: 0.3s;
+    border-radius: 5%;
+    margin-top: 0.6px;
+}
+
+
+.dark section.module.content {
+    padding: 40px 0;
+    background: #6E9EBB;
+}
+
+.dark section.module p {
+    margin-bottom: 15px;
+    color:#fff;
+}
+
+.dark a:hover {
+    color:black;
+    /* color: #4785B2; 
+    mais claro = #A3BEEB*/
+
+}
+    
+/* body.dark-mode {
+    background-color: #212529;
+    color:#899095;
+    transition: 0.3;
+    transform: matrix();
+}*/
+
+.dark header{
+    background: linear-gradient(90deg,#547EA1 2%, #607C93 );
+}
+
+.dark form .input_group label {
+    color: #fff;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+
+.dark .linha {
+    width: 80%;
+    border: 1px solid #fff;
+    margin: 5% auto;
+}
+
+.dark .form-box-form1 p {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.dark h2 {
+    font-size: 2rem;
+    color: #fff;
+}
+
+.dark .form-box-form1 h2 {
+    text-align: center;
+    color: #fff;
+    font-size: 45px;
+    font-weight: bold;
+}
+
+.dark footer{
+    background-color: #547EA1;
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 3%, rgba(0, 0, 0, 0.3) 100%);
+    color: #f5f5f5;
+}
+.dark .fa-solid, .fas {
+    font-weight: 900;
+    color:#000;
+}
+
+.dark footer a {
+    color: #000;
+}
+
+.dark .copyright {
+    color:#000;
+}
+
+.dark  span {
+    color: #000;
+    
+}
 
 /* -----------------------------------------GENÉRICOS-------------------------------------- */
 .cursor_blocked{
