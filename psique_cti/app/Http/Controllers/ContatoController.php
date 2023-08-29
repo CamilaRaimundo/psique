@@ -15,7 +15,7 @@ class ContatoController extends Controller
 
     public function mandaEmail(Request $request)
     {
-        Mail::to('jojoseupangare@gmail.com')->send(new ContatoMail($request));
+        Mail::to('psique@projetoscti.com.br')->send(new ContatoMail($request));
 
         return redirect()->route('contato.mostrar');
     }

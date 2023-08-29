@@ -10,7 +10,7 @@
     
     {{-- inicio da criação --}}
     <div class="container-graphic">
-        <canvas class="line-chart"></canvas>
+        <canvas class="pie-chart"></canvas>
     </div>
 
     <!-- Include Chart.js -->
@@ -18,7 +18,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
 
     <script>
-        var ctx = document.getElementsByClassName("line-chart");
+        var ctx = document.getElementsByClassName("pie-chart");
 
         // type, data e options
         var chartGraph = new Chart(ctx, {
