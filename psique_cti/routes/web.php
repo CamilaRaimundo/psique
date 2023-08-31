@@ -3,10 +3,12 @@
 use App\Http\Controllers\ContatoController;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
-use app\Http\Controllers\TriagemController; //--> Triagem
-use app\Http\Controllers\ArtigosController; //--> Artigos
-use app\Http\Controllers\CadastroController; //--> Informações adicionais
-use app\Http\Controllers\EventosController; // --> Eventos
+use App\Http\Controllers\TriagemController; //--> Triagem
+use App\Http\Controllers\ArtigosController; //--> Artigos
+use App\Http\Controllers\CadastroController; //--> Informações adicionais
+use App\Http\Controllers\EventosController; // --> Eventos
+use App\Http\Controllers\AdminAdicionarController; // --> Adicionar Profissional
+use App\Http\Controllers\EmocoesController; // --> Emoções
 use App\Mail\TestMail;
 
 
@@ -43,6 +45,7 @@ Route::get('/emocoes', function () {
     return view('pages.emocoes');
 });
 
+Route::post('/emocoes', 'App\Http\Controllers\EmocoesController@registrarEmocao')->name('cademocao');
 
 //  Psico
 Route::get('/homepsico', function () {
@@ -80,6 +83,8 @@ Route::get('/editarevento', function () {
     return view('pages.psico.editevento');
 });
 
+Route::post('/editarevento', 'App\Http\Controllers\EventosController@editarEvento')->name('editeven');
+
 Route::get('/detalhesaluno', function () {
     return view('pages.psico.detalhesaluno');
 });
@@ -89,6 +94,17 @@ Route::get('/Admin', function () {
     return view('pages.admin.homeAdmin');
 });
 
+Route::get('/AdicionarPro', function () {
+    return view('pages.admin.adicionarProfissional');
+});
+
+Route::post('/AdicionarPro', 'App\Http\Controllers\AdminAdicionarController@cadastrarProfissional')->name('addpro');
+
+Route::post('/inativar-ativar-profissional/{cpf}', [AdminAdicionarController::class, 'inativarAtivarProfissional']);
+
+//Route::post('/inativar-ativar-profissional/{cpf}', 'AdminAdicionarController@inativarAtivarProfissional');
+
+Route::get('/Admin', [AdminAdicionarController::class, 'pegandoDados'])->name('Admin');
 
 Route::get('/estatisticas', function () {
     return view('pages.psico.graficos');
