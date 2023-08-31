@@ -7,8 +7,6 @@ use App\Http\Controllers\TriagemController; //--> Triagem
 use App\Http\Controllers\ArtigosController; //--> Artigos
 use App\Http\Controllers\CadastroController; //--> Informações adicionais
 use App\Http\Controllers\EventosController; // --> Eventos
-use App\Http\Controllers\AdminAdicionarController; // --> Adicionar Profissional
-use App\Http\Controllers\EmocoesController; // --> Emoções
 use App\Mail\TestMail;
 
 
@@ -16,9 +14,11 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/mural', function () {
-    return view('pages.mural');
-});
+// Route::get('/mural', function () {
+//     return view('pages.mural');
+// });
+Route::get('/mural', [EventosController::class, 'selecionando'])->name('evento.mostrar');
+
 
 Route::get('/contato', [ContatoController::class, 'mostraForm'])->name('contato.mostrar');
 Route::post('/contato', [ContatoController::class, 'mandaEmail'])->name('contato.enviar');
