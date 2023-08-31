@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('historico_alunos', function (Blueprint $table) {
             $table->id();
+            $table->integer('qtde_moradores');
+            $table->string('tempo_sentimentos');
+            $table->string('queixas');
+            $table->boolean('acompanhamento');
+            $table->boolean('medicamentos');
+            $table->string('nome_medicamentos');
+            $table->string('aluno');
+            $table->foreign('aluno')->references('ra')->on('alunos')->onDelete('cascade');
             $table->timestamps();
         });
     }

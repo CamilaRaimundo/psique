@@ -7,5 +7,27 @@ use Illuminate\Database\Eloquent\Model;
 
 class Mural extends Model
 {
-    use HasFactory;
+    protected $table = 'murais';
+    protected $fillable = [
+        'titulo',
+        'descricao',
+        'autor',
+        'imagem',
+        'cpf'
+    ];
+
+    public function profissional() : BelongsTo
+    {
+        return $this->belongsTo(Profissional::class, 'cpf', 'cpf');
+    }
+
+    public function Publicacao_Recomendacao() : HasMany
+    {
+        return $this->hasMany(Publicacao_Recomendacao::class, 'id_mural', 'id');
+    }
+
+    public function Evento() : HasMany
+    {
+        return $this->hasMany(Publicacao_Recomendacao::class, 'id_mural', 'id');
+    }
 }
