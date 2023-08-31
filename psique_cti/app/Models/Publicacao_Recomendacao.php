@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Publicacao_Recomendacao extends Model
 {
+    protected $table = "publicacoes_recomendacoes";
     public $incrementing = false;
     protected $fillable = [
         'link',

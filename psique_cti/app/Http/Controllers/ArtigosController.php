@@ -31,19 +31,17 @@ class ArtigosController extends Controller
             'img_ilustrativa.mimes' => 'A imagem ilustrativa deve ser um arquivo JPEG, JPG ou PNG.',
             'descricao_publicacao.required' => 'A descrição é obrigatória.',
         ];
+        //dd($req->all());
     
         // Valide os campos
         $validator = Validator::make($req->all(), $rules, $messages);
-    
-        // if ($validator->fails()) {
-        //     return response()->json(['success' => false, 'errors' => $validator->errors()], 422);
-        // }
+        //dd($req->all());
 
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
+       // if ($validator->fails()) {
+         //   return redirect()->back()->withErrors($validator)->withInput();
+        //}
 
-    
+        //dd($req->all()); -- parou
         // Process and save data (if validation passes)
         $artigos1 = new Mural();
 
@@ -63,6 +61,7 @@ class ArtigosController extends Controller
 
         $artigos2->link = $req->input('link_publicacao');
         $artigos2->autor = $req->input('autor_publicacao');
+        $artigos2->id_mural = $artigos1->id;
     
         $artigos2->save();
 

@@ -17,11 +17,12 @@ class AdminAdicionarController extends Controller
             'email_pro' => 'required|email|unique:profissionais,email',
             'cpf_pro' => 'required|unique:profissionais,cpf',
             'crp_pro' => 'required|string|max:255|unique:profissionais,crp',
-            'telefone_pro' => 'required|numeric',
+            'telefone_pro' => 'required',
+            //'telefone_pro' => 'required|numeric',
         ], [
             'required' => 'O campo :attribute é obrigatório.',
             'unique' => 'O campo :attribute já está em uso.',
-            'numeric' => 'O campo :attribute deve conter apenas dígitos numéricos.',
+            //'numeric' => 'O campo :attribute deve conter apenas dígitos numéricos.',
             'max' => 'O campo :attribute deve conter no máximo 20 dígitos',
         ]);    
 
