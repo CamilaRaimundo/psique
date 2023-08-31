@@ -62,7 +62,7 @@ class AdminAdicionarController extends Controller
             $profissional->ativo = !$profissional->ativo; // Inverte o valor
             $profissional->save();
         }
-        
-        return redirect()->back(); // Redireciona de volta para a página
+        return view('pages.admin.homeAdmin');
+        //return redirect()->back(); // Redireciona de volta para a página
     }
     }
