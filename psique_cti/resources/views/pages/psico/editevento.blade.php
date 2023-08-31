@@ -1,14 +1,11 @@
 @extends('layout.site')
 
-@section('titulo', 'Editar evento')
+@section('titulo', 'Editar Profissional')
     
 @section('conteudo')
     <div class="box-form1">
         <div class="form-box-form1">
-            <h2>Editar evento</h2>
-
-            {{-- exibir as informações já cadastradas e permitir edição dos campos --}}
-            {{-- então realizar update --}}
+            <h2>Editar informações do Profissional</h2>
             <form action="#">
                 <div class="input_group">
                     <label for="titulo_evento">Título do evento</label>

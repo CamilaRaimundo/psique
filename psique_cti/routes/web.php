@@ -86,6 +86,12 @@ Route::get('/Admin', function () {
     return view('pages.admin.homeAdmin');
 });
 
+Route::get('/EditarPro', function () {
+    return view('pages.admin.editarPro');
+});
+
+
+
 
 Route::get('/estatisticas', function () {
     return view('pages.psico.graficos');

@@ -57,7 +57,7 @@
 
     <div class="nav">
       {{-- if(usuários comuns) --}}
-      <a href="/index">Home</a>
+      <a href="/index" class="active">Home</a>
       {{-- else if(psicólogo) --}}
       {{-- <a href="/homepsico">Home</a> --}}
       {{-- else if(Admin) --}}

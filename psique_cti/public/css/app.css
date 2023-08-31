@@ -56,6 +56,11 @@ header img{
     transition: 0.3s;
 }
 
+    /* .nav a:active{
+        color: #00ADA8;
+        background: #fff;
+    } */
+
 /* --------------------------------------- RODAPÉ ------------------------------------------ */
 footer{
     width: 100%;
@@ -653,6 +658,14 @@ input[type="file"]{
     margin-bottom: 3%;
 }
 
+.btn-lg a{
+    color: #fff;
+}
+
+.btn-warning a{
+    color: #000;
+}
+
 /* --------------------------------------- EMOÇÕES --------------------------------------- */
 .amarelinho{
     background-color: #faf7c8 !important;
@@ -715,7 +728,6 @@ input[type="file"]{
 /* ---------------------------------------- DARK MODE ------------------------------------- */
 
 .dark .nav a:link, .dark .nav a:visited{
-
     color:black;
 }
 

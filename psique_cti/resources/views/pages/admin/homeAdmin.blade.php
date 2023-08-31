@@ -4,8 +4,7 @@
     
 @section('conteudo')
     <div class="container-admin">
-        <button type="button" class="btn btn-primary btn-lg">Adicionar Administrador</button>
-        <button type="button" class="btn btn-primary btn-lg">Adicionar profissional</button>
+        <button type="button" class="btn btn-primary btn-lg"><a href="/AdicionarPro">Adicionar profissional</a></button>
         <h3>Profissionais cadastrados</h3>
         <table class="table">
             <thead>
@@ -31,7 +30,7 @@
                 <td>Sim</td>
                 <td>
                     <button type="button" class="btn btn-danger">Inativar</button>
-                    <button type="button" class="btn btn-warning">Ativar</button>
+                    <button type="button" class="btn btn-warning"><a href="\EditarPro">Editar</a></button>
                 </td>
               </tr>
               <tr>
@@ -57,7 +56,7 @@
                 <td>Não</td>
                 <td>
                     <button type="button" class="btn btn-danger">Inativar</button>
-                    <button type="button" class="btn btn-warning">Ativar</button>
+                    <button type="button" class="btn btn-warning"><a href="\EditarPro">Editar</a></button>
                 </td>
               </tr>
             </tbody>
