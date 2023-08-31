@@ -68,7 +68,9 @@
       
       <span>|</span>
 
-      <a href="/mural">Mural</a>
+      <a href="{{route('evento.mostrar')}}">Mural</a>
+
+      {{-- <a href="{{route('artigo.mostrar')}}">Mural</a> --}}
 
       <span>|</span>
 

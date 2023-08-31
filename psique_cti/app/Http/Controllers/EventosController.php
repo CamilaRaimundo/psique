@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Evento;
 use App\Models\Mural;
 
+
 class EventosController extends Controller
 {
     public function postarEvento(Request $request)
@@ -54,6 +55,20 @@ class EventosController extends Controller
         $evento2->save();
 
         return view('pages.mural');
+
        
     }
+
+    public function selecionando()
+     {
+        //  $eventos = Evento::with('mural')->get(); return view('pages.mural', compact('eventos'));
+        $eventos = Evento::all();
+        return view('pages.mural', compact('eventos') );
+   
+        
+     }
+
+   
+
+   
 }

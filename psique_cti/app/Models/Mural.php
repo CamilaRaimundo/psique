@@ -28,6 +28,7 @@ class Mural extends Model
 
     public function Evento() : HasMany
     {
-        return $this->hasMany(Publicacao_Recomendacao::class, 'id_mural', 'id');
+          return $this->hasMany(Evento::class); //Publicacao_Recomendacao::class, 'id_mural', 'id');
     }
+    // class Mural extends Model { protected $fillable = ['conteudo']; public function eventos() { return $this->hasMany(Evento::class); } }
 }
