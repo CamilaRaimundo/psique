@@ -35,7 +35,10 @@
 
                     <form method="POST" action="{{ url('/inativar-ativar-profissional', $pro->cpf) }}">
                       @csrf
-                      <button type="submit" class="btn btn-danger">Inativar</button>
+                      <button type="submit" class="btn btn-danger"
+                                @if(!$pro->ativo) disabled @endif>
+                            Inativar</button>
+                  </form>
                     </form>
                     <form method="POST" action="{{ url('/inativar-ativar-profissional', $pro->cpf) }}">
                       @csrf

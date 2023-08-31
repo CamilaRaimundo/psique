@@ -8,6 +8,7 @@ use App\Http\Controllers\ArtigosController; //--> Artigos
 use App\Http\Controllers\CadastroController; //--> Informações adicionais
 use App\Http\Controllers\EventosController; // --> Eventos
 use App\Http\Controllers\AdminAdicionarController; // --> Adicionar Profissional
+use App\Http\Controllers\EmocoesController; // --> Emoções
 use App\Mail\TestMail;
 
 
@@ -48,6 +49,7 @@ Route::get('/emocoes', function () {
     return view('pages.emocoes');
 });
 
+Route::post('/emocoes', 'App\Http\Controllers\EmocoesController@registrarEmocao')->name('cademocao');
 
 //  Psico
 Route::get('/homepsico', function () {

@@ -4,17 +4,20 @@
     
 @section('conteudo')
 
+<!-- $datagora = date("d/m/Y"); -->
+
 <div class="container-mural">
     <div class="container text-center">
         <div class="row justify-content-md-center">
 
             <h1 class="pergunta"><b>Como você está se sentindo hoje?</b></h1>  
 
-            <form action="">
-            
+            <form action="{{ route('cademocao') }}" method="POST">
+            {{ csrf_field() }}
+
                 <div class="caixa-emojis selecionar">
 
-                    <input type="radio" id="felicidade" name="emocao" value="felicidade">
+                    <input type="radio" id="felicidade" name="mood" value="felicidade">
                     <label for="felicidade">
                         <div class="card amarelinho" style="width: 18rem;">
                             <img src="{{ asset('img/happy.png') }}" class="card-img-top" alt="Felicidade">
@@ -24,7 +27,7 @@
                         </div>
                     </label>
 
-                    <input type="radio" id="tristeza" name="emocao" value="tristeza">
+                    <input type="radio" id="tristeza" name="mood" value="tristeza">
                     <label for="tristeza">
                         <div class="card amarelinho" style="width: 18rem;">
                             <img src="{{ asset('img/sad.png') }}" class="card-img-top" alt="Tristeza">
@@ -34,7 +37,7 @@
                         </div>
                     </label>
 
-                    <input type="radio" id="raiva" name="emocao" value="raiva">
+                    <input type="radio" id="raiva" name="mood" value="raiva">
                     <label for="raiva">
                         <div class="card amarelinho" style="width: 18rem;">
                             <img src="{{ asset('img/anger.png') }}" class="card-img-top" alt="Raiva">
@@ -44,7 +47,7 @@
                         </div>
                     </label>
 
-                    <input type="radio" id="confusao" name="emocao" value="confusao">
+                    <input type="radio" id="confusao" name="mood" value="confusao">
                     <label for="confusao">
                         <div class="card amarelinho" style="width: 18rem;">
                             <img src="{{ asset('img/confused.png') }}" class="card-img-top" alt="Confusão">
@@ -54,7 +57,7 @@
                         </div>
                     </label>
 
-                    <input type="radio" id="medo" name="emocao" value="medo">
+                    <input type="radio" id="medo" name="mood" value="medo">
                     <label for="medo">
                         <div class="card amarelinho" style="width: 18rem;">
                             <img src="{{ asset('img/fear.png') }}" class="card-img-top" alt="Medo">
@@ -64,7 +67,7 @@
                         </div>
                     </label>
 
-                    <input type="radio" id="estresse" name="emocao" value="estresse">
+                    <input type="radio" id="estresse" name="mood" value="estresse">
                     <label for="estresse">
                         <div class="card amarelinho" style="width: 18rem;">
                             <img src="{{ asset('img/stress.png') }}" class="card-img-top" alt="Estresse">
@@ -74,7 +77,7 @@
                         </div>
                     </label>
 
-                    <input type="radio" id="apaixonado" name="emocao" value="apaixonado">
+                    <input type="radio" id="apaixonado" name="mood" value="apaixonado">
                     <label for="apaixonado">
                         <div class="card amarelinho" style="width: 18rem;">
                             <img src="{{ asset('img/inlove.png') }}" class="card-img-top" alt="Apaixonado">
@@ -84,7 +87,7 @@
                         </div>
                     </label>
 
-                    <input type="radio" id="animacao" name="emocao" value="animacao">
+                    <input type="radio" id="animacao" name="mood" value="animacao">
                     <label for="animacao">
                         <div class="card amarelinho" style="width: 18rem;">
                             <img src="{{ asset('img/animation.png') }}" class="card-img-top" alt="Animação">
@@ -95,7 +98,7 @@
                     </label>
                 </div>
 
-                <button type="button" class="btn btn-primary btn-lg reg">Registrar</button>            
+                <button type="submit" class="btn btn-primary btn-lg reg">Registrar</button>            
             </form>    
         </div>
     </div>

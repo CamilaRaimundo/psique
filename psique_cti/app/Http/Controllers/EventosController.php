@@ -45,6 +45,7 @@ class EventosController extends Controller
         $evento2->responsavel_evento = $validatedData['responsavel_evento'];
         $evento2->limite_pessoas_evento = $validatedData['limite_pessoas_evento'];
         $evento2->link_evento = $validatedData['link_evento'];
+        $evento2->id_mural = $evento1->id;
 
         if ($request->hasFile('img_ilustrativa')) {
             $path = $request->file('img_ilustrativa')->store('event_images');
