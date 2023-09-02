@@ -26,14 +26,19 @@
 
   {{-- -----------------------------POP-UP------------------------------- --}}
   <script>
-    const button = document.querySelector('button')
-    const popup = document.querySelector('.popup-wrapper')
+
+    const button  = document.querySelectorAll('.delete ')
+    const popup = document.querySelector('.popup-wrapper ')
+    for (i = 0; i < button.length; i++) {
+ 
+
+    
     // const closeButton = document.querySelector('.popup-close')
 
-    button.addEventListener('click', () => {
+    button[i].addEventListener('click', () => {
       popup.style.display = 'block'
     }) 
-
+    
   // closeButton.addEventListener('click', () => {
   //   popup.style.display = 'none'
   // })
@@ -48,6 +53,7 @@
         popup.style.display = 'none'
       }
     })
+  }
   </script>
 
   {{-- ----------------------------------Isabelli----------------------------------------- --}}

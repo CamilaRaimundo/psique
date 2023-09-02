@@ -1,6 +1,6 @@
 @extends('layout.site')
 
-@section('titulo', 'Editar evento')
+@section('titulo', 'Editar Profissional')
     
 @section('conteudo')
     <div class="box-form1">
