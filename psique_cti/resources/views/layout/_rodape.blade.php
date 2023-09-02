@@ -26,14 +26,19 @@
 
   {{-- -----------------------------POP-UP------------------------------- --}}
   <script>
-    const button = document.querySelector('button')
-    const popup = document.querySelector('.popup-wrapper')
+
+    const button  = document.querySelectorAll('.delete ')
+    const popup = document.querySelector('.popup-wrapper ')
+    for (i = 0; i < button.length; i++) {
+ 
+
+    
     // const closeButton = document.querySelector('.popup-close')
 
-    button.addEventListener('click', () => {
+    button[i].addEventListener('click', () => {
       popup.style.display = 'block'
     }) 
-
+    
   // closeButton.addEventListener('click', () => {
   //   popup.style.display = 'none'
   // })
@@ -48,6 +53,7 @@
         popup.style.display = 'none'
       }
     })
+  }
   </script>
 
   {{-- ----------------------------------Isabelli----------------------------------------- --}}
@@ -77,7 +83,7 @@
       }
     }
 
-    //adicionar e editar artigo!!!!
+    adicionar e editar artigo!!!!
     document.addEventListener("DOMContentLoaded", function() {
       const form = document.querySelector("form");
 
@@ -117,48 +123,7 @@
   </script>
 
   {{-- ---------------------------------------LUIZA---------------------------------- --}}
-  <script>
-    function validaOpcoes(event) {
-      var opano = document.getElementById("ano");
-      var opcurso = document.getElementById("curso");
-
-      if (opano.value === "0" || opcurso.value === "0") {
-        event.preventDefault(); // Impede o envio do formulário
-        alert("Selecione uma opção válida para ano e curso.");
-      }
-    }
-
-    function validaIdade(event) {
-      const birthdateInput = document.getElementById("dataNasc");
-      const birthdate = birthdateInput.value;
-      const minAge = 13;
-      const maxAge = 100;
-
-      if (calculateAge(birthdate) < minAge) {
-        event.preventDefault(); // Impede o envio do formulário
-        alert("Você deve ter pelo menos 13 anos para enviar o formulário.");
-      } else if (calculateAge(birthdate) > maxAge) {
-        event.preventDefault(); // Impede o envio do formulário
-        alert("Você deve ter menos de 100 anos para enviar o formulário.");
-      }
-    }
-
-    function calculateAge(data_nascimento) {
-      const today = new Date();
-      const birthDate = new Date(data_nascimento);
-      let age = today.getFullYear() - birthDate.getFullYear();
-      const month = today.getMonth() - birthDate.getMonth();
-      if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
-        age--;
-      }
-      return age;
-    }
-
-    document.getElementById("myForm").addEventListener("submit", function(event) {
-      validaOpcoes(event);
-      validaIdade(event);
-    });
-  </script>
+  
 
   <!-- Javascript -->
   <script src="{{ asset('js/app.js') }}"></script>

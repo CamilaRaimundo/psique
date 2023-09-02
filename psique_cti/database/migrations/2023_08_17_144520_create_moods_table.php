@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tems', function (Blueprint $table) {
-            $table->id();
+        Schema::create('moods', function (Blueprint $table) {
+            $table->string('emocao')->primary();
             $table->timestamps();
         });
     }
@@ -22,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tems');
+        Schema::dropIfExists('moods');
     }
 };

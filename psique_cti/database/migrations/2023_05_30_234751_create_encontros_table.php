@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('encontros', function (Blueprint $table) {
             $table->id();
+            $table->date('data');
+            $table->string('aluno');
+            $table->text('observacoes');
+            $table->string('profissional');
+            $table->foreign('profissional')->references('cpf')->on('profissionais')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -10,7 +10,7 @@
 
         <div class="form-box">
             <h2>Informações adicionais</h2>
-            <form onsubmit="validaEnvio(event)" action="{{ route('cad') }}" method="POST" id="myForm">
+            <form onsubmit="validaOpcoes(event)" action="{{ route('cad') }}" method="POST" id="myForm">
             {{ csrf_field() }}
                <div class="input_group">
                     <label for="nome">Nome Completo</label>
@@ -20,6 +20,14 @@
                 <div class="input_group">
                     <label for="email">E-mail</label>
                     <input type="email" id="email" class="cursor_blocked" placeholder="usuario@gmail.com" required readonly>
+                </div>
+
+                <div class="input_group">
+                    <label for="ra">RA</label>
+                    <input type="text" id="ra" placeholder="XXXXXXX" name="ra" required value="{{ old('ra') }}">
+                    @error('ra')
+                        <span class="error">{{ $message }}</span>
+                    @enderror
                 </div>
 
                 <div class="input_group">
@@ -36,7 +44,7 @@
                 </div>
 
                 <div class="input-group mb-3">
-                    <select class="form-select" id="ano" name="opcao_serie" required>
+                    <select class="form-select" id="ano" name="opcao_serie" required value="{{ old('opcao_serie') }}">
                       <option disabled selected value="0">Escolha...</option>
                       <option value="1">Primeiro &#040;1º ano&#041;</option>
                       <option value="2">Segundo &#040;2º ano&#041;</option>
@@ -52,7 +60,7 @@
                 </div>
 
                 <div class="input-group mb-3">
-                  <select class="form-select" id="curso" name="opcao_curso" required>
+                  <select class="form-select" id="curso" name="opcao_curso" required value="{{ old('opcao_curso') }}">
                       <option disabled selected value="0">Escolha...</option>
                       <option value="1" >Informática A</option>
                       <option value="2">Informática B</option>
@@ -70,4 +78,48 @@
             </form>
         </div>
     </div>
+    
+    <script>
+    function validaOpcoes(event) {
+      var opano = document.getElementById("ano");
+      var opcurso = document.getElementById("curso");
+
+      if (opano.value === "0" || opcurso.value === "0") {
+        event.preventDefault(); // Impede o envio do formulário
+        alert("Selecione uma opção válida para ano e curso.");
+      }
+    }
+
+    function validaIdade(event) {
+      const birthdateInput = document.getElementById("dataNasc");
+      const birthdate = birthdateInput.value;
+      const minAge = 13;
+      const maxAge = 100;
+
+      if (calculateAge(birthdate) < minAge) {
+        event.preventDefault(); // Impede o envio do formulário
+        alert("Você deve ter pelo menos 13 anos para enviar o formulário.");
+      } else if (calculateAge(birthdate) > maxAge) {
+        event.preventDefault(); // Impede o envio do formulário
+        alert("Você deve ter menos de 100 anos para enviar o formulário.");
+      }
+    }
+
+    function calculateAge(data_nascimento) {
+      const today = new Date();
+      const birthDate = new Date(data_nascimento);
+      let age = today.getFullYear() - birthDate.getFullYear();
+      const month = today.getMonth() - birthDate.getMonth();
+      if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+      }
+      return age;
+    }
+
+    document.getElementById("myForm").addEventListener("submit", function(event) {
+      validaOpcoes(event);
+      validaIdade(event);
+    });
+  </script>
+
 @endsection

@@ -3,23 +3,22 @@
 use App\Http\Controllers\ContatoController;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TriagemController; //--> Triagem
+use App\Http\Controllers\ArtigosController; //--> Artigos
+use App\Http\Controllers\CadastroController; //--> Informações adicionais
+use App\Http\Controllers\EventosController; // --> Eventos
 use App\Mail\TestMail;
-use app\Http\Controllers\TriagemController; //--> Triagem
-use app\Http\Controllers\ArtigosController; //--> Artigos
-use app\Http\Controllers\CadastroController; //--> Informações adicionais
-use app\Http\Controllers\EventosController; // --> Eventos
+
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/index', function () {
     return view('index');
 });
 
-Route::get('/mural', function () {
-    return view('pages.mural');
-});
+// Route::get('/mural', function () {
+//     return view('pages.mural');
+// });
+Route::get('/mural', [EventosController::class, 'selecionando'])->name('evento.mostrar');
+
 
 Route::get('/contato', [ContatoController::class, 'mostraForm'])->name('contato.mostrar');
 Route::post('/contato', [ContatoController::class, 'mandaEmail'])->name('contato.enviar');
@@ -46,6 +45,7 @@ Route::get('/emocoes', function () {
     return view('pages.emocoes');
 });
 
+Route::post('/emocoes', 'App\Http\Controllers\EmocoesController@registrarEmocao')->name('cademocao');
 
 //  Psico
 Route::get('/homepsico', function () {
@@ -75,9 +75,15 @@ Route::get('/adicionaevento', function () {
 
 Route::post('/adicionaevento', 'App\Http\Controllers\EventosController@postarEvento')->name('addeven');
 
+Route::get('/editartigo', function () {
+    return view('pages.psico.editartigo');
+});
+
 Route::get('/editarevento', function () {
     return view('pages.psico.editevento');
 });
+
+Route::post('/editarevento', 'App\Http\Controllers\EventosController@editarEvento')->name('editeven');
 
 Route::get('/detalhesaluno', function () {
     return view('pages.psico.detalhesaluno');
@@ -94,6 +100,17 @@ Route::get('/EditarPro', function () {
 
 
 
+Route::get('/AdicionarPro', function () {
+    return view('pages.admin.adicionarProfissional');
+});
+
+Route::post('/AdicionarPro', 'App\Http\Controllers\AdminAdicionarController@cadastrarProfissional')->name('addpro');
+
+Route::post('/inativar-ativar-profissional/{cpf}', [AdminAdicionarController::class, 'inativarAtivarProfissional']);
+
+//Route::post('/inativar-ativar-profissional/{cpf}', 'AdminAdicionarController@inativarAtivarProfissional');
+
+Route::get('/Admin', [AdminAdicionarController::class, 'pegandoDados'])->name('Admin');
 
 Route::get('/estatisticas', function () {
     return view('pages.psico.graficos');
