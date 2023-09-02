@@ -25,8 +25,6 @@ class AdminAdicionarController extends Controller
             'max' => 'O campo :attribute deve conter no máximo 20 dígitos',
         ]);    
 
-        //dd($validatedData);
-
         $profissional = new Profissional();
 
         $profissional->nome = $validatedData['nome_pro'];
@@ -35,21 +33,17 @@ class AdminAdicionarController extends Controller
         $profissional->cpf = $validatedData['cpf_pro'];
         $profissional->telefone = $validatedData['telefone_pro'];
         $profissional->ativo = true;
-
-        //dd($profissional);
-
+        
         $profissional->save();
-
-        //dd($profissional);
 
         return view('pages.admin.homeAdmin');
     }
 
     public function pegandoDados()
     {
-        $pro = Profissional::all();
+        $profissionais = Profissional::all();
         
-        return view('pages.admin.homeAdmin', compact('pro'));
+        return view('pages.admin.homeAdmin', compact('profissionais'));
     }
 
     public function inativarAtivarProfissional($cpf)

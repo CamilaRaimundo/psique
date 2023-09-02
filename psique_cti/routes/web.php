@@ -110,6 +110,7 @@ Route::post('/inativar-ativar-profissional/{cpf}', [AdminAdicionarController::cl
 
 Route::get('/Admin', [AdminAdicionarController::class, 'pegandoDados'])->name('Admin');
 
+
 Route::get('/estatisticas', function () {
     return view('pages.psico.graficos');
 });
