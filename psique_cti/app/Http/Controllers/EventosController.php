@@ -46,6 +46,7 @@ class EventosController extends Controller
         $evento2->responsavel_evento = $validatedData['responsavel_evento'];
         $evento2->limite_pessoas_evento = $validatedData['limite_pessoas_evento'];
         $evento2->link_evento = $validatedData['link_evento'];
+        $evento2->id_mural = $evento1->id;
 
         if ($request->hasFile('img_ilustrativa')) {
             $path = $request->file('img_ilustrativa')->store('event_images');
@@ -58,6 +59,32 @@ class EventosController extends Controller
 
        
     }
+    
+    public function editarEvento(Request $request, $id_mural)
+    {
+        $validatedData = $request->validate([
+            // Definir regras de validação para o formulário de edição
+        ]);
+
+        $evento = Evento::where('id_mural', $id_mural)->first();
+
+        // Verificar se o evento foi encontrado
+        if (!$evento) {
+            return redirect()->route('mural')->with('error', 'Evento não encontrado');
+        }
+
+        // Atualizar os campos do evento com os novos dados
+        $evento->local_evento = $validatedData['local_evento'];
+        $evento->dataehora_evento = $validatedData['dataehora_evento'];
+        $evento->responsavel_evento = $validatedData['responsavel_evento'];
+        $evento->limite_pessoas_evento = $validatedData['limite_pessoas_evento'];
+        $evento->link_evento = $validatedData['link_evento'];
+
+        $evento->save();
+
+        return view('pages.mural');
+    }
+
 
     public function selecionando()
      {
@@ -65,7 +92,6 @@ class EventosController extends Controller
         $eventos = Evento::all();
         return view('pages.mural', compact('eventos') );
    
-        
      }
 
    

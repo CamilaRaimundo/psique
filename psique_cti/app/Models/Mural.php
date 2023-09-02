@@ -16,19 +16,18 @@ class Mural extends Model
         'cpf'
     ];
 
-    public function profissional() : BelongsTo
+    public function Profissional() : BelongsTo
     {
         return $this->belongsTo(Profissional::class, 'cpf', 'cpf');
     }
 
-    public function Publicacao_Recomendacao() : HasMany
+    public function Publicacao_Recomendacao() : HasOne
     {
-        return $this->hasMany(Publicacao_Recomendacao::class, 'id_mural', 'id');
+        return $this->hasOne(Publicacao_Recomendacao::class, 'id_mural', 'id');
     }
 
-    public function Evento() : HasMany
+    public function Evento() : HasOne
     {
-          return $this->hasMany(Evento::class); //Publicacao_Recomendacao::class, 'id_mural', 'id');
+        return $this->hasOne(Evento::class, 'id_mural', 'id');
     }
-    // class Mural extends Model { protected $fillable = ['conteudo']; public function eventos() { return $this->hasMany(Evento::class); } }
 }

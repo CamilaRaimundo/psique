@@ -51,17 +51,17 @@
             <form action="#">
                 <div class="input_group">
                     <label for="nome">Nome Completo</label>
-                    <input type="text" id="nome" placeholder="Nome do indivíduo" readonly>
+                    <input type="text" id="nome" placeholder="Nome do indivíduo" class="cursor_blocked">
                 </div>
 
                 <div class="input_group">
                     <label for="email">E-mail</label>
-                    <input type="email" id="email" placeholder="usuario@gmail.com" readonly>
+                    <input type="email" id="email" placeholder="usuario@gmail.com" readonly class="cursor_blocked">
                 </div>
 
                 <div class="input_group">
                     <label for="dataNasc">Data de Nascimento</label>
-                    <input type="date" placeholder="27/05/2023" id="dataNasc" readonly>
+                    <input type="date" placeholder="27/05/2023" id="dataNasc" readonly class="cursor_blocked">
                 </div>
 
                 <div class="input_group">
@@ -69,7 +69,7 @@
                 </div>
 
                 <div class="input-group mb-3">
-                    <select class="form-select" id="inputGroupSelect01" readonly>
+                    <select class="form-select" id="inputGroupSelect01" readonly class="cursor_blocked">
                     <option value="1">Primeiro &#040;1º ano&#041;</option>
                     <option value="2">Segundo &#040;2º ano&#041;</option>
                     <option value="3" selected>Terceiro &#040;3º ano&#041;</option>
@@ -81,7 +81,7 @@
                 </div>
 
                 <div class="input-group mb-3">
-                    <select class="form-select" id="inputGroupSelect01" readonly>
+                    <select class="form-select" id="inputGroupSelect01" readonly class="cursor_blocked">
                     <option value="1" selected>Informática A</option>
                     <option value="2">Informática B</option>
                     <option value="3">Eletrônica</option>
@@ -91,7 +91,7 @@
 
                 <div class="input_group">
                     <label for="qtd_pessoas">Com quantas pessoas você mora?</label>
-                    <input type="text" id="qtd_pessoas" placeholder="3 moradores" readonly>
+                    <input type="text" id="qtd_pessoas" placeholder="3 moradores" readonly class="cursor_blocked">
                 </div>
 
                 <div class="input_group">
@@ -99,7 +99,7 @@
                 </div>
                 
                 <div class="input-group mb-3">
-                    <select class="form-select" id="inputGroupSelect02" readonly>
+                    <select class="form-select" id="inputGroupSelect02" readonly class="cursor_blocked">
                         <option value="1-sim" selected>Sim</option>
                         <option value="2-nao">Não</option>
                     </select>
@@ -110,7 +110,7 @@
                 </div>
                 
                 <div class="input-group mb-3">
-                    <select class="form-select" id="inputGroupSelect02" readonly>
+                    <select class="form-select" id="inputGroupSelect02" readonly class="cursor_blocked">
                         <option value="1-sim">Sim</option>
                         <option value="2-nao" selected>Não</option>
                     </select>
@@ -118,12 +118,12 @@
 
                 <div class="input_group">
                     <label for="medicamento">Se sim, quais?</label>
-                    <input type="text" id="medicamento" placeholder="Sem medicação" readonly>
+                    <input type="text" id="medicamento" placeholder="Sem medicação" readonly class="cursor_blocked">
                 </div>
 
                 <div class="input_group">
                     <label for="turma">A quanto tempo esses sentimentos estão te afligindo?</label>
-                    <input type="text" id="turma" placeholder="1 ano" readonly>
+                    <input type="text" id="turma" placeholder="1 ano" readonly class="cursor_blocked">
                 </div>
                 
                 <div class="input_group">
@@ -131,15 +131,69 @@
                 </div>
 
                 <div class="form-floating">
-                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px" readonly></textarea>
+                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
                     <label for="floatingTextarea2">Comentários</label>
                 </div>
 
-                <div class="input_group">
-                    <button>Voltar</button>
+                <div class="container-graphic">
+                    <canvas class="pie-chart"></canvas>
                 </div>
+
+                {{-- <div class="input_group">
+                    <button>Voltar</button>
+                </div> --}}
             </form>
         </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+        <script>
+            var ctx = document.getElementsByClassName("pie-chart");
+            // import { Colors } from 'chart.js';
+            // type, data e options
+            var chartGraph = new Chart(ctx, {
+                type: 'pie',
+                data:{
+                // eixo X
+                labels: ["Felicidade", "Tristeza", "Raiva", "Confusão", "Medo", "Estresse", "Paixão", "Animação"],
+                datasets: [{
+                    // legenda
+                    // label: "Taxas de acesso",
+                    // eixo Y
+                    data: [5,10,15,5,10,15,5,10],
+                    // cores
+                    borderColor: [
+                    'rgba(255,215,0)', 
+                    'rgba	(220,220,220)',
+                    'rgba(255,0,0)',
+                    'rgba(220,20,60)', 
+                    'rgba(128,0,128)', 
+                    'rgba(255,140,0)',
+                    'rgba(139,0,0)', 
+                    'rgba(70,130,180)',
+                    ],
+                    backgroundColor: [
+                    'rgba(255,215,0)', 
+                    'rgba	(220,220,220)',
+                    'rgba(255,0,0)',
+                    'rgba(220,20,60)', 
+                    'rgba(128,0,128)', 
+                    'rgba(255,140,0)',
+                    'rgba(139,0,0)', 
+                    'rgba(70,130,180)',
+                    ]
+                }]
+                //  para adicionar outro dataset precisa apenas colocar uma vírgula e abrir uma colchete
+                },
+                options: {
+                title: {
+                    display: true,
+                    fontSize: 20,
+                    text: 'Sentimento por aluno',
+                    color: 'rgba(0,0,0)',
+                },
+                }
+            });
+        </script>
     </div>
     
 
