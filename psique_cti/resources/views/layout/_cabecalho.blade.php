@@ -49,16 +49,19 @@
   }
 </script>
 
-
 </head>
 
 <body>
-
   <header>
     <a href="/index"><img src="{{ asset('img/logo_completa_sf.png') }}" alt="psiquê"></a>
 
     <div class="nav">
-      <a href="/index">Home</a>
+      {{-- if(usuários comuns) --}}
+      <a href="/index" class="active">Home</a>
+      {{-- else if(psicólogo) --}}
+      {{-- <a href="/homepsico">Home</a> --}}
+      {{-- else if(Admin) --}}
+      {{-- <a href="/Admin">Home</a> --}}
       
       <span>|</span>
 
@@ -66,8 +69,10 @@
 
       <span>|</span>
 
-      <a href="{{ route('contato.mostrar') }}">Contato</a>
-      
+      {{-- if(usuários comuns) --}}
+      <a href="/contato">Contato</a>
+      {{-- else if (psicólogo) --}}
+      {{-- <a href="/estatistica">Estatísticas</a> --}}
     </div>
 
     {{-- <div>
@@ -76,16 +81,43 @@
     </div> --}}
 
     <div  class="icones-padrao">
-      <a href="/cadastro" class="icones-padrao"><i class="fa-solid fa-user" ></i></a>
-      <button onclick="darkMode()"><i class="fa-solid fa-circle-half-stroke"></i></button>
+      <a href="/login" class="icones-padrao"><i class="fa-solid fa-user" ></i></a>
+      <button onclick id="toggle"><i class="fa-solid fa-circle-half-stroke"></i></button>
     </div>
 
-    <script>
+    {{-- Dark mode --}}
+  <script>
+    const toggle = document.getElementById("toggle");
+    const refresh = document.getElementById("refresh");
+    const theme = window.localStorage.getItem("theme");
+    
+    /* verifica se o tema armazenado no localStorage é escuro
+    se sim aplica o tema escuro ao body */
+    if (theme === "dark") document.body.classList.add("dark");
+    
+    // event listener para quando o botão de alterar o tema for clicado
+    toggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      if (theme === "dark") {
+        window.localStorage.setItem("theme", "light");
+      } else window.localStorage.setItem("theme", "dark");
+    });
+    
+    refresh.addEventListener("click", () => {
+      window.location.reload();
+    });
+    
+    localStorage.setItem('theme', 'dark'); 
+    //acessado o tema da maquina do usuário
+    localStorage.getItem('theme'); 
+  </script>
+
+    {{-- <script>
       function darkMode() {
         var element = document.body;
         element.classList.toggle("dark-mode");
       }
-    </script>
+    </script> --}}
       
       {{--     </div> --}}
 
