@@ -9,7 +9,9 @@
 
             {{-- exibir as informações já cadastradas e permitir edição dos campos --}}
             {{-- então realizar update --}}
-            <form action="#">
+            <form action="{{ route('controller.artigo') }}" method="POST">
+                {{ csrf_field() }} 
+
                 <div class="input_group">
                     <label for="titulo_publicacao">Título da publicação</label>
                     <input type="text" id="titulo_publicacao" placeholder="Digite o título da publicação" required>
@@ -17,7 +19,7 @@
 
                 <div class="input_group">
                     <label for="autor_publicacao">Autor</label>
-                    <input type="text" id="autor_publicacao" placeholder="Digite o autor do artigo" required>
+                    <input type="text" id="autor_publicacao" name="autor_publicacao" placeholder="Digite o autor do artigo" required>
                 </div>
 
                 <div class="input_group">
