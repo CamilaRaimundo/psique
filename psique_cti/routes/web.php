@@ -3,28 +3,30 @@
 use App\Http\Controllers\ContatoController;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MainController; //--> login
 use App\Http\Controllers\TriagemController; //--> Triagem
 use App\Http\Controllers\ArtigosController; //--> Artigos
 use App\Http\Controllers\CadastroController; //--> Informações adicionais
 use App\Http\Controllers\EventosController; // --> Eventos
-use App\Http\Controllers\AdminAdicionarController; // --> Adicionar Profissional
 use App\Mail\TestMail;
 
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/index', function () {
     return view('index');
 });
 
-Route::get('/mural', function () {
-    return view('pages.mural');
-});
+// Route::get('/mural', function () {
+//     return view('pages.mural');
+// });
+Route::get('/mural', [EventosController::class, 'selecionando'])->name('evento.mostrar');
+
 
 Route::get('/contato', [ContatoController::class, 'mostraForm'])->name('contato.mostrar');
 Route::post('/contato', [ContatoController::class, 'mandaEmail'])->name('contato.enviar');
+
+//socialite login urls
+Route::get('/googleLogin',[MainController::class, 'googleLogin']);
+Route::get('/auth/google/callback',[MainController::class, 'googleHandle']);
 
 Route::get('/login', function () {
     return view('pages.login');
@@ -48,6 +50,7 @@ Route::get('/emocoes', function () {
     return view('pages.emocoes');
 });
 
+Route::post('/emocoes', 'App\Http\Controllers\EmocoesController@registrarEmocao')->name('cademocao');
 
 //  Psico
 Route::get('/homepsico', function () {
@@ -99,6 +102,12 @@ Route::get('/detalhesaluno', function () {
 Route::get('/Admin', function () {
     return view('pages.admin.homeAdmin');
 });
+
+Route::get('/EditarPro', function () {
+    return view('pages.admin.editarPro');
+});
+
+
 
 Route::get('/AdicionarPro', function () {
     return view('pages.admin.adicionarProfissional');

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Evento;
 use App\Models\Mural;
 
+
 class EventosController extends Controller
 {
     public function postarEvento(Request $request)
@@ -45,6 +46,7 @@ class EventosController extends Controller
         $evento2->responsavel_evento = $validatedData['responsavel_evento'];
         $evento2->limite_pessoas_evento = $validatedData['limite_pessoas_evento'];
         $evento2->link_evento = $validatedData['link_evento'];
+        $evento2->id_mural = $evento1->id;
 
         if ($request->hasFile('img_ilustrativa')) {
             $path = $request->file('img_ilustrativa')->store('event_images');
@@ -54,6 +56,7 @@ class EventosController extends Controller
         $evento2->save();
 
         return view('pages.mural');
+
        
     }
     
@@ -82,4 +85,16 @@ class EventosController extends Controller
         return view('pages.mural');
     }
 
+
+    public function selecionando()
+     {
+        //  $eventos = Evento::with('mural')->get(); return view('pages.mural', compact('eventos'));
+        $eventos = Evento::all();
+        return view('pages.mural', compact('eventos') );
+   
+     }
+
+   
+
+   
 }
