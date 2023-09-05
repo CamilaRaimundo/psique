@@ -9,7 +9,7 @@
         <div class="linha"></div>
         <p>Crie artigos ou recomendações para os alunos!</p>
 
-        <form action="{{ route('controller.artigo') }}" method="POST">
+        <form action="{{ route('controller.artigo') }}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }} 
 
             <div class="input_group">

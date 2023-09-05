@@ -49,6 +49,8 @@
                     @enderror
                 </div>
 
+                <a href="{{ url('/Admin') }}" class="btn btn-primary">Voltar</a>
+
                 <div class="input_group">
                     <button>Salvar</button>
                 </div>

@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Evento;
 use App\Models\Mural;
+use Illuminate\Support\Facades\DB;
+
 
 class EventosController extends Controller
 {
@@ -14,7 +16,7 @@ class EventosController extends Controller
     {
         $validatedData = $request->validate([
             'titulo_evento' => 'required|string|max:255', 
-            'responsavel_evento' => 'required|regex:/^[A-Za-z\s\-_,.]+$/|max:255',
+            'responsavel_evento' => 'required|max:255',
             'local_evento' => 'required|string|max:255',
             'dataehora_evento' => 'required|date',
             'limite_pessoas_evento' => 'integer|min:0',
@@ -23,8 +25,7 @@ class EventosController extends Controller
             'descricao_evento' => 'required|string',
         ],
         [
-            
-            'regex' => 'O campo :attribute não pode conter números.',
+            'required' => 'O campo :attribute deve ser preenchido.',
             'integer' => 'O campo :attribute deve ser um número inteiro.',
             'url' => 'O campo :attribute deve ser uma URL válida.',
             'image' => 'O campo :attribute deve ser uma imagem.',
@@ -54,33 +55,61 @@ class EventosController extends Controller
 
         $evento2->save();
 
-        return view('pages.mural');
+        //return view('pages.mural');
+        return redirect()->route('evento.mostrar');
        
     }
     
-    public function editarEvento(Request $request, $id_mural)
-    {
-        $validatedData = $request->validate([
-            // Definir regras de validação para o formulário de edição
-        ]);
+    public function selecionando()
+     {
+        //  $eventos = Evento::with('mural')->get(); return view('pages.mural', compact('eventos'));
+        //$eventos = Evento::all();
+        $eventos = DB::select("select * from eventos");
+        return view('pages.mural', compact('eventos') );
+   
+     }
 
-        $evento = Evento::where('id_mural', $id_mural)->first();
+    //  public function editarEvento(Request $request, $id_mural)
+    //  {
+    //    // Atualizar os campos do evento com os novos dados
+    //      $evento->local_evento = $validatedData['local_evento'];
+    //      $evento->dataehora_evento = $validatedData['dataehora_evento'];
+    //      $evento->responsavel_evento = $validatedData['responsavel_evento'];
+    //      $evento->limite_pessoas_evento = $validatedData['limite_pessoas_evento'];
+    //      $evento->link_evento = $validatedData['link_evento'];
+ 
+    //      $evento->save();
+ 
+    //      return redirect()->route("mural");
 
-        // Verificar se o evento foi encontrado
-        if (!$evento) {
-            return redirect()->route('mural')->with('error', 'Evento não encontrado');
-        }
+    //  }
 
-        // Atualizar os campos do evento com os novos dados
-        $evento->local_evento = $validatedData['local_evento'];
-        $evento->dataehora_evento = $validatedData['dataehora_evento'];
-        $evento->responsavel_evento = $validatedData['responsavel_evento'];
-        $evento->limite_pessoas_evento = $validatedData['limite_pessoas_evento'];
-        $evento->link_evento = $validatedData['link_evento'];
-
-        $evento->save();
-
-        return view('pages.mural');
+     public function editarEvento($id_mural) {
+        // repare que ele recebe o id da ROTA
+        $linha = Evento::find($id_mural);
+        // carrega o registro (realiza um select e um fetch internamente)
+        return view('pages.psico.editevento',compact('linha'));
+        // manda o registro encontrado para ser editado na visão
     }
 
+
+    public function atualizarEvento(Request $req, $id_mural)
+    {
+        $dados = $req->all();
+
+        // if ($req->hasFile('foto')) { // o upload chegou ?
+        //     $foto = $req->file('foto'); // pega arquivo de foto
+        //     $num = rand(1111,9999); // escolhe numero pra não repetir
+        //     $dir = "img/alunos/"; // pasta de imagens
+        //     $ex = $foto->guessClientExtension(); // pega extensão, jpg, png ...
+        //     $nomeFoto = "foto_".$num.".".$ex; // monta novo nome
+        //     $foto->move($dir,$nomeFoto); // move pro lugar correto e novo nome
+        //     $dados['foto'] = $dir."/".$nomeFoto; // salva no campo imagem
+        // }
+
+        Evento::find($id_mural)->update($dados);
+        return redirect()->route('evento.mostrar');
+    }
+
+   
 }
