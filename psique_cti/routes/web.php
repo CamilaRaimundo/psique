@@ -3,6 +3,7 @@
 use App\Http\Controllers\ContatoController;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MainController; //--> login
 use App\Http\Controllers\TriagemController; //--> Triagem
 use App\Http\Controllers\ArtigosController; //--> Artigos
 use App\Http\Controllers\CadastroController; //--> Informações adicionais
@@ -22,6 +23,10 @@ Route::get('/mural', [EventosController::class, 'selecionando'])->name('evento.m
 
 Route::get('/contato', [ContatoController::class, 'mostraForm'])->name('contato.mostrar');
 Route::post('/contato', [ContatoController::class, 'mandaEmail'])->name('contato.enviar');
+
+//socialite login urls
+Route::get('/googleLogin',[MainController::class, 'googleLogin']);
+Route::get('/auth/google/callback',[MainController::class, 'googleHandle']);
 
 Route::get('/login', function () {
     return view('pages.login');
