@@ -7,6 +7,7 @@ use App\Http\Controllers\TriagemController; //--> Triagem
 use App\Http\Controllers\ArtigosController; //--> Artigos
 use App\Http\Controllers\CadastroController; //--> Informações adicionais
 use App\Http\Controllers\EventosController; // --> Eventos
+use App\Http\Controllers\AdminAdicionarController; // --> Admin add Pro
 use App\Mail\TestMail;
 
 
@@ -17,7 +18,14 @@ Route::get('/', function () {
 // Route::get('/mural', function () {
 //     return view('pages.mural');
 // });
+
 Route::get('/mural', [EventosController::class, 'selecionando'])->name('evento.mostrar');
+
+// Route::get('/Admin', function () {
+//     return view('pages.admin.homeAdmin');
+// });
+
+// Route::get('/Admin', [AdminAdicionarController::class, 'pegandoDados'])->name('Admin');
 
 
 Route::get('/contato', [ContatoController::class, 'mostraForm'])->name('contato.mostrar');
@@ -79,11 +87,13 @@ Route::get('/editartigo', function () {
     return view('pages.psico.editartigo');
 });
 
-Route::get('/editarevento', function () {
-    return view('pages.psico.editevento');
-});
+// Route::get('/editarevento', function () {
+//     return view('pages.psico.editevento');
+// });
 
-Route::post('/editarevento', 'App\Http\Controllers\EventosController@editarEvento')->name('editeven');
+Route::get('/pages/psico/editevento/{id_mural}', 'App\Http\Controllers\EventosController@editarEvento')->name('editeven');
+
+Route::put('/pages/psico/editevento/{id_mural}', 'App\Http\Controllers\EventosController@atualizarEvento')->name('atualizaeven');
 
 Route::get('/detalhesaluno', function () {
     return view('pages.psico.detalhesaluno');
@@ -94,11 +104,11 @@ Route::get('/Admin', function () {
     return view('pages.admin.homeAdmin');
 });
 
+Route::get('/Admin', [AdminAdicionarController::class, 'pegandoDados'])->name('Admin');
+
 Route::get('/EditarPro', function () {
     return view('pages.admin.editarPro');
 });
-
-
 
 Route::get('/AdicionarPro', function () {
     return view('pages.admin.adicionarProfissional');
@@ -108,14 +118,8 @@ Route::post('/AdicionarPro', 'App\Http\Controllers\AdminAdicionarController@cada
 
 Route::post('/inativar-ativar-profissional/{cpf}', [AdminAdicionarController::class, 'inativarAtivarProfissional']);
 
-//Route::post('/inativar-ativar-profissional/{cpf}', 'AdminAdicionarController@inativarAtivarProfissional');
-
-Route::get('/Admin', [AdminAdicionarController::class, 'pegandoDados'])->name('Admin');
 
 Route::get('/estatisticas', function () {
     return view('pages.psico.graficos');
 });
 
-
-
-// Route::get('/testejoao',['as'=>'alunos','uses'=>'App\Http\Controllers\AlunosController@index']);

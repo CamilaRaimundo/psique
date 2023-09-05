@@ -44,16 +44,13 @@
           </div>
           <div class="col-md-8">
             <div class="card-body">
-              {{-- @if(isset($muu)) --}}
-                <h5 class="card-title">{{ $evento->titulo }}</h5>
-                <p class="card-text"> {{ $evento->descricao}}</p>
-                {{-- @endif --}}
+              
                   <p class="card-text"> {{ $evento->local_evento}}</p>
               <p class="card-text"> {{ $evento->dataehora_evento}}</p>
               <p class="card-text"> {{ $evento->responsavel_evento}}</p>
               <p class="card-text"> {{ $evento->limite_pessoas_evento}}</p>
-              <p class="card-text"> {{ $evento->link_evento}}</p>
-              <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+              <!-- <p class="card-text"> </p> -->
+              <p class="card-text"><small class="text-body-secondary"><a href="{{ $evento->link_evento}}">{{ $evento->link_evento}}</a></small></p>
              
              {{-- if(section == profissional) --}}
              <div class="icones_mural">
@@ -71,7 +68,7 @@
                  </div>
                </div>
 
-               <a href="/editarevento"><i class="fa-solid fa-pen-to-square"></i></a>
+               <a href="{{route('editeven', $evento->id_mural)}}"><i class="fa-solid fa-pen-to-square"></i></a>
              </div>
            </div>
          </div>
