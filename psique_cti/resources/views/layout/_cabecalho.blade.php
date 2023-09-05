@@ -52,14 +52,12 @@
 </head>
 
 <body>
-
-
   <header>
     <a href="/index"><img src="{{ asset('img/logo_completa_sf.png') }}" alt="psiquê"></a>
 
     <div class="nav">
       {{-- if(usuários comuns) --}}
-      <a href="/index" class="active">Home</a>
+      <a href="/" class="active">Home</a>
       {{-- else if(psicólogo) --}}
       {{-- <a href="/homepsico">Home</a> --}}
       {{-- else if(Admin) --}}
