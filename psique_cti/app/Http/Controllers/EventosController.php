@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Evento;
 use App\Models\Mural;
+use Illuminate\Support\Facades\DB;
 
 
 class EventosController extends Controller
@@ -55,8 +56,8 @@ class EventosController extends Controller
 
         $evento2->save();
 
-        return view('pages.mural');
-
+        //return view('pages.mural');
+        return redirect()->route("mural");
        
     }
     
@@ -86,13 +87,6 @@ class EventosController extends Controller
     }
 
 
-    public function selecionando()
-     {
-        //  $eventos = Evento::with('mural')->get(); return view('pages.mural', compact('eventos'));
-        $eventos = Evento::all();
-        return view('pages.mural', compact('eventos') );
-   
-     }
 
    
 
