@@ -9,6 +9,7 @@ use App\Http\Controllers\ArtigosController; //--> Artigos
 use App\Http\Controllers\CadastroController; //--> Informações adicionais
 use App\Http\Controllers\EventosController; // --> Eventos
 use App\Http\Controllers\AdminAdicionarController; // --> Admin add Pro
+use App\Http\Controllers\MuralController; // --> Mural
 use App\Mail\TestMail;
 
 
@@ -19,8 +20,8 @@ Route::get('/', function () {
 // Route::get('/mural', function () {
 //     return view('pages.mural');
 // });
+Route::get('/mural', [MuralController::class, 'selecionando' ])->name('evento.mostrar', 'artigo.ver');
 
-Route::get('/mural', [EventosController::class, 'selecionando'])->name('evento.mostrar');
 
 // Route::get('/Admin', function () {
 //     return view('pages.admin.homeAdmin');
