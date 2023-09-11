@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Profissional;
+use Illuminate\Support\Facades\DB;
 
 class AdminAdicionarController extends Controller
 {
@@ -18,7 +19,6 @@ class AdminAdicionarController extends Controller
             'cpf_pro' => 'required|unique:profissionais,cpf',
             'crp_pro' => 'required|string|max:255|unique:profissionais,crp',
             'telefone_pro' => 'required',
-            //'telefone_pro' => 'required|numeric',
         ], [
             'required' => 'O campo :attribute é obrigatório.',
             'unique' => 'O campo :attribute já está em uso.',
@@ -43,14 +43,15 @@ class AdminAdicionarController extends Controller
 
         //dd($profissional);
 
-        return view('pages.admin.homeAdmin');
+        return redirect()->route("Admin");
     }
 
     public function pegandoDados()
     {
-        $pro = Profissional::all();
-        
-        return view('pages.admin.homeAdmin', compact('pro'));
+     //   $profissionais = Profissional::all();
+        $profissionais = DB::select("select * from profissionais");
+      
+        return view('pages.admin.homeAdmin', compact('profissionais'));
     }
 
     public function inativarAtivarProfissional($cpf)
@@ -62,7 +63,7 @@ class AdminAdicionarController extends Controller
             $profissional->ativo = !$profissional->ativo; // Inverte o valor
             $profissional->save();
         }
-        return view('pages.admin.homeAdmin');
-        //return redirect()->back(); // Redireciona de volta para a página
+        
+        return redirect()->back(); // Redireciona de volta para a página
     }
     }

@@ -7,6 +7,8 @@ use App\Http\Controllers\TriagemController; //--> Triagem
 use App\Http\Controllers\ArtigosController; //--> Artigos
 use App\Http\Controllers\CadastroController; //--> Informações adicionais
 use App\Http\Controllers\EventosController; // --> Eventos
+use App\Http\Controllers\AdminAdicionarController; // --> adicionar profissional
+//use App\Http\Controllers\MuralController; // --> Mural 
 use App\Mail\TestMail;
 
 
@@ -14,10 +16,20 @@ Route::get('/', function () {
     return view('index');
 });
 
-// Route::get('/mural', function () {
+// Route::post('/mural', function () {
 //     return view('pages.mural');
 // });
 Route::get('/mural', [EventosController::class, 'selecionando'])->name('evento.mostrar');
+
+Route::delete('/excluir-evento/{id}', 'EventosController@excluirEvento')->name('excluir-evento');
+
+
+
+//Route::post('/excluir-evento/{id}', 'App\Http\Controllers\EventosController@excluir');
+
+
+//Route::post('/pages/psico/mural/{id_mural}', 'App\Http\Controllers\EventosController@excluir')->name('mural');
+
 
 
 Route::get('/contato', [ContatoController::class, 'mostraForm'])->name('contato.mostrar');
@@ -109,7 +121,7 @@ Route::get('/AdicionarPro', function () {
 });
 
 Route::post('/AdicionarPro', 'App\Http\Controllers\AdminAdicionarController@cadastrarProfissional')->name('addpro');
-Route::post('/AdicionarPro', 'App\Http\Controllers\AdminAdicionarController@pegandoDados')->name('addpro');
+//Route::post('/AdicionarPro', 'App\Http\Controllers\AdminAdicionarController@pegandoDados')->name('addpro');
 
 
 Route::post('/inativar-ativar-profissional/{cpf}', [AdminAdicionarController::class, 'inativarAtivarProfissional']);

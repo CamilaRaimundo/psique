@@ -19,7 +19,7 @@
                 <th scope="col">Ações</th>
               </tr>
             </thead>
-        @foreach($pro as $pro)
+        @foreach($profissionais as $pro)
             <tbody>
               <tr>
                 <th scope="row">{{ $loop->iteration }}</th>

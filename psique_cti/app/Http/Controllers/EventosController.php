@@ -37,6 +37,11 @@ class EventosController extends Controller
         $evento1->titulo = $validatedData['titulo_evento'];
         $evento1->descricao = $validatedData['descricao_evento'];
 
+        if ($request->hasFile('imagem')) {
+                    $path = $request->file('imagem')->store('event_images');
+                    $evento1->imagem = $path;
+
+        }
         $evento1->save();
 
         $evento2 = new Evento();
@@ -48,10 +53,7 @@ class EventosController extends Controller
         $evento2->link_evento = $validatedData['link_evento'];
         $evento2->id_mural = $evento1->id;
 
-        if ($request->hasFile('img_ilustrativa')) {
-            $path = $request->file('img_ilustrativa')->store('event_images');
-            $evento2->img_ilustrativa = $path;
-        }
+        
 
         $evento2->save();
 
@@ -93,8 +95,23 @@ class EventosController extends Controller
         return view('pages.mural', compact('eventos') );
    
      }
-
-   
-
-   
+    
+     public function excluirEvento($id) {
+        // Encontre o evento pelo ID
+        $evento = Evento::find($id);
+    
+        // Verifique se o evento foi encontrado
+        if (!$evento) {
+            return redirect()->route('mural');
+        }
+    
+        // Exclua o evento
+        $evento->delete();
+    
+        return response()->json(['success' => true]);
+    }
+    
+    
 }
+   
+
