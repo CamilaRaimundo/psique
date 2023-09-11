@@ -12,7 +12,6 @@
             <form action="{{ route('atualizaeven', $linha->id_mural) }}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
             <input type="hidden" name="_method" value="put">
-            <!-- @method('PUT') -->
                 <div class="input_group">
                     <label for="titulo_evento">Título do evento</label>
                     <input type="text" id="titulo_evento" name="titulo_evento" placeholder="Digite o título do evento" required>

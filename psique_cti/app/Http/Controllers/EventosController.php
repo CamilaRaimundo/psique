@@ -60,48 +60,6 @@ class EventosController extends Controller
        
     }
     
-    // public function editarEvento(Request $request, $id_mural)
-    // {
-    //     $validatedData = $request->validate([
-    //         // Definir regras de validação para o formulário de edição
-    //     ]);
-
-    //     $evento = Evento::where('id_mural', $id_mural)->first();
-
-    //     // Verificar se o evento foi encontrado
-    //     if (!$evento) {
-    //         return redirect()->route('mural')->with('error', 'Evento não encontrado');
-    //     }
-
-    //     // Atualizar os campos do evento com os novos dados
-    //     $evento->local_evento = $validatedData['local_evento'];
-    //     $evento->dataehora_evento = $validatedData['dataehora_evento'];
-    //     $evento->responsavel_evento = $validatedData['responsavel_evento'];
-    //     $evento->limite_pessoas_evento = $validatedData['limite_pessoas_evento'];
-    //     $evento->link_evento = $validatedData['link_evento'];
-
-    //     $evento->save();
-
-    //     return view('pages.mural');
-    // }
-
-
-
-    //  public function editarEvento(Request $request, $id_mural)
-    //  {
-    //    // Atualizar os campos do evento com os novos dados
-    //      $evento->local_evento = $validatedData['local_evento'];
-    //      $evento->dataehora_evento = $validatedData['dataehora_evento'];
-    //      $evento->responsavel_evento = $validatedData['responsavel_evento'];
-    //      $evento->limite_pessoas_evento = $validatedData['limite_pessoas_evento'];
-    //      $evento->link_evento = $validatedData['link_evento'];
- 
-    //      $evento->save();
- 
-    //      return redirect()->route("mural");
-
-    //  }
-
      public function editarEvento($id_mural) {
         // repare que ele recebe o id da ROTA
         $linha = Evento::find($id_mural);
