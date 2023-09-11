@@ -57,7 +57,7 @@
 
     <div class="nav">
       {{-- if(usuários comuns) --}}
-      <a href="/index" class="active">Home</a>
+      <a href="/" class="active">Home</a>
       {{-- else if(psicólogo) --}}
       {{-- <a href="/homepsico">Home</a> --}}
       {{-- else if(Admin) --}}
@@ -65,7 +65,8 @@
       
       <span>|</span>
 
-      <a href="{{route('evento.mostrar')}}">Mural</a>
+      <a href="{{route('evento.mostrar', 'artigo.ver' )}}">Mural</a>
+      
 
       {{-- <a href="{{route('artigo.mostrar')}}">Mural</a> --}}
 

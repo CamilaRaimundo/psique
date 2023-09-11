@@ -3,35 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// use App\Models\Mural;
-// use App\Models\Evento;
-// use App\Models\Publicacao_Recomendacao;
+use Illuminate\Support\Facades\DB;
+use App\Models\Evento;
 
 class MuralController extends Controller
 {
-    // public function excluirEvento($id) {
-    //     // Encontre o evento pelo ID e exclua-o
-    //     Evento::find($id)->delete();
+     public function selecionando()
+    {
+   
+         $eventos = DB::select("select * from eventos, murais ");
+         $artigos = DB::select("select * from publicacoes_recomendacoes, murais");
 
-    //     // Redirecione de volta para a página
-    //     return redirect()->back();
-    // }
- }
-
-
-
-
-
-
-    // public function selecionandoEventos()
-    // {
-    //     $evento = Evento::all();
-    //     $mural = Mural::all();
-        
-
-    //     // dd($eventooo);
-    //     // dd($muu);
-    //     return view('pages.mural', compact('eventooo', 'muu') );
-    // }
-
-    
+         return view('pages.mural', compact('eventos','artigos') );
+     }
+}

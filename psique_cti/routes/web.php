@@ -3,12 +3,12 @@
 use App\Http\Controllers\ContatoController;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\MainController; //--> login
 use App\Http\Controllers\TriagemController; //--> Triagem
 use App\Http\Controllers\ArtigosController; //--> Artigos
 use App\Http\Controllers\CadastroController; //--> Informações adicionais
 use App\Http\Controllers\EventosController; // --> Eventos
-use App\Http\Controllers\AdminAdicionarController; // --> adicionar profissional
-//use App\Http\Controllers\MuralController; // --> Mural 
+use App\Http\Controllers\MuralController; // --> Mural
 use App\Mail\TestMail;
 
 
@@ -19,7 +19,8 @@ Route::get('/', function () {
 // Route::post('/mural', function () {
 //     return view('pages.mural');
 // });
-Route::get('/mural', [EventosController::class, 'selecionando'])->name('evento.mostrar');
+Route::get('/mural', [MuralController::class, 'selecionando' ])->name('evento.mostrar', 'artigo.ver');
+
 
 Route::delete('/excluir-evento/{id}', 'EventosController@excluirEvento')->name('excluir-evento');
 
@@ -34,6 +35,10 @@ Route::delete('/excluir-evento/{id}', 'EventosController@excluirEvento')->name('
 
 Route::get('/contato', [ContatoController::class, 'mostraForm'])->name('contato.mostrar');
 Route::post('/contato', [ContatoController::class, 'mandaEmail'])->name('contato.enviar');
+
+//socialite login urls
+Route::get('/googleLogin',[MainController::class, 'googleLogin']);
+Route::get('/auth/google/callback',[MainController::class, 'googleHandle']);
 
 Route::get('/login', function () {
     return view('pages.login');

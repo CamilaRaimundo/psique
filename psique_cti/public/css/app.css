@@ -583,10 +583,10 @@ form .input_group button{
     width: 100%;
     display: block;
     padding: 2%;
-    background-color: #fff;
+
     background-image: url('../img/fundo.png');
-    background: cover; /*imagem completa todo o fundo*/
-    background-repeat: no-repeat;
+    background-size: cover; /*imagem completa todo o fundo*/
+    /* background-repeat: repeat; */
     min-height: 100vh;
 }
 
