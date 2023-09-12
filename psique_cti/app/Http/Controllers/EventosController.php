@@ -56,7 +56,7 @@ class EventosController extends Controller
         $evento2->save();
 
         //return view('pages.mural');
-        return redirect()->route("mural");
+        return redirect()->route('evento.mostrar');
        
     }
     

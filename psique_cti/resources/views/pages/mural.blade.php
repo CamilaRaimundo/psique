@@ -122,8 +122,8 @@
       <img src="{{ asset('img/artigos-img.png') }}" width="30%" class="rounded" alt="">
     </div>
     <img src="{{ asset('img/fundo4.jpg') }}"  class="card-img-bottom" alt="...">
+    
     @foreach($artigos as  $publi)
-    {{-- @foreach($mural as $muu) --}}
 
     <div class="card">
       <div class="card-body">
