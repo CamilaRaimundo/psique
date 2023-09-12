@@ -162,5 +162,5 @@
  
     
   {{-- container-mural --}} 
-  @endif
+
 @endsection

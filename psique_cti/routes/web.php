@@ -79,9 +79,13 @@ Route::get('/editartigo', function () {
     return view('pages.psico.editartigo');
 });
 
-Route::post('/editartigo',
-['as'  =>'controller.artigo',
- 'uses'=>'App\Http\Controllers\ArtigosController@verificaForm']);
+// Route::post('/editartigo',
+//     ['as'  =>'controller.artigo',
+//         'uses'=>'App\Http\Controllers\ArtigosController@verificaForm']);
+
+// Route::post('/editartigo',
+// ['as'  =>'controller.artigo',
+//  'uses'=>'App\Http\Controllers\ArtigosController@editarArtigo']);
 
 Route::get('/adicionaevento', function () {
     return view('pages.psico.addevento');
@@ -121,6 +125,8 @@ Route::get('/AdicionarPro', function () {
 });
 
 Route::post('/AdicionarPro', 'App\Http\Controllers\AdminAdicionarController@cadastrarProfissional')->name('addpro');
+Route::post('/AdicionarPro', 'App\Http\Controllers\AdminAdicionarController@pegandoDados')->name('addpro');
+
 
 Route::post('/inativar-ativar-profissional/{cpf}', [AdminAdicionarController::class, 'inativarAtivarProfissional']);
 
