@@ -11,6 +11,10 @@ use App\Models\Mural;
 
 class EventosController extends Controller
 {
+    public function mostraForm()
+    {
+        return view('pages.mural');
+    }
     public function postarEvento(Request $request)
     {
         $validatedData = $request->validate([

@@ -7,9 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Profissional extends Model
 {
-<<<<<<< HEAD
-    use HasFactory;
-=======
     protected $table = 'profissionais';
     protected $fillable = [
         'crp',
@@ -32,5 +29,4 @@ class Profissional extends Model
     {
         return $this->hasMany(Mural::class, 'profissional', 'cpf');
     }
->>>>>>> 0abc035deba6ff50b4d1bf1247348acb87912449
 }

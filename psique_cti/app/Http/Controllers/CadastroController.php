@@ -11,6 +11,10 @@ use App\Models\Aluno;
 
 class CadastroController extends Controller
 {
+    public function mostrarFormulario()
+    {
+        return view('pages.cadastro');
+    }
     public function processarFormulario(Request $request)
     {
         $validatedData = $request->validate([

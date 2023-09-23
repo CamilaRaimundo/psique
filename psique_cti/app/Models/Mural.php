@@ -7,9 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Mural extends Model
 {
-<<<<<<< HEAD
-    use HasFactory;
-=======
     protected $table = 'murais';
     protected $fillable = [
         'titulo',
@@ -33,5 +30,4 @@ class Mural extends Model
     {
         return $this->hasOne(Evento::class, 'id_mural', 'id');
     }
->>>>>>> 0abc035deba6ff50b4d1bf1247348acb87912449
 }

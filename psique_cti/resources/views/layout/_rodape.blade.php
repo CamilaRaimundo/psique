@@ -4,19 +4,19 @@
     </div>
 
     <div class="navegacao">
-      <a href="/index">Home</a>
+      <a href="{{route('home')}}">Home</a>
       
       <span>|</span>
 
-      <a href="/mural">Mural</a>
+      <a href="{{route('mural.mostrar')}}">Mural</a>
 
       <span>|</span>
 
-      <a href="/contato">Contato</a>
+      <a href="{{route('contato.mostrar')}}">Contato</a>
 
       <span>|</span>
 
-      <a href="/login">Login</a>
+      <a href="{{route('login.mostrar')}}">Login</a>
     </div>
 
     <div class="copyright">

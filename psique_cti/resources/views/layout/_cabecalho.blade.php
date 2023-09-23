@@ -53,37 +53,35 @@
 
 <body>
   <header>
-    <a href="/index"><img src="{{ asset('img/logo_completa_sf.png') }}" alt="psiquê"></a>
+    <a href="{{route('home')}}"><img src="{{ asset('img/logo_completa_sf.png') }}" alt="psiquê"></a>
 
     <div class="nav">
       {{-- if(usuários comuns) --}}
-      <a href="/" class="active">Home</a>
+      <a href="{{route('home')}}" class="active">Home</a>
       {{-- else if(psicólogo) --}}
-      {{-- <a href="/homepsico">Home</a> --}}
+      {{-- <a href="{{route('home_psico')}}">Home</a> --}}
       {{-- else if(Admin) --}}
-      {{-- <a href="/Admin">Home</a> --}}
+      {{-- <a href="{{route('home_admin')}}">Home</a> --}}
       
       <span>|</span>
 
-      <a href="{{route('evento.mostrar')}}">Mural</a>
-
-      {{-- <a href="{{route('artigo.mostrar')}}">Mural</a> --}}
+      <a href="{{route('mural.mostrar')}}">Mural</a>
 
       <span>|</span>
 
       {{-- if(usuários comuns) --}}
-      <a href="/contato">Contato</a>
+      <a href="{{route('contato.mostrar')}}">Contato</a>
       {{-- else if (psicólogo) --}}
-      {{-- <a href="/estatistica">Estatísticas</a> --}}
+      {{-- <a href="{{route('estatistica.mostrar')}}">Estatísticas</a> --}}
     </div>
 
     {{-- <div>
-      <a href="/login" class="icones-padrao"><i class="fa-solid fa-user" ></i></a>
+      <a href="{{route('login.mostrar')}}" class="icones-padrao"><i class="fa-solid fa-user" ></i></a>
       <a href="#" class="icones-padrao"><i class="fa-solid fa-circle-half-stroke"></i></a>
     </div> --}}
 
     <div  class="icones-padrao">
-      <a href="/login" class="icones-padrao"><i class="fa-solid fa-user" ></i></a>
+      <a href="{{route('login.mostrar')}}" class="icones-padrao"><i class="fa-solid fa-user" ></i></a>
       <button onclick id="toggle"><i class="fa-solid fa-circle-half-stroke"></i></button>
     </div>
     
