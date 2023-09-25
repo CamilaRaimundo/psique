@@ -66,7 +66,10 @@
                      <h2>Confirmação</h2>
                      <p>Você tem certeza que deseja excluir permanentemente este evento?</p>
                      <button class="popup-close">Cancelar</button>  
-                     <button class="btn-confirma">Confirmar</button>
+  <button class="btn-confirma" onclick="console.log('Botão Confirmar clicado'); excluirEvento({{ $evento->id }})">Confirmar</button>
+
+
+
                    </div>
                  </div>
                </div>
@@ -82,31 +85,7 @@
   
   @endforeach
 
-      
-
-      <!-- <div class="col-md-auto">
-          {{-- card --}}
-          <div class="card mb-3" style="max-width: 500px;">
-            <div class="row g-0">
-              <div class="col-md-4">
-                <img src="" class="img-fluid rounded-start" alt="...">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-                  {{-- if(section == profissional) --}}
-                  <div class="icones_mural">
-                    <a href=""><i class="fa-solid fa-delete-left"></i></a>
-                    <a href=""><i class="fa-solid fa-pen-to-square"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
---> 
+    
     {{-- if(há artigos) --> exibir --}}
     <div class="titulo-mural">
       {{-- if(section == profissional)--}}
@@ -120,7 +99,7 @@
     </div>
     <img src="{{ asset('img/fundo4.jpg') }}"  class="card-img-bottom" alt="...">
     @foreach($artigos as  $publi)
-    {{-- @foreach($mural as $muu) --}}
+
 
     <div class="card">
       <div class="card-body">
@@ -155,52 +134,32 @@
       </div>
      
     </div>
-
-
    </div> {{--- container mural --}}
 
-   {{--- js- confirmar exclusao evento - isa --}}
-   {{-- <script>
-    $(document).ready(function () {
-        $('.delete-event').click(function () {
-            var eventIdToDelete = $(this).data('event-id');
-
-            // Exibir o popup de confirmação ou qualquer outra ação necessária aqui
-            // ...
-
-            // Quando o botão "Confirmar" do popup é clicado
-            $('.btn-confirma').click(function () {
-                // Fazer uma solicitação AJAX para excluir o evento
-                $.ajax({
-                    type: "DELETE",
-                    url: "/excluir-evento/" + eventIdToDelete, // Certifique-se de que a rota está correta
-                    data: {
-                        _token: '{{ csrf_token() }}',
-                    },
-                    success: function (data) {
-                        if (data.success) {
-                            // Remover o evento da página
-                            $('[data-event-id="' + eventIdToDelete + '"]').closest('.col-md-auto').remove();
-                        }
-                        // Fechar o popup de confirmação ou faça o que for necessário
-                        // ...
-                    },
-                    error: function () {
-                        // Lidar com erros
-                        // ...
-                    }
-                });
-            });
-
-            // Fechar o popup de confirmação ou qualquer outra ação necessária aqui
-            // ...
+   <script>
+    function excluirEvento(eventoId) {
+      // Fazer uma solicitação DELETE para a rota do controlador para excluir o evento
+      fetch(`/excluir-evento/${eventoId}`, {
+        method: 'DELETE', // Use o método DELETE para excluir o evento
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then(response => {
+          if (response.ok) {
+            // O evento foi excluído com sucesso, você pode atualizar a página ou fazer outras ações necessárias
+            window.location.reload(); // Atualizar a página
+          } else {
+            // Lidar com erros, exibir mensagens de erro, etc.
+            console.error('Erro ao excluir o evento');
+          }
+        })
+        .catch(error => {
+          console.error('Erro ao excluir o evento:', error);
         });
-
-        // ... Outro código JavaScript ...
-    }); --}}
-{{-- </script> --}}
-
-
-
-  
+    }
+    </script>
+    
+@endforeach
+@endif
 @endsection

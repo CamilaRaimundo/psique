@@ -12,140 +12,101 @@
         <h1 class="pergunta"><b>Análise gráfica</b></h1>  
 
         <div class="container-graphic">
-            <canvas class="pie-chart"></canvas>
-            {{-- o total de alunos divididos pelos sentimentos diários  --}}
+            <canvas class="pie-chart-dia"></canvas>
+        </div>
+
+        <div class="container-graphic">
+            <canvas class="pie-chart-mes"></canvas>
         </div>
        
-        <div class="container-graphic">
-            <canvas class="bar-chart"></canvas>
-            {{-- média de emoçoes tidas ao mês --}}
-        </div>
     </div>
   </div>
     
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
   <script>
-    var ctx = document.getElementsByClassName("pie-chart");
-    // import { Colors } from 'chart.js';
-    // type, data e options
-    var chartGraph = new Chart(ctx, {
+    // Defina um objeto com as cores correspondentes às emoções
+    var coresEmocoes = {
+        'Felicidade': 'rgba(255,215,0)',
+        'Tristeza': 'rgba(220,220,220)',
+        'Raiva': 'rgba(255,0,0)',
+        'Confusão': 'rgba(128,128,128)',
+        'Medo': 'rgba(0,0,0)', //(128,0,128)
+        'Estresse': 'rgba(128,0,0)',
+        'Apaixonado': 'rgba(220,20,60)', 
+        'Animação': 'rgba(0,191,255)'
+    };
+
+    // Gráfico de pizza para emoções do dia
+    var ctxDia = document.getElementsByClassName("pie-chart-dia");
+
+    var dataDia = {!! json_encode($emocoesDia->pluck('count', 'mood')) !!};
+    var labelsDia = Object.keys(dataDia);
+    var countsDia = Object.values(dataDia);
+
+    var chartGraphDia = new Chart(ctxDia, {
         type: 'pie',
-        data:{
-          // eixo X
-          labels: ["Felicidade", "Tristeza", "Raiva", "Confusão", "Medo", "Estresse", "Paixão", "Animação"],
+        data: {
+          labels: labelsDia,
           datasets: [{
-            // legenda
-            // label: "Taxas de acesso",
-            // eixo Y
-            data: [5,10,15,5,10,15,5,10],
-            // cores
-            borderColor: [
-              'rgba(255,215,0)', 
-              'rgba	(220,220,220)',
-              'rgba(255,0,0)',
-              'rgba(220,20,60)', 
-              'rgba(128,0,128)', 
-              'rgba(255,140,0)',
-              'rgba(139,0,0)', 
-              'rgba(70,130,180)',
-            ],
-            backgroundColor: [
-              'rgba(255,215,0)', 
-              'rgba	(220,220,220)',
-              'rgba(255,0,0)',
-              'rgba(220,20,60)', 
-              'rgba(128,0,128)', 
-              'rgba(255,140,0)',
-              'rgba(139,0,0)', 
-              'rgba(70,130,180)',
-            ]
+            data: countsDia,
+            backgroundColor: labelsDia.map(emocao => coresEmocoes[emocao])
           }]
-        //  para adicionar outro dataset precisa apenas colocar uma vírgula e abrir uma colchete
         },
         options: {
           title: {
             display: true,
             fontSize: 20,
-            text: 'Sentimento por aluno',
+            text: 'Sentimentos por Dia',
             color: 'rgba(0,0,0)',
           },
         }
     });
-    
-    var ctx = document.getElementsByClassName("bar-chart");
 
-    // type, data e options
-    var chartGraph = new Chart(ctx, {
+    // Gráfico de pizza para emoções do mês
+    var ctxMes = document.getElementsByClassName("pie-chart-mes");
+
+    var dataMes = {!! json_encode($emocoesMes->pluck('count', 'mood')) !!};
+    var labelsMes = Object.keys(dataMes);
+    var countsMes = Object.values(dataMes);
+
+    var chartGraphMes = new Chart(ctxMes, {
         type: 'pie',
-        data:{
-          // eixo X
-          labels: ["Felicidade", "Tristeza", "Raiva", "Confusão", "Medo", "Estresse", "Paixão", "Animação"],
+        data: {
+          labels: labelsMes,
           datasets: [{
-            // legenda
-            // label: "Taxas de acesso",
-            // eixo Y
-            data: [5,10,15,5,10,15,5,10],
-            // cores
-            borderColor: [
-              'rgba(255,215,0)', 
-              'rgba	(220,220,220)',
-              'rgba(255,0,0)',
-              'rgba(220,20,60)', 
-              'rgba(128,0,128)', 
-              'rgba(255,140,0)',
-              'rgba(139,0,0)', 
-              'rgba(70,130,180)',
-            ],
-            backgroundColor: [
-              'rgba(255,215,0)', 
-              'rgba	(220,220,220)',
-              'rgba(255,0,0)',
-              'rgba(220,20,60)', 
-              'rgba(128,0,128)', 
-              'rgba(255,140,0)',
-              'rgba(139,0,0)', 
-              'rgba(70,130,180)',
-            ]
+            data: countsMes,
+            backgroundColor: labelsMes.map(emocao => coresEmocoes[emocao])
           }]
-        //  para adicionar outro dataset precisa apenas colocar uma vírgula e abrir uma colchete
         },
         options: {
           title: {
             display: true,
             fontSize: 20,
-            text: 'Sentimento por aluno',
-            color: '#fff'
+            text: 'Sentimentos por Mês',
+            color: 'rgba(0,0,0)',
           },
         }
     });
 
-    // var ctx = document.getElementsByClassName("bar-chart");
-    // var chartGraph = new Chart(ctx, {
-    //     type: 'pie',
-    //     labels: ["Felicidade", "Tristeza", "Raiva"],
-    //     datasets: [{
-    //       // label: 'My First Dataset',
-    //       data: [65, 59, 80],
-    //       backgroundColor: [
-    //         'rgba(255, 99, 132, 0.2)',
-    //         'rgba(255, 159, 64, 0.2)',
-    //         'rgba(255, 205, 86, 0.2)'
-    //       ],
-    //       borderColor: [
-    //         'rgb(255, 99, 132)',
-    //         'rgb(255, 159, 64)',
-    //         'rgb(255, 205, 86)',
-    //       ],
-    //       // borderWidth: 1
-    //     }],
-    //     options: {
-    //       title: {
-    //         display: true,
-    //         fontSize: 20,
-    //         text: 'Total de emoções'
-    //       },
-    //     }
-    // });
-  </script>
+    </script>
 </div>
+
+{{-- <div class="container">
+    <h2>Emoções Registradas Hoje</h2>
+    <ul>
+        @foreach($emocoesDia as $emo)
+        <li>{{ $emo->mood }}: {{ $emo->count }}</li>
+        @endforeach
+    </ul>
+</div>
+
+<div class="container">
+    <h2>Emoções Registradas Este Mês</h2>
+    <ul>
+        @foreach($emocoesMes as $emo)
+        <li>{{ $emo->mood }}: {{ $emo->count }}</li>
+        @endforeach
+    </ul>
+</div> --}}
+
 @endsection

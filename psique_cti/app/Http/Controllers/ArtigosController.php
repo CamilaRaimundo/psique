@@ -69,7 +69,7 @@ class ArtigosController extends Controller
         //dd($artigos2);
     
        // return view('pages.mural');
-       return redirect()->route("mural");
+       return redirect()->route('artigo.ver');
     }
     
 

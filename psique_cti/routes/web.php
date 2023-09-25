@@ -9,6 +9,7 @@ use App\Http\Controllers\ArtigosController; //--> Artigos
 use App\Http\Controllers\CadastroController; //--> Informações adicionais
 use App\Http\Controllers\EventosController; // --> Eventos
 use App\Http\Controllers\MuralController; // --> Mural
+use App\Http\Controllers\GraficosController; // --> graficos
 use App\Mail\TestMail;
 
 
@@ -139,6 +140,8 @@ Route::get('/estatisticas', function () {
     return view('pages.psico.graficos');
 });
 
+//Route::post('/estatisticas', 'App\Http\Controllers\GraficosController@pegaEmocoes')->name('pegaEmo');
 
+Route::get('/estatisticas', [GraficosController::class, 'pegaEmocoes'])->name('pegaEmo');
 
 // Route::get('/testejoao',['as'=>'alunos','uses'=>'App\Http\Controllers\AlunosController@index']);

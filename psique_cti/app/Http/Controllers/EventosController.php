@@ -59,7 +59,7 @@ class EventosController extends Controller
         $evento2->save();
 
         //return view('pages.mural');
-        return redirect()->route("mural");
+        return redirect()->route('evento.mostrar');
        
     }
     
@@ -73,7 +73,7 @@ class EventosController extends Controller
 
         // Verificar se o evento foi encontrado
         if (!$evento) {
-            return redirect()->route('mural')->with('error', 'Evento não encontrado');
+            return redirect()->route('evento.mostrar')->with('error', 'Evento não encontrado');
         }
 
         // Atualizar os campos do evento com os novos dados
@@ -96,14 +96,17 @@ class EventosController extends Controller
         return view('pages.mural', compact('eventos') );
    
      }
-    
+
      public function excluirEvento($id) {
+        // Adicione instruções de depuração
+        \Log::info("Excluindo evento com ID: $id");
+    
         // Encontre o evento pelo ID
         $evento = Evento::find($id);
     
         // Verifique se o evento foi encontrado
         if (!$evento) {
-            return redirect()->route('mural');
+            return redirect()->route('evento.mostrar');
         }
     
         // Exclua o evento
