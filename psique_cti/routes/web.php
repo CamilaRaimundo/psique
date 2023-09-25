@@ -11,7 +11,7 @@ use App\Http\Controllers\EventosController; // --> Eventos
 use App\Mail\TestMail;
 
 
-Route::get('/', function () {return view('index');})->name('home');
+Route::get('/', [MainController::class, 'index'])->name('home');
 
 
 Route::get('/mural', [EventosController::class, 'mostraForm'])->name('mural.mostrar');
