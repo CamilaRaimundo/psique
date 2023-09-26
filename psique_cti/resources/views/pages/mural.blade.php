@@ -24,7 +24,7 @@
 
     <div class="titulo-mural">
       {{-- if(section == profissional)--}}
-      <h1>Eventos <a href="{{route('eventos.adicionar')}}" class="icones-padrao"><i class="fa-regular fa-calendar-plus"></i></a></h1> 
+      <h1>Eventos <a href="{{route('eventos_add.mostrar')}}" class="icones-padrao"><i class="fa-regular fa-calendar-plus"></i></a></h1> 
       
       {{-- else --}}
       {{-- <h1>Eventos</h1>   --}}
@@ -74,7 +74,7 @@
                  </div>
                </div>
 
-               <a href="{{route('eventos.editar')}}"><i class="fa-solid fa-pen-to-square"></i></a>
+               <a href="{{route('eventos_edit.mostrar')}}"><i class="fa-solid fa-pen-to-square"></i></a>
              </div>
            </div>
          </div>
@@ -113,7 +113,7 @@
     {{-- if(há artigos) --> exibir --}}
     <div class="titulo-mural">
       {{-- if(section == profissional)--}}
-      <h1>Artigos <a href="{{route('artigos.adicionar')}}" class="icones-padrao"><i class="fa-solid fa-newspaper"></i></a></h1>  
+      <h1>Artigos <a href="{{route('artigos_add.mostrar')}}" class="icones-padrao"><i class="fa-solid fa-newspaper"></i></a></h1>  
       
       {{-- else --}}
       {{-- <h1>Artigos</h1>   --}}
@@ -143,7 +143,7 @@
             </div>
           </div>
 
-          <a href="{{route('editar.artigo')}}"><i class="fa-solid fa-pen-to-square"></i></a>
+          <a href="{{route('artigo_edit.mostrar')}}"><i class="fa-solid fa-pen-to-square"></i></a>
         </div>
 
          <p class="card-text"> {{ $publi->titulo}}</p>

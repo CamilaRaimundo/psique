@@ -83,7 +83,6 @@
       }
     }
 
-    adicionar e editar artigo!!!!
     document.addEventListener("DOMContentLoaded", function() {
       const form = document.querySelector("form");
 
