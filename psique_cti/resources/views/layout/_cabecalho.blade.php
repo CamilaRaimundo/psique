@@ -76,6 +76,7 @@
         });
       </script>
 
+      {{-- <a href="/" class="active">Home</a> --}}
       {{-- else if(psicólogo) --}}
       {{-- <a href="/homepsico"><i class="fa-solid fa-house"></i></a>
 
