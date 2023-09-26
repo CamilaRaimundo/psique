@@ -52,7 +52,7 @@ Route::get('/homepsico', function () {
 
 Route::get('/adicionartigo', function () {
     return view('pages.psico.addartigo');
-   });
+   })->name('artigos.adicionar');
 
 Route::post('/adicionartigo',
 ['as'  =>'controller.artigo',
@@ -61,14 +61,14 @@ Route::post('/adicionartigo',
 
 Route::get('/editartigo', function () {
     return view('pages.psico.editartigo');
-});
+})->name('artigos.editar');
 
 
 Route::get('/adicionaevento', function () {
     return view('pages.psico.addevento');
 });
 
-Route::post('/adicionaevento', 'App\Http\Controllers\EventosController@postarEvento')->name('addeven');
+Route::post('/adicionaevento', 'App\Http\Controllers\EventosController@postarEvento')->name('eventos.adicionar');
 
 Route::get('/editartigo', function () {
     return view('pages.psico.editartigo');
@@ -78,7 +78,7 @@ Route::get('/editarevento', function () {
     return view('pages.psico.editevento');
 });
 
-Route::post('/editarevento', 'App\Http\Controllers\EventosController@editarEvento')->name('editeven');
+Route::post('/editarevento', 'App\Http\Controllers\EventosController@editarEvento')->name('eventos.editar');
 
 Route::get('/detalhesaluno', function () {
     return view('pages.psico.detalhesaluno');

@@ -6,15 +6,11 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Evento;
-use App\Models\Mural;
+use App\Models\Publicacao_Recomendacao;
 
 
 class EventosController extends Controller
 {
-    public function mostraForm()
-    {
-        return view('pages.mural');
-    }
     public function postarEvento(Request $request)
     {
         $validatedData = $request->validate([
@@ -90,11 +86,12 @@ class EventosController extends Controller
     }
 
 
-    public function selecionando()
+    public function mostraForm()
      {
         //  $eventos = Evento::with('mural')->get(); return view('pages.mural', compact('eventos'));
         $eventos = Evento::all();
-        return view('pages.mural', compact('eventos') );
+        $artigos = Publicacao_Recomendacao::all();
+        return view('pages.mural', compact('eventos', 'artigos') );
    
      }
 
