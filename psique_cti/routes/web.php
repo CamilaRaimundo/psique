@@ -103,8 +103,6 @@ Route::get('/EditarPro', function () {
     return view('pages.admin.editarPro');
 });
 
-
-
 Route::get('/AdicionarPro', function () {
     return view('pages.admin.adicionarProfissional');
 });
@@ -120,7 +118,5 @@ Route::get('/Admin', [AdminAdicionarController::class, 'pegandoDados'])->name('A
 Route::get('/estatisticas', function () {
     return view('pages.psico.graficos');
 });
-
-
 
 // Route::get('/testejoao',['as'=>'alunos','uses'=>'App\Http\Controllers\AlunosController@index']);
