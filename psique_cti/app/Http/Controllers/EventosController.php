@@ -92,7 +92,8 @@ class EventosController extends Controller
         $eventos = Evento::all();
         return view('pages.mural', compact('eventos') );
    
-     }
+    }
+    
 
    
 

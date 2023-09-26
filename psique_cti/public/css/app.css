@@ -78,10 +78,15 @@ header img{
     transition: 0.3s;
 }
 
-    /* .nav a:active{
-        color: #00ADA8;
-        background: #fff;
-    } */
+.normal{
+    color: #fff;
+	background: #00ADA8;
+}
+
+.branco{
+    color: #00ADA8;
+	background: #fff;
+}
 
 /* --------------------------------------- RODAPÉ ------------------------------------------ */
 footer{
@@ -581,13 +586,16 @@ form .input_group button{
 /* ------------------------------------ MURAL --------------------------------------------- */
 .container-mural{
     width: 100%;
-    display: block;
+    /* display: block; */
     padding: 2%;
     background-color: #fff;
     background-image: url('../img/fundo.png');
-    background: cover; /*imagem completa todo o fundo*/
+    background: cover; 
     background-repeat: no-repeat;
-    min-height: 100vh;
+    background-attachment: fixed;
+    min-height: 100%;
+    background-position: center center;
+    /* height: 100%; */
 }
 
 .titulo-mural{
@@ -604,13 +612,24 @@ form .input_group button{
 
 .card{
     background: #fffab8;
-    /* margin-bottom: 1%; */
-    /* margin: 10px; */
-    margin-inline: auto;
+    margin-bottom: 1%;
+    margin: 10px; 
+    /* margin-inline: auto; */
 }
 
 .card-title{
     font-weight: bold;
+}
+
+.icon-link{
+    color: #fff;
+    transition: 0.5s;
+}
+
+.icon-link:hover{
+    color: #ffee00;
+    transition: 0.5s;
+    font-size: 1.03rem;
 }
 
 
@@ -822,6 +841,26 @@ input[type="file"]{
     font-weight: bold !important;
 }
 
+/* ------------------------------------- ENCONTROS ---------------------------------------- */
+.caixa_encontro{
+    width: 80%;
+    height: 100vh;
+    margin: 2%;
+    padding: 2%;
+    background-color: #fffb7ab2;
+    border-radius: 20px;
+    box-shadow: 8px 5px 2px 1px rgba(0, 0, 0, 0.4); /*fazer sombra*/
+}
+
+.btn-secondary{
+    background-color: #003b63;
+    color: #fff;
+}
+
+.a{
+    margin-bottom: 1%;
+}
+
 /* ------------------------------------- ERROR 404 ---------------------------------------- */
 .container-404{
     display: flex;
@@ -1001,6 +1040,10 @@ input[type="file"]{
     font-weight: bold;
 }
 
+.input_group a{
+    color: #fff;
+}
+
 /* ------------------------------------RESPONSIVIDADE--------------------------------- */
 /* Exemplo de uma Media Query para telas menores que 768px (como dispositivos móveis) */
 @media screen and (max-width: 1000px) {
@@ -1069,7 +1112,6 @@ input[type="file"]{
     .form-box-form1{
         width: 100%;
     }
-
 }
 
 /* Exemplo de uma Media Query para telas maiores que 768px (como tablets e desktops) */
@@ -1085,10 +1127,9 @@ input[type="file"]{
         width: 350px;
         height: 350px;
     }
+}
 
-  }
-
-  @media screen and (max-width: 600px) {
+@media screen and (max-width: 600px) {
     /* cabeçalho */
     header img{
         width: 40px;
@@ -1106,33 +1147,33 @@ input[type="file"]{
         font-size: 15px;
     }
 
-.popup-content button{
-    border: none;
-    background-color: transparent;
-}
+    .popup-content button{
+        border: none;
+        background-color: transparent;
+    }
 
-.btn-confirma{
-    background: rgb(94, 187, 0) !important;
-    color: #fff;
-    font-weight: bold;
-    padding: 2%;
-    margin: 1%;
-    /* font-size: 50px; */
-}
+    .btn-confirma{
+        background: rgb(94, 187, 0) !important;
+        color: #fff;
+        font-weight: bold;
+        padding: 2%;
+        margin: 1%;
+        /* font-size: 50px; */
+    }
 
-.popup-close{
-    background: darkred !important;
-    color: #fff;
-    padding: 2%;
-    margin: 1%;
-}
+    .popup-close{
+        background: darkred !important;
+        color: #fff;
+        padding: 2%;
+        margin: 1%;
+    }
 
-.error{
-    color: red;
-    font-weight: bold;
-}
+    .error{
+        color: red;
+        font-weight: bold;
+    }
 
     .icones-padrao button{
         font-size: 15px;
     }
-  }
+}
