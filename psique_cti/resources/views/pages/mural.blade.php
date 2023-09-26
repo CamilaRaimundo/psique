@@ -31,8 +31,7 @@
     </div>
 
     <div class="container text-center">
- 
-
+      
       @foreach($eventos as $evento)
 
      
@@ -40,7 +39,7 @@
         {{-- card --}}
         <div class="card mb-3" style="max-width: 500px;">
           <div class="col-md-4">
-                <img src=base href="{{asset('$evento->imagem')}}"  width="100" class="img-fluid rounded-start">
+                <img src=base href="{{ \URL::to('$evento->img_ilustrativa') }}"  width="100" class="img-fluid rounded-start">
           </div>
           <div class="col-md-8">
             <div class="card-body">
@@ -160,6 +159,6 @@
     }
     </script>
     
-@endforeach
-@endif
+  {{-- container-mural --}} 
+
 @endsection
