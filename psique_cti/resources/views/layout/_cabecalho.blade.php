@@ -66,7 +66,7 @@
 
       <a href="/contato" id="n-contato">Contato</a>
 
-      <script>
+      {{-- <script>
         var $divLogin = $("#home");
         $divLogin.click(function(){
         if ($divLogin.hasClass("normal"))
@@ -74,7 +74,7 @@
         else
           $divLogin.addClass("normal").removeClass("branco");
         });
-      </script>
+      </script> --}}
 
       {{-- <a href="/" class="active">Home</a> --}}
       {{-- else if(psicólogo) --}}
