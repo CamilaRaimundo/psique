@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -95,7 +94,7 @@
                       <center>
                         {{-- <div id="buttonDiv"></div> --}}
                         <a href="{{URL::to('googleLogin')}}">
-                          <img src="{{URL::asset('google.png')}}" height="45px" alt=""
+                          <img src="{{URL::asset('img/google.png')}}" height="45px">
                         </a>
                       </center>
 
@@ -124,7 +123,7 @@
           <a href="/contato">Contato</a>
     
           <span>|</span>
-    
+          
           <a href="/login">Login</a>
         </div>
     

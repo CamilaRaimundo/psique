@@ -22,5 +22,6 @@ class Sessions extends Model
     public function aluno()
     {
         return $this->belongsTo(Aluno::class, 'ra', 'ra');
+          Session::flush();
     }
 }

@@ -10,6 +10,7 @@
             <div class="linha"></div>
             <p>Me ajude a te conhecer melhor!</p>
             <form onsubmit="verificarEnvio(event)" action="{{ route('controller.triagem') }}" method="POST">
+                {{ csrf_field() }}
 
                 <div class="input_group">
                     <label for="qtd_pessoas">Com quantas pessoas você mora?</label>

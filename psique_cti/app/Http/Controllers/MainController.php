@@ -5,7 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Mail\Testing;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Aluno;
+
+
+
+
+// include{{asset('/../../../variavel.php')}}; //variavel global
 
 class MainController extends Controller
 {
@@ -16,15 +23,42 @@ class MainController extends Controller
 
     public function googleHandle(){
         try{
+            
             $user=Socialite::driver('google')->user();
             $findUser=User::where('email',$user->email)->first();
             if(!$findUser)
             {
-                return redirect('/cadastro');
+                
+                $googl = [
+                    'googleName' => $user->getName(),
+                    'googleEmail' => $user->getEmail(),
+                    'googlePicture' =>$user->getAvatar(),
+        
+                ];
+                
+                 $googleName = $user->getName();
+                 $googleEmail = $user->getEmail();
+                return view('pages.cadastro', compact("googl"));
+              
             }
-            session()->put('id',$findUser->id);
-            session()->put('type',$findUser->type);
-            return redirect('/');
+            else
+            {
+              
+                Auth::login($findUser);
+                session()->put('name',$findUser->name);
+                session()->put('email',$findUser->email);
+                   
+
+                $googl = [
+                    'googleName' => $user->getName(),
+                    'googleEmail' => $user->getEmail(),
+                    'googlePicture' =>$user->getAvatar(),
+                ];
+                
+                return view('index', compact("googl"));
+               
+            }
+            
 
         }catch(Exception $e){
             dd($e->getMessage());

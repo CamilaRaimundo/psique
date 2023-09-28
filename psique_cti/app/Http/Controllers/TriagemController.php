@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\MainController;
+use Resources\Views\Pages;
 
 class TriagemController extends Controller
 {
@@ -35,6 +37,6 @@ class TriagemController extends Controller
         
                 return redirect()->back()->with('success', ' válido!');
 
-                //return view('index');
+                return view('index');
     }
 }

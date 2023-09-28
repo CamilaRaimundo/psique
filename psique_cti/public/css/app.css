@@ -389,6 +389,11 @@ section.module.parallax h1{
     font-size: 30px;
 }
 
+
+.button .byebye {
+    text-align: center;
+    text-decoration: none;
+  } 
 /* --------------------------------------- CADASTRO -----------------------------------------*/
 .box{
     display: flex;
