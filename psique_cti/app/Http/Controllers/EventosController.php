@@ -69,9 +69,14 @@ class EventosController extends Controller
     }
 
 
-    public function atualizarEvento(Request $req, $id_mural)
-    {
-        $dados = $req->all();
+    public function selecionando()
+     {
+        //  $eventos = Evento::with('mural')->get(); return view('pages.mural', compact('eventos'));
+        $eventos = Evento::all();
+        return view('pages.mural', compact('eventos') );
+   
+    }
+    
 
         // if ($req->hasFile('foto')) { // o upload chegou ?
         //     $foto = $req->file('foto'); // pega arquivo de foto
@@ -83,9 +88,9 @@ class EventosController extends Controller
         //     $dados['foto'] = $dir."/".$nomeFoto; // salva no campo imagem
         // }
 
-        Evento::find($id_mural)->update($dados);
-        return redirect()->route('evento.mostrar');
+        //Evento::find($id_mural)->update($dados);
+        //return redirect()->route('evento.mostrar');
     }
 
    
-}
+
