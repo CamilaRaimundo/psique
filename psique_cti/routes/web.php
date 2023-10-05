@@ -131,7 +131,6 @@ Route::post('/AdicionarPro', 'App\Http\Controllers\AdminAdicionarController@pega
 Route::post('/inativar-ativar-profissional/{cpf}', [AdminAdicionarController::class, 'inativarAtivarProfissional']);
 
 
-
 Route::get('/estatisticas', function () {
     return view('pages.psico.graficos');
 });

@@ -16,9 +16,9 @@ class AdminAdicionarController extends Controller
         $validatedData = $request->validate([
             'nome_pro' => 'required|string|max:255',
             'email_pro' => 'required|email|unique:profissionais,email',
-            'cpf_pro' => 'required|unique:profissionais,cpf',
-            'crp_pro' => 'required|string|max:255|unique:profissionais,crp',
-            'telefone_pro' => 'required',
+            'cpf' => 'required|unique:profissionais,cpf',
+            'crp' => 'required|string|max:255|unique:profissionais,crp',
+            'telefone' => 'required',
             //'telefone_pro' => 'required|numeric',
         ], [
             'required' => 'O campo :attribute é obrigatório.',
@@ -31,9 +31,9 @@ class AdminAdicionarController extends Controller
 
         $profissional->nome = $validatedData['nome_pro'];
         $profissional->email = $validatedData['email_pro'];
-        $profissional->crp = $validatedData['crp_pro'];
-        $profissional->cpf = $validatedData['cpf_pro'];
-        $profissional->telefone = $validatedData['telefone_pro'];
+        $profissional->crp = $validatedData['crp'];
+        $profissional->cpf = $validatedData['cpf'];
+        $profissional->telefone = $validatedData['telefone'];
         $profissional->ativo = true;
         
         $profissional->save();

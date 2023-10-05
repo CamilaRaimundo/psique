@@ -36,7 +36,7 @@
 
                 <div class="input_group">
                     <label for="crp_pro">CRP</label>
-                    <input type="text" id="crp_pro" name="crp_pro" placeholder="Digite o crp do profissional" required value="{{ old('crp_pro') }}">
+                    <input type="text" id="crp_pro" name="crp_pro" placeholder="Digite o crp do profissional" onkeyup="formatarEValidarCRP(this)" required value="{{ old('crp_pro') }}">
                     @error('crp_pro')
                         <span class="error">{{ $message }}</span>
                     @enderror
@@ -44,7 +44,7 @@
 
                 <div class="input_group">
                     <label for="telefone_pro">Telefone</label>
-                    <input type="text" id="telefone_pro" name="telefone_pro"  onkeyup="formatarEValidarTelefone(this)" placeholder="Digite o telefone do profissional" required value="{{ old('telefone_pro') }}">
+                    <input type="text" id="telefone_pro" name="telefone_pro" onkeyup="formatarEValidarTelefone(this)" placeholder="Digite o telefone do profissional" required value="{{ old('telefone_pro') }}">
                     @error('telefone_pro')
                     <span class="error">{{ $message }}</span>
                     @enderror
@@ -61,8 +61,8 @@
 
     {{-- formatar e validar cpf - js --}}
    <script> 
-       
-       function formatarEValidarCPF(input) {
+      
+function formatarEValidarCPF(input) {
     let cpf = input.value.replace(/\D/g, '');
 
     if (cpf.length === 11) {
@@ -74,6 +74,29 @@
     // Validar a quantidade de dígitos
     if (cpf.length !== 14) {
         input.setCustomValidity("CPF deve conter 11 dígitos");
+    } else {
+        input.setCustomValidity("");
+    }
+}
+
+function formatarEValidarCRP(input) {
+    let crp = input.value.replace(/\D/g, '');
+
+    // Verificar se o CRP tem pelo menos 6 dígitos
+    if (crp.length >= 6) {
+        // Separar os últimos 6 dígitos e a parte antes deles
+        const parte1 = crp.slice(0, -6);
+        const parte2 = crp.slice(-6);
+
+        // Formatar no estilo "06/000470-IS"
+        crp = `${parte1.padStart(2, '0')}/${parte2}-IS`;
+    }
+
+    input.value = crp;
+
+    // Validar a presença da sigla -IS
+    if (!crp.includes('-IS')) {
+        input.setCustomValidity("O CRP deve conter a sigla -IS após os 6 dígitos");
     } else {
         input.setCustomValidity("");
     }
