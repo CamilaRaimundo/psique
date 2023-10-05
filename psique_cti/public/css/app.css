@@ -588,7 +588,7 @@ form .input_group button{
     width: 100%;
     /* display: block; */
     padding: 2%;
-    background-color: #fff;
+
     background-image: url('../img/fundo.png');
     background: cover; 
     background-repeat: no-repeat;

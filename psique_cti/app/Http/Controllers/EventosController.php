@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Evento;
 use App\Models\Mural;
+use Illuminate\Support\Facades\DB;
 
 
 class EventosController extends Controller
@@ -37,6 +38,11 @@ class EventosController extends Controller
         $evento1->titulo = $validatedData['titulo_evento'];
         $evento1->descricao = $validatedData['descricao_evento'];
 
+        if ($request->hasFile('imagem')) {
+                    $path = $request->file('imagem')->store('event_images');
+                    $evento1->imagem = $path;
+
+        }
         $evento1->save();
 
         $evento2 = new Evento();
@@ -48,15 +54,12 @@ class EventosController extends Controller
         $evento2->link_evento = $validatedData['link_evento'];
         $evento2->id_mural = $evento1->id;
 
-        if ($request->hasFile('img_ilustrativa')) {
-            $path = $request->file('img_ilustrativa')->store('event_images');
-            $evento2->img_ilustrativa = $path;
-        }
+        
 
         $evento2->save();
 
-        return view('pages.mural');
-
+        //return view('pages.mural');
+        return redirect()->route('evento.mostrar');
        
     }
     
@@ -70,7 +73,7 @@ class EventosController extends Controller
 
         // Verificar se o evento foi encontrado
         if (!$evento) {
-            return redirect()->route('mural')->with('error', 'Evento não encontrado');
+            return redirect()->route('evento.mostrar')->with('error', 'Evento não encontrado');
         }
 
         // Atualizar os campos do evento com os novos dados
@@ -95,7 +98,25 @@ class EventosController extends Controller
     }
     
 
+     public function excluirEvento($id) {
+        // Adicione instruções de depuração
+        \Log::info("Excluindo evento com ID: $id");
+    
+        // Encontre o evento pelo ID
+        $evento = Evento::find($id);
+    
+        // Verifique se o evento foi encontrado
+        if (!$evento) {
+            return redirect()->route('evento.mostrar');
+        }
+    
+        // Exclua o evento
+        $evento->delete();
+    
+        return response()->json(['success' => true]);
+    }
+    
+    
+}
    
 
-   
-}

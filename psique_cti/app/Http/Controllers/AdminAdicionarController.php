@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Profissional;
+use Illuminate\Support\Facades\DB;
 
 class AdminAdicionarController extends Controller
 {
@@ -17,11 +18,11 @@ class AdminAdicionarController extends Controller
             'email_pro' => 'required|email|unique:profissionais,email',
             'cpf_pro' => 'required|unique:profissionais,cpf',
             'crp_pro' => 'required|string|max:255|unique:profissionais,crp',
-            'telefone_pro' => 'required|numeric',
+            'telefone_pro' => 'required',
         ], [
             'required' => 'O campo :attribute é obrigatório.',
             'unique' => 'O campo :attribute já está em uso.',
-            'numeric' => 'O campo :attribute deve conter apenas dígitos numéricos.',
+            //'numeric' => 'O campo :attribute deve conter apenas dígitos numéricos.',
             'max' => 'O campo :attribute deve conter no máximo 20 dígitos',
         ]);    
 
@@ -42,14 +43,15 @@ class AdminAdicionarController extends Controller
 
         //dd($profissional);
 
-        return view('pages.admin.homeAdmin');
+        return redirect()->route("Admin");
     }
 
     public function pegandoDados()
     {
-        $pro = Profissional::all();
-        
-        return view('pages.admin.homeAdmin', compact('pro'));
+     //   $profissionais = Profissional::all();
+        $profissionais = DB::select("select * from profissionais");
+      
+        return view('pages.admin.homeAdmin', compact('profissionais'));
     }
 
     public function inativarAtivarProfissional($cpf)

@@ -11,6 +11,14 @@
             <form action="">
 
                 <div class="input-group">
+                    <div class="input_group">
+                        <label for="dataEnc">Data de Encontro</label>
+                        <input type="date" id="dataEnc" name="#######" required value="{{ old('dataEnc') }}">
+                        {{-- @error('data_nascimento')
+                            <span class="error">{{ $message }}</span>
+
+                        @enderror --}}
+                    </div>
                     <input type="text" class="form-control a" name="ra_pesquisa" placeholder="Digite o RA">
                     <button type="button" class="btn btn-secondary a">Procurar</button>
                     {{-- Botão de procurar --> if(existe na tabela aluno?) registrar em seu cadastro --}}

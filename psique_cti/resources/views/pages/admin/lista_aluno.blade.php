@@ -4,8 +4,8 @@
     
 @section('conteudo')
     <div class="container-admin">
-        <button type="button" class="btn btn-primary btn-lg"><a href="/AdicionarPro">Adicionar profissional</a></button>
-        <h3>Profissionais cadastrados</h3>
+        {{-- <button type="button" class="btn btn-primary btn-lg"><a href="/AdicionarPro">Adicionar profissional</a></button> --}}
+        <h3>Alunos cadastrados</h3>
         <table class="table">
             <thead>
               <tr>
@@ -19,7 +19,7 @@
                 <th scope="col">Ações</th>
               </tr>
             </thead>
-        @foreach($profissionais as $pro)
+        {{-- @foreach($profissionais as $pro)
             <tbody>
               <tr>
                 <th scope="row">{{ $loop->iteration }}</th>
@@ -53,7 +53,7 @@
                             Ativar</button> -->
                 </td>
               </tr>
-        @endforeach
+        @endforeach --}}
       </table>  
     </div>
 @endsection
