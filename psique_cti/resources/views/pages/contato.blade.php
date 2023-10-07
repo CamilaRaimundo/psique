@@ -11,7 +11,9 @@
       <div class="caixa_contato_2">
         <h2>Contato</h2>
                 {{-- variável --}}
-        <p><b>De:</b> aluno_cti@unesp.br</p>
+        
+        <p><b>De:</b> {{Auth::user()->email}}</p>
+       
                 {{-- variável --}}
         <p><b>Para:</b> psicologia_cti@unesp.br</p>
         <div class="linha-branca"></div>

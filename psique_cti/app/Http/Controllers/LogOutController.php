@@ -14,10 +14,13 @@ class LogOutController extends Controller
     public function logout()
     {
         // Limpe todos os dados da sessão
-    
-        // Faça o logout do usuário e redirecione para a página de login
-        Auth::logout();
+       
+            Auth::logout();
         
-        return redirect('/');
+            return redirect('/');
+        
+        // Faça o logout do usuário e redirecione para a página de login
+       
+
     }
 }

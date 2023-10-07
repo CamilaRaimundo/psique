@@ -24,7 +24,11 @@
 
     <div class="titulo-mural">
       {{-- if(section == profissional)--}}
-      <h1>Eventos <a href="/adicionaevento" class="icones-padrao"><i class="fa-regular fa-calendar-plus"></i></a></h1> 
+      <h1>Eventos 
+        @if(Auth::check())
+          @if( Auth::user()->email=="leticia.manuela@unesp.br" )<a href="/adicionaevento" class="icones-padrao"><i class="fa-regular fa-calendar-plus"></i></a>@endif
+        @endif
+      </h1> 
       
       {{-- else --}}
       {{-- <h1>Eventos</h1>   --}}
@@ -56,7 +60,8 @@
               <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
              
              {{-- if(section == profissional) --}}
-             <div class="icones_mural">
+             @if((Auth::check())) 
+             @if(Auth::user()->email=="leticia.manuela@unesp.br")<div class="icones_mural">
 
                <button class="delete"><i class="fa-solid fa-delete-left"></i></button>
 
@@ -72,8 +77,8 @@
                </div>
 
                <a href="/editarevento"><i class="fa-solid fa-pen-to-square"></i></a>
-             </div>
-           </div>
+             </div> @endif
+           </div> @endif
          </div>
      
       </div>
@@ -82,71 +87,15 @@
   @endforeach
         @endif
 
-      <!-- <div class="col-md-auto">
-          {{-- card --}}
-          <div class="card mb-3" style="max-width: 500px;">
-            <div class="row g-0">
-              <div class="col-md-4">
-                <img src="{{ asset('img/smile.jpg') }}" class="img-fluid rounded-start" alt="...">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-                  {{-- if(section == profissional) --}}
-                  <div class="icones_mural">
-                    <a href=""><i class="fa-solid fa-delete-left"></i></a>
-                    <a href=""><i class="fa-solid fa-pen-to-square"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-auto">
-          {{-- card --}}
-          <div class="card mb-3" style="max-width: 500px;">
-            <div class="row g-0">
-              <div class="col-md-4">
-                <img src="{{ asset('img/smile.jpg') }}" class="img-fluid rounded-start" alt="...">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                  <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-                  {{-- if(section == profissional) --}}
-                  <div class="icones_mural">
-                    <button class="delete"><i class="fa-solid fa-delete-left"></i></button>
-
-                    <div class="popup-wrapper">
-                      <div class="popup">
-                        <div class="popup-content">
-                          <h2>Confirmação</h2>
-                          <p>Você tem certeza que deseja excluir permanentemente este evento?</p>
-                          <button class="popup-close">Cancelar</button>  
-                          <button class="btn-confirma">Confirmar</button>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <a href=""><i class="fa-solid fa-pen-to-square"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
---> 
+     
     {{-- if(há artigos) --> exibir --}}
+    
     <div class="titulo-mural">
       {{-- if(section == profissional)--}}
-      <h1>Artigos <a href="/adicionartigo" class="icones-padrao"><i class="fa-solid fa-newspaper"></i></a></h1>  
-      
+      <h1>Artigos   
+        @if((Auth::check())) 
+        @if(Auth::user()->email=="leticia.manuela@unesp.br")<a href="/adicionartigo" class="icones-padrao"><i class="fa-solid fa-newspaper"></i></a> @endif</h1>  
+        @endif
       {{-- else --}}
       {{-- <h1>Artigos</h1>   --}}
     </div>  
@@ -156,7 +105,8 @@
 
     <div class="card">
       <div class="card-body">
-        {{-- if(section == profissional) --}}
+        {{-- if(section == profissional) --}} @if((Auth::check()))  
+         @if(Auth::user()->email=="leticia.manuela@unesp.br")
         <div class="icones_mural">
           <button class="delete"><i class="fa-solid fa-delete-left"></i></button>
 
@@ -172,9 +122,9 @@
             </div>
           </div>
 
-          <a href="/editartigo"><i class="fa-solid fa-pen-to-square"></i></a>
-        </div>
-
+        <a href="/editartigo"><i class="fa-solid fa-pen-to-square"></i></a> 
+        </div> @endif
+        @endif
         <h5 class="card-title">Título do artigo</h5> 
 
         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>

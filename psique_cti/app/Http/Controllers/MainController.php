@@ -8,6 +8,7 @@ use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Aluno;
+use App\Models\Profissional;
 
 
 
@@ -43,7 +44,6 @@ class MainController extends Controller
             }
             else
             {
-              
                 Auth::login($findUser);
                 session()->put('name',$findUser->name);
                 session()->put('email',$findUser->email);
@@ -54,6 +54,16 @@ class MainController extends Controller
                     'googleEmail' => $user->getEmail(),
                     'googlePicture' =>$user->getAvatar(),
                 ];
+
+                if(Profissional::where('email',$user->email)->first())
+                {
+                    return view('pages.psico.home', compact("googl"));
+                }
+
+                if($findUser->email=="psique.cti@gmail.com")
+                {
+                    return view('pages.emocoes', compact("googl"));
+                }
                 
                 return view('index', compact("googl"));
                

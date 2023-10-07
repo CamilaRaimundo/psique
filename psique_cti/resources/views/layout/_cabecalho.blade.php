@@ -41,12 +41,9 @@
     <a href="/index"><img src="{{ asset('img/logo_completa_sf.png') }}" alt="psiquê"></a>
 
     <div class="nav">
-      {{-- if(usuários comuns) --}}
+
       <a href="/" class="active">Home</a>
-      {{-- else if(psicólogo) --}}
-      {{-- <a href="/homepsico">Home</a> --}}
-      {{-- else if(Admin) --}}
-      {{-- <a href="/Admin">Home</a> --}}
+    
       
       <span>|</span>
      
@@ -62,8 +59,7 @@
       @elseif (Auth::check())
       <a href="/contato">Contato</a>
       @endif
-      {{-- else if (psicólogo) --}}
-      {{-- <a href="/estatistica">Estatísticas</a> --}}
+      
     </div>
   
     <div class="icones-padrao">
@@ -72,16 +68,16 @@
       {{-- <button>Não Logado</button> --}}
       <a href="/login" class="icones-padrao"><i class="fa-solid fa-user"></i></a>
     @elseif(Auth::check())
-       <a href="{{ url('/logout') }}">Logado</a>
-         <img src='{{ $googl['googlePicture']  }} ' height=50px> -
+       <a href="{{ url('/logout') }}" >Logado</a>
+         {{-- <img src='{{ $googl['googlePicture']  }} ' height=50px>  --}}
        
-       {{-- <script>
+        {{-- <script>
         function confirmLogout() {
             if (confirm("Tem certeza de que deseja fazer logout?")) {
                 window.location.href = "{{ url('/logout') }}";
             }
         }
-    </script> --}}
+    </script>  --}}
       
   @endif
   
