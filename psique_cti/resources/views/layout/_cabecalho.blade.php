@@ -38,6 +38,9 @@
 
 <body>
   <header>
+
+   
+    
     <a href="/index"><img src="{{ asset('img/logo_completa_sf.png') }}" alt="psiquê"></a>
 
     <div class="nav">
@@ -68,7 +71,29 @@
       {{-- <button>Não Logado</button> --}}
       <a href="/login" class="icones-padrao"><i class="fa-solid fa-user"></i></a>
     @elseif(Auth::check())
-       <a href="{{ url('/logout') }}" >Logado</a>
+  <a href="{{ url('/logout') }}"class="logout-link">Logado</a>
+   
+       <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Selecione o link de logout usando a classe
+            const logoutLink = document.querySelector('.logout-link');
+    
+            // Adicione um ouvinte de evento de clique ao link de logout
+            if (logoutLink) {
+                logoutLink.addEventListener('click', function(event) {
+                    // Impedir o comportamento padrão de navegação
+                    event.preventDefault();
+                    // Exibir uma caixa de diálogo de confirmação
+                    const confirmLogout = confirm('Você tem certeza de que deseja fazer logout?');
+    
+                    // Se o usuário confirmar, redirecione para a URL de logout
+                    if (confirmLogout) {
+                        window.location.href = logoutLink.href;
+                    }
+                });
+            }
+        });
+    </script>
          {{-- <img src='{{ $googl['googlePicture']  }} ' height=50px>  --}}
        
         {{-- <script>
@@ -138,7 +163,6 @@ localStorage.getItem('theme');
   <link rel="shortcut icon" href="{{ asset('img/icone_cf.png') }}">
 
   
-
 </head>
 
 <body>

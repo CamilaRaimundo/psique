@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Evento;
-use App\Models\Mural;
+
 
 
 class EventosController extends Controller
@@ -32,12 +32,7 @@ class EventosController extends Controller
             'mimes' => 'O campo :attribute deve ser um arquivo de imagem do tipo: :values.',
         ]);
 
-        $evento1 = new Mural();
-
-        $evento1->titulo = $validatedData['titulo_evento'];
-        $evento1->descricao = $validatedData['descricao_evento'];
-
-        $evento1->save();
+       
 
         $evento2 = new Evento();
 
@@ -46,7 +41,7 @@ class EventosController extends Controller
         $evento2->responsavel_evento = $validatedData['responsavel_evento'];
         $evento2->limite_pessoas_evento = $validatedData['limite_pessoas_evento'];
         $evento2->link_evento = $validatedData['link_evento'];
-        $evento2->id_mural = $evento1->id;
+        
 
         if ($request->hasFile('img_ilustrativa')) {
             $path = $request->file('img_ilustrativa')->store('event_images');
