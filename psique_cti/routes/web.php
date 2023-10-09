@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ContatoController;
+use App\Http\Controllers\ContatoController; //--> contato
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController; //--> login
@@ -123,9 +123,15 @@ Route::get('/Admin', function () {
     return view('pages.admin.homeAdmin');
 });
 
+Route::get('/Admin', [AdminAdicionarController::class, 'pegandoDados'])->name('Admin');
+
 Route::get('/listaAluno', function () {
     return view('pages.admin.lista_aluno');
 });
+
+// -----------------------ema
+Route::get('/listaAluno', [AdminAdicionarController::class, 'pegandoDadosAlunos'])->name('listaAluno');
+// -----------------------ema
 
 Route::get('/EditarPro', function () {
     return view('pages.admin.editarPro');
@@ -142,9 +148,6 @@ Route::post('/AdicionarPro', 'App\Http\Controllers\AdminAdicionarController@cada
 Route::post('/inativar-ativar-profissional/{cpf}', [AdminAdicionarController::class, 'inativarAtivarProfissional']);
 
 //Route::post('/inativar-ativar-profissional/{cpf}', 'AdminAdicionarController@inativarAtivarProfissional');
-
-Route::get('/Admin', [AdminAdicionarController::class, 'pegandoDados'])->name('Admin');
-
 
 //Route::post('/estatisticas', 'App\Http\Controllers\GraficosController@pegaEmocoes')->name('pegaEmo');
 

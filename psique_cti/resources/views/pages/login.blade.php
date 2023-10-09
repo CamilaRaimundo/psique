@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -55,85 +54,76 @@
 </head>
 
 <body>
+  <header>
+    <a href="/index"><img src="{{ asset('img/logo_completa_sf.png') }}" alt="psiquê"></a>
 
-    <header>
-        <a href="/index"><img src="{{ asset('img/logo_completa_sf.png') }}" alt="psiquê"></a>
+    <div class="nav">
+      <a href="/index">Home</a>
+      
+      <span>|</span>
 
-        <div class="nav">
-        <a href="/index">Home</a>
-        
-        <span>|</span>
+      <a href="/mural">Mural</a>
 
-        <a href="/mural">Mural</a>
+      <span>|</span>
 
-        <span>|</span>
-
-        <a href="/contato">Contato</a>
-        
-        </div>
-
-        <div>
-        <a href="/cadastro" class="icones-padrao"><i class="fa-solid fa-user" ></i></a>
-        <a href="#" class="icones-padrao"><i class="fa-solid fa-circle-half-stroke"></i></a>
-        </div>
-
-    {{-- Pagina Login --}}
-    </header>
-
-    <div class="container_login"> 
-        <div class="login_img">
-            <img src="{{ asset('img/login-img.png') }}" alt="">    
-        </div>
-        
-        <div class="login_caixas">
-          <div class="caixa_login_1">
-              <div class="caixa_login_2">
-                  <div class="conteudo_login">
-                      <h2>Login</h2>
-                      <div class="linha-branca"></div>
-                      <p>Bem-vind<img src="{{ asset('img/icone_sf.png') }}"></p>
-                      <center>
-                        {{-- <div id="buttonDiv"></div> --}}
-                        <a href="{{URL::to('googleLogin')}}">
-                          <img src="{{URL::asset('google.png')}}" height="45px" alt=""
-                        </a>
-                      </center>
-
-                  </div>
-              </div>
-          </div>
-      </div>
-
+      <a href="/contato">Contato</a>
+    
     </div>
 
-    {{-- rodape --}}
-    <footer>
-        <div class="img-footer">
-          <img src="{{ asset('img/icone_sf.png') }}" alt="nicolau" width="80px">
-        </div>
-    
-        <div class="navegacao">
-          <a href="/index">Home</a>
-          
-          <span>|</span>
-    
-          <a href="/mural">Mural</a>
-    
-          <span>|</span>
-    
-          <a href="/contato">Contato</a>
-    
-          <span>|</span>
-    
-          <a href="/login">Login</a>
-        </div>
-    
-        <div class="copyright">
-          © 2023 Colégio Técnico Industrial "Prof. Isaac Portal Róldan"
-        </div>
-      </footer>
+    <div>
+      <a href="/cadastro" class="icones-padrao"><i class="fa-solid fa-user" ></i></a>
+      <a href="#" class="icones-padrao"><i class="fa-solid fa-circle-half-stroke"></i></a>
+    </div>
+  </header>
 
-      <script src="{{ asset('js/script.js') }}"></script>
+  <div class="container_login"> 
+    <div class="box_img1 secao-ocultar">
+      <img src="{{ asset('img/login-img.png') }}" alt="">    
+    </div>
+      
+    <div class="login_caixas">
+      <div class="caixa_login_1">
+        <div class="caixa_login_2">
+          <div class="conteudo_login">
+            <h2>Login</h2>
+            <div class="linha-branca"></div>
+            <p>Bem-vind<img src="{{ asset('img/icone_sf.png')}}" class="nicolau_login"></p>
+            <a href="{{URL::to('googleLogin')}}"><img src="{{asset('img/google.png')}}" width="80%" alt=""></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  {{-- rodape --}}
+  <footer>
+    <div class="img-footer">
+      <img src="{{ asset('img/icone_sf.png') }}" alt="nicolau" width="80px">
+    </div>
+
+    <div class="navegacao">
+      <a href="/index">Home</a>
+      
+      <span>|</span>
+
+      <a href="/mural">Mural</a>
+
+      <span>|</span>
+
+      <a href="/contato">Contato</a>
+
+      <span>|</span>
+
+      <a href="/login">Login</a>
+    </div>
+
+    <div class="copyright">
+      © 2023 Colégio Técnico Industrial "Prof. Isaac Portal Róldan"
+    </div>
+  </footer>
+
+  <script src="{{ asset('js/script.js') }}"></script>
   
   <!-- Javascript bootstrap -->
   <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>

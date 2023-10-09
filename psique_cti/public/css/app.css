@@ -334,7 +334,7 @@ section.module.parallax h1{
 }
 
 .box_img1 img{
-    width: 580px;
+    width: 100%;
 }
 
 .login_caixas{
@@ -380,9 +380,9 @@ section.module.parallax h1{
     justify-content: center;
 }
 
-.caixa_login_2 img{
+/* .caixa_login_2 img{
     width: 30px;
-}
+} */
 
 .caixa_login_2 h2{
     font-size: 4rem;
@@ -393,6 +393,14 @@ section.module.parallax h1{
 .caixa_login_2 p{
     font-size: 30px;
 }
+
+.nicolau_login{
+    width: 30px;
+}
+
+
+
+
 
 /* --------------------------------------- CADASTRO -----------------------------------------*/
 .box{
