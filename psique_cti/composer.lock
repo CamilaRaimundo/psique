@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7cad85283c5f5a2781cc648ac9c36a26",
+    "content-hash": "e61e656cb4f7163fd67f0eed4dbd08c5",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -1210,17 +1210,79 @@
             "time": "2020-06-13T08:05:20+00:00"
         },
         {
-            "name": "laravel/fortify",
-            "version": "v1.18.0",
+            "name": "laravel/breeze",
+            "version": "v1.23.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/laravel/fortify.git",
-                "reference": "5af43d5cc10b70da20ddebdbe62e0dadd69c18e3"
+                "url": "https://github.com/laravel/breeze.git",
+                "reference": "b14e90230abeb008a6da70c2de103de1ac53d485"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/fortify/zipball/5af43d5cc10b70da20ddebdbe62e0dadd69c18e3",
-                "reference": "5af43d5cc10b70da20ddebdbe62e0dadd69c18e3",
+                "url": "https://api.github.com/repos/laravel/breeze/zipball/b14e90230abeb008a6da70c2de103de1ac53d485",
+                "reference": "b14e90230abeb008a6da70c2de103de1ac53d485",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^10.17",
+                "illuminate/filesystem": "^10.17",
+                "illuminate/support": "^10.17",
+                "illuminate/validation": "^10.17",
+                "php": "^8.1.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^8.0",
+                "phpstan/phpstan": "^1.10"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Breeze\\BreezeServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Breeze\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Minimal Laravel authentication scaffolding with Blade and Tailwind.",
+            "keywords": [
+                "auth",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel/breeze/issues",
+                "source": "https://github.com/laravel/breeze"
+            },
+            "time": "2023-09-01T14:06:53+00:00"
+        },
+        {
+            "name": "laravel/fortify",
+            "version": "v1.17.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/fortify.git",
+                "reference": "3d3ad9aaa46f686a5fe46a0af2ba907702019451"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/fortify/zipball/3d3ad9aaa46f686a5fe46a0af2ba907702019451",
+                "reference": "3d3ad9aaa46f686a5fe46a0af2ba907702019451",
                 "shasum": ""
             },
             "require": {
@@ -1271,7 +1333,7 @@
                 "issues": "https://github.com/laravel/fortify/issues",
                 "source": "https://github.com/laravel/fortify"
             },
-            "time": "2023-09-12T11:19:24+00:00"
+            "time": "2023-08-02T13:57:32+00:00"
         },
         {
             "name": "laravel/framework",
@@ -1475,16 +1537,16 @@
         },
         {
             "name": "laravel/jetstream",
-            "version": "v3.3.3",
+            "version": "v4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/jetstream.git",
-                "reference": "6660ede858e1a964134732bb41dff9fd08450d0e"
+                "reference": "21f3f26c9acc69ae0d4fd72158ef2126d71c463a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/jetstream/zipball/6660ede858e1a964134732bb41dff9fd08450d0e",
-                "reference": "6660ede858e1a964134732bb41dff9fd08450d0e",
+                "url": "https://api.github.com/repos/laravel/jetstream/zipball/21f3f26c9acc69ae0d4fd72158ef2126d71c463a",
+                "reference": "21f3f26c9acc69ae0d4fd72158ef2126d71c463a",
                 "shasum": ""
             },
             "require": {
@@ -1498,7 +1560,7 @@
             "require-dev": {
                 "inertiajs/inertia-laravel": "^0.6.5",
                 "laravel/sanctum": "^3.0",
-                "livewire/livewire": "^2.12",
+                "livewire/livewire": "^3.0",
                 "mockery/mockery": "^1.0",
                 "orchestra/testbench": "^8.0",
                 "phpstan/phpstan": "^1.10",
@@ -1507,7 +1569,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "3.x-dev"
+                    "dev-master": "4.x-dev"
                 },
                 "laravel": {
                     "providers": [
@@ -1540,7 +1602,7 @@
                 "issues": "https://github.com/laravel/jetstream/issues",
                 "source": "https://github.com/laravel/jetstream"
             },
-            "time": "2023-08-23T13:50:02+00:00"
+            "time": "2023-08-27T15:50:10+00:00"
         },
         {
             "name": "laravel/prompts",

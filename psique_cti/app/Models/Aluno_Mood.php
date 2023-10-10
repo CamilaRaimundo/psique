@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Aluno_Mood extends Model
 {
-    protected $table = 'aluno_mood';   //Aqui você define o nome da tabela, genericamente, o laravel
-                                //define por padrão o nome da tabela como sendo o nome da
-                                //classe no plural. Se quiser definir um, precisa por isso
+    protected $table = 'aluno_mood';    //Aqui você define o nome da tabela, genericamente, o laravel
+                                        //define por padrão o nome da tabela como sendo o nome da
+                                        //classe no plural. Se quiser definir um, precisa por isso
 
     protected $primaryKey = ['data', 'ra', 'emocoes'];  //Isso aqui é uma definição de chave primária. Note que todas as variáveis
                                                         //padrão do laravel estão em pascal (primeira letra minúscula, primeira letra
@@ -35,12 +35,6 @@ class Aluno_Mood extends Model
         //sincero, eu não sei. Quer dizer, supostamente ele disponibiliza restrições e comportamentos adicionais,
         //o que eu não tenho ideia do que significa.
         return $this->belongsTo(Aluno::class, 'ra');
-    }
-    public function mood(): BelongsTo
-    {
-        //Está bastante explícito, mas essa linha ta basicamente abrindo o outro model, pegando
-        //o campo que queremos e atribuindo o valor dele aqui. Sem segredo.
-        return $this->belongsTo(Mood::class, 'emocoes');
     }
 
 }

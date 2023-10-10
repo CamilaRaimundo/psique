@@ -15,7 +15,7 @@
         <div class="linha"></div>
         <p>Crie eventos, palestras ou reuniões com os alunos!</p>
 
-        <form action="{{ route('addeven') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('eventos.postar') }}" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
             <div class="input_group">
                 <label for="titulo_evento">Título do evento</label>

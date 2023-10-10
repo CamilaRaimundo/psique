@@ -52,20 +52,20 @@
 <body>
   <header>
 
-    <a href="/index"><img src="{{ asset('img/logo_completa_sf.png') }}" alt="psiquê"></a>
+    <a href="{{route('home')}}"><img src="{{ asset('img/logo_completa_sf.png') }}" alt="psiquê"></a>
 
     <div class="nav">
       {{-- if(usuários comuns) --}}
-      <a href="/" id="home">Home</a>
+      <a href="{{route('home')}}" id="home">Home</a>
       {{-- class="normal" --}}
 
       <span>|</span>
 
-      <a href="{{route('evento.mostrar')}}" id="n-mural">Mural</a>
+      <a href="{{route('mural.mostrar')}}" id="n-mural">Mural</a>
 
       <span>|</span>
 
-      <a href="/contato" id="n-contato">Contato</a>
+      <a href="{{route('contato.mostrar')}}" id="n-contato">Contato</a>
 
       {{-- <script>
         var $divLogin = $("#home");
@@ -108,13 +108,18 @@
       {{-- <span>|</span> --}}
 
       {{-- if(usuários comuns) --}}
-      {{-- <a href="/contato">Contato</a> --}}
+      <a href="{{route('contato.mostrar')}}">Contato</a>
       {{-- else if (psicólogo) --}}
-      {{-- <a href="/estatistica">Estatísticas</a> --}}
+      {{-- <a href="{{route('estatistica.mostrar')}}">Estatísticas</a> --}}
     </div>
 
+    {{-- <div>
+      <a href="{{route('login.mostrar')}}" class="icones-padrao"><i class="fa-solid fa-user" ></i></a>
+      <a href="#" class="icones-padrao"><i class="fa-solid fa-circle-half-stroke"></i></a>
+    </div> --}}
+
     <div  class="icones-padrao">
-      <a href="/login" class="icones-padrao"><i class="fa-solid fa-user"></i></a>
+      <a href="{{route('login.mostrar')}}" class="icones-padrao"><i class="fa-solid fa-user" ></i></a>
       <button onclick id="toggle"><i class="fa-solid fa-circle-half-stroke"></i></button>
 
       {{-- TESTANDO POP-UP --> caso a pessoa faça o login pela primeira vez no dia - deve exibir o pop-up --}}

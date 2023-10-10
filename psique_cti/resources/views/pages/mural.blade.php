@@ -4,7 +4,9 @@
     
 @section('conteudo')
 
-@if(isset($evento1))
+
+
+@if(isset($evento))
 {{-- if (não há publicações) --}}
 
   <div class="pagina_vazia">
@@ -19,7 +21,7 @@
 
     <div class="titulo-mural">
       {{-- if(section == profissional)--}}
-      <h1>Eventos <a href="/adicionaevento" class="icones-padrao"><i class="fa-regular fa-calendar-plus"></i></a></h1> 
+      <h1>Eventos <a href="{{route('eventos_add.mostrar')}}" class="icones-padrao"><i class="fa-regular fa-calendar-plus"></i></a></h1> 
       {{-- else --}}
       {{-- <h1>Eventos</h1>   --}}
     </div>  
@@ -29,7 +31,8 @@
     </div>
 
     <div class="container text-center">
-      
+ 
+
       @foreach($eventos as $evento)
 
      
@@ -37,7 +40,7 @@
         {{-- card --}}
         <div class="card mb-3" style="max-width: 500px;">
           <div class="col-md-4">
-                <img src=base href="{{ \URL::to('$evento->img_ilustrativa') }}"  width="100" class="img-fluid rounded-start">
+                <img src=base href="{{asset('$evento->imagem')}}"  width="100" class="img-fluid rounded-start">
           </div>
           <div class="col-md-8">
             <div class="card-body">
@@ -49,8 +52,8 @@
               <p class="card-text"> {{ $evento->dataehora_evento}}</p>
               <p class="card-text"> {{ $evento->responsavel_evento}}</p>
               <p class="card-text"> {{ $evento->limite_pessoas_evento}}</p>
-              <p class="card-text"> {{ $evento->link_evento}}</p>
-              <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+              <!-- <p class="card-text"> </p> -->
+              <p class="card-text"><small class="text-body-secondary"><a href="{{ $evento->link_evento}}">{{ $evento->link_evento}}</a></small></p>
              
              {{-- if(section == profissional) --}}
              <div class="icones_mural">
@@ -71,7 +74,7 @@
                  </div>
                </div>
 
-               <a href="/editarevento"><i class="fa-solid fa-pen-to-square"></i></a>
+               <a href="{{route('eventos_edit.mostrar')}}"><i class="fa-solid fa-pen-to-square"></i></a>
              </div>
            </div>
          </div>
@@ -86,7 +89,7 @@
     {{-- if(há artigos) --> exibir --}}
     <div class="titulo-mural">
       {{-- if(section == profissional)--}}
-      <h1>Artigos <a href="/adicionartigo" class="icones-padrao"><i class="fa-solid fa-newspaper"></i></a></h1>  
+      <h1>Artigos <a href="{{route('artigos_add.mostrar')}}" class="icones-padrao"><i class="fa-solid fa-newspaper"></i></a></h1>  
       {{-- else --}}
       {{-- <h1>Artigos</h1>   --}}
     </div> 
@@ -116,7 +119,7 @@
                 </div>
               </div>
 
-              <a href="/editartigo"><i class="fa-solid fa-pen-to-square"></i></a>
+              <a href="{{route('artigo_edit.mostrar')}}"><i class="fa-solid fa-pen-to-square"></i></a>
             </div>
 
             <h5 class="card-title">Título do artigo</h5> 
@@ -177,5 +180,5 @@
     </script>
     
   {{-- container-mural --}} 
-
+  @endif
 @endsection

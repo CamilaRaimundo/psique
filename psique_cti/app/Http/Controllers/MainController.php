@@ -9,6 +9,11 @@ use App\Models\User;
 
 class MainController extends Controller
 {
+    public function index()
+    {
+        return view('index');
+    }
+    
     public function googleLogin(){
         return Socialite::driver('google')->redirect();
 

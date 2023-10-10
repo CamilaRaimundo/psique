@@ -55,24 +55,24 @@
 
 <body>
   <header>
-    <a href="/index"><img src="{{ asset('img/logo_completa_sf.png') }}" alt="psiquê"></a>
+    <a href="{{route('home')}}"><img src="{{ asset('img/logo_completa_sf.png') }}" alt="psiquê"></a>
 
     <div class="nav">
-      <a href="/index">Home</a>
+      <a href="{{route('home')}}">Home</a>
       
       <span>|</span>
 
-      <a href="/mural">Mural</a>
+      <a href="{{route('mural.mostrar')}}">Mural</a>
 
       <span>|</span>
 
-      <a href="/contato">Contato</a>
+      <a href="{{route('contato.mostrar')}}">Contato</a>
     
     </div>
 
     <div>
-      <a href="/cadastro" class="icones-padrao"><i class="fa-solid fa-user" ></i></a>
-      <a href="#" class="icones-padrao"><i class="fa-solid fa-circle-half-stroke"></i></a>
+      <a href="{{route('login.mostrar')}}" class="icones-padrao"><i class="fa-solid fa-user"></i></a>
+      <button onclick id="toggle"><i class="fa-solid fa-circle-half-stroke"></i></button>
     </div>
   </header>
 
@@ -103,19 +103,19 @@
     </div>
 
     <div class="navegacao">
-      <a href="/index">Home</a>
+      <a href="{{route('home')}}">Home</a>
       
       <span>|</span>
 
-      <a href="/mural">Mural</a>
+      <a href="{{route('mural.mostrar')}}">Mural</a>
 
       <span>|</span>
 
-      <a href="/contato">Contato</a>
+      <a href="{{route('contato.mostrar')}}">Contato</a>
 
       <span>|</span>
 
-      <a href="/login">Login</a>
+      <a href="{{route('login.mostrar')}}">Login</a>
     </div>
 
     <div class="copyright">

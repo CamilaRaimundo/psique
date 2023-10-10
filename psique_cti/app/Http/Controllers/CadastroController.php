@@ -11,7 +11,11 @@ use App\Models\Aluno;
 
 class CadastroController extends Controller
 {
-    public function processarFormulario(Request $request)
+    public function mostraForm()
+    {
+        return view('pages.cadastro');
+    }
+    public function processaForm(Request $request)
     {
         $validatedData = $request->validate([
             'data_nascimento' => 'required|date',
