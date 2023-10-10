@@ -16,7 +16,11 @@ use App\Models\User;
 
 class CadastroController extends Controller
 {
-    public function processarFormulario(Request $request)
+    public function mostraForm()
+    {
+        return view('pages.cadastro');
+    }
+    public function processaForm(Request $request)
     {
         $nome=$request->input('nome');
         $email=$request->input('email');
@@ -61,6 +65,7 @@ class CadastroController extends Controller
 
         $user->name =$nome;
         $user->email =$email;
+        $user->nivel_de_acesso ='1';
        
 
         $user->save();

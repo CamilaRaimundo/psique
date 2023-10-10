@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Controllers\MainController;
-use Resources\Views\Pages;
+use App\Models\Historico_aluno;
 
 class TriagemController extends Controller
 {
@@ -13,7 +12,12 @@ class TriagemController extends Controller
     {
         $regras = [
             'qtd_pessoas' => 'required|numeric|min:1|max:10', // Substitua 10 e 100 pelos valores do intervalo desejado
-                ];
+            'opcao_acomp' => 'required',
+            'opcao_medicamento' => 'required',
+            'medicamento' => 'nullable',
+            'sentimentos' => 'required', 
+            'comentarios' => 'nullable',
+        ];
         
                 // Mensagens de erro personalizadas (opcional)
                 $mensagens = [
@@ -34,9 +38,31 @@ class TriagemController extends Controller
         
                 // Se a validação for bem-sucedida, faça algo aqui
                 //$req->input('qtd_pessoas') //contém o valor válido entre o intervalo
-        
-                return redirect()->back()->with('success', ' válido!');
 
+                $acompanhamento = [
+                    1 => 'true',
+                    2 => 'false',
+                ];
+        
+                $medicamentos = [
+                    1 => 'true',
+                    2 => 'false',
+                ];
+
+                $triagem = new Historico_aluno();
+
+                $triagem->qtde_moradores = $req->input('qtd_pessoas');
+                $triagem->tempo_sentimentos = $req->input('sentimentos');
+                $triagem->queixas = $req->input('comentarios');
+                $triagem->acompanhamento = $acompanhamento[$req->input('opcao_acomp')];
+                $triagem->medicamentos = $medicamentos[$req->input('opcao_medicamento')];
+                $triagem->nome_medicamentos = $req->input('medicamento');
+                
+                
+                
+                $triagem->save();
+                
                 return view('index');
     }
+
 }

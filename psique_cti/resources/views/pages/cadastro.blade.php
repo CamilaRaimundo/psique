@@ -13,7 +13,7 @@
 
         <div class="form-box">
             <h2></h2>
-            <form onsubmit="validaOpcoes(event)" action="{{ route('cad') }}" method="POST" id="myForm">
+            <form onsubmit="validaOpcoes(event)" action="{{ route('cadastro.processar') }}" method="POST" id="myForm">
 
             {{ csrf_field() }}
 

@@ -7,11 +7,12 @@
     "require": {
         "php": "^8.1",
         "guzzlehttp/guzzle": "^7.2",
+        "laravel/breeze": "^1.23",
         "laravel/fortify": "^1.17",
         "laravel/framework": "^10.8",
-        "laravel/jetstream": "^3.2",
+        "laravel/jetstream": "^4.0",
         "laravel/sanctum": "^3.2",
-        "laravel/socialite": "*",
+        "laravel/socialite": "^5.8",
         "laravel/tinker": "^2.8",
         "nesbot/carbon": "*"
     },

@@ -38,21 +38,19 @@
 
 <body>
   <header>
-
-   
-    
-    <a href="/index"><img src="{{ asset('img/logo_completa_sf.png') }}" alt="psiquê"></a>
+    <a href="{{route('home')}}"><img src="{{ asset('img/logo_completa_sf.png') }}" alt="psiquê"></a>
 
     <div class="nav">
-
-      <a href="/" class="active">Home</a>
-    
+      {{-- if(usuários comuns) --}}
+      <a href="{{route('home')}}" class="active">Home</a>
+      {{-- else if(psicólogo) --}}
+      {{-- <a href="{{route('home_psico')}}">Home</a> --}}
+      {{-- else if(Admin) --}}
+      {{-- <a href="{{route('home_admin')}}">Home</a> --}}
       
       <span>|</span>
-     
-      <a href="{{route('evento.mostrar')}}">Mural</a>
 
-      {{-- <a href="{{route('artigo.mostrar')}}">Mural</a> --}}
+      <a href="{{route('mural.mostrar')}}">Mural</a>
 
       <span>|</span>
 

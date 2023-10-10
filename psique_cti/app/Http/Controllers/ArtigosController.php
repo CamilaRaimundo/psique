@@ -4,13 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Mural;
 use App\Models\Publicacao_Recomendacao;
-use Illuminate\Support\Facades\DB;
 
 class ArtigosController extends Controller
 {
+    public function mostraFormAdicionar()
+    {
+        return view('pages.psico.addartigo');
+    } 
     //addartigo e editartigo
-    public function verificaForm(Request $req)
+    public function adicionaForm(Request $req)
     {
         //dd($req->all());
         // Defina as regras de validação para os campos
@@ -43,32 +47,33 @@ class ArtigosController extends Controller
 
         //dd($req->all()); -- parou
         // Process and save data (if validation passes)
-       
+        $artigos1 = new Mural();
+
+
+        $artigos1->descricao = $req->input('descricao_publicacao');
+        $artigos1->titulo = $req->input('titulo_publicacao');
+    
+        if ($req->hasFile('img_ilustrativa')) {
+            $path = $req->file('img_ilustrativa')->store('event_images');
+            $artigos1->imagem = $path;
+        }
+
+        $artigos1->save();
     
 
         $artigos2 = new Publicacao_Recomendacao();
 
-        $artigos2->descricao = $req->input('descricao');
-        $artigos2->titulo = $req->input('titulo');
-    
-        if ($req->hasFile('imagem')) {
-            $path = $req->file('imagem')->store('event_images');
-            $artigos1->imagem = $path;
-        }
-        $artigos2->link = $req->input('link');
-        $artigos2->autor = $req->input('autor');
-       
+        $artigos2->link = $req->input('link_publicacao');
+        $artigos2->autor = $req->input('autor_publicacao');
+        $artigos2->id_mural = $artigos1->id;
     
         $artigos2->save();
 
         //dd($artigos2);
     
-       // return view('pages.mural');
-       return redirect()->route('artigo.ver');
+        return view('pages.mural');
+        //return redirect()->route('pages.mural');
     }
-    
-
-  
 }
 
     // public function editarArtigo(Request $req, $id_mural)

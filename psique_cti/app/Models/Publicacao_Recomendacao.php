@@ -7,17 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Publicacao_Recomendacao extends Model
 {
-    protected $table = 'publicacoes_recomendacoes';
+    protected $table = "publicacoes_recomendacoes";
     public $incrementing = false;
     protected $fillable = [
-        'id',
         'titulo',
         'descricao',
-        'profissional',
+        'autor',
         'imagem',
+        'profissional',
         'link',
         'autor',
     ];
-    protected $primaryKey = 'id';
 
- }
+    public function Profissional() : BelongsTo
+    {
+        return $this->belongsTo(Profissional::class, 'profissional', 'cpf');
+    }
+}

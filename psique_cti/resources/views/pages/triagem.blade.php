@@ -10,8 +10,7 @@
             <div class="linha"></div>
             <p>Me ajude a te conhecer melhor!</p>
             <form onsubmit="verificarEnvio(event)" action="{{ route('controller.triagem') }}" method="POST">
-                {{ csrf_field() }}
-
+                {{ csrf_field() }} 
                 <div class="input_group">
                     <label for="qtd_pessoas">Com quantas pessoas você mora?</label>
                     <input type="number" id="qtd_pessoas" name="qtd_pessoas" min="1" max="10"  placeholder="Selecione o total contando com você" required>
@@ -24,9 +23,9 @@
                   
                 <div class="input-group mb-3">
                 <select class="form-select" id="inputGroupSelect01" name="opcao_acomp">
-                     <option disabled selected value="3-escolha">Escolha...</option> 
-                    <option value="1-sim">Sim</option>
-                    <option value="2-nao">Não</option>
+                     <option disabled selected value="3">Escolha...</option> 
+                    <option value="1">Sim</option>
+                    <option value="2">Não</option>
                 </select>
                 </div>
 
@@ -36,9 +35,9 @@
                   
                 <div class="input-group mb-3">
                 <select class="form-select" id="inputGroupSelect02" onchange="requerido()" name="opcao_medicamento">
-                    <option disabled selected value="3-escolha">Escolha...</option>
-                    <option value="1-sim">Sim</option>
-                    <option value="2-nao">Não</option>
+                    <option disabled selected value="3">Escolha...</option>
+                    <option value="1">Sim</option>
+                    <option value="2">Não</option>
                 </select>
                 </div>
 
@@ -52,7 +51,7 @@
 
                 <div class="input_group">
                     <label for="turma">A quanto tempo esses sentimentos estão te afligindo?</label>
-                    <input type="text" id="turma" placeholder="Digite um tempo estimado" required>
+                    <input type="text" id="turma" placeholder="Digite um tempo estimado" name= "sentimentos" required>
                 </div>
                 
                 <div class="input_group">
@@ -60,7 +59,7 @@
                 </div>
 
                 <div class="form-floating">
-                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                    <textarea class="form-control" placeholder="Leave a comment here" name="comentarios" id="floatingTextarea2" style="height: 100px"></textarea>
                     <label for="floatingTextarea2">Comentários</label>
                 </div>
 
@@ -74,4 +73,33 @@
             <img src="{{ asset('img/triagem_img.png') }}" width="40%" alt="">
         </div>
     </div>
+
+{{--  Javascript/ isa --}}
+    <script>
+        //triagem
+        function requerido() {
+          var opmed = document.getElementById("inputGroupSelect02");
+          var campoMedicamento = document.getElementById("medicamento");
+          var idMedic = document.getElementById("idMedic");
+      
+          if (opmed.value === "1") {
+            idMedic.style.display = "block";
+            campoMedicamento.setAttribute("required", "required");
+          } else {
+            idMedic.style.display = "none";
+            campoMedicamento.removeAttribute("required");
+          }
+        }
+    
+        function verificarEnvio(event) {
+          var opacomp = document.getElementById("inputGroupSelect01");
+          var opmed = document.getElementById("inputGroupSelect02");
+    
+          if (opacomp.value === "3" || opmed.value === "3") {
+            event.preventDefault(); // Impede o envio do formulário
+            alert("Selecione uma opção válida sobre o acompanhamento psicológico e o uso de medicamentos antes de enviar o formulário.");
+          }
+        }
+    </script>
+
 @endsection

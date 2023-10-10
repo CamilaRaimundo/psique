@@ -8,18 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Evento extends Model
 {
     protected $table = 'eventos';
-    public $incrementing = false;
-    protected $primaryKey = 'id';
     protected $fillable = [
-        'id',
         'titulo',
         'descricao',
-        'profissional',
+        'autor',
         'imagem',
+        'profissional',
         'local_evento',
         'dataehora_evento',
         'limite_pessoas_evento',
         'link_evento',
         'responsavel_evento',
     ];
+
+    public function Profissional() : BelongsTo
+    {
+        return $this->belongsTo(Profissional::class, 'profissional', 'cpf');
+    }
 }

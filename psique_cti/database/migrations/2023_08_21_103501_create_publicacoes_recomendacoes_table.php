@@ -12,10 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('publicacoes_recomendacoes', function (Blueprint $table) {
+            $table->id();
+            $table->string('titulo');
+            $table->string('descricao');
+            $table->string('profissional');
+            $table->binary('imagem');
+            $table->foreign('profissional')->references('cpf')->on('profissionais')->onDelete('cascade');
             $table->string('link');
             $table->string('autor');
-            $table->id('id_mural');
-            $table->foreign('id_mural')->references('id')->on('murais')->onDelete('cascade')->primary();
             $table->timestamps();
         });
     }
