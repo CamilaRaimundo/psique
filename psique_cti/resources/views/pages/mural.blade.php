@@ -4,8 +4,6 @@
     
 @section('conteudo')
 
-
-
 @if(isset($evento1))
 {{-- if (não há publicações) --}}
 
@@ -107,18 +105,37 @@
           <a href="/editartigo"><i class="fa-solid fa-pen-to-square"></i></a>
           <button class="delete"><i class="fa-solid fa-delete-left"></i></button>
 
-          <div class="popup-wrapper">
-            <div class="popup">
-              {{-- <div class="popup-close">x</div> --}}
-              <div class="popup-content">
-                <h2>Confirmação</h2>
-                <p>Você tem certeza que deseja excluir permanentemente este evento?</p>
-                <button class="popup-close">Cancelar</button>  
-                <button class="btn-confirma">Confirmar</button>
+              <div class="popup-wrapper">
+                <div class="popup">
+                  <div class="popup-content">
+                    <h2>Confirmação</h2>
+                    <p>Você tem certeza que deseja excluir permanentemente este evento?</p>
+                    <button class="popup-close">Cancelar</button>  
+                    <button class="btn-confirma">Confirmar</button>
+                  </div>
+                </div>
               </div>
+
+              <a href="/editartigo"><i class="fa-solid fa-pen-to-square"></i></a>
             </div>
+
+            <h5 class="card-title">Título do artigo</h5> 
+
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras non feugiat urna. Integer vulputate ultricies risus et venenatis. Pellentesque consequat iaculis congue. Phasellus in ornare leo. Proin erat metus, iaculis in ligula nec, imperdiet scelerisque massa. Nullam nec lorem rutrum, blandit odio eu, facilisis ligula. In aliquet maximus porta. Morbi a volutpat sapien. Donec at tempor purus. Ut nec enim sem. Sed dictum felis metus, sit amet commodo lorem fermentum non. In eleifend lacinia orci a interdum. Praesent vitae odio sit amet erat venenatis pulvinar.</p>          
+            <p class="card-text">Donec lorem ex, aliquet eu posuere quis, semper sit amet nunc. Maecenas vehicula dui non sapien pellentesque cursus. Aliquam erat volutpat. Morbi vel tellus ac lacus tempor posuere. Proin facilisis ac est vel tempus. Donec congue congue gravida. Fusce volutpat eros lacus, et pretium dolor aliquam sed. Donec euismod tellus id turpis fermentum, in lacinia orci sodales. Vivamus tincidunt rhoncus laoreet.</p>
+            <p class="card-text">Fusce auctor lectus sit amet dignissim posuere. Phasellus eros tortor, faucibus sit amet massa et, pretium lacinia ex. Mauris accumsan, velit vel pellentesque sagittis, metus nibh venenatis urna, at fringilla leo neque at lectus. Etiam quis lobortis purus. Pellentesque blandit eros at mauris venenatis, semper ullamcorper eros mattis. Sed aliquet molestie viverra. Morbi diam nisi, tempus quis magna ac, fringilla elementum odio. Suspendisse vitae arcu eget lectus maximus rutrum. Pellentesque condimentum massa a elit tempor lobortis.</p>
+            
+            {{-- criar uma condição para que se o artigo vier de outro site, o link será referênciado aqui --}}
+            <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
           </div>
 
+          <img src="{{ asset('img/fundo4.jpg') }}"  class="card-img-bottom" alt="...">
+        </div>
+      </div>
+    </div> 
+  @endif
+{{-- @endsection --}}
          
         </div>
 

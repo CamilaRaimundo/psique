@@ -95,7 +95,8 @@ class EventosController extends Controller
         $eventos = Evento::all();
         return view('pages.mural', compact('eventos') );
    
-     }
+    }
+    
 
      public function excluirEvento($id) {
         // Adicione instruções de depuração
