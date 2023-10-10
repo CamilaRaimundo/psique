@@ -10,6 +10,7 @@ use App\Http\Controllers\CadastroController; //--> Informações adicionais
 use App\Http\Controllers\EventosController; // --> Eventos
 use App\Http\Controllers\MuralController; // --> Mural
 use App\Http\Controllers\GraficosController; // --> graficos
+use App\Http\Controllers\EncontrosController; // --> Encontros
 use App\Mail\TestMail;
 
 
@@ -143,5 +144,9 @@ Route::get('/estatisticas', function () {
 //Route::post('/estatisticas', 'App\Http\Controllers\GraficosController@pegaEmocoes')->name('pegaEmo');
 
 Route::get('/estatisticas', [GraficosController::class, 'pegaEmocoes'])->name('pegaEmo');
+
+
+Route::get('/encontros', [EncontrosController::class, 'mostrar'])->name('encontros.mostrar');
+Route::POST('/encontros', [EncontrosController::class, 'store'])->name('encontros.store');
 
 // Route::get('/testejoao',['as'=>'alunos','uses'=>'App\Http\Controllers\AlunosController@index']);

@@ -72,30 +72,58 @@ class ArtigosController extends Controller
        return redirect()->route('artigo.ver');
     }
     
+    public function editarArtigo(Request $request, $id_mural)
+    {
+        $validatedData = $request->validate([
+            // Definir regras de validação para o formulário de edição
+        ]);
 
-  
+        $artigo = Publicacao_Recomendacao::where('id_mural', $id_mural)->first();
+
+        // Verificar se o evento foi encontrado
+        if (!$artigo) {
+            return redirect()->route('artigo.ver')->with('error', 'Artigo não encontrado');
+        }
+
+        // Atualizar os campos do evento com os novos dados
+        $artigo->descricao = $req->input('descricao_publicacao');
+        $artigo->titulo = $req->input('titulo_publicacao');
+        $artigo->link = $req->input('link_publicacao');
+        $artigo->autor = $req->input('autor_publicacao');
+       
+
+        $artigo->save();
+
+        return view('pages.mural');
+    }
+
+
+    public function selecionandoArt()
+     {
+        //  $eventos = Evento::with('mural')->get(); return view('pages.mural', compact('eventos'));
+        $artigo = Publicacao_Recomendacao::all();
+        return view('pages.mural', compact('artigos') );
+   
+     }
+
+     public function excluirArtigo($id) {
+        // Adicione instruções de depuração
+        \Log::info("Excluindo artigo com ID: $id");
+    
+        // Encontre o evento pelo ID
+        $artigo = Publicacao_Recomendacao::find($id);
+    
+        // Verifique se o evento foi encontrado
+        if (!$artigo) {
+            return redirect()->route('artigo.ver');
+        }
+    
+        // Exclua o evento
+        $artigo->delete();
+    
+        return response()->json(['success' => true]);
+    }
+    
 }
 
-    // public function editarArtigo(Request $req, $id_mural)
-    // {
-    //     dd($id_mural);
-    //     $validatedData = $req->validate([
-    //         // Definir regras de validação para o formulário de edição
-    //     ]);
-
-    //     $artigos = Publicacao_Recomendacao::where('id_mural', $id_mural)->first();
-
-    //     // Verificar se o evento foi encontrado
-    //     if (!$artigos) {
-    //         return redirect()->route('mural')->with('error', 'Artigo não encontrado');
-    //     }
-
-    //     // Atualizar os campos do evento com os novos dados
-    //     $artigos->descricao = $req->input('descricao_publicacao');
-    //     $artigos->titulo = $req->input('titulo_publicacao');
-    //     $artigos->link = $req->input('link_publicacao');
-    //     $artigos->autor = $req->input('autor_publicacao');
-    //     $artigos->save();
-
-    //     return view('pages.mural');
-    // }
+   
