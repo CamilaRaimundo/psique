@@ -10,7 +10,7 @@
 
         <div class="form-box">
             <h2>Informações adicionais</h2>
-            <form onsubmit="validaOpcoes(event)" action="{{ route('cad') }}" method="POST" id="myForm">
+            <form onsubmit="validaOpcoes(event)" action="{{ route('cadastro.mostrar') }}" method="POST" id="myForm">
             {{ csrf_field() }}
                <div class="input_group">
                     <label for="nome">Nome Completo</label>

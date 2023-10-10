@@ -108,7 +108,7 @@
       {{-- <span>|</span> --}}
 
       {{-- if(usuários comuns) --}}
-      <a href="{{route('contato.mostrar')}}">Contato</a>
+      {{-- <a href="{{route('contato.mostrar')}}">Contato</a> --}}
       {{-- else if (psicólogo) --}}
       {{-- <a href="{{route('estatistica.mostrar')}}">Estatísticas</a> --}}
     </div>
