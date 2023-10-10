@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\ContatoController;
-use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\ContatoController; //--> contato
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController; //--> login
 use App\Http\Controllers\TriagemController; //--> Triagem
@@ -15,114 +14,76 @@ use App\Http\Controllers\EncontrosController; // --> Encontros
 use App\Mail\TestMail;
 
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [MainController::class, 'index'])->name('home');
 
-// Route::post('/mural', function () {
-//     return view('pages.mural');
-// });
-Route::get('/mural', [MuralController::class, 'selecionando' ])->name('evento.mostrar', 'artigo.ver');
+// Mural e publicações
+    Route::get('/mural', [MuralController::class, 'mostraForm'])->name('mural.mostrar');
 
+    Route::get('/adicionartigo', [ArtigosController::class, 'mostraFormAdicionar'])->name('artigos_add.mostrar');
 
-Route::delete('/excluir-evento/{id}', 'EventosController@excluirEvento')->name('excluir-evento');
+    Route::post('/adicionartigo', [ArtigosController::class, 'adicionaForm'])->name('artigo.adicionar');
 
+    Route::get('/editartigo', function () { return view('pages.psico.editartigo'); })->name('artigos_edit.mostrar');
 
+    Route::get('/adicionaevento', [EventosController::class, 'mostraFormAdicionar'])->name('eventos_add.mostrar');
 
-//Route::post('/excluir-evento/{id}', 'App\Http\Controllers\EventosController@excluir');
+    Route::post('/adicionaevento', [EventosController::class, 'postarEvento'])->name('eventos.postar');
 
+    Route::get('/editarevento', [EventosController::class, 'mostraFormEditar'])->name('eventos_edit.mostrar');
 
-//Route::post('/pages/psico/mural/{id_mural}', 'App\Http\Controllers\EventosController@excluir')->name('mural');
+    Route::post('/editarevento', [EventosController::class, 'editarEvento'])->name('eventos.editar');
 
+    Route::get('/contato', [ContatoController::class, 'mostraForm'])->name('contato.mostrar');
+    Route::post('/contato', [ContatoController::class, 'mandaEmail'])->name('contato.enviar');
 
+    Route::get('/login', function () {return view('pages.login');})->name('login.mostrar');
 
-Route::get('/contato', [ContatoController::class, 'mostraForm'])->name('contato.mostrar');
-Route::post('/contato', [ContatoController::class, 'mandaEmail'])->name('contato.enviar');
+    //socialite login urls
+    Route::get('/googleLogin',[MainController::class, 'googleLogin']);
+    Route::get('/auth/google/callback',[MainController::class, 'googleHandle']);
 
-//socialite login urls
-Route::get('/googleLogin',[MainController::class, 'googleLogin']);
-Route::get('/auth/google/callback',[MainController::class, 'googleHandle']);
+    Route::get('/cadastro', [CadastroController::class, 'mostraForm'])->name('cadastro.mostrar');
+    Route::post('/cadastro', [CadastroController::class, 'processaForm'])->name('cadastro.processar');
 
-Route::get('/login', function () {
-    return view('pages.login');
-});
+Route::get('/triagem', function () {return view('pages.triagem');});
 
-Route::get('/cadastro', function () {
-    return view('pages.cadastro');
-});
+Route::post('/triagem', ['as'  =>'controller.triagem', 'uses'=>'App\Http\Controllers\TriagemController@verifica']);
 
-Route::post('/cadastro', 'App\Http\Controllers\CadastroController@processarFormulario')->name('cad');
-
-Route::get('/triagem', function () {
-    return view('pages.triagem');
-});
-
-Route::post('/triagem',
-['as'  =>'controller.triagem',
- 'uses'=>'App\Http\Controllers\TriagemController@verifica']);
-
-Route::get('/emocoes', function () {
-    return view('pages.emocoes');
-});
+Route::get('/emocoes', function () { return view('pages.emocoes'); });
 
 Route::post('/emocoes', 'App\Http\Controllers\EmocoesController@registrarEmocao')->name('cademocao');
 
-Route::get('/encontros', function () {
-    return view('pages.psico.encontros');
-});
-
 //  Psico
-Route::get('/homepsico', function () {
-    return view('pages.psico.home');
-});
-
-Route::get('/estatisticas', function () {
-    return view('pages.psico.graficos');
-});
-
-Route::get('/adicionartigo', function () {
-    return view('pages.psico.addartigo');
-   });
-
-Route::post('/adicionartigo',
-['as'  =>'controller.artigo',
- 'uses'=>'App\Http\Controllers\ArtigosController@verificaForm']);
+Route::get('/homepsico', function () { return view('pages.psico.home'); })->name('home_psico');
 
 
-Route::get('/editartigo', function () {
-    return view('pages.psico.editartigo');
-});
-
-// Route::post('/editartigo',
-//     ['as'  =>'controller.artigo',
-//         'uses'=>'App\Http\Controllers\ArtigosController@verificaForm']);
-
-// Route::post('/editartigo',
-// ['as'  =>'controller.artigo',
-//  'uses'=>'App\Http\Controllers\ArtigosController@editarArtigo']);
-
-Route::get('/adicionaevento', function () {
-    return view('pages.psico.addevento');
-});
-
-Route::post('/adicionaevento', 'App\Http\Controllers\EventosController@postarEvento')->name('addeven');
-
-Route::get('/editartigo', function () {
-    return view('pages.psico.editartigo');
-});
-
-Route::get('/editarevento/id_mural', 'App\Http\Controllers\EventosController@editarEvento')->name('editeven');
-
-#Route::post('/editarevento', 'App\Http\Controllers\EventosController@editarEvento')->name('editeven');
-
-Route::get('/detalhesaluno', function () {
-    return view('pages.psico.detalhesaluno');
-});
+Route::get('/detalhesaluno', function () { return view('pages.psico.detalhesaluno'); });
 
 // Admin
+Route::get('/Admin', function () { return view('pages.admin.homeAdmin');})->name('home_admin');
+
+Route::get('/EditarPro', function () { return view('pages.admin.editarPro');});
+
+
+
+Route::get('/AdicionarPro', function () { return view('pages.admin.adicionarProfissional');});
+
+Route::post('/AdicionarPro', 'App\Http\Controllers\AdminAdicionarController@cadastrarProfissional')->name('addpro');
+Route::post('/AdicionarPro', 'App\Http\Controllers\AdminAdicionarController@pegandoDados')->name('addpro');
+
+Route::post('/inativar-ativar-profissional/{cpf}', [AdminAdicionarController::class, 'inativarAtivarProfissional']);
+
 Route::get('/Admin', function () {
     return view('pages.admin.homeAdmin');
 });
+
+Route::get('/Admin', [AdminAdicionarController::class, 'pegandoDados'])->name('Admin');
+
+Route::get('/estatisticas', function () { return view('pages.psico.graficos');})->name('estatistica.mostrar');
+
+Route::get('/estatisticas', [GraficosController::class, 'pegaEmocoes'])->name('pegaEmo');
+
+Route::get('/listaAluno', [AdminAdicionarController::class, 'pegandoDadosAlunos'])->name('listaAluno');
 
 Route::get('/listaAluno', function () {
     return view('pages.admin.lista_aluno');
@@ -156,3 +117,6 @@ Route::get('/encontros', [EncontrosController::class, 'mostrar'])->name('encontr
 Route::POST('/encontros', [EncontrosController::class, 'store'])->name('encontros.store');
 
 // Route::get('/testejoao',['as'=>'alunos','uses'=>'App\Http\Controllers\AlunosController@index']);
+Route::get('/encontros', function () {
+    return view('pages.psico.encontros');
+});

@@ -53,6 +53,15 @@ class AdminAdicionarController extends Controller
       
         return view('pages.admin.homeAdmin', compact('profissionais'));
     }
+   
+    // -----------------------------ema
+    public function pegandoDadosAlunos()
+    {
+        $alunos = DB::select("select * from alunos");
+      
+        return view('pages.admin.lista_aluno', compact('alunos'));
+    }
+    // -----------------------------ema
 
     public function inativarAtivarProfissional($cpf)
     {

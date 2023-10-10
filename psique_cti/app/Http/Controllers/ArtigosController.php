@@ -10,8 +10,12 @@ use Illuminate\Support\Facades\DB;
 
 class ArtigosController extends Controller
 {
+    public function mostraFormAdicionar()
+    {
+        return view('pages.psico.addartigo');
+    } 
     //addartigo e editartigo
-    public function verificaForm(Request $req)
+    public function adicionaForm(Request $req)
     {
         //dd($req->all());
         // Defina as regras de validação para os campos
