@@ -304,6 +304,10 @@ section.module.parallax-2{
     background-image: url("../img/equipe.jpg");
 }
 
+section.module.parallax-3{
+    background-image: url("../img/lgpd.png");
+}
+
 section.module.parallax h1{
     color: #fff;
     text-align: center;
@@ -604,6 +608,14 @@ form .input_group button{
     min-height: 100%;
     background-position: center center;
     /* height: 100%; */
+}
+
+.dark .container-mural{
+    width: 100%;
+    background-image: url('../img/fundo3.jpg');
+    background: cover; 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .titulo-mural{
@@ -911,6 +923,7 @@ input[type="file"]{
     background: #6E9EBB;
 }
 
+
 .dark section.module p {
     margin-bottom: 15px;
     color:#fff;
@@ -931,7 +944,7 @@ input[type="file"]{
 }*/
 
 .dark header{
-    background: linear-gradient(90deg,#547EA1 2%, #607C93 );
+    background: linear-gradient(90deg,#426b8c 2%, #37678f );
 }
 
 .dark form .input_group label {
