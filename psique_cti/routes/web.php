@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\ContatoController;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController; //--> login
@@ -8,6 +7,8 @@ use App\Http\Controllers\TriagemController; //--> Triagem
 use App\Http\Controllers\ArtigosController; //--> Artigos
 use App\Http\Controllers\CadastroController; //--> Informações adicionais
 use App\Http\Controllers\EventosController; // --> Eventos
+use App\Http\Controllers\ContatoController;
+use App\Http\Controllers\LogOutController;
 use App\Mail\TestMail;
 
 
