@@ -28,7 +28,7 @@ class Aluno_Mood extends Model
         'emocoes',
     ];
 
-    public function aluno(): BelongsTo
+    public function aluno()
     {
         //Essa funçãozinha transforma um campo em chave estrangeira. Se olhar em outros models, vai notar que
         //nem todos tem a herança da classe BelongsTo, HasOne, BelongsToMany ou HasMany. O motivo, sendo bem
@@ -36,7 +36,7 @@ class Aluno_Mood extends Model
         //o que eu não tenho ideia do que significa.
         return $this->belongsTo(Aluno::class, 'ra');
     }
-    public function mood(): BelongsTo
+    public function mood()
     {
         //Está bastante explícito, mas essa linha ta basicamente abrindo o outro model, pegando
         //o campo que queremos e atribuindo o valor dele aqui. Sem segredo.

@@ -6,6 +6,17 @@
   <meta name="theme-color" content="#003b63">
   <title>@yield('titulo')</title>
 
+  @php
+
+     //session_start();
+    use App\Http\Controllers\MainController;
+    // if (Auth::check()) {
+  //   $googleProfilePhotoUrl = auth()->user()->avatar; 
+  // }
+     //use App\Models\User;  
+      
+  @endphp 
+
   <!-- Import Google Icon Font -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   
@@ -23,71 +34,55 @@
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link rel="shortcut icon" href="{{ asset('img/icone_cf.png') }}">
 
-
-  {{-- Login do Google - JS --}}
-  <script src="https://accounts.google.com/gsi/client" async></script>
-  <script>
-    function handleCredentialResponse(response) {}
-    window.onload = function () {
-    google.accounts.id.initialize({
-      client_id: "221599725357-dan13di9kqn4esjv37raoqr6etuvbkl3.apps.googleusercontent.com",
-      callback: handleCredentialResponse
-    });
-    google.accounts.id.renderButton(
-      document.getElementById("buttonDiv"),
-      { 
-        theme: "outline", 
-        size: "large", 
-        class:"g_id_signin",
-        type: "standard",
-        shape: "pill",
-        text: "signin",
-        logo_alignment:"left"
-      } // customization attributes
-    );
-    google.accounts.id.prompt(); // also display the One Tap dialog
-  }
-</script>
-
 </head>
 
 <body>
   <header>
-    <a href="/index"><img src="{{ asset('img/logo_completa_sf.png') }}" alt="psiquê"></a>
+    <a href="{{route('home')}}"><img src="{{ asset('img/logo_completa_sf.png') }}" alt="psiquê"></a>
 
     <div class="nav">
-      {{-- if(usuários comuns) --}}
-      <a href="/" class="active">Home</a>
-      {{-- else if(psicólogo) --}}
-      {{-- <a href="/homepsico">Home</a> --}}
-      {{-- else if(Admin) --}}
-      {{-- <a href="/Admin">Home</a> --}}
+
+      <a href="{{route('home')}}" class="active">Home</a>
+    
       
       <span>|</span>
-
-      <a href="{{route('evento.mostrar')}}">Mural</a>
+     
+      <a href="{{route('mural.mostrar')}}">Mural</a>
 
       {{-- <a href="{{route('artigo.mostrar')}}">Mural</a> --}}
 
       <span>|</span>
 
       {{-- if(usuários comuns) --}}
-      <a href="/contato">Contato</a>
-      {{-- else if (psicólogo) --}}
-      {{-- <a href="/estatistica">Estatísticas</a> --}}
+      @if (Auth::guest())
+      <a href="{{route('login.mostrar')}}">Contato</a>
+      @elseif (Auth::check())
+      <a href="{{route('contato.mostrar')}}">Contato</a>
+      @endif
+      
     </div>
-
-    {{-- <div>
-      <a href="/login" class="icones-padrao"><i class="fa-solid fa-user" ></i></a>
-      <a href="#" class="icones-padrao"><i class="fa-solid fa-circle-half-stroke"></i></a>
-    </div> --}}
-
-    <div  class="icones-padrao">
-      <a href="/login" class="icones-padrao"><i class="fa-solid fa-user" ></i></a>
-      <button onclick id="toggle"><i class="fa-solid fa-circle-half-stroke"></i></button>
+  
+    <div class="icones-padrao">
+      <button onclick="" id="toggle"><i class="fa-solid fa-circle-half-stroke"></i></button>
+      @if (Auth::guest())
+      {{-- <button>Não Logado</button> --}}
+      <a href="{{route('login.mostrar')}}" class="icones-padrao"><i class="fa-solid fa-user"></i></a>
+    @elseif(Auth::check())
+       <a href="{{ route('logout') }}" >Logado</a>
+         {{-- <img src='{{ $googl['googlePicture']  }} ' height=50px>  --}}
+       
+        {{-- <script>
+        function confirmLogout() {
+            if (confirm("Tem certeza de que deseja fazer logout?")) {
+                window.location.href = "{{ url('/logout') }}";
+            }
+        }
+    </script>  --}}
+      
+  @endif
+  
     </div>
-    
-
+  
      <script>
 const toggle = document.getElementById("toggle");
 const refresh = document.getElementById("refresh");

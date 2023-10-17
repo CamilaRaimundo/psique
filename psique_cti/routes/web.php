@@ -13,30 +13,32 @@ use App\Mail\TestMail;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('home');
 
 // Route::get('/mural', function () {
 //     return view('pages.mural');
 // });
-Route::get('/mural', [EventosController::class, 'selecionando'])->name('evento.mostrar');
+Route::get('/mural', [EventosController::class, 'selecionando'])->name('mural.mostrar');
 
 
 Route::get('/contato', [ContatoController::class, 'mostraForm'])->name('contato.mostrar');
 Route::post('/contato', [ContatoController::class, 'mandaEmail'])->name('contato.enviar');
 
 //socialite login urls
-Route::get('/googleLogin',[MainController::class, 'googleLogin']);
+Route::get('/googleLogin',[MainController::class, 'googleLogin'])->name('login.google.mostrar');
 Route::get('/auth/google/callback',[MainController::class, 'googleHandle']);
 
 Route::get('/login', function () {
     return view('pages.login');
-});
+})->name('login.mostrar');
+
+Route::get('/logout', [LogOutController::class, 'logout'])->name('logout');
 
 Route::get('/cadastro', function () {
     return view('pages.cadastro');
-});
+})->name('cadastro.mostrar');
 
-Route::post('/cadastro', 'App\Http\Controllers\CadastroController@processarFormulario')->name('cad');
+Route::post('/cadastro', 'App\Http\Controllers\CadastroController@processaForm')->name('cadastro.processar');
 
 Route::get('/triagem', function () {
     return view('pages.triagem');

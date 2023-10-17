@@ -43,27 +43,16 @@ class ArtigosController extends Controller
 
         //dd($req->all()); -- parou
         // Process and save data (if validation passes)
-        $artigos1 = new Mural();
-
-
-        $artigos1->descricao = $req->input('descricao_publicacao');
-        $artigos1->titulo = $req->input('titulo_publicacao');
-    
+        $artigos = new Publicacao_Recomendacao();
+        $artigos->descricao = $req->input('descricao_publicacao');
+        $artigos->titulo = $req->input('titulo_publicacao');
         if ($req->hasFile('img_ilustrativa')) {
             $path = $req->file('img_ilustrativa')->store('event_images');
-            $artigos1->imagem = $path;
+            $artigos->imagem = $path;
         }
-
-        $artigos1->save();
-    
-
-        $artigos2 = new Publicacao_Recomendacao();
-
-        $artigos2->link = $req->input('link_publicacao');
-        $artigos2->autor = $req->input('autor_publicacao');
-        $artigos2->id_mural = $artigos1->id;
-    
-        $artigos2->save();
+        $artigos->link = $req->input('link_publicacao');
+        $artigos->autor = $req->input('autor_publicacao');
+        $artigos->save();
 
         //dd($artigos2);
     
