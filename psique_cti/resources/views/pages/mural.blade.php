@@ -89,7 +89,7 @@
         @foreach($artigos as $publi)
 
           {{-- <img src="{{ asset('img/fundo4.jpg') }}"  class="card-img-bottom" alt="..."> --}}
-          <div class="card">
+          <div class="card artigo">
             <div class="card-body">
               {{-- if(section == profissional) --}}
               <div class="icones_mural">

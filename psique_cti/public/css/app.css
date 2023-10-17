@@ -610,14 +610,6 @@ form .input_group button{
     /* height: 100%; */
 }
 
-.dark .container-mural{
-    width: 100%;
-    background-image: url('../img/fundo3.jpg');
-    background: cover; 
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-
 .titulo-mural{
     text-align: center;
     font-weight: bold;
@@ -906,7 +898,7 @@ input[type="file"]{
     --bg-white: #22395d;
     --bg-blue-dark: #142136;
     --bg-indigo: #7577e1;
-  }
+}
 
   .dark .nav span{
     color: #000;
@@ -921,6 +913,10 @@ input[type="file"]{
 .dark section.module.content {
     padding: 40px 0;
     background: #6E9EBB;
+}
+
+.dark section.module.content i{
+    color:#fff;
 }
 
 
@@ -968,8 +964,8 @@ input[type="file"]{
     color: #fff;
 }
 
-.dark h2 {
-    font-size: 2rem;
+.dark h2, h5{
+    font-size: 1.5rem;
     color: #fff;
 }
 
@@ -985,24 +981,64 @@ input[type="file"]{
     background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 3%, rgba(0, 0, 0, 0.3) 100%);
     color: #f5f5f5;
 }
-.dark .fa-solid, .fas {
+.dark .fa-solid, .fas{
     font-weight: 900;
     color:#000;
 }
 
-.dark footer a {
+.dark footer a{
     color: #000;
 }
 
-.dark .copyright {
+.dark .copyright{
     color:#000;
 }
 
-.dark  span {
+.dark  span{
     color: #000;
-    
 }
 
+.dark .container-mural{
+    width: 100%;
+    padding: 2%;
+
+    background-image: url('../img/fundo5.png');
+    background: cover; 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100%;
+    background-position: center center;
+}
+
+.dark .container-contato{
+    background-image: url('../img/fundo5.png');
+    /* transition: cubic-bezier(0.075, 0.82, 0.165, 1); */
+    /* background: cover; 
+    background-repeat: no-repeat;
+    background-attachment: fixed; */
+}
+
+.dark .card.artigo{
+    background-color: #37678f;
+    color: #e6e6e6;
+}
+
+.dark .card.artigo a{
+    color: #e6e6e6;
+}
+.dark .card.artigo a:hover{
+    color: #FFF34F;
+}
+
+.dark .icones_mural.fa-solid i{
+    color: #e6e6e6;
+    /* font-size: 20px;
+    transition: 0.2s; */
+}
+
+/* .dark .icones_mural a:hover{
+	color: #FFF34F;
+} */
 /* -----------------------------------------GENÉRICOS-------------------------------------- */
 .cursor_blocked{
     cursor: not-allowed !important;
