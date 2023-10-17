@@ -9,16 +9,12 @@ use App\Http\Controllers\CadastroController; //--> Informações adicionais
 use App\Http\Controllers\EventosController; // --> Eventos
 use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\LogOutController;
+use App\Http\Controllers\EmocoesController;
 use App\Mail\TestMail;
 
 
-Route::get('/', function () {
-    return view('index');
-})->name('home');
+Route::get('/', [MainController::class,'index'])->name('home');
 
-// Route::get('/mural', function () {
-//     return view('pages.mural');
-// });
 Route::get('/mural', [EventosController::class, 'selecionando'])->name('mural.mostrar');
 
 
@@ -27,46 +23,30 @@ Route::post('/contato', [ContatoController::class, 'mandaEmail'])->name('contato
 
 //socialite login urls
 Route::get('/googleLogin',[MainController::class, 'googleLogin'])->name('login.google.mostrar');
-Route::get('/auth/google/callback',[MainController::class, 'googleHandle']);
+Route::get('/auth/google/callback',[MainController::class, 'googleHandle'])->name('login.google.handle');
 
-Route::get('/login', function () {
-    return view('pages.login');
-})->name('login.mostrar');
+Route::get('/login', [LoginController::class, 'login'])->name('login.mostrar');
 
 Route::get('/logout', [LogOutController::class, 'logout'])->name('logout');
 
-Route::get('/cadastro', function () {
-    return view('pages.cadastro');
-})->name('cadastro.mostrar');
+Route::get('/cadastro', [CadastroController::class,'mostraForm'])->name('cadastro.mostrar');
 
-Route::post('/cadastro', 'App\Http\Controllers\CadastroController@processaForm')->name('cadastro.processar');
+Route::post('/cadastro', [CadastroController::class,'processaForm'])->name('cadastro.processar');
 
-Route::get('/triagem', function () {
-    return view('pages.triagem');
-});
+Route::get('/triagem', [CadastroController::class,'mostraForm'])->name('triagem.mostrar');
 
-Route::post('/triagem',
-['as'  =>'controller.triagem',
- 'uses'=>'App\Http\Controllers\TriagemController@verifica']);
+Route::post('/triagem',[TriagemController::class,'verifica'])->name('triagem.processar');
 
-Route::get('/emocoes', function () {
-    return view('pages.emocoes');
-});
+Route::get('/emocoes', [EmocoesController::class,'mostraEmocoes'])->name('emocoes.mostrar');
 
-Route::post('/emocoes', 'App\Http\Controllers\EmocoesController@registrarEmocao')->name('cademocao');
+Route::post('/emocoes', [EmocoesController::class,'registrarEmocao'])->name('emocoes.processar');
 
 //  Psico
-Route::get('/homepsico', function () {
-    return view('pages.psico.home');
-});
+Route::get('/homepsico', [MainController::class,'adminIndex'])->name('home_admin');
 
-Route::get('/adicionartigo', function () {
-    return view('pages.psico.addartigo');
-   });
+Route::get('/adicionartigo', [ArtigosController::class, 'index'])->name('artigos_adicionar.mostrar');
 
-Route::post('/adicionartigo',
-['as'  =>'controller.artigo',
- 'uses'=>'App\Http\Controllers\ArtigosController@verificaForm']);
+Route::post('/adicionartigo',[ArtigosController::class,'verificaForm'])->name('artigos_adicionar.processar');
 
 
 Route::get('/editartigo', function () {

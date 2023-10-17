@@ -41,4 +41,9 @@ class EmocoesController extends Controller
 
         return view('index');
     }
+
+    public function mostraEmocoes() 
+    {
+        return view('pages.emocoes');
+    }
 }

@@ -74,4 +74,19 @@ class MainController extends Controller
             dd($e->getMessage());
         }
     }
+
+    public function index() 
+    {
+        return view('index');
+    }
+
+    public function login() 
+    {
+        return view('pages.login');
+    }
+
+    public function adminIndex() 
+    {
+        return view('pages.psico.home');
+    }
 }
