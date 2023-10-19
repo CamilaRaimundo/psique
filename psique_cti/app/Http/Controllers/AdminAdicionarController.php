@@ -58,7 +58,7 @@ class AdminAdicionarController extends Controller
     {
         $aluno = Aluno::all();
         
-        return view('pages.admin.homeAdmin', compact('pro'));
+        return view('pages.admin.listaAluno', compact('aluno'));
     }
 
     public function inativarAtivarProfissional($cpf)
