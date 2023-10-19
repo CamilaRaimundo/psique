@@ -17,125 +17,146 @@
 
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link rel="shortcut icon" href="{{ asset('img/icone_cf.png') }}">
-
-  {{-- Login do Google --}}
-  {{-- <script src="https://accounts.google.com/gsi/client" async></script>
-  <script>
-    function handleCredentialResponse(response) {
-      if (response.credential) {
-        window.location.href = '/dashboard'; // Redireciona para a página de dashboard após o login
-        const userName = response.credential.displayName;
-        document.getElementById('welcomeMessage').innerText = `Bem-vindo, ${userName}!`;
-      } else {
-        console.log('Usuário não fez login.');
-      }
-    }
-    window.onload = function () {
-      google.accounts.id.initialize({
-        client_id: "221599725357-dan13di9kqn4esjv37raoqr6etuvbkl3.apps.googleusercontent.com",
-        callback: handleCredentialResponse
-      });
-      google.accounts.id.renderButton(
-        document.getElementById("buttonDiv"),
-        { 
-          theme: "outline", 
-          size: "large", 
-          class:"g_id_signin",
-          type: "standard",
-          shape: "pill",
-          text: "signin",
-          logo_alignment:"left"
-        }  // customization attributes
-      );
-      google.accounts.id.prompt(); // also display the One Tap dialog
-    }
-  </script> --}}
-
 </head>
 
 <body>
+  <header>
+    <a href="{{route('home')}}"><img src="{{ asset('img/logo_completa_sf.png') }}" alt="psiquê"></a>
 
-    <header>
-        <a href="{{route('home')}}"><img src="{{ asset('img/logo_completa_sf.png') }}" alt="psiquê"></a>
+    <div class="nav">
+      @if((Auth::check())) {{-- Vê se está logado --}}
+        @if(Auth::user()->nivel_de_acesso==-1) {{-- Pega dados da sessão --}}
+          <a href="{{route('Admin')}}">Profissionais</a>
+    
+          <span>|</span>
 
-        <div class="nav">
-        <a href="{{route('home')}}">Home</a>
-        
+          <a href="{{route('listaAluno')}}">Alunos</a>
+
+        @elseif(Auth::user()->nivel_de_acesso==1) {{-- Pega dados da sessão --}}
+          <a href="{{route('home')}}" id="home">Home</a>
+
+          <span>|</span>
+    
+          <a href="{{route('mural.mostrar')}}" id="n-mural">Mural</a>
+    
+          <span>|</span>
+    
+          <a href="{{route('contato.mostrar')}}" id="n-contato">Contato</a>
+
+        @elseif(Auth::user()->nivel_de_acesso==-2) {{-- Pega dados da sessão --}}
+          <a href="{}"><i class="fa-solid fa-house"></i></a>
+
+          <span>|</span>
+
+          <a href="{{route('mural.mostrar')}}"><i class="fa-solid fa-calendar-days"></i></a>
+
+          <span>|</span>
+
+          <a href="/estatisticas"><i class="fa-solid fa-chart-pie"></i></a>
+
+          <span>|</span>
+
+          <a href="/encontros"><i class="fa-solid fa-pencil"></i></a>
+
+        @endif 
+
+      @else
+        <a href="{{route('home')}}" id="home">Home</a>
+
         <span>|</span>
-
-        <a href="{{route('mural.mostrar')}}">Mural</a>
-
+  
+        <a href="{{route('mural.mostrar')}}" id="n-mural">Mural</a>
+  
         <span>|</span>
-
-        <a href="{{route('contato.mostrar')}}">Contato</a>
-        
-        </div>
-
-        <div>
-        <a href="{{route('cadastro.mostrar')}}" class="icones-padrao"><i class="fa-solid fa-user" ></i></a>
-        <a href="#" class="icones-padrao"><i class="fa-solid fa-circle-half-stroke"></i></a>
-        </div>
-
-    {{-- Pagina Login --}}
-    </header>
-
-    <div class="container_login"> 
-        <div class="login_img">
-            <img src="{{ asset('img/login-img.png') }}" alt="">    
-        </div>
-        
-        <div class="login_caixas">
-          <div class="caixa_login_1">
-              <div class="caixa_login_2">
-                  <div class="conteudo_login">
-                      <h2>Login</h2>
-                      <div class="linha-branca"></div>
-                      <p>Bem-vind<img src="{{ asset('img/icone_sf.png') }}"></p>
-                      <center>
-                        {{-- <div id="buttonDiv"></div> --}}
-                        <a href="{{route('login.google.mostrar')}}">
-                          <img src="{{URL::asset('img/google.png')}}" height="45px">
-                        </a>
-                      </center>
-
-                  </div>
-              </div>
-          </div>
-      </div>
-
+  
+        <a href="{{route('login.mostrar')}}" id="n-contato">Contato</a>
+      @endif
     </div>
 
-    {{-- rodape --}}
-    <footer>
-        <div class="img-footer">
-          <img src="{{ asset('img/icone_sf.png') }}" alt="nicolau" width="80px">
-        </div>
-    
-        <div class="navegacao">
-          <a href="{{route('home')}}">Home</a>
-          
-          <span>|</span>
-    
-          <a href="{{route('mural.mostrar')}}">Mural</a>
-    
-          <span>|</span>
-    
-          <a href="{{route('contato.mostrar')}}">Contato</a>
-    
-          <span>|</span>
-    
-          <a href="{{route('login.mostrar')}}">Login</a>
-        </div>
-    
-        <div class="copyright">
-          © 2023 Colégio Técnico Industrial "Prof. Isaac Portal Róldan"
-        </div>
-      </footer>
+    <div  class="icones-padrao">
+      <a href="{{route('login.mostrar')}}" class="icones-padrao"><i class="fa-solid fa-user"></i></a>
+      <button onclick id="toggle"><i class="fa-solid fa-circle-half-stroke"></i></button>
+    </div>
 
-      <script src="{{ asset('js/script.js') }}"></script>
+  </header>
+
+  <div class="container_login"> 
+    <div class="box_img1 secao-ocultar">
+      <img src="{{ asset('img/login-img.png') }}">    
+    </div>
+      
+    <div class="login_caixas">
+      <div class="caixa_login_1">
+        <div class="caixa_login_2">
+          <div class="conteudo_login">
+            <h2>Login</h2>
+            <div class="linha-branca"></div>
+            <p>Bem-vind<img src="{{ asset('img/icone_sf.png')}}" class="nicolau_login"></p>
+            <a href="{{URL::to('googleLogin')}}"><img src="{{asset('img/google.png')}}" width="80%"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  {{-- rodape --}}
+  <footer>
+    <div class="img-footer">
+      <img src="{{ asset('img/icone_sf.png') }}" alt="nicolau" width="80px">
+    </div>
+
+    <div class="navegacao">
+      <a href="{{route('home')}}">Home</a>
+      
+      <span>|</span>
+
+      <a href="{{route('mural.mostrar')}}">Mural</a>
+
+      <span>|</span>
+
+      <a href="{{route('contato.mostrar')}}">Contato</a>
+
+      <span>|</span>
+
+      <a href="{{route('login.mostrar')}}">Login</a>
+    </div>
+
+    <div class="copyright">
+      © 2023 Colégio Técnico Industrial "Prof. Isaac Portal Róldan"
+    </div>
+  </footer>
+
+  <script src="{{ asset('js/script.js') }}"></script>
   
   <!-- Javascript bootstrap -->
   <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 
+  {{-- DARK MODE --}}
+  <script>
+    const toggle = document.getElementById("toggle");
+    const refresh = document.getElementById("refresh");
+    const theme = window.localStorage.getItem("theme");
+
+    /* verifica se o tema armazenado no localStorage é escuro
+    se sim aplica o tema escuro ao body */
+    if (theme === "dark") document.body.classList.add("dark");
+
+    // event listener para quando o botão de alterar o tema for clicado
+    toggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      if (theme === "dark") {
+        window.localStorage.setItem("theme", "light");
+      } else window.localStorage.setItem("theme", "dark");
+    });
+
+    refresh.addEventListener("click", () => {
+      window.location.reload();
+    });
+
+    localStorage.setItem('theme', 'dark'); 
+    //acessado o tema da maquina do usuário
+    localStorage.getItem('theme'); 
+  </script>
 </body>
 </html>

@@ -79,8 +79,7 @@
 
           <span>|</span>
 
-          <a href="{{route('evento.mostrar')}}"><i class="fa-solid fa-calendar-days"></i></a>
-          <!--<a href="{ {route('artigo.mostrar')}}">Mural</a>-->
+          <a href="{{route('mural.mostrar')}}"><i class="fa-solid fa-calendar-days"></i></a>
 
           <span>|</span>
 
@@ -90,70 +89,19 @@
 
           <a href="/encontros"><i class="fa-solid fa-pencil"></i></a>
 
-        @else
-          <a href="{{route('home')}}" id="home">Home</a>
-
-          <span>|</span>
-    
-          <a href="{{route('mural.mostrar')}}" id="n-mural">Mural</a>
-    
-          <span>|</span>
-    
-          <a href="{{route('login.mostrar')}}" id="n-contato">Contato</a>
-
-
         @endif 
+
+      @else
+        <a href="{{route('home')}}" id="home">Home</a>
+
+        <span>|</span>
+  
+        <a href="{{route('mural.mostrar')}}" id="n-mural">Mural</a>
+  
+        <span>|</span>
+  
+        <a href="{{route('login.mostrar')}}" id="n-contato">Contato</a>
       @endif
-
-
-
-      {{-- if(usuários comuns) --}}   {{-- class="normal" --}}
-      
-
-      {{-- <script>
-        var $divLogin = $("#home");
-        $divLogin.click(function(){
-        if ($divLogin.hasClass("normal"))
-          $divLogin.addClass("branco").removeClass("normal");
-        else
-          $divLogin.addClass("normal").removeClass("branco");
-        });
-      </script> --}}
-
-      {{-- <a href="/" class="active">Home</a> --}}
-      {{-- else if(psicólogo) --}}
-      {{-- <a href="/homepsico"><i class="fa-solid fa-house"></i></a>
-
-      <span>|</span>
-
-      <a href="{{route('evento.mostrar')}}"><i class="fa-solid fa-calendar-days"></i></a>
-      <!--<a href="{ {route('artigo.mostrar')}}">Mural</a>-->
-
-      <span>|</span>
-
-      <a href="/estatisticas"><i class="fa-solid fa-chart-pie"></i></a>
-
-      <span>|</span>
-
-      <a href="/encontros"><i class="fa-solid fa-pencil"></i></a> --}}
-
-      {{-- else if(Admin) --}}
-      {{-- <a href="/Admin">Home</a>
-    
-      <span>|</span>
-
-      <a href="{{route('evento.mostrar')}}">Mural</a> --}}
-      {{-- <a href="{{route('evento.mostrar', 'artigo.ver' )}}">Mural</a> --}}
-      
-
-      {{-- <a href="{{route('artigo.mostrar')}}">Mural</a> --}}
-
-      {{-- <span>|</span> --}}
-
-      {{-- if(usuários comuns) --}}
-      {{-- <a href="{{route('contato.mostrar')}}">Contato</a> --}}
-      {{-- else if (psicólogo) --}}
-      {{-- <a href="{{route('estatistica.mostrar')}}">Estatísticas</a> --}}
     </div>
 
     {{-- <div>
