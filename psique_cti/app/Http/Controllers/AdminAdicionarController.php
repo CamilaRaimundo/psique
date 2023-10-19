@@ -56,9 +56,9 @@ class AdminAdicionarController extends Controller
 
     public function pegandoDadosAlunos()
     {
-        $aluno = Aluno::all();
+        $alunos = Aluno::all();
         
-        return view('pages.admin.listaAluno', compact('aluno'));
+        return view('pages.admin.lista_aluno', compact('alunos'));
     }
 
     public function inativarAtivarProfissional($cpf)

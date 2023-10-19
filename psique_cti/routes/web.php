@@ -71,9 +71,9 @@ Route::post('/AdicionarPro', 'App\Http\Controllers\AdminAdicionarController@pega
 
 Route::post('/inativar-ativar-profissional/{cpf}', [AdminAdicionarController::class, 'inativarAtivarProfissional']);
 
-Route::get('/Admin', function () {
-    return view('pages.admin.homeAdmin');
-});
+// Route::get('/Admin', function () {
+//     return view('pages.admin.homeAdmin');
+// });
 
 Route::get('/Admin', [AdminAdicionarController::class, 'pegandoDados'])->name('Admin');
 
