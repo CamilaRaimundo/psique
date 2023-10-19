@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
+use App\Models\Aluno;
 use Illuminate\Http\Request;
 use App\Models\Profissional;
 
@@ -49,6 +50,13 @@ class AdminAdicionarController extends Controller
     public function pegandoDados()
     {
         $pro = Profissional::all();
+        
+        return view('pages.admin.homeAdmin', compact('pro'));
+    }
+
+    public function pegandoDadosAlunos()
+    {
+        $aluno = Aluno::all();
         
         return view('pages.admin.homeAdmin', compact('pro'));
     }
