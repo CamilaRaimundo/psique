@@ -55,15 +55,15 @@
     <a href="{{route('home')}}"><img src="{{ asset('img/logo_completa_sf.png') }}" alt="psiquê"></a>
 
     <div class="nav">
-      @if((Auth::check())) {{-- Vê se está logado --}}
-        @if(Auth::user()->nivel_de_acesso==-1) {{-- Pega dados da sessão --}}
+      @if((Auth::check()))
+        @if(Auth::user()->nivel_de_acesso==-1)  
           <a href="{{route('Admin')}}">Profissionais</a>
     
           <span>|</span>
 
           <a href="{{route('listaAluno')}}">Alunos</a>
 
-        @elseif(Auth::user()->nivel_de_acesso==1) {{-- Pega dados da sessão --}}
+        @elseif(Auth::user()->nivel_de_acesso==1)  
           <a href="{{route('home')}}" id="home">Home</a>
 
           <span>|</span>
@@ -74,7 +74,7 @@
     
           <a href="{{route('contato.mostrar')}}" id="n-contato">Contato</a>
 
-        @elseif(Auth::user()->nivel_de_acesso==-2) {{-- Pega dados da sessão --}}
+        @elseif(Auth::user()->nivel_de_acesso==-2)  
           <a href="{}"><i class="fa-solid fa-house"></i></a>
 
           <span>|</span>
