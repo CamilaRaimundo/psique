@@ -9,7 +9,7 @@
 
             <div class="linha"></div>
             <p>Me ajude a te conhecer melhor!</p>
-            <form onsubmit="verificarEnvio(event)" action="{{ route('controller.triagem') }}" method="POST">
+            <form onsubmit="verificarEnvio(event)" action="{{ route('triagem.processa') }}" method="POST">
                 {{ csrf_field() }} 
                 <div class="input_group">
                     <label for="qtd_pessoas">Com quantas pessoas você mora?</label>
@@ -43,8 +43,8 @@
 
                 {{-- fazer uma condição em que se a resposta a cima for "sim", a descrição dos nomes será "required" --}}
                
-                <div class="input_group" id="idMedic" style="display: none;">
-                <label for="medicamento">Se sim, quais?</label> 
+                 <div class="input_group" id="idMedic" style="display: none;" > 
+                <label for="medicamento">Se sim, quais?</label>  
                 <input type="text" id="medicamento" name= "medicamento" placeholder="Nome da medicação"> 
                 </div>
                

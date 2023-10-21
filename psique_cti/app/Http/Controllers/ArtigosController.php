@@ -48,27 +48,21 @@ class ArtigosController extends Controller
 
         //dd($req->all()); -- parou
         // Process and save data (if validation passes)
-        $artigos1 = new Mural();
+        $artigo = new Publicacao_Recomendacao();
 
 
-        $artigos1->descricao = $req->input('descricao_publicacao');
-        $artigos1->titulo = $req->input('titulo_publicacao');
+        $artigo->descricao = $req->input('descricao_publicacao');
+        $artigo->titulo = $req->input('titulo_publicacao');
     
         if ($req->hasFile('img_ilustrativa')) {
-            $path = $req->file('img_ilustrativa')->store('event_images');
-            $artigos1->imagem = $path;
+            $path = $req->file('img_ilustrativa')->store('artigo_images');
+            $artigo->imagem = $path;
         }
 
-        $artigos1->save();
-    
-
-        $artigos2 = new Publicacao_Recomendacao();
-
-        $artigos2->link = $req->input('link_publicacao');
-        $artigos2->autor = $req->input('autor_publicacao');
-        $artigos2->id_mural = $artigos1->id;
-    
-        $artigos2->save();
+        $artigo->link = $req->input('link_publicacao');
+        $artigo->autor = $req->input('autor_publicacao');
+       
+        $artigo->save();
 
         //dd($artigos2);
     
@@ -76,7 +70,7 @@ class ArtigosController extends Controller
        return redirect()->route('artigo.ver');
     }
     
-    public function editarArtigo(Request $request, $id_mural)
+    public function editarArtigo(Request $request)
     {
         $validatedData = $request->validate([
             // Definir regras de validação para o formulário de edição
@@ -106,7 +100,7 @@ class ArtigosController extends Controller
      {
         //  $eventos = Evento::with('mural')->get(); return view('pages.mural', compact('eventos'));
         $artigo = Publicacao_Recomendacao::all();
-        return view('pages.mural', compact('artigos') );
+        return view('pages.mural', compact('artigo') );
    
      }
 

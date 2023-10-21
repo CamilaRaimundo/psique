@@ -21,7 +21,7 @@ class EncontrosController extends Controller
             'data' => 'required|date|after_or_equal:2023-01-01',
             'ra_pesquisa' => 'required|numeric',
         ]);
-    
+       
         // Cria um novo registro de encontro com os dados do formulário
         Encontro::create([
             'data' => $request->input('data'),
@@ -30,7 +30,8 @@ class EncontrosController extends Controller
         ]);
     
         // Redirecionar para a página de encontros com uma mensagem de sucesso
-        return view ('pages.psico.home');
+        return redirect()->route('home_psico');
+
     
 }
 }

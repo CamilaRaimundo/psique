@@ -230,6 +230,7 @@ footer a:hover{
     color: #000;
     
 }
+
 /* --------------------------------------- PARALLAX (index) ---------------------------------------- */
 .wrapper{
     width: 100%;
@@ -241,7 +242,7 @@ main{
     background-color: #fff;
 }
 
-.container-parallax{
+.-parallax{
     width: 100%;
     max-width: 720px;
     margin: 0 auto;
@@ -500,6 +501,13 @@ form .input_group button{
     min-height: 100vh;
 }
 
+.dark .box-form1{
+    background-image: url('../img/fundo5.png');
+    /* background: cover; 
+    background-repeat: no-repeat;
+    min-height: 100vh; */
+}
+
 .form-box-form1{
     background-color:  #4785b2b3;
     backdrop-filter: blur(40px);
@@ -747,6 +755,11 @@ input[type="file"]{
     align-items: center;
 }
 
+.dark .container-home_pro{
+    background-image: url('../img/fundo5.png');
+    background: cover; 
+}
+
 .box_notificacao{
     width: 40%;
     min-height: 100vh;
@@ -793,6 +806,23 @@ input[type="file"]{
     padding: 3%;
     background-color: #fffbc1;    
 }
+
+.dark .container-admin{
+    background-color: #142136;  
+}
+
+.dark .text-admin{
+    color:white;
+}
+
+.dark .text-aluno{
+    color:white;
+}
+
+.dark .table{
+color:white;
+}
+
 .container-admin button{
     margin-bottom: 3%;
 }
@@ -808,6 +838,10 @@ input[type="file"]{
 /* --------------------------------------- EMOÇÕES --------------------------------------- */
 .amarelinho{
     background-color: #faf7c8 !important;
+}
+
+.dark .amarelinho{
+    background-color:  #6E9EBB !important;
 }
 
 .caixa-emojis input[type='radio'] {
@@ -835,6 +869,9 @@ input[type="file"]{
     padding: 1%;
 }
 
+.dark .pergunta{
+    color: white;
+}
 
 /* --------------------------------------- ESTATÍSTICAS ------------------- */
 .container-graphic{
@@ -847,6 +884,10 @@ input[type="file"]{
     padding: 2%;
     /* background-image: radial-gradient(circle, rgba(0, 0, 0, 0) 50%, rgba(236, 215, 29, 0.36) 100%); */
 }
+
+/* .dark .pie-chart{
+    color: white;
+} */
 
 .pie-chart{
     color: #000;
@@ -862,6 +903,10 @@ input[type="file"]{
     background-color: #fffb7ab2;
     border-radius: 20px;
     box-shadow: 8px 5px 2px 1px rgba(0, 0, 0, 0.4); /*fazer sombra*/
+}
+
+.dark .caixa_encontro{
+    background-color: #fffeebb2;
 }
 
 .btn-secondary{

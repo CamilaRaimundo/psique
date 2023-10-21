@@ -5,6 +5,8 @@
 @section('conteudo')
   <div class="container-admin">
     <button type="button" class="btn btn-primary btn-lg"><a href="/AdicionarPro">Adicionar profissional</a></button>
+    
+    <div class="text-admin">
     <h3>Profissionais cadastrados</h3>
     <table class="table">
       <thead>
@@ -32,6 +34,7 @@
             <td>
               <!-- <button type="button" class="btn btn-danger">Inativar</button>
               <button type="button" class="btn btn-warning">Ativar</button> -->
+            </div>
 
               <form method="POST" action="{{ url('/inativar-ativar-profissional', $pro->cpf) }}">
                 @csrf

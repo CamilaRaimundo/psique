@@ -52,7 +52,7 @@
                 </div>
 
                 <div class="input_group">
-                    <button>Salvar</button>
+                    <button type="submit">Salvar</button>
                 </div>
             </form>
         </div>

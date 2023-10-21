@@ -62,7 +62,7 @@ class TriagemController extends Controller
                 
                 $triagem->save();
                 
-                return view('index');
+                return view('triagem.mostrars');
     }
 
 }

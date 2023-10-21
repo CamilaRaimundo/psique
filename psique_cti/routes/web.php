@@ -44,10 +44,10 @@ Route::get('/', [MainController::class, 'index'])->name('home');
 
     Route::get('/cadastro', [CadastroController::class, 'mostraForm'])->name('cadastro.mostrar');
     Route::post('/cadastro', [CadastroController::class, 'processaForm'])->name('cadastro.processar');
+    
+Route::get('/triagem', function () {return view('pages.triagem');})->name('triagem.mostrar');
+Route::post('/triagem', [TriagemController::class, 'verifica'])->name('triagem.processa');
 
-Route::get('/triagem', function () {return view('pages.triagem');});
-
-Route::post('/triagem', ['as'  =>'controller.triagem', 'uses'=>'App\Http\Controllers\TriagemController@verifica']);
 
 Route::get('/emocoes', function () { return view('pages.emocoes'); });
 
@@ -55,6 +55,13 @@ Route::post('/emocoes', 'App\Http\Controllers\EmocoesController@registrarEmocao'
 
 //  Psico
 Route::get('/homepsico', function () { return view('pages.psico.home'); })->name('home_psico');
+
+Route::get('/estatisticas', [GraficosController::class, 'pegaEmocoes'])->name('pegaEmo');
+
+
+Route::get('/encontros', [EncontrosController::class, 'mostrar'])->name('encontros.mostrar');
+
+Route::POST('/encontros', [EncontrosController::class, 'store'])->name('encontros.store');
 
 
 Route::get('/detalhesaluno', function () { return view('pages.psico.detalhesaluno'); });
@@ -85,9 +92,14 @@ Route::get('/estatisticas', [GraficosController::class, 'pegaEmocoes'])->name('p
 
 Route::get('/listaAluno', [AdminAdicionarController::class, 'pegandoDadosAlunos'])->name('listaAluno');
 
-Route::get('/listaAluno', function () {
-    return view('pages.admin.lista_aluno');
-});
+//Route::post('/excluir-aluno/{ra}', [AdminAdicionarController::class, 'excluirAluno']);
+Route::delete('/excluir-aluno/{ra}/{email}', [AdminAdicionarController::class, 'excluirAluno'])->name('excluirAluno');
+
+
+
+// Route::get('/listaAluno', function () {
+//     return view('pages.admin.lista_aluno');
+// });
 
 Route::get('/EditarPro', function () {
     return view('pages.admin.editarPro');
@@ -110,13 +122,8 @@ Route::get('/Admin', [AdminAdicionarController::class, 'pegandoDados'])->name('A
 
 //Route::post('/estatisticas', 'App\Http\Controllers\GraficosController@pegaEmocoes')->name('pegaEmo');
 
-Route::get('/estatisticas', [GraficosController::class, 'pegaEmocoes'])->name('pegaEmo');
-
-
-Route::get('/encontros', [EncontrosController::class, 'mostrar'])->name('encontros.mostrar');
-Route::POST('/encontros', [EncontrosController::class, 'store'])->name('encontros.store');
 
 // Route::get('/testejoao',['as'=>'alunos','uses'=>'App\Http\Controllers\AlunosController@index']);
-Route::get('/encontros', function () {
-    return view('pages.psico.encontros');
-});
+// Route::get('/encontros', function () {
+//     return view('pages.psico.encontros');
+// });
