@@ -43,7 +43,7 @@ class AdminAdicionarController extends Controller
 
         //dd($profissional);
 
-        return redirect()->route("Admin");
+        return redirect()->route("home_admin");
     }
 
     public function pegandoDados()

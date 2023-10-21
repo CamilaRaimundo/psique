@@ -10,6 +10,7 @@ use App\Http\Controllers\EventosController; // --> Eventos
 use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\LogOutController;
 use App\Http\Controllers\EmocoesController;
+use App\Http\Controllers\AdminAdicionarController;
 use App\Mail\TestMail;
 
 

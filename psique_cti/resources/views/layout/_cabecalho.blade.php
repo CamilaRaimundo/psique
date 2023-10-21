@@ -58,11 +58,11 @@
     <div class="nav">
       @if((Auth::check()))
         @if(Auth::user()->nivel_de_acesso==-1)  
-          <a href="{{route('Admin')}}">Profissionais</a>
+          <a href="{{route('home_admin')}}">Profissionais</a>
     
           <span>|</span>
 
-          <a href="{{route('listaAluno')}}">Alunos</a>
+          <a href="{{route('admin_adicionar_lista.mostrar')}}">Alunos</a>
 
         @elseif(Auth::user()->nivel_de_acesso==1)  
           <a href="{{route('home')}}" id="home">Home</a>
