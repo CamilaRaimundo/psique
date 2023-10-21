@@ -8,8 +8,8 @@ use App\Models\alunos;
 class AlunosController extends Controller
 {
     //
-    public function index() {
-        $alunos = alunos::all();
-        return view ("alunos",compact("alunos"));
+    public function index() 
+    {
+        return view('pages.psico.addartigo');
     }
 }

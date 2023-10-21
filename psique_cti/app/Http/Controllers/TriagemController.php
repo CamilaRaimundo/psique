@@ -65,4 +65,8 @@ class TriagemController extends Controller
                 return view('index');
     }
 
+    public function mostraForm() 
+    {
+        return view('pages.triagem');
+    }
 }

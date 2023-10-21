@@ -17,10 +17,7 @@ class MainController extends Controller
     public function googleLogin(){
         return Socialite::driver('google')->redirect();
     }
-
-    public function index() {
-        return view()
-    }
+    
     public function googleHandle(){
         try{
             
@@ -72,5 +69,20 @@ class MainController extends Controller
         }catch(Exception $e){
             dd($e->getMessage());
         }
+    }
+
+    public function index() 
+    {
+        return view('index');
+    }
+
+    public function login() 
+    {
+        return view('pages.login');
+    }
+
+    public function adminIndex() 
+    {
+        return view('pages.psico.home');
     }
 }
