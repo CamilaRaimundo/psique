@@ -64,7 +64,7 @@
                       </div>
                     </div>
 
-                    <a href="{{route('eventos_edit.mostrar')}}"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="{{route('eventos_editar_processar')}}"><i class="fa-solid fa-pen-to-square"></i></a>
                   </div>
                 </div>
               </div>
@@ -77,7 +77,7 @@
         {{-- ARTIGOS --}}
         <div class="titulo-mural"> 
           {{-- if(section == profissional)--}}
-          <h1>Artigos <a href="{{route('artigos_add.mostrar')}}" class="icones-padrao"><i class="fa-solid fa-newspaper"></i></a></h1>  
+          <h1>Artigos <a href="{{route('artigos_adicionar.processar')}}" class="icones-padrao"><i class="fa-solid fa-newspaper"></i></a></h1>  
           {{-- else --}}
           {{-- <h1>Artigos</h1>   --}}
         </div> 
