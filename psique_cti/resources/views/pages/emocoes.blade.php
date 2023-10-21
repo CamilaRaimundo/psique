@@ -14,6 +14,7 @@
 
             <form action="{{ route('cademocao') }}" method="POST">
             {{ csrf_field() }}
+            <input type="hidden" name="ra" value="{{ $ra }}">
 
                 <div class="caixa-emojis selecionar">
 

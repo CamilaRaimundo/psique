@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#003b63">
   <title>@yield('titulo')</title>
+  
 
   <!-- Import Google Icon Font -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -55,15 +56,15 @@
     <a href="{{route('home')}}"><img src="{{ asset('img/logo_completa_sf.png') }}" alt="psiquê"></a>
 
     <div class="nav">
-      @if((Auth::check())) {{-- Vê se está logado --}}
-        @if(Auth::user()->nivel_de_acesso==-1) {{-- Pega dados da sessão --}}
+      @if((Auth::check()))
+        @if(Auth::user()->nivel_de_acesso==-1)  
           <a href="{{route('Admin')}}">Profissionais</a>
     
           <span>|</span>
 
           <a href="{{route('listaAluno')}}">Alunos</a>
 
-        @elseif(Auth::user()->nivel_de_acesso==1) {{-- Pega dados da sessão --}}
+        @elseif(Auth::user()->nivel_de_acesso==1)  
           <a href="{{route('home')}}" id="home">Home</a>
 
           <span>|</span>
@@ -74,13 +75,12 @@
     
           <a href="{{route('contato.mostrar')}}" id="n-contato">Contato</a>
 
-        @elseif(Auth::user()->nivel_de_acesso==-2) {{-- Pega dados da sessão --}}
+        @elseif(Auth::user()->nivel_de_acesso==-2)  
           <a href="{}"><i class="fa-solid fa-house"></i></a>
 
           <span>|</span>
 
-          <a href="{{route('evento.mostrar')}}"><i class="fa-solid fa-calendar-days"></i></a>
-          <!--<a href="{ {route('artigo.mostrar')}}">Mural</a>-->
+          <a href="{{route('mural.mostrar')}}"><i class="fa-solid fa-calendar-days"></i></a>
 
           <span>|</span>
 
@@ -90,70 +90,19 @@
 
           <a href="/encontros"><i class="fa-solid fa-pencil"></i></a>
 
-        @else
-          <a href="{{route('home')}}" id="home">Home</a>
-
-          <span>|</span>
-    
-          <a href="{{route('mural.mostrar')}}" id="n-mural">Mural</a>
-    
-          <span>|</span>
-    
-          <a href="{{route('login.mostrar')}}" id="n-contato">Contato</a>
-
-
         @endif 
+
+      @else
+        <a href="{{route('home')}}" id="home">Home</a>
+
+        <span>|</span>
+  
+        <a href="{{route('mural.mostrar')}}" id="n-mural">Mural</a>
+  
+        <span>|</span>
+  
+        <a href="{{route('login.mostrar')}}" id="n-contato">Contato</a>
       @endif
-
-
-
-      {{-- if(usuários comuns) --}}   {{-- class="normal" --}}
-      
-
-      {{-- <script>
-        var $divLogin = $("#home");
-        $divLogin.click(function(){
-        if ($divLogin.hasClass("normal"))
-          $divLogin.addClass("branco").removeClass("normal");
-        else
-          $divLogin.addClass("normal").removeClass("branco");
-        });
-      </script> --}}
-
-      {{-- <a href="/" class="active">Home</a> --}}
-      {{-- else if(psicólogo) --}}
-      {{-- <a href="/homepsico"><i class="fa-solid fa-house"></i></a>
-
-      <span>|</span>
-
-      <a href="{{route('evento.mostrar')}}"><i class="fa-solid fa-calendar-days"></i></a>
-      <!--<a href="{ {route('artigo.mostrar')}}">Mural</a>-->
-
-      <span>|</span>
-
-      <a href="/estatisticas"><i class="fa-solid fa-chart-pie"></i></a>
-
-      <span>|</span>
-
-      <a href="/encontros"><i class="fa-solid fa-pencil"></i></a> --}}
-
-      {{-- else if(Admin) --}}
-      {{-- <a href="/Admin">Home</a>
-    
-      <span>|</span>
-
-      <a href="{{route('evento.mostrar')}}">Mural</a> --}}
-      {{-- <a href="{{route('evento.mostrar', 'artigo.ver' )}}">Mural</a> --}}
-      
-
-      {{-- <a href="{{route('artigo.mostrar')}}">Mural</a> --}}
-
-      {{-- <span>|</span> --}}
-
-      {{-- if(usuários comuns) --}}
-      {{-- <a href="{{route('contato.mostrar')}}">Contato</a> --}}
-      {{-- else if (psicólogo) --}}
-      {{-- <a href="{{route('estatistica.mostrar')}}">Estatísticas</a> --}}
     </div>
 
     {{-- <div>
@@ -162,8 +111,13 @@
     </div> --}}
 
     <div  class="icones-padrao">
-      <a href="{{route('login.mostrar')}}" class="icones-padrao"><i class="fa-solid fa-user"></i></a>
+      @if (Auth::guest())
+        <a href="{{route('login.mostrar')}}" class="icones-padrao"><i class="fa-solid fa-user"></i></a>
+      @elseif(Auth::check())
+        <a href="{{ route('logout') }}" class="icones-padrao"><i class="fa-solid fa-right-to-bracket"></i></a>
+      @endif
       <button onclick id="toggle"><i class="fa-solid fa-circle-half-stroke"></i></button>
+    </div>
 
       {{-- TESTANDO POP-UP --> caso a pessoa faça o login pela primeira vez no dia - deve exibir o pop-up --}}
       {{-- <button class="teste"><i class="fa-solid fa-hippo"></i></button> --}}
@@ -177,7 +131,7 @@
           </div>
         </div>
       </div> --}}
-    </div>
+    
     
 
     {{-- -----------------------------POP-UP------------------------------- --}}
