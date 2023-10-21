@@ -7,14 +7,8 @@ use App\Http\Controllers\TriagemController; //--> Triagem
 use App\Http\Controllers\ArtigosController; //--> Artigos
 use App\Http\Controllers\CadastroController; //--> Informações adicionais
 use App\Http\Controllers\EventosController; // --> Eventos
-<<<<<<< HEAD
-use App\Http\Controllers\AdminAdicionarController; // --> Admin
-use App\Http\Controllers\MuralController; // --> Mural
-use App\Http\Controllers\GraficosController; // --> graficos
-=======
 use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\LogOutController;
->>>>>>> 60dc20356465021e830ab4bdb56da56343cbe99a
 use App\Mail\TestMail;
 
 
@@ -25,22 +19,7 @@ Route::get('/', function () {
 // Route::post('/mural', function () {
 //     return view('pages.mural');
 // });
-<<<<<<< HEAD
-Route::get('/mural', [MuralController::class, 'selecionando' ])->name('evento.mostrar', 'artigo.ver');
-
-
-Route::delete('/excluir-evento/{id}', 'EventosController@excluirEvento')->name('excluir-evento');
-
-
-
-//Route::post('/excluir-evento/{id}', 'App\Http\Controllers\EventosController@excluir');
-
-
-//Route::post('/pages/psico/mural/{id_mural}', 'App\Http\Controllers\EventosController@excluir')->name('mural');
-
-=======
 Route::get('/mural', [EventosController::class, 'selecionando'])->name('mural.mostrar');
->>>>>>> 60dc20356465021e830ab4bdb56da56343cbe99a
 
 
 Route::get('/contato', [ContatoController::class, 'mostraForm'])->name('contato.mostrar');

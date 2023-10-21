@@ -151,19 +151,11 @@
       {{-- <span>|</span> --}}
 
       {{-- if(usuários comuns) --}}
-<<<<<<< HEAD
-      {{-- <a href="/contato">Contato</a> --}}
-=======
       {{-- <a href="{{route('contato.mostrar')}}">Contato</a> --}}
->>>>>>> 60dc20356465021e830ab4bdb56da56343cbe99a
       {{-- else if (psicólogo) --}}
       {{-- <a href="{{route('estatistica.mostrar')}}">Estatísticas</a> --}}
     </div>
 
-<<<<<<< HEAD
-    <div  class="icones-padrao">
-      <a href="/login" class="icones-padrao"><i class="fa-solid fa-user"></i></a>
-=======
     {{-- <div>
       <a href="{{route('login.mostrar')}}" class="icones-padrao"><i class="fa-solid fa-user" ></i></a>
       <a href="#" class="icones-padrao"><i class="fa-solid fa-circle-half-stroke"></i></a>
@@ -171,33 +163,20 @@
 
     <div  class="icones-padrao">
       <a href="{{route('login.mostrar')}}" class="icones-padrao"><i class="fa-solid fa-user"></i></a>
->>>>>>> 60dc20356465021e830ab4bdb56da56343cbe99a
       <button onclick id="toggle"><i class="fa-solid fa-circle-half-stroke"></i></button>
 
       {{-- TESTANDO POP-UP --> caso a pessoa faça o login pela primeira vez no dia - deve exibir o pop-up --}}
       {{-- <button class="teste"><i class="fa-solid fa-hippo"></i></button> --}}
 
-<<<<<<< HEAD
-      <div class="popup-wrapper">
-=======
       {{-- <div class="popup-wrapper">
->>>>>>> 60dc20356465021e830ab4bdb56da56343cbe99a
         <div class="popup">
           <div class="popup-content">
             <h2>Registro de Emoções</h2>
             <p>Como você se sente hoje? Não há registros hoje, registre já, clicando no botão abaixo!</p>
-<<<<<<< HEAD
-            {{-- <button class="popup-close">Cancelar</button>   --}}
-            <button class="btn-confirma"><a href="/emocoes">Redirecionar!</a></button>
-          </div>
-        </div>
-      </div>
-=======
             <button class="btn-confirma"><a href="/emocoes">Redirecionar!</a></button>
           </div>
         </div>
       </div> --}}
->>>>>>> 60dc20356465021e830ab4bdb56da56343cbe99a
     </div>
     
 
@@ -222,10 +201,7 @@
       })
     </script>
 
-<<<<<<< HEAD
-=======
     {{-- DARK MODE --}}
->>>>>>> 60dc20356465021e830ab4bdb56da56343cbe99a
     <script>
       const toggle = document.getElementById("toggle");
       const refresh = document.getElementById("refresh");
