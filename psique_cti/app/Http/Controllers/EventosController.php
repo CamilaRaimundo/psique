@@ -60,7 +60,7 @@ class EventosController extends Controller
             // Definir regras de validação para o formulário de edição
         ]);
 
-        $evento = Evento::where('id_mural', $id_mural)->first();
+        $evento = Evento::where('id', $id)->first();
 
         // Verificar se o evento foi encontrado
         if (!$evento) {
@@ -88,7 +88,23 @@ class EventosController extends Controller
    
      }
 
-   
+     public function excluirEvento($id) {
+        // Adicione instruções de depuração
+        \Log::info("Excluindo evento com ID: $id");
+    
+        // Encontre o evento pelo ID
+        $evento = Evento::find($id);
+    
+        // Verifique se o evento foi encontrado
+        if (!$evento) {
+            return view('pages.mural');
+        }
+    
+        // Exclua o evento
+        $evento->delete();
+    
+        return response()->json(['success' => true]);
+    }
 
    
 }

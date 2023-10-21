@@ -5,15 +5,14 @@
 @section('conteudo')
 
 
-
-@if(isset($evento1))
-{{-- if (não há publicações) --}}
-<div class="pagina_vazia">
-   <h3>Não há nenhuma publicação :&#040;</h3>
+@if(!isset($eventos) && !isset($artigos))
+  <div class="pagina_vazia">
+    <h3>Não há nenhuma publicação :&#040;</h3>
     <p>Volte em breve para conferir!</p>
-     <img src="{{ asset('img/pipa-img.png') }}" width="35%" alt=""> </div>
+    <img src="{{ asset('img/pipa-img.png') }}" width="35%" alt=""> 
+  </div>
 
-     @else
+@else
   {{-- else (quando houver publicações) --}}
   <div class="container-mural">
     
@@ -30,7 +29,7 @@
       {{-- <h1>Eventos</h1>   --}}
     </div>  
     <div class="text-center">
-      <img src="{{ asset('img/eventos-img.png') }}" width="30%" class="rounded">
+      <img src="{{asset('img/eventos-img.png') }}" width="30%" class="rounded">
     </div>
 
     <div class="container text-center">
@@ -65,8 +64,8 @@
                    <div class="popup-content">
                      <h2>Confirmação</h2>
                      <p>Você tem certeza que deseja excluir permanentemente este evento?</p>
-                     <button class="popup-close">Cancelar</button>  
-                     <button class="btn-confirma">Confirmar</button>
+                     <button class="popup-close">Cancelar</button>
+                     <a href="{{ route('eventos.excluir',$evento->id) }}"><button class="btn-confirma">Confirmar</button></a>  
                    </div>
                  </div>
                </div>
@@ -87,7 +86,7 @@
           <div class="card mb-3" style="max-width: 500px;">
             <div class="row g-0">
               <div class="col-md-4">
-                <img src="{{ asset('img/smile.jpg') }}" class="img-fluid rounded-start" alt="...">
+                <img src="{ { asset('img/smile.jpg') }}" class="img-fluid rounded-start" alt="...">
               </div>
               <div class="col-md-8">
                 <div class="card-body">
@@ -110,7 +109,7 @@
           <div class="card mb-3" style="max-width: 500px;">
             <div class="row g-0">
               <div class="col-md-4">
-                <img src="{{ asset('img/smile.jpg') }}" class="img-fluid rounded-start" alt="...">
+                <img src="{ { asset('img/smile.jpg') }}" class="img-fluid rounded-start" alt="...">
               </div>
               <div class="col-md-8">
                 <div class="card-body">
