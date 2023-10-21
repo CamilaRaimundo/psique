@@ -6,14 +6,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Mural;
 use App\Models\Publicacao_Recomendacao;
+use Illuminate\Support\Facades\DB;
 
 class ArtigosController extends Controller
 {
-    //addartigo e editartigo
-    public function verificaForm(Request $req)
+    public function mostraFormAdicionar()
     {
-        //dd($req->all());
-        // Defina as regras de validação para os campos
+        return view('pages.psico.addartigo');
+    } 
+
+    //addartigo e editartigo
+    public function adicionaForm(Request $req)
+    {
         $rules = [
             'titulo_publicacao' => 'required',
             'autor_publicacao' => 'required|alpha',
@@ -22,7 +26,6 @@ class ArtigosController extends Controller
             'descricao_publicacao' => 'required',
         ];
     
-        // Defina mensagens de erro personalizadas, se necessário
         $messages = [
             'titulo_publicacao.required' => 'O título da publicação é obrigatório.',
             'autor_publicacao.required' => 'O autor é obrigatório.',
@@ -33,7 +36,7 @@ class ArtigosController extends Controller
         ];
         //dd($req->all());
     
-        // Valide os campos
+
         $validator = Validator::make($req->all(), $rules, $messages);
         //dd($req->all());
 
@@ -44,21 +47,35 @@ class ArtigosController extends Controller
         //dd($req->all()); -- parou
         // Process and save data (if validation passes)
         $artigos = new Publicacao_Recomendacao();
+
+
         $artigos->descricao = $req->input('descricao_publicacao');
         $artigos->titulo = $req->input('titulo_publicacao');
+    
         if ($req->hasFile('img_ilustrativa')) {
             $path = $req->file('img_ilustrativa')->store('event_images');
             $artigos->imagem = $path;
         }
-        $artigos->link = $req->input('link_publicacao');
-        $artigos->autor = $req->input('autor_publicacao');
+
         $artigos->save();
+    
+
+        $artigos2 = new Publicacao_Recomendacao();
+
+        $artigos2->link = $req->input('link_publicacao');
+        $artigos2->autor = $req->input('autor_publicacao');
+        $artigos2->id_mural = $artigos->id;
+    
+        $artigos2->save();
 
         //dd($artigos2);
     
-        return view('pages.mural');
-        //return redirect()->route('pages.mural');
+       // return view('pages.mural');
+       return redirect()->route('artigo.ver');
     }
+    
+
+  
 }
 
     // public function editarArtigo(Request $req, $id_mural)
