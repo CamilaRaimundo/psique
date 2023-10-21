@@ -18,11 +18,6 @@ Route::get('/', [MainController::class,'index'])->name('home');
 
 Route::get('/mural', [EventosController::class, 'selecionando'])->name('mural.mostrar');
 
-// emaaaaa
-Route::get('/excluir-evento/{id}', 'App\Http\Controllers\EventosController@excluirEvento')->name('eventos.excluir');
-    Route::get('/excluir-artigo/{id}', 'App\Http\Controllers\ArtigosController@excluirArtigo')->name('artigos.excluir');
-
-
 Route::get('/contato', [ContatoController::class, 'mostraForm'])->name('contato.mostrar');
 Route::post('/contato', [ContatoController::class, 'mandaEmail'])->name('contato.enviar');
 
@@ -72,6 +67,11 @@ Route::get('/editarevento', function () {
 })->name('eventos_editar.postar');
 
 Route::post('/editarevento', [EventosController::class,'editarEvento'])->name('eventos_editar_processar');
+
+// emaaaaa
+Route::get('/excluir-evento/{id}', 'App\Http\Controllers\EventosController@excluirEvento')->name('eventos.excluir');
+Route::get('/excluir-artigo/{id}', 'App\Http\Controllers\ArtigosController@excluirArtigo')->name('artigos.excluir');
+
 
 Route::get('/detalhesaluno', function () {
     return view('pages.psico.detalhesaluno');
