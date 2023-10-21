@@ -36,6 +36,9 @@ Route::get('/', [MainController::class, 'index'])->name('home');
 
     Route::get('/login', function () {return view('pages.login');})->name('login.mostrar');
 
+    // Route::get('/login', function () {return view('pages.login');})->name('login.mostrar');
+    Route::get('/logout', [LogOutController::class, 'logout']);
+
     //socialite login urls
     Route::get('/googleLogin',[MainController::class, 'googleLogin']);
     Route::get('/auth/google/callback',[MainController::class, 'googleHandle']);

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#003b63">
   <title>@yield('titulo')</title>
+  
 
   <!-- Import Google Icon Font -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -110,8 +111,13 @@
     </div> --}}
 
     <div  class="icones-padrao">
-      <a href="{{route('login.mostrar')}}" class="icones-padrao"><i class="fa-solid fa-user"></i></a>
+      @if (Auth::guest())
+        <a href="{{route('login.mostrar')}}" class="icones-padrao"><i class="fa-solid fa-user"></i></a>
+      @elseif(Auth::check())
+        <a href="{{ route('logout') }}" class="icones-padrao"><i class="fa-solid fa-right-to-bracket"></i></a>
+      @endif
       <button onclick id="toggle"><i class="fa-solid fa-circle-half-stroke"></i></button>
+    </div>
 
       {{-- TESTANDO POP-UP --> caso a pessoa faça o login pela primeira vez no dia - deve exibir o pop-up --}}
       {{-- <button class="teste"><i class="fa-solid fa-hippo"></i></button> --}}
@@ -125,7 +131,7 @@
           </div>
         </div>
       </div> --}}
-    </div>
+    
     
 
     {{-- -----------------------------POP-UP------------------------------- --}}
