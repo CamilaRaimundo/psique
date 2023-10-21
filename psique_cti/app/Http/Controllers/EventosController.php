@@ -37,6 +37,11 @@ class EventosController extends Controller
         $evento1->titulo = $validatedData['titulo_evento'];
         $evento1->descricao = $validatedData['descricao_evento'];
 
+        if ($request->hasFile('imagem')) {
+                    $path = $request->file('imagem')->store('event_images');
+                    $evento1->imagem = $path;
+
+        }
         $evento1->save();
 
         $evento2 = new Evento();
@@ -48,10 +53,7 @@ class EventosController extends Controller
         $evento2->link_evento = $validatedData['link_evento'];
         $evento2->id_mural = $evento1->id;
 
-        if ($request->hasFile('img_ilustrativa')) {
-            $path = $request->file('img_ilustrativa')->store('event_images');
-            $evento2->img_ilustrativa = $path;
-        }
+        
 
         $evento2->save();
 
@@ -60,12 +62,29 @@ class EventosController extends Controller
        
     }
     
-     public function editarEvento($id_mural) {
-        // repare que ele recebe o id da ROTA
-        $linha = Evento::find($id_mural);
-        // carrega o registro (realiza um select e um fetch internamente)
-        return view('pages.psico.editevento',compact('linha'));
-        // manda o registro encontrado para ser editado na visão
+    public function editarEvento(Request $request, $id_mural)
+    {
+        $validatedData = $request->validate([
+            // Definir regras de validação para o formulário de edição
+        ]);
+
+        $evento = Evento::where('id_mural', $id_mural)->first();
+
+        // Verificar se o evento foi encontrado
+        if (!$evento) {
+            return redirect()->route('evento.mostrar')->with('error', 'Evento não encontrado');
+        }
+
+        // Atualizar os campos do evento com os novos dados
+        $evento->local_evento = $validatedData['local_evento'];
+        $evento->dataehora_evento = $validatedData['dataehora_evento'];
+        $evento->responsavel_evento = $validatedData['responsavel_evento'];
+        $evento->limite_pessoas_evento = $validatedData['limite_pessoas_evento'];
+        $evento->link_evento = $validatedData['link_evento'];
+
+        $evento->save();
+
+        return view('pages.mural');
     }
 
 
@@ -78,19 +97,25 @@ class EventosController extends Controller
     }
     
 
-        // if ($req->hasFile('foto')) { // o upload chegou ?
-        //     $foto = $req->file('foto'); // pega arquivo de foto
-        //     $num = rand(1111,9999); // escolhe numero pra não repetir
-        //     $dir = "img/alunos/"; // pasta de imagens
-        //     $ex = $foto->guessClientExtension(); // pega extensão, jpg, png ...
-        //     $nomeFoto = "foto_".$num.".".$ex; // monta novo nome
-        //     $foto->move($dir,$nomeFoto); // move pro lugar correto e novo nome
-        //     $dados['foto'] = $dir."/".$nomeFoto; // salva no campo imagem
-        // }
-
-        //Evento::find($id_mural)->update($dados);
-        //return redirect()->route('evento.mostrar');
+     public function excluirEvento($id) {
+        // Adicione instruções de depuração
+        \Log::info("Excluindo evento com ID: $id");
+    
+        // Encontre o evento pelo ID
+        $evento = Evento::find($id);
+    
+        // Verifique se o evento foi encontrado
+        if (!$evento) {
+            return redirect()->route('evento.mostrar');
+        }
+    
+        // Exclua o evento
+        $evento->delete();
+    
+        return response()->json(['success' => true]);
     }
-
+    
+    
+}
    
 

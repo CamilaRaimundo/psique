@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Mural;
 use App\Models\Publicacao_Recomendacao;
+use Illuminate\Support\Facades\DB;
 
 class ArtigosController extends Controller
 {
@@ -67,9 +68,12 @@ class ArtigosController extends Controller
 
         //dd($artigos2);
     
-        return view('pages.mural');
-        //return redirect()->route('pages.mural');
+       // return view('pages.mural');
+       return redirect()->route('artigo.ver');
     }
+    
+
+  
 }
 
     // public function editarArtigo(Request $req, $id_mural)

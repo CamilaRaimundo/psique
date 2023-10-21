@@ -56,7 +56,8 @@
 
     <div class="nav">
       {{-- if(usuários comuns) --}}
-      <a href="/" id="home" class="normal">Home</a>
+      <a href="/" id="home">Home</a>
+      {{-- class="normal" --}}
 
       <span>|</span>
 
@@ -99,6 +100,17 @@
       <span>|</span>
 
       <a href="{{route('evento.mostrar')}}">Mural</a> --}}
+      {{-- <a href="{{route('evento.mostrar', 'artigo.ver' )}}">Mural</a> --}}
+      
+
+      {{-- <a href="{{route('artigo.mostrar')}}">Mural</a> --}}
+
+      {{-- <span>|</span> --}}
+
+      {{-- if(usuários comuns) --}}
+      {{-- <a href="/contato">Contato</a> --}}
+      {{-- else if (psicólogo) --}}
+      {{-- <a href="/estatistica">Estatísticas</a> --}}
     </div>
 
     <div  class="icones-padrao">

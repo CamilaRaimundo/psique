@@ -16,10 +16,9 @@ class AdminAdicionarController extends Controller
         $validatedData = $request->validate([
             'nome_pro' => 'required|string|max:255',
             'email_pro' => 'required|email|unique:profissionais,email',
-            'cpf' => 'required|unique:profissionais,cpf',
-            'crp' => 'required|string|max:255|unique:profissionais,crp',
-            'telefone' => 'required',
-            //'telefone_pro' => 'required|numeric',
+            'cpf_pro' => 'required|unique:profissionais,cpf',
+            'crp_pro' => 'required|string|max:255|unique:profissionais,crp',
+            'telefone_pro' => 'required',
         ], [
             'required' => 'O campo :attribute é obrigatório.',
             'unique' => 'O campo :attribute já está em uso.',
@@ -60,7 +59,7 @@ class AdminAdicionarController extends Controller
             $profissional->ativo = !$profissional->ativo; // Inverte o valor
             $profissional->save();
         }
-        return view('pages.admin.homeAdmin');
-        //return redirect()->back(); // Redireciona de volta para a página
+        
+        return redirect()->back(); // Redireciona de volta para a página
     }
     }
