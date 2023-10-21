@@ -10,18 +10,17 @@ use App\Models\User;
 use App\Models\Aluno;
 use App\Models\Profissional;
 
-
-
-
 // include{{asset('/../../../variavel.php')}}; //variavel global
 
 class MainController extends Controller
 {
     public function googleLogin(){
         return Socialite::driver('google')->redirect();
-
     }
 
+    public function index() {
+        return view()
+    }
     public function googleHandle(){
         try{
             

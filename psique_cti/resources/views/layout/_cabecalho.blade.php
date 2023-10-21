@@ -75,7 +75,7 @@
     
           <a href="{{route('contato.mostrar')}}" id="n-contato">Contato</a>
 
-        @elseif(Auth::user()->nivel_de_acesso==-2)  
+        @elseif(Auth::user()->nivel_de_acesso==2)  
           <a href="{}"><i class="fa-solid fa-house"></i></a>
 
           <span>|</span>
