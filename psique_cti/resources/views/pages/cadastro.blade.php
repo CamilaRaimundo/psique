@@ -1,25 +1,31 @@
 @extends('layout.site')
 
 @section('titulo', 'Informações adicionais')
-    
+
 @section('conteudo')
+
+    {{-- @php --}}
+
     <div class="box centralizado">
         <div class="img-box">
             <img src="{{ asset('img/cad_img.png') }}" alt="">
         </div>
 
         <div class="form-box">
-            <h2>Informações adicionais</h2>
-            <form onsubmit="validaOpcoes(event)" action="{{ route('cad') }}" method="POST" id="myForm">
+            <h2></h2>
+            <form onsubmit="validaOpcoes(event)" action="{{ route('cadastro.processar') }}" method="POST" id="myForm">
+
             {{ csrf_field() }}
-               <div class="input_group">
-                    <label for="nome">Nome Completo</label>
-                    <input type="text" id="nome" class="cursor_blocked" placeholder="Fulaninho da Silva" required readonly>
+
+                <div class="input_group">
+                  <label for="nome">Nome Completo</label>
+                  <input type="text" id="nome" name="nome" class="cursor_blocked" value='{{ $googl['googleName'] }}' required readonly>
                 </div>
+          
 
                 <div class="input_group">
                     <label for="email">E-mail</label>
-                    <input type="email" id="email" class="cursor_blocked" placeholder="usuario@gmail.com" required readonly>
+                    <input type="email" id="email" name="email" class="cursor_blocked" required readonly value="{{ $googl['googleEmail'] }}">
                 </div>
 
                 <div class="input_group">
@@ -80,6 +86,7 @@
     </div>
     
     <script>
+
     function validaOpcoes(event) {
       var opano = document.getElementById("ano");
       var opcurso = document.getElementById("curso");
@@ -120,6 +127,9 @@
       validaOpcoes(event);
       validaIdade(event);
     });
+
+
+
   </script>
 
 @endsection

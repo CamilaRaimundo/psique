@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\ContatoController;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController; //--> login
@@ -8,19 +7,25 @@ use App\Http\Controllers\TriagemController; //--> Triagem
 use App\Http\Controllers\ArtigosController; //--> Artigos
 use App\Http\Controllers\CadastroController; //--> Informações adicionais
 use App\Http\Controllers\EventosController; // --> Eventos
+<<<<<<< HEAD
 use App\Http\Controllers\AdminAdicionarController; // --> Admin
 use App\Http\Controllers\MuralController; // --> Mural
 use App\Http\Controllers\GraficosController; // --> graficos
+=======
+use App\Http\Controllers\ContatoController;
+use App\Http\Controllers\LogOutController;
+>>>>>>> 60dc20356465021e830ab4bdb56da56343cbe99a
 use App\Mail\TestMail;
 
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('home');
 
 // Route::post('/mural', function () {
 //     return view('pages.mural');
 // });
+<<<<<<< HEAD
 Route::get('/mural', [MuralController::class, 'selecionando' ])->name('evento.mostrar', 'artigo.ver');
 
 
@@ -33,24 +38,29 @@ Route::delete('/excluir-evento/{id}', 'EventosController@excluirEvento')->name('
 
 //Route::post('/pages/psico/mural/{id_mural}', 'App\Http\Controllers\EventosController@excluir')->name('mural');
 
+=======
+Route::get('/mural', [EventosController::class, 'selecionando'])->name('mural.mostrar');
+>>>>>>> 60dc20356465021e830ab4bdb56da56343cbe99a
 
 
 Route::get('/contato', [ContatoController::class, 'mostraForm'])->name('contato.mostrar');
 Route::post('/contato', [ContatoController::class, 'mandaEmail'])->name('contato.enviar');
 
 //socialite login urls
-Route::get('/googleLogin',[MainController::class, 'googleLogin']);
+Route::get('/googleLogin',[MainController::class, 'googleLogin'])->name('login.google.mostrar');
 Route::get('/auth/google/callback',[MainController::class, 'googleHandle']);
 
 Route::get('/login', function () {
     return view('pages.login');
-});
+})->name('login.mostrar');
+
+Route::get('/logout', [LogOutController::class, 'logout'])->name('logout');
 
 Route::get('/cadastro', function () {
     return view('pages.cadastro');
-});
+})->name('cadastro.mostrar');
 
-Route::post('/cadastro', 'App\Http\Controllers\CadastroController@processarFormulario')->name('cad');
+Route::post('/cadastro', 'App\Http\Controllers\CadastroController@processaForm')->name('cadastro.processar');
 
 Route::get('/triagem', function () {
     return view('pages.triagem');

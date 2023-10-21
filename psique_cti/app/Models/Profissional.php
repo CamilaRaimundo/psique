@@ -20,12 +20,12 @@ class Profissional extends Model
     protected $primaryKey = 'cpf';
     public $incrementing = false;
 
-    public function encontro(): HasMany
+    public function encontro()
     {
         return $this->hasMany(Encontro::class, 'profissional', 'cpf');
     }
 
-    public function mural(): HasMany
+    public function mural()
     {
         return $this->hasMany(Mural::class, 'profissional', 'cpf');
     }

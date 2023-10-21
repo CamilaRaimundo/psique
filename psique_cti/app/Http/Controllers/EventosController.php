@@ -32,30 +32,22 @@ class EventosController extends Controller
             'mimes' => 'O campo :attribute deve ser um arquivo de imagem do tipo: :values.',
         ]);
 
-        $evento1 = new Mural();
+        $evento = new Evento();
 
-        $evento1->titulo = $validatedData['titulo_evento'];
-        $evento1->descricao = $validatedData['descricao_evento'];
+        $evento->titulo = $validatedData['titulo_evento'];
+        $evento->descricao = $validatedData['descricao_evento'];
+        $evento->local_evento = $validatedData['local_evento'];
+        $evento->dataehora_evento = $validatedData['dataehora_evento'];
+        $evento->responsavel_evento = $validatedData['responsavel_evento'];
+        $evento->limite_pessoas_evento = $validatedData['limite_pessoas_evento'];
+        $evento->link_evento = $validatedData['link_evento'];
 
-        if ($request->hasFile('imagem')) {
-                    $path = $request->file('imagem')->store('event_images');
-                    $evento1->imagem = $path;
-
+        if ($request->hasFile('img_ilustrativa')) {
+            $path = $request->file('img_ilustrativa')->store('event_images');
+            $evento->img_ilustrativa = $path;
         }
-        $evento1->save();
 
-        $evento2 = new Evento();
-
-        $evento2->local_evento = $validatedData['local_evento'];
-        $evento2->dataehora_evento = $validatedData['dataehora_evento'];
-        $evento2->responsavel_evento = $validatedData['responsavel_evento'];
-        $evento2->limite_pessoas_evento = $validatedData['limite_pessoas_evento'];
-        $evento2->link_evento = $validatedData['link_evento'];
-        $evento2->id_mural = $evento1->id;
-
-        
-
-        $evento2->save();
+        $evento->save();
 
         //return view('pages.mural');
         return redirect()->route('evento.mostrar');

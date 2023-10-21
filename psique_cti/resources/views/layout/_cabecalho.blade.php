@@ -52,20 +52,63 @@
 <body>
   <header>
 
-    <a href="/index"><img src="{{ asset('img/logo_completa_sf.png') }}" alt="psiquê"></a>
+    <a href="{{route('home')}}"><img src="{{ asset('img/logo_completa_sf.png') }}" alt="psiquê"></a>
 
     <div class="nav">
-      {{-- if(usuários comuns) --}}
-      <a href="/" id="home">Home</a>
-      {{-- class="normal" --}}
+      @if((Auth::check())) {{-- Vê se está logado --}}
+        @if(Auth::user()->nivel_de_acesso==-1) {{-- Pega dados da sessão --}}
+          <a href="{{route('Admin')}}">Profissionais</a>
+    
+          <span>|</span>
 
-      <span>|</span>
+          <a href="{{route('listaAluno')}}">Alunos</a>
 
-      <a href="{{route('evento.mostrar')}}" id="n-mural">Mural</a>
+        @elseif(Auth::user()->nivel_de_acesso==1) {{-- Pega dados da sessão --}}
+          <a href="{{route('home')}}" id="home">Home</a>
 
-      <span>|</span>
+          <span>|</span>
+    
+          <a href="{{route('mural.mostrar')}}" id="n-mural">Mural</a>
+    
+          <span>|</span>
+    
+          <a href="{{route('contato.mostrar')}}" id="n-contato">Contato</a>
 
-      <a href="/contato" id="n-contato">Contato</a>
+        @elseif(Auth::user()->nivel_de_acesso==-2) {{-- Pega dados da sessão --}}
+          <a href="{}"><i class="fa-solid fa-house"></i></a>
+
+          <span>|</span>
+
+          <a href="{{route('evento.mostrar')}}"><i class="fa-solid fa-calendar-days"></i></a>
+          <!--<a href="{ {route('artigo.mostrar')}}">Mural</a>-->
+
+          <span>|</span>
+
+          <a href="/estatisticas"><i class="fa-solid fa-chart-pie"></i></a>
+
+          <span>|</span>
+
+          <a href="/encontros"><i class="fa-solid fa-pencil"></i></a>
+
+        @else
+          <a href="{{route('home')}}" id="home">Home</a>
+
+          <span>|</span>
+    
+          <a href="{{route('mural.mostrar')}}" id="n-mural">Mural</a>
+    
+          <span>|</span>
+    
+          <a href="{{route('login.mostrar')}}" id="n-contato">Contato</a>
+
+
+        @endif 
+      @endif
+
+
+
+      {{-- if(usuários comuns) --}}   {{-- class="normal" --}}
+      
 
       {{-- <script>
         var $divLogin = $("#home");
@@ -108,28 +151,53 @@
       {{-- <span>|</span> --}}
 
       {{-- if(usuários comuns) --}}
+<<<<<<< HEAD
       {{-- <a href="/contato">Contato</a> --}}
+=======
+      {{-- <a href="{{route('contato.mostrar')}}">Contato</a> --}}
+>>>>>>> 60dc20356465021e830ab4bdb56da56343cbe99a
       {{-- else if (psicólogo) --}}
-      {{-- <a href="/estatistica">Estatísticas</a> --}}
+      {{-- <a href="{{route('estatistica.mostrar')}}">Estatísticas</a> --}}
     </div>
 
+<<<<<<< HEAD
     <div  class="icones-padrao">
       <a href="/login" class="icones-padrao"><i class="fa-solid fa-user"></i></a>
+=======
+    {{-- <div>
+      <a href="{{route('login.mostrar')}}" class="icones-padrao"><i class="fa-solid fa-user" ></i></a>
+      <a href="#" class="icones-padrao"><i class="fa-solid fa-circle-half-stroke"></i></a>
+    </div> --}}
+
+    <div  class="icones-padrao">
+      <a href="{{route('login.mostrar')}}" class="icones-padrao"><i class="fa-solid fa-user"></i></a>
+>>>>>>> 60dc20356465021e830ab4bdb56da56343cbe99a
       <button onclick id="toggle"><i class="fa-solid fa-circle-half-stroke"></i></button>
 
       {{-- TESTANDO POP-UP --> caso a pessoa faça o login pela primeira vez no dia - deve exibir o pop-up --}}
       {{-- <button class="teste"><i class="fa-solid fa-hippo"></i></button> --}}
 
+<<<<<<< HEAD
       <div class="popup-wrapper">
+=======
+      {{-- <div class="popup-wrapper">
+>>>>>>> 60dc20356465021e830ab4bdb56da56343cbe99a
         <div class="popup">
           <div class="popup-content">
             <h2>Registro de Emoções</h2>
             <p>Como você se sente hoje? Não há registros hoje, registre já, clicando no botão abaixo!</p>
+<<<<<<< HEAD
             {{-- <button class="popup-close">Cancelar</button>   --}}
             <button class="btn-confirma"><a href="/emocoes">Redirecionar!</a></button>
           </div>
         </div>
       </div>
+=======
+            <button class="btn-confirma"><a href="/emocoes">Redirecionar!</a></button>
+          </div>
+        </div>
+      </div> --}}
+>>>>>>> 60dc20356465021e830ab4bdb56da56343cbe99a
     </div>
     
 
@@ -154,6 +222,10 @@
       })
     </script>
 
+<<<<<<< HEAD
+=======
+    {{-- DARK MODE --}}
+>>>>>>> 60dc20356465021e830ab4bdb56da56343cbe99a
     <script>
       const toggle = document.getElementById("toggle");
       const refresh = document.getElementById("refresh");
