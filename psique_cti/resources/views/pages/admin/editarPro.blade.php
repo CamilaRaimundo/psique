@@ -5,6 +5,12 @@
 @section('conteudo')
     <div class="box-form1">
         <div class="form-box-form1">
+
+            <a class="icon-link" href="JavaScript: window.history.back();">
+                <i class="fa-solid fa-arrow-left"></i>
+                Voltar
+            </a>
+
             <h2>Editar informações do Profissional</h2>
             <form action="#">
                 <div class="input_group">

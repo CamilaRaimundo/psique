@@ -5,6 +5,12 @@
 @section('conteudo')
 <div class="box-form1">
     <div class="form-box-form1">
+        
+        <a class="icon-link" href="JavaScript: window.history.back();">
+            <i class="fa-solid fa-arrow-left"></i>
+            Voltar para o mural
+        </a>
+
         <h2>Publicar eventos</h2>
         <div class="linha"></div>
         <p>Crie eventos, palestras ou reuniões com os alunos!</p>

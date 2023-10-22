@@ -5,6 +5,12 @@
 @section('conteudo')
     <div class="box-form1">
         <div class="form-box-form1">
+
+            <a class="icon-link" href="JavaScript: window.history.back();">
+                <i class="fa-solid fa-arrow-left"></i>
+                Voltar
+            </a>
+            
             <h2>Adicionar profissional</h2>
 
             <form action="{{ route('admin_adicionar.processar') }}" method="POST">

@@ -5,6 +5,12 @@
 @section('conteudo')
     <div class="box-form1">
         <div class="form-box-form1">
+
+            <a class="icon-link" href="JavaScript: window.history.back();">
+                <i class="fa-solid fa-arrow-left"></i>
+                Voltar para o mural
+            </a>
+            
             <h2>Editar evento</h2>
 
             {{-- exibir as informações já cadastradas e permitir edição dos campos --}}
