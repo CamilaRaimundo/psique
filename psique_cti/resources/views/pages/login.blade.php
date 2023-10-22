@@ -74,7 +74,11 @@
     </div>
 
     <div  class="icones-padrao">
-      <a href="{{route('login.mostrar')}}" class="icones-padrao"><i class="fa-solid fa-user"></i></a>
+      @if (Auth::guest())
+        <a href="{{route('login.mostrar')}}" class="icones-padrao"><i class="fa-solid fa-user"></i></a>
+      @elseif(Auth::check())
+        <a href="{{ route('logout') }}" class="icones-padrao"><i class="fa-solid fa-right-to-bracket"></i></a>
+      @endif
       <button onclick id="toggle"><i class="fa-solid fa-circle-half-stroke"></i></button>
     </div>
 
@@ -100,26 +104,60 @@
 
   </div>
 
-  {{-- rodape --}}
+  {{-- rodapé --}}
   <footer>
     <div class="img-footer">
       <img src="{{ asset('img/icone_sf.png') }}" alt="nicolau" width="80px">
     </div>
 
     <div class="navegacao">
-      <a href="{{route('home')}}">Home</a>
-      
-      <span>|</span>
-
-      <a href="{{route('mural.mostrar')}}">Mural</a>
-
-      <span>|</span>
-
-      <a href="{{route('contato.mostrar')}}">Contato</a>
-
-      <span>|</span>
-
-      <a href="{{route('login.mostrar')}}">Login</a>
+      @if((Auth::check()))
+        @if(Auth::user()->nivel_de_acesso==-1)  
+          <a href="{{route('home_admin')}}">Profissionais</a>
+    
+          <span>|</span>
+    
+          <a href="{{route('admin_adicionar_lista.mostrar')}}">Alunos</a>
+    
+        @elseif(Auth::user()->nivel_de_acesso==1)  
+          <a href="{{route('home')}}" id="home">Home</a>
+    
+          <span>|</span>
+    
+          <a href="{{route('mural.mostrar')}}" id="n-mural">Mural</a>
+    
+          <span>|</span>
+    
+          <a href="{{route('contato.mostrar')}}" id="n-contato">Contato</a>
+    
+        @elseif(Auth::user()->nivel_de_acesso==2)  
+          <a href="{{route('home_psico')}}"><i class="fa-solid fa-house"></i></a>
+    
+          <span>|</span>
+    
+          <a href="{{route('mural.mostrar')}}"><i class="fa-solid fa-calendar-days"></i></a>
+    
+          <span>|</span>
+    
+          <a href="/estatisticas"><i class="fa-solid fa-chart-pie"></i></a>
+    
+          <span>|</span>
+    
+          <a href="/encontros"><i class="fa-solid fa-pencil"></i></a>
+    
+        @endif 
+    
+      @else
+        <a href="{{route('home')}}" id="home">Home</a>
+    
+        <span>|</span>
+    
+        <a href="{{route('mural.mostrar')}}" id="n-mural">Mural</a>
+    
+        <span>|</span>
+    
+        <a href="{{route('login.mostrar')}}" id="n-contato">Contato</a>
+      @endif
     </div>
 
     <div class="copyright">

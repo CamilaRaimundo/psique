@@ -9,7 +9,7 @@
 
             {{-- exibir as informações já cadastradas e permitir edição dos campos --}}
             {{-- então realizar update --}}
-            <form action="{{ route('editeven') }}" method="POST" >
+            <form action="{{ route('eventos_editar.processar') }}" method="POST" >
                 <div class="input_group">
                     <label for="titulo_evento">Título do evento</label>
                     <input type="text" id="titulo_evento" name="titulo_evento" placeholder="Digite o título do evento" required>

@@ -9,7 +9,7 @@
 
             {{-- exibir as informações já cadastradas e permitir edição dos campos --}}
             {{-- então realizar update --}}
-            <form action="{{ route('controller.artigo') }}" method="POST">
+            <form action="{{ route('artigos_editar.processar') }}" method="POST">
                 {{ csrf_field() }} 
 
                 <div class="input_group">

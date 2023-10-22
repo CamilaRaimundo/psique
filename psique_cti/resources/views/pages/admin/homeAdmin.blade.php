@@ -4,7 +4,7 @@
     
 @section('conteudo')
   <div class="container-admin">
-    <button type="button" class="btn btn-primary btn-lg"><a href="{{route('admin_adicionar.processar')}}">Adicionar profissional</a></button>
+    <button type="button" class="btn btn-primary btn-lg"><a href="{{route('admin_adicionar.mostrar')}}">Adicionar profissional</a></button>
     <h3>Profissionais cadastrados</h3>
     <table class="table">
       <thead>
@@ -46,11 +46,7 @@
                     @if($pro->ativo) disabled @endif>
                   Ativar</button>
                 </form>
-
-                    <!-- <button type="sumit" class="btn btn-danger">Inativar</button>
-                    <button type="button" class="btn btn-warning"
-                                  @ if($pro->ativo) disabled @ endif>
-                              Ativar</button> -->
+                <button type="button" class="btn btn-success"><a href="{{route('admin_editar.mostrar')}}">Edit</a></button>
               </div>
             </td>
           </tr>

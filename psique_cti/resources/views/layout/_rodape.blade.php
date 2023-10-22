@@ -4,19 +4,53 @@
     </div>
 
     <div class="navegacao">
-      <a href="/index">Home</a>
-      
-      <span>|</span>
-
-      <a href="/mural">Mural</a>
-
-      <span>|</span>
-
-      <a href="/contato">Contato</a>
-
-      <span>|</span>
-
-      <a href="/login">Login</a>
+      @if((Auth::check()))
+        @if(Auth::user()->nivel_de_acesso==-1)  
+          <a href="{{route('home_admin')}}">Profissionais</a>
+    
+          <span>|</span>
+    
+          <a href="{{route('listarAlunos.mostrar')}}">Alunos</a>
+    
+        @elseif(Auth::user()->nivel_de_acesso==1)  
+          <a href="{{route('home')}}" id="home">Home</a>
+    
+          <span>|</span>
+    
+          <a href="{{route('mural.mostrar')}}" id="n-mural">Mural</a>
+    
+          <span>|</span>
+    
+          <a href="{{route('contato.mostrar')}}" id="n-contato">Contato</a>
+    
+        @elseif(Auth::user()->nivel_de_acesso==2)  
+          <a href="{{route('home_psico')}}"><i class="fa-solid fa-house"></i></a>
+    
+          <span>|</span>
+    
+          <a href="{{route('mural.mostrar')}}"><i class="fa-solid fa-calendar-days"></i></a>
+    
+          <span>|</span>
+    
+          <a href="/estatisticas"><i class="fa-solid fa-chart-pie"></i></a>
+    
+          <span>|</span>
+    
+          <a href="/encontros"><i class="fa-solid fa-pencil"></i></a>
+    
+        @endif 
+    
+      @else
+        <a href="{{route('home')}}" id="home">Home</a>
+    
+        <span>|</span>
+    
+        <a href="{{route('mural.mostrar')}}" id="n-mural">Mural</a>
+    
+        <span>|</span>
+    
+        <a href="{{route('login.mostrar')}}" id="n-contato">Contato</a>
+      @endif
     </div>
 
     <div class="copyright">
@@ -24,38 +58,7 @@
     </div>
   </footer>
 
-  {{-- -----------------------------POP-UP------------------------------- --}}
-  <script>
-
-    const button  = document.querySelectorAll('.delete ')
-    const popup = document.querySelector('.popup-wrapper ')
-    for (i = 0; i < button.length; i++) {
- 
-
-    
-    // const closeButton = document.querySelector('.popup-close')
-
-    button[i].addEventListener('click', () => {
-      popup.style.display = 'block'
-    }) 
-    
-  // closeButton.addEventListener('click', () => {
-  //   popup.style.display = 'none'
-  // })
-
-    popup.addEventListener('click', event => {
-      // com a constante criada com essa função pode-se encontar o nome da classe de um elemnto clicadio, exibindo uma lista de informações do elemento, uma espécie de array, com a adição do '[0]', encontramos a classe de nível 0  
-      const classNameOfClickedElement = event.target.classList[0]
-      const classNames = ['popup-close', 'popup-wrapper']
-      const shouldClosePopup = classNames.some(className => className === classNameOfClickedElement) 
-      
-      if(shouldClosePopup){
-        popup.style.display = 'none'
-      }
-    })
-  }
-  </script>
-
+  
   {{-- ----------------------------------Isabelli----------------------------------------- --}}
   <script>
     //triagem

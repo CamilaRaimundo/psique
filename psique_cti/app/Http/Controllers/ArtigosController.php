@@ -10,11 +10,6 @@ use Illuminate\Support\Facades\DB;
 
 class ArtigosController extends Controller
 {
-    public function mostraFormAdicionar()
-    {
-        return view('pages.psico.addartigo');
-    } 
-
     //addartigo e editartigo
     public function adicionaForm(Request $req)
     {
@@ -73,31 +68,30 @@ class ArtigosController extends Controller
        // return view('pages.mural');
        return redirect()->route('artigo.ver');
     }
-    
 
-  
+    public function editarArtigo(Request $req, $id_mural)
+    {
+        dd($id_mural);
+        $validatedData = $req->validate([
+            // Definir regras de validação para o formulário de edição
+        ]);
+
+        $artigos = Publicacao_Recomendacao::where('id_mural', $id_mural)->first();
+
+        // Verificar se o evento foi encontrado
+        if (!$artigos) {
+            return redirect()->route('mural')->with('error', 'Artigo não encontrado');
+        }
+
+        // Atualizar os campos do evento com os novos dados
+        $artigos->descricao = $req->input('descricao_publicacao');
+        $artigos->titulo = $req->input('titulo_publicacao');
+        $artigos->link = $req->input('link_publicacao');
+        $artigos->autor = $req->input('autor_publicacao');
+        $artigos->save();
+
+        return view('pages.mural');
+    }
 }
 
-    // public function editarArtigo(Request $req, $id_mural)
-    // {
-    //     dd($id_mural);
-    //     $validatedData = $req->validate([
-    //         // Definir regras de validação para o formulário de edição
-    //     ]);
-
-    //     $artigos = Publicacao_Recomendacao::where('id_mural', $id_mural)->first();
-
-    //     // Verificar se o evento foi encontrado
-    //     if (!$artigos) {
-    //         return redirect()->route('mural')->with('error', 'Artigo não encontrado');
-    //     }
-
-    //     // Atualizar os campos do evento com os novos dados
-    //     $artigos->descricao = $req->input('descricao_publicacao');
-    //     $artigos->titulo = $req->input('titulo_publicacao');
-    //     $artigos->link = $req->input('link_publicacao');
-    //     $artigos->autor = $req->input('autor_publicacao');
-    //     $artigos->save();
-
-    //     return view('pages.mural');
-    // }
+    

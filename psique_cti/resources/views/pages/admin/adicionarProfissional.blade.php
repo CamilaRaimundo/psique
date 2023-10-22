@@ -7,7 +7,7 @@
         <div class="form-box-form1">
             <h2>Adicionar profissional</h2>
 
-            <form action="{{ route('addpro') }}" method="POST">
+            <form action="{{ route('admin_adicionar.processar') }}" method="POST">
                 
             {{ csrf_field() }}
                 <div class="input_group">

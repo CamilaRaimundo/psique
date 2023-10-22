@@ -9,7 +9,7 @@
         <div class="linha"></div>
         <p>Crie artigos ou recomendações para os alunos!</p>
 
-        <form action="{{ route('controller.artigo') }}" method="POST">
+        <form action="{{ route('artigos_adicionar.processar') }}" method="POST">
             {{-- {{ csrf_field() }}  --}}
             @csrf
 

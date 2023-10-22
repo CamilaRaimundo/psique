@@ -81,8 +81,53 @@ class MainController extends Controller
         return view('pages.login');
     }
 
-    public function adminIndex() 
+    public function psicoIndex() 
     {
         return view('pages.psico.home');
     }
+ 
+    public function adminIndex() 
+    {
+        return view('pages.admin.homeAdmin');
+    }
+
+    public function indexArtigo()
+    {
+        return view('pages.psico.addartigo');
+    } 
+  
+    public function indexEvento()
+    {
+        return view('pages.psico.addevento');
+    } 
+
+    public function indexEventoEdit()
+    {
+        return view('pages.psico.editevento');
+    } 
+   
+    public function indexArtigoEdit()
+    {
+        return view('pages.psico.editartigo');
+    } 
+ 
+    public function detalhesIndex()
+    {
+        return view('pages.psico.detalhesaluno');
+    } 
+   
+    public function estatisticasIndex()
+    {
+        return view('pages.psico.graficos');
+    } 
+  
+    public function indexAddPro()
+    {
+        return view('pages.admin.adicionarProfissional');
+    } 
+ 
+    public function indexEditPro()
+    {
+        return view('pages.admin.editarPro');
+    } 
 }

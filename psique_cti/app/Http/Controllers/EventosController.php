@@ -44,7 +44,7 @@ class EventosController extends Controller
 
         if ($request->hasFile('img_ilustrativa')) {
             $path = $request->file('img_ilustrativa')->store('event_images');
-            $evento->img_ilustrativa = $path;
+            $evento->imagem= $path;  //ema
         }
 
         $evento->save();
@@ -54,8 +54,9 @@ class EventosController extends Controller
        
     }
     
-    public function editarEvento(Request $request, $id_mural)
+    public function editarEvento(Request $request, $id)
     {
+        dd($request);
         $validatedData = $request->validate([
             // Definir regras de validação para o formulário de edição
         ]);
@@ -81,28 +82,27 @@ class EventosController extends Controller
 
 
     public function selecionando()
-     {
+    {
         //  $eventos = Evento::with('mural')->get(); return view('pages.mural', compact('eventos'));
         $eventos = Evento::all();
         return view('pages.mural', compact('eventos') );
-   
-     }
+    }
 
-     public function excluirEvento($id) {
+    public function excluirEvento($id) {
         // Adicione instruções de depuração
         \Log::info("Excluindo evento com ID: $id");
-    
+
         // Encontre o evento pelo ID
         $evento = Evento::find($id);
-    
+
         // Verifique se o evento foi encontrado
         if (!$evento) {
             return view('pages.mural');
         }
-    
+
         // Exclua o evento
         $evento->delete();
-    
+
         return response()->json(['success' => true]);
     }
 

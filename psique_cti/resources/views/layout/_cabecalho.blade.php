@@ -62,7 +62,7 @@
     
           <span>|</span>
 
-          <a href="{{route('admin_adicionar_lista.mostrar')}}">Alunos</a>
+          <a href="{{route('listarAlunos.mostrar')}}">Alunos</a>
 
         @elseif(Auth::user()->nivel_de_acesso==1)  
           <a href="{{route('home')}}" id="home">Home</a>
@@ -76,7 +76,7 @@
           <a href="{{route('contato.mostrar')}}" id="n-contato">Contato</a>
 
         @elseif(Auth::user()->nivel_de_acesso==2)  
-          <a href="{}"><i class="fa-solid fa-house"></i></a>
+          <a href="{{route('home_psico')}}"><i class="fa-solid fa-house"></i></a>
 
           <span>|</span>
 

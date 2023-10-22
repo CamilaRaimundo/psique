@@ -598,7 +598,7 @@ form .input_group button{
 /* ------------------------------------ MURAL --------------------------------------------- */
 .container-mural{
     width: 100%;
-    /* display: block; */
+    /* margin: auto; */
     padding: 2%;
 
     background-image: url('../img/fundo.png');
@@ -607,8 +607,12 @@ form .input_group button{
     background-attachment: fixed;
     min-height: 100%;
     background-position: center center;
-    /* height: 100%; */
 }
+
+.container{
+    display: flex !important;
+}
+
 
 .titulo-mural{
     text-align: center;
@@ -626,7 +630,9 @@ form .input_group button{
     background: #fffab8;
     margin-bottom: 1%;
     margin: 10px; 
+    /* width: 500px; */
     /* margin-inline: auto; */
+    /* text-transform: lowercase; */
 }
 
 .card-title{
@@ -814,6 +820,15 @@ input[type="file"]{
 }
 .btn-warning{
     margin-left: 1% !important;
+}
+
+.btn-success{
+    margin-left: 1% !important;
+}
+
+.btn-success a{
+    text-decoration: none;
+    color: #fff;
 }
 
 /* --------------------------------------- EMOÇÕES --------------------------------------- */

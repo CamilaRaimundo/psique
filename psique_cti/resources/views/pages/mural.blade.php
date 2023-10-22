@@ -30,22 +30,26 @@
 
         <div class="container text-center">
           @foreach($eventos as $evento)
-            <div class="col-md-auto">
+            <div class="container-fluid">
 
               {{-- card --}}
               <div class="card mb-3" style="max-width: 500px;">
-                <div class="col-md-4">
-                  <img src=base href="{{asset('$evento->imagem')}}"  width="100" class="img-fluid rounded-start">
-                </div>
-                <div class="col-md-8">
+                
+                @if(isset($publi->imagem))
+                  <div class="col-md-4">
+                    <img src=base href="{{asset('$evento->imagem')}}"  width="100" class="img-fluid rounded-start">
+                  </div>
+                @endif
+                
+                <div class="col-md-auto">
                   <div class="card-body">
-                    <p class="card-text"> {{ $evento->titulo}}</p>
+                    <h4 class="card-text"> {{ $evento->titulo}}</h4>
                     <p class="card-text"> {{ $evento->descricao}}</p>  
-                    <p class="card-text"> {{ $evento->local_evento}}</p>
-                    <p class="card-text"> {{ $evento->dataehora_evento}}</p>
-                    <p class="card-text"> {{ $evento->responsavel_evento}}</p>
-                    <p class="card-text"> {{ $evento->limite_pessoas_evento}}</p>
-                    <p class="card-text"><small class="text-body-secondary"><a href="{{ $evento->link_evento}}">{{ $evento->link_evento}}</a></small></p>
+                    <p class="card-text">Local: {{ $evento->local_evento}}</p>
+                    <p class="card-text">Data: {{ $evento->dataehora_evento}}</p>
+                    <p class="card-text">Responsável: {{ $evento->responsavel_evento}}</p>
+                    <p class="card-text">Limite de pessoas: {{ $evento->limite_pessoas_evento}}</p>
+                    <p class="card-text"><small class="text-body-secondary"><a href="{{ $evento->link_evento}}" target="_blank">{{ $evento->link_evento}}</a></small></p>
                   </div> {{-- ema --}} 
                 
                   {{-- if(section == profissional) --}}
@@ -64,7 +68,7 @@
                       </div>
                     </div>
 
-                    <a href="{{route('eventos_editar_processar')}}"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <a href="{{route('eventos_editar.processar')}}"><i class="fa-solid fa-pen-to-square"></i></a>
                   </div>
                 </div>
               </div>
@@ -108,20 +112,51 @@
                   </div>
                 </div>
 
-                <a href="{{route('artigos_edit.mostrar')}}"><i class="fa-solid fa-pen-to-square"></i></a>
+                <a href="{{route('artigos_editar.mostrar')}}"><i class="fa-solid fa-pen-to-square"></i></a>
               </div>
 
               <h5 class="card-title">{{$publi->titulo}}</h5> 
               <p class="card-text">{{$publi->descricao}}</p>
               <p class="card-text">{{$publi->autor}}</p>   
-              <p class="card-text"><small class="text-body-secondary"><a href="{{ $publi->link}}">{{ $publi->link}}</a></small></p>       
+              <p class="card-text"><small class="text-body-secondary"><a href="{{$publi->link}}" target="_blank">{{ $publi->link}}</a></small></p>       
             </div>
-            <img src="{{ asset('img/fundo4.jpg') }}"  class="card-img-bottom" alt="...">
+            @if(isset($publi->imagem))
+              <img src="{{$publi->imagem}}  class="card-img-bottom">
+            @endif
           </div>
         @endforeach
       {{-- @endif --}}
     </div> {{--- container mural --}}
   @endif
+
+  {{-- -----------------------------POP-UP------------------------------- --}}
+  <script>
+    const button  = document.querySelectorAll('.delete ')
+    const popup = document.querySelector('.popup-wrapper ')
+    for (i = 0; i < button.length; i++) {
+ 
+    // const closeButton = document.querySelector('.popup-close')
+
+    button[i].addEventListener('click', () => {
+      popup.style.display = 'block'
+    }) 
+    
+  // closeButton.addEventListener('click', () => {
+  //   popup.style.display = 'none'
+  // })
+
+    popup.addEventListener('click', event => {
+      // com a constante criada com essa função pode-se encontar o nome da classe de um elemnto clicadio, exibindo uma lista de informações do elemento, uma espécie de array, com a adição do '[0]', encontramos a classe de nível 0  
+      const classNameOfClickedElement = event.target.classList[0]
+      const classNames = ['popup-close', 'popup-wrapper']
+      const shouldClosePopup = classNames.some(className => className === classNameOfClickedElement) 
+      
+      if(shouldClosePopup){
+        popup.style.display = 'none'
+      }
+    })
+  }
+  </script>
     
   <script>
     function excluirEvento(eventoId) {

@@ -48,7 +48,7 @@ class AdminAdicionarController extends Controller
 
     public function pegandoDados()
     {
-     //   $profissionais = Profissional::all();
+    //    $profissionais = Profissional::all();
         $profissionais = DB::select("select * from profissionais");
       
         return view('pages.admin.homeAdmin', compact('profissionais'));
@@ -75,4 +75,10 @@ class AdminAdicionarController extends Controller
         
         return redirect()->back(); // Redireciona de volta para a página
     }
+    
+    public function editarProfissional()
+    {
+        
     }
+
+}
