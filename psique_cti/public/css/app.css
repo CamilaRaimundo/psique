@@ -533,7 +533,7 @@ form .input_group button{
 /* --------------------------------- CONTATO ------------------------------------------ */    
 .container-contato{
     width: 100%;
-    background-color: #fff;
+    /* background-color: #fff; */
     background-image: url('../img/fundo.png');
     background: cover; /*imagem completa todo o fundo*/
     background-repeat: no-repeat;
@@ -911,6 +911,30 @@ input[type="file"]{
 
 /* ---------------------------------------- DARK MODE ------------------------------------- */
 
+.dark .container-mural{
+    width: 100%;
+    padding: 2%;
+
+    background-image: url('../img/fundo5.jpg');
+    background: cover; 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100%;
+    background-position: center center;
+}
+
+.dark .container-contato{
+    background-image: url('../img/fundo5.jpg');
+    /* transition: cubic-bezier(0.075, 0.82, 0.165, 1); */
+    /* background: cover; 
+    background-repeat: no-repeat;
+    background-attachment: fixed; */
+}
+
+.dark .negrito{
+    color: white;
+}
+
 .dark .nav a:link, .dark .nav a:visited{
     color:black;
 }
@@ -1021,26 +1045,6 @@ input[type="file"]{
 
 .dark  span{
     color: #000;
-}
-
-.dark .container-mural{
-    width: 100%;
-    padding: 2%;
-
-    background-image: url('../img/fundo5.png');
-    background: cover; 
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    min-height: 100%;
-    background-position: center center;
-}
-
-.dark .container-contato{
-    background-image: url('../img/fundo5.png');
-    /* transition: cubic-bezier(0.075, 0.82, 0.165, 1); */
-    /* background: cover; 
-    background-repeat: no-repeat;
-    background-attachment: fixed; */
 }
 
 .dark .card.artigo{

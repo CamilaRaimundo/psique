@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Aluno;
+use App\Models\Aluno_Mood;
 use App\Models\Profissional;
 use Exception;
 use DateTime;

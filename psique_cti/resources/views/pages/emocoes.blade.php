@@ -10,7 +10,7 @@
     <div class="container text-center">
         <div class="row justify-content-md-center">
 
-            <h1 class="pergunta"><b>Como você está se sentindo hoje?</b></h1>  
+            <h1 class="pergunta"><b class="negrito">Como você está se sentindo hoje?</b></h1>  
 
             <form action="{{ route('emocoes.processar') }}" method="POST">
             {{ csrf_field() }}
