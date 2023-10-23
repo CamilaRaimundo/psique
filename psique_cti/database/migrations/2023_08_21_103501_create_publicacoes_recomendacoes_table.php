@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('titulo');
             $table->string('descricao');
             $table->string('profissional');
-            $table->binary('imagem');
+            $table->binary('imagem')->nullable();
             $table->foreign('profissional')->references('cpf')->on('profissionais')->onDelete('cascade');
-            $table->string('link');
+            $table->string('link')->nullable();
             $table->string('autor');
             $table->timestamps();
         });
