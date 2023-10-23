@@ -93,7 +93,7 @@
       <div class="caixa_login_1">
         <div class="caixa_login_2">
           <div class="conteudo_login">
-            <h2>Login</h2>
+            <h2 class="logintext">Login</h2>
             <div class="linha-branca"></div>
             <p>Bem-vind<img src="{{ asset('img/icone_sf.png')}}" class="nicolau_login"></p>
             <a href="{{URL::to('googleLogin')}}"><img src="{{asset('img/google.png')}}" width="80%"></a>

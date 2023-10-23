@@ -935,6 +935,10 @@ input[type="file"]{
     color: white;
 }
 
+.dark .logintext{
+    font-size: 4rem;
+}
+
 .dark .nav a:link, .dark .nav a:visited{
     color:black;
 }
