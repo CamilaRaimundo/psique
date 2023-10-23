@@ -1,125 +1,109 @@
 <?php
 
+use App\Http\Controllers\ContatoController;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController; //--> login
+use App\Http\Controllers\LogOutController;
+use App\Http\Controllers\MuralController;
 use App\Http\Controllers\TriagemController; //--> Triagem
 use App\Http\Controllers\ArtigosController; //--> Artigos
 use App\Http\Controllers\CadastroController; //--> Informações adicionais
 use App\Http\Controllers\EventosController; // --> Eventos
-use App\Http\Controllers\ContatoController; //--> Contato
-use App\Http\Controllers\LogOutController; //--> Logout
-use App\Http\Controllers\EmocoesController; //--> Emoções
-use App\Http\Controllers\AdminAdicionarController; //--> Admin
-use App\Http\Controllers\MuralController; //--> Mural
-use App\Http\Controllers\GraficosController; //--> estatísticas
 use App\Mail\TestMail;
 
-Route::get('/', [MainController::class,'index'])->name('home');
 
-// LOGIN
-//socialite login urls
-Route::get('/googleLogin',[MainController::class, 'googleLogin'])->name('login.google.mostrar');
-Route::get('/auth/google/callback',[MainController::class, 'googleHandle'])->name('login.google.handle');
+Route::get('/', [MainController::class, 'index'])->name('home');
 
-Route::get('/login', [MainController::class, 'login'])->name('login.mostrar');
+// Mural e publicações
+    Route::get('/mural', [MuralController::class, 'mostraForm'])->name('mural.mostrar');
 
-Route::get('/logout', [LogOutController::class, 'logout'])->name('logout');
+    Route::get('/adicionartigo', [ArtigosController::class, 'mostraFormAdicionar'])->name('artigos_add.mostrar');
 
+    Route::post('/adicionartigo', [ArtigosController::class, 'adicionaForm'])->name('artigo.adicionar');
 
-// CONTATO
-Route::get('/contato', [ContatoController::class, 'mostraForm'])->name('contato.mostrar');
-Route::post('/contato', [ContatoController::class, 'mandaEmail'])->name('contato.enviar');
+    Route::get('/editartigo', function () { return view('pages.psico.editartigo'); })->name('artigos_edit.mostrar');
 
+    Route::get('/adicionaevento', [EventosController::class, 'mostraFormAdicionar'])->name('eventos_add.mostrar');
 
-// CADASTRO
-Route::get('/cadastro', [CadastroController::class,'mostraForm'])->name('cadastro.mostrar');
-Route::post('/cadastro', [CadastroController::class,'processaForm'])->name('cadastro.processar');
+    Route::post('/adicionaevento', [EventosController::class, 'postarEvento'])->name('eventos.postar');
 
+    Route::get('/editarevento', [EventosController::class, 'mostraFormEditar'])->name('eventos_edit.mostrar');
 
-// TRIAGEM
-Route::get('/triagem', [CadastroController::class,'mostraForm'])->name('triagem.mostrar');
-Route::post('/triagem',[TriagemController::class,'verifica'])->name('triagem.processar');
+    Route::post('/editarevento', [EventosController::class, 'editarEvento'])->name('eventos.editar');
 
+    Route::get('/excluir-evento/{id}', 'App\Http\Controllers\EventosController@excluirEvento')->name('eventos.excluir');
+    Route::get('/excluir-artigo/{id}', 'App\Http\Controllers\ArtigosController@excluirArtigo')->name('artigos.excluir');
 
-// EMOÇÕES
-Route::get('/emocoes', [EmocoesController::class,'mostraEmocoes'])->name('emocoes.mostrar');
-Route::post('/emocoes', [EmocoesController::class,'registrarEmocao'])->name('emocoes.processar');
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/contato', [ContatoController::class, 'mostraForm'])->name('contato.mostrar');
+        Route::post('/contato', [ContatoController::class, 'mandaEmail'])->name('contato.enviar');
+    });
 
 
-//  PSICÓLOGA
-Route::get('/homepsico', [MainController::class,'psicoIndex'])->name('home_psico');
+    Route::get('/login', function () {return view('pages.login');})->name('login.mostrar');
+    Route::get('/logout', [LogOutController::class, 'logout']);
 
-Route::get('/detalhesaluno', [MainController::class,'detalhesIndex'])->name('detalhes_aluno.mostrar');
+    //socialite login urls
+    Route::get('/googleLogin',[MainController::class, 'googleLogin']);
+    Route::get('/auth/google/callback',[MainController::class, 'googleHandle']);
 
-Route::get('/estatisticas', [MainController::class,'estatisticasIndex'])->name('estatisticas.mostrar');
-Route::get('/estatisticas', [GraficosController::class, 'pegaEmocoes'])->name('pegaEmo');
+    Route::get('/cadastro', [CadastroController::class, 'mostraForm'])->name('cadastro.mostrar');
+    Route::post('/cadastro', [CadastroController::class, 'processaForm'])->name('cadastro.processar');
+    
+    // Route::post('/cadastro', 'App\Http\Controllers\CadastroController@processarFormulario')->name('cad');
 
+Route::get('/triagem', function () {return view('pages.triagem');});
 
-// MURAL
-Route::get('/mural', [MuralController::class, 'mostraForm'])->name('mural.mostrar');
+Route::post('/triagem', ['as'  =>'controller.triagem', 'uses'=>'App\Http\Controllers\TriagemController@verifica'])->name('controller.triagem');
 
-Route::get('/adicionartigo', [MainController::class, 'indexArtigo'])->name('artigos_adicionar.mostrar');
-Route::post('/adicionartigo',[ArtigosController::class,'verificaForm'])->name('artigos_adicionar.processar');
+Route::get('/emocoes', function () { return view('pages.emocoes'); });
 
-Route::get('/adicionarevento', [MainController::class, 'indexEvento'])->name('eventos_adicionar.mostrar');
-Route::post('/adicionaevento', [EventosController::class,'postarEvento'])->name('eventos_add.processar');
+Route::post('/emocoes', 'App\Http\Controllers\EmocoesController@registrarEmocao')->name('cademocao');
 
-Route::get('/editartigo', [MainController::class,'indexArtigoEdit'])->name('artigos_editar.mostrar');
-Route::post('/editartigo', [ArtigosController::class,'editarArtigo'])->name('artigos_editar.processar');
-
-Route::get('/editarevento', [MainController::class,'indexEventoEdit'])->name('eventos_editar.postar');
-Route::post('/editarevento', [EventosController::class,'editarEvento'])->name('eventos_editar.processar');
-
-Route::get('/excluir-evento/{id}', 'App\Http\Controllers\EventosController@excluirEvento')->name('eventos.excluir');
-Route::get('/excluir-artigo/{id}', 'App\Http\Controllers\ArtigosController@excluirArtigo')->name('artigos.excluir');
+//  Psico
+Route::get('/homepsico', function () { return view('pages.psico.home'); })->name('home_psico');
 
 
-// ADMINISTRADOR
-Route::get('/Admin', [AdminAdicionarController::class, 'pegandoDados'])->name('home_admin');
+Route::get('/detalhesaluno', function () { return view('pages.psico.detalhesaluno'); });
 
-Route::get('/listarAlunos', [AdminAdicionarController::class, 'pegandoDadosAlunos'])->name('listarAlunos.mostrar');
+// Admin
+Route::middleware([''])->group(function () {
+Route::get('/Admin', function () { return view('pages.admin.homeAdmin');})->name('home_admin');
 
-Route::get('/EditarPro', [MainController::class, 'indexEditPro'])->name('admin_editar.mostrar');
-Route::post('/EditarPro', [AdminAdicionarController::class, 'editarProfissional'])->name('admin_editar.processar');
+Route::get('/EditarPro', function () { return view('pages.admin.editarPro');});
 
-Route::get('/AdicionarPro', [MainController::class, 'indexAddPro'])->name('admin_adicionar.mostrar');
-Route::post('/AdicionarPro', [AdminAdicionarController::class, 'cadastrarProfissional'])->name('admin_adicionar.processar');
 
-Route::post('/inativar-ativar-profissional/{cpf}', [AdminAdicionarController::class, 'inativarAtivarProfissional'])->name('admin.remover');
 
-// Route::get('/AdicionarPro', function () {
-//     return view('pages.admin.adicionarProfissional');
-// })->name('admin_adicionar.mostrar');
+Route::get('/AdicionarPro', function () { return view('pages.admin.adicionarProfissional');});
 
-// Route::get('/Admin', [MainController::class,'AdminIndex'])->name('home_admin');
+Route::post('/AdicionarPro', 'App\Http\Controllers\AdminAdicionarController@cadastrarProfissional')->name('addpro');
+Route::post('/AdicionarPro', 'App\Http\Controllers\AdminAdicionarController@pegandoDados')->name('addpro');
 
-// Route::get('/editartigo', function () {
-//     return view('pages.psico.editartigo');
-// })->name('artigos_editar.mostrar');
+Route::post('/inativar-ativar-profissional/{cpf}', [AdminAdicionarController::class, 'inativarAtivarProfissional']);
 
-// Route::get('/adicionaevento', function () {
-//     return view('pages.psico.addevento');
-// })->name('eventos_adicionar.mostrar');
 
-// Route::get('/editartigo', function () {
-//     return view('pages.psico.editartigo');
-// })->name('artigos_editar.mostrar');
 
-// Route::get('/editarevento', function () {
-//     return view('pages.psico.editevento');
-// })->name('eventos_editar.postar');
+Route::get('/Admin', [AdminAdicionarController::class, 'pegandoDados'])->name('Admin');
+});
 
-// Route::get('/estatisticas', function () {
-//     return view('pages.psico.graficos');
-// })->name('estatisticas.mostrar');
+Route::get('/estatisticas', function () { return view('pages.psico.graficos');})->name('estatistica.mostrar');
 
-// Route::get('/detalhesaluno', function () {
-//     return view('pages.psico.detalhesaluno');
-// })->name('detalhes_aluno.mostrar');
 
-// Route::get('/EditarPro', function () {
-//     return view('pages.admin.editarPro');
-// })->name('admin_editar.mostrar');
-// Route::get('/editartigo', [MainController::class,'indexArtigoEdit'])->name('artigos_editar.mostrar');
-// Route::post('/editartigo', [ArtigosController::class,'editarArtigo'])->name('artigos_editar.processar');
+
+// Route::get('/testejoao',['as'=>'alunos','uses'=>'App\Http\Controllers\AlunosController@index']);
+
+// Route::post('/editartigo',
+//     ['as'  =>'controller.artigo',
+//         'uses'=>'App\Http\Controllers\ArtigosController@verificaForm']);
+
+// Route::post('/editartigo',
+// ['as'  =>'controller.artigo',
+//  'uses'=>'App\Http\Controllers\ArtigosController@editarArtigo']);
+
+// Route::get('/mural', function () {
+//     return view('pages.mural');
+// });
+
+//Route::post('/inativar-ativar-profissional/{cpf}', 'AdminAdicionarController@inativarAtivarProfissional');
+
