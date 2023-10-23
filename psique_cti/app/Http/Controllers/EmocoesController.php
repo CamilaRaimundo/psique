@@ -31,18 +31,20 @@ class EmocoesController extends Controller
         ];
         
         $emocaoSelecionada = $request->input('mood'); 
+        // $ra = $request->input('ra');
+
 
         $emocao = new Aluno_Mood();
         $emocao->mood = $emocoes[$emocaoSelecionada];
         $emocao->data = (new DateTime())->format('Y-m-d H:i:s');;
-        // $emocao->aluno = 'a';
+        $emocao->aluno = "2157016";
             
         $emocao->save();
 
         return view('index');
     }
 
-    public function mostraEmocoes() 
+    public function mostraEmocoes()
     {
         return view('pages.emocoes');
     }
