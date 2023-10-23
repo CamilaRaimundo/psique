@@ -16,34 +16,40 @@
             {{-- exibir as informações já cadastradas e permitir edição dos campos --}}
             {{-- então realizar update --}}
             <form action="{{ route('eventos_editar.processar') }}" method="POST" >
+                @csrf
+
+                <div class="input_group" style = "display:none;">
+                <input type="text" id="id" name="id" value="{{$evento->id}}" display = "none" readonly>
+                </div>
+
                 <div class="input_group">
-                    <label for="titulo_evento">Título do evento</label>
-                    <input type="text" id="titulo_evento" name="titulo_evento" placeholder="Digite o título do evento" required>
+                    <label for="titulo">Título do evento</label>
+                    <input type="text" id="titulo" name="titulo" placeholder="Digite o título do evento" value="{{$evento->titulo}}" required>
                 </div>
 
                 <div class="input_group">
                     <label for="responsavel_evento">Responsável</label>
-                    <input type="text" id="responsavel_evento" name="responsavel_evento" placeholder="Digite o responsável pelo evento" required>
+                    <input type="text" id="responsavel_evento" name="responsavel_evento" placeholder="Digite o responsável pelo evento" value="{{$evento->responsavel_evento}}" required>
                 </div>
 
                 <div class="input_group">
                     <label for="local_evento">Local</label>
-                    <input type="text" id="local_evento" name="local_evento" placeholder="Digite o local que ocorrerá o evento" required>
+                    <input type="text" id="local_evento" value="{{$evento->local_evento}}" name="local_evento" placeholder="Digite o local que ocorrerá o evento" required>
                 </div>
 
                 <div class="input_group">
                     <label for="dataehora_evento">Data e horário</label>
-                    <input type="datetime-local" id="dataehora_evento" name="dataehora_evento" required>
+                    <input type="datetime-local" value="{{$evento->dataehora_evento}}" id="dataehora_evento" name="dataehora_evento" required>
                 </div>
 
                 <div class="input_group">
                     <label for="limite_pessoas_evento">Há limite de pessoas?</label>
-                    <input type="number" id="limite_pessoas_evento" name="limite_pessoas_evento" placeholder="Digite o limite de pessoas, caso haja">
+                    <input type="number" id="limite_pessoas_evento" value="{{$evento->limite_pessoas_evento}}" name="limite_pessoas_evento" placeholder="Digite o limite de pessoas, caso haja">
                 </div>
 
                 <div class="input_group">
                     <label for="link_evento">Link</label>
-                    <input type="url" id="link_evento" name="link_evento" placeholder="Adicione o link, caso haja, para redirecionamento para outra página">
+                    <input type="url" id="link_evento" value="{{$evento->link_evento}}" name="link_evento" placeholder="Adicione o link, caso haja, para redirecionamento para outra página">
                 </div>
 
                 <div class="input_group">
@@ -53,9 +59,9 @@
                 </div>
 
                 <div class="input_group">
-                    <label for="descricao_evento">Descrição do evento</label>
+                    <label for="descricao">Descrição do evento</label>
                     <div class="form-floating">
-                        <textarea class="form-control" id="floatingTextarea2" name="comentarios" style="height: 100px"></textarea>
+                        <textarea class="form-control" id="floatingTextarea2" name="descricao" style="height: 100px">{{$evento->descricao}}</textarea>
                         <label for="floatingTextarea2">Comentários</label>
                     </div>
                 </div>

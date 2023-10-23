@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Aluno;
 use App\Models\Profissional;
+use App\Models\Evento;
+use App\Models\Publicacao_Recomendacao;
 
 // include{{asset('/../../../variavel.php')}}; //variavel global
 
@@ -101,14 +103,16 @@ class MainController extends Controller
         return view('pages.psico.addevento');
     } 
 
-    public function indexEventoEdit()
+    public function indexEventoEdit($id)
     {
-        return view('pages.psico.editevento');
+        $evento = Evento::find($id);
+        return view('pages.psico.editevento', compact('evento'));
     } 
    
-    public function indexArtigoEdit()
+    public function indexArtigoEdit($id)
     {
-        return view('pages.psico.editartigo');
+        $publi = Publicacao_Recomendacao::find($id);
+        return view('pages.psico.editartigo', compact('publi'));
     } 
  
     public function detalhesIndex()

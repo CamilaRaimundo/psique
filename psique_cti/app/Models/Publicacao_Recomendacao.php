@@ -12,7 +12,6 @@ class Publicacao_Recomendacao extends Model
     protected $fillable = [
         'titulo',
         'descricao',
-        'autor',
         'imagem',
         'profissional',
         'link',

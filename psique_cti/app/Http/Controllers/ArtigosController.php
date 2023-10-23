@@ -4,16 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Models\Mural;
 use App\Models\Publicacao_Recomendacao;
 use Illuminate\Support\Facades\DB;
 
 class ArtigosController extends Controller
 {
-    public function mostraFormAdicionar()
-    {
-        return view('pages.psico.addartigo');
-    } 
     //addartigo e editartigo
     public function adicionaForm(Request $req)
     {
@@ -64,35 +59,26 @@ class ArtigosController extends Controller
        
         $artigo->save();
 
-        //dd($artigos2);
-    
-       // return view('pages.mural');
        return redirect()->route('mural.mostrar');
     }
     
     public function editarArtigo(Request $request)
     {
-        $validatedData = $request->validate([
-            // Definir regras de validação para o formulário de edição
-        ]);
+        // $validatedData = $request->validate([
+        //     // Definir regras de validação para o formulário de edição
+        // ]);
 
-        $artigo = Publicacao_Recomendacao::where('id', $id)->first();
-
-        // Verificar se o evento foi encontrado
-        if (!$artigo) {
-            return redirect()->route('artigo.ver')->with('error', 'Artigo não encontrado');
-        }
+        $artigo = Publicacao_Recomendacao::where('id', $request->id)->first();
 
         // Atualizar os campos do evento com os novos dados
-        $artigo->descricao = $request->input('descricao_publicacao');
-        $artigo->titulo = $request->input('titulo_publicacao');
-        $artigo->link = $request->input('link_publicacao');
-        $artigo->autor = $request->input('autor_publicacao');
-       
+        $artigo->descricao = $request->descricao;
+        $artigo->titulo = $request->titulo;
+        $artigo->link = $request->link;
+        $artigo->autor = $request->autor;
 
         $artigo->save();
 
-        return view('pages.mural');
+        return redirect()->route('mural.mostrar');
     }
 
 
