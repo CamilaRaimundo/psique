@@ -91,8 +91,6 @@ Route::get('/estatisticas', function () { return view('pages.psico.graficos');})
 Route::get('/estatisticas', [GraficosController::class, 'pegaEmocoes'])->name('pegaEmo');
 
 Route::get('/listaAluno', [AdminAdicionarController::class, 'pegandoDadosAlunos'])->name('listaAluno');
-
-//Route::post('/excluir-aluno/{ra}', [AdminAdicionarController::class, 'excluirAluno']);
 Route::delete('/excluir-aluno/{ra}/{email}', [AdminAdicionarController::class, 'excluirAluno'])->name('excluirAluno');
 
 
