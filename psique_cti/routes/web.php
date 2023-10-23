@@ -12,6 +12,7 @@ use App\Http\Controllers\LogOutController; //--> Logout
 use App\Http\Controllers\EmocoesController; //--> Emoções
 use App\Http\Controllers\AdminAdicionarController; //--> Admin
 use App\Http\Controllers\MuralController; //--> Mural
+use App\Http\Controllers\GraficosController; //--> estatísticas
 use App\Mail\TestMail;
 
 Route::get('/', [MainController::class,'index'])->name('home');
@@ -52,6 +53,8 @@ Route::get('/homepsico', [MainController::class,'psicoIndex'])->name('home_psico
 Route::get('/detalhesaluno', [MainController::class,'detalhesIndex'])->name('detalhes_aluno.mostrar');
 
 Route::get('/estatisticas', [MainController::class,'estatisticasIndex'])->name('estatisticas.mostrar');
+Route::get('/estatisticas', [GraficosController::class, 'pegaEmocoes'])->name('pegaEmo');
+
 
 // MURAL
 Route::get('/mural', [MuralController::class, 'mostraForm'])->name('mural.mostrar');

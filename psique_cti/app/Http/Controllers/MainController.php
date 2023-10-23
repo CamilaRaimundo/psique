@@ -58,9 +58,11 @@ class MainController extends Controller
 
                 if($findUser->email=="psique.cti@gmail.com")
                 {
-                    return view('pages.emocoes', compact("googl"));
+                    return view('pages.admin.homeAdmin', compact("googl"));
                 }
-                
+
+                // if a tebela de emocoes n tiver um registro nesse dia, mostrar a página de emoções
+                // senão, mostre o index
                 return view('index', compact("googl"));
                
             }
