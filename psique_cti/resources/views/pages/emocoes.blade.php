@@ -12,8 +12,9 @@
 
             <h1 class="pergunta"><b>Como você está se sentindo hoje?</b></h1>  
 
-            <form action="{{ route('emocoes.mostrar') }}" method="POST">
+            <form action="{{ route('emocoes.processar') }}" method="POST">
             {{ csrf_field() }}
+            
 
                 <div class="caixa-emojis selecionar">
 

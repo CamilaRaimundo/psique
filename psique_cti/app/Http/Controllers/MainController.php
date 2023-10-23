@@ -6,9 +6,13 @@ use Illuminate\Http\Request;
 use App\Mail\Testing;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Aluno;
 use App\Models\Profissional;
+use Exception;
+use DateTime;
+
 
 // include{{asset('/../../../variavel.php')}}; //variavel global
 
@@ -61,13 +65,33 @@ class MainController extends Controller
                     return view('pages.admin.homeAdmin', compact("googl"));
                 }
 
-                // if a tebela de emocoes n tiver um registro nesse dia, mostrar a página de emoções
-                // senão, mostre o index
-                return view('index', compact("googl"));
-               
+                $dataatual = (new DateTime())->format('Y-m-d H:i:s');
+                $alunoAutenticado = Auth::user(); // Obtém o usuário autenticado
+                if ($alunoAutenticado) {
+                    $email = $alunoAutenticado->email;
+                    $result = DB::table('alunos')
+                                ->where('email', $email)
+                                ->select('ra')
+                                ->first(); 
+
+                    if ($result) {
+                        $ra = $result->ra;
+                    }
+                }
+                    $tememocaohoje = DB::table('aluno_mood')
+                    ->where('data', $dataatual)
+                    ->where('aluno', $ra)
+                    ->select('data')
+                    ->first(); 
+                    if ($tememocaohoje) {
+                        return view('index', compact("googl"));
+                    }
+                    else{
+                        return view('pages.emocoes', compact("googl"));
+                    }
+                
             }
             
-
         }catch(Exception $e){
             dd($e->getMessage());
         }
