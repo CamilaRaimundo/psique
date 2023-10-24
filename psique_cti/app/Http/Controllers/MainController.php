@@ -157,4 +157,9 @@ class MainController extends Controller
     {
         return view('pages.admin.editarPro');
     } 
+
+    public function indexEncontros()
+    {
+        return view ('pages.psico.encontros');
+    }
 }
