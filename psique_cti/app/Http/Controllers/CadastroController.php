@@ -6,13 +6,11 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Aluno;
-use App\Http\Controllers\MainController;
+// use App\Http\Controllers\MainController;
 use Resources\Views\Pages;
 
 use App\Http\Controllers\Users;
 use App\Models\User;
-
-// dd($googl);
 
 class CadastroController extends Controller
 {
@@ -57,10 +55,10 @@ class CadastroController extends Controller
         $aluno->curso = $cursos[$validatedData['opcao_curso']];
         $aluno->nome = $nome;
         $aluno->email = $email;
-
+  
         $aluno->save();
 
-        
+        $algumacoisa=$aluno->ra;
         $user = new User();
 
         $user->name =$nome;
@@ -70,7 +68,7 @@ class CadastroController extends Controller
 
         $user->save();
 
-        return view('pages.triagem');
-        
+        // return view('pages.triagem');
+        return view('pages.triagem', compact('algumacoisa') );
     }
 }

@@ -11,10 +11,12 @@
             <p>Me ajude a te conhecer melhor!</p>
             <form onsubmit="verificarEnvio(event)" action="{{ route('triagem.processar') }}" method="POST">
                 {{ csrf_field() }} 
+                
+                <input type="hidden" name="aluno" value="{{(string)$algumacoisa}}">
+
                 <div class="input_group">
                     <label for="qtd_pessoas">Com quantas pessoas você mora?</label>
                     <input type="number" id="qtd_pessoas" name="qtd_pessoas" min="1" max="10"  placeholder="Selecione o total contando com você" required>
-                    
                 </div>
 
                 <div class="input_group">
