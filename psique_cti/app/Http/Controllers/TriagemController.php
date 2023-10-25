@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Historico_aluno;
+use App\Models\Aluno;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class TriagemController extends Controller
 {
@@ -57,6 +60,21 @@ class TriagemController extends Controller
                 $triagem->acompanhamento = $acompanhamento[$req->input('opcao_acomp')];
                 $triagem->medicamentos = $medicamentos[$req->input('opcao_medicamento')];
                 $triagem->nome_medicamentos = $req->input('medicamento');
+
+                $triagem ->aluno = $req->input('aluno');
+
+                // $alunoAutenticado = Auth::user();
+                // if (isset($alunoAutenticado)) {
+                //     $email = $alunoAutenticado->email;
+                //     $result = DB::table('alunos')
+                //                 ->where('email', $email)
+                //                 ->select('ra')
+                //                 ->first(); 
+                //     if (isset($result)) {
+                //         $ra = $result->ra;
+                //     }
+                //     $triagem->aluno = $ra;
+                // }
                 
                 
                 
