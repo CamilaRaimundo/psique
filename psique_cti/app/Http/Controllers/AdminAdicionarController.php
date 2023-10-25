@@ -96,9 +96,9 @@ class AdminAdicionarController extends Controller
         return redirect()->back(); // Redireciona de volta para a página
     }
     
-    public function editarProfissional()
-    {
+    // public function editarProfissional()
+    // {
         
-    }
+    // }
 
 }

@@ -39,7 +39,7 @@ Route::post('/cadastro', [CadastroController::class,'processaForm'])->name('cada
 
 
 // TRIAGEM
-Route::get('/triagem', [CadastroController::class,'mostraForm'])->name('triagem.mostrar');
+Route::get('/triagem', [TriagemController::class,'mostraForm'])->name('triagem.mostrar');
 Route::post('/triagem',[TriagemController::class,'verifica'])->name('triagem.processar');
 
 
@@ -64,15 +64,15 @@ Route::POST('/encontros', [EncontrosController::class, 'store'])->name('encontro
 Route::get('/mural', [MuralController::class, 'mostraForm'])->name('mural.mostrar');
 
 Route::get('/adicionartigo', [MainController::class, 'indexArtigo'])->name('artigos_adicionar.mostrar');
-Route::post('/adicionartigo',[ArtigosController::class,'verificaForm'])->name('artigos_adicionar.processar');
+Route::post('/adicionartigo',[ArtigosController::class,'adicionaForm'])->name('artigos_adicionar.processar');
 
 Route::get('/adicionarevento', [MainController::class, 'indexEvento'])->name('eventos_adicionar.mostrar');
-Route::post('/adicionaevento', [EventosController::class,'postarEvento'])->name('eventos_add.processar');
+Route::post('/adicionaevento', [EventosController::class,'postarEvento'])->name('eventos_adicionar.processar');
 
-Route::get('/editartigo', [MainController::class,'indexArtigoEdit'])->name('artigos_editar.mostrar');
+Route::get('/editartigo/{id}', [MainController::class,'indexArtigoEdit'])->name('artigos_editar.mostrar');
 Route::post('/editartigo', [ArtigosController::class,'editarArtigo'])->name('artigos_editar.processar');
 
-Route::get('/editarevento', [MainController::class,'indexEventoEdit'])->name('eventos_editar.postar');
+Route::get('/editarevento/{id}', [MainController::class,'indexEventoEdit'])->name('eventos_editar.mostrar');
 Route::post('/editarevento', [EventosController::class,'editarEvento'])->name('eventos_editar.processar');
 
 Route::get('/excluir-evento/{id}', 'App\Http\Controllers\EventosController@excluirEvento')->name('eventos.excluir');

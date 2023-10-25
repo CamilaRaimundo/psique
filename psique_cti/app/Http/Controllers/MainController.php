@@ -13,7 +13,8 @@ use App\Models\Aluno_Mood;
 use App\Models\Profissional;
 use Exception;
 use DateTime;
-
+use App\Models\Evento;
+use App\Models\Publicacao_Recomendacao;
 
 // include{{asset('/../../../variavel.php')}}; //variavel global
 
@@ -63,7 +64,10 @@ class MainController extends Controller
 
                 if($findUser->email=="psique.cti@gmail.com")
                 {
-                    return view('pages.admin.homeAdmin', compact("googl"));
+                    // return view('pages.admin.homeAdmin', compact("googl"));
+                    $profissionais = DB::select("select * from profissionais");
+      
+                    return view('pages.admin.homeAdmin', compact('profissionais'));
                 }
 
                 $dataatual = (new DateTime())->format('Y-m-d H:i:s');
@@ -128,14 +132,16 @@ class MainController extends Controller
         return view('pages.psico.addevento');
     } 
 
-    public function indexEventoEdit()
+    public function indexEventoEdit($id)
     {
-        return view('pages.psico.editevento');
+        $evento = Evento::find($id);
+        return view('pages.psico.editevento', compact('evento'));
     } 
    
-    public function indexArtigoEdit()
+    public function indexArtigoEdit($id)
     {
-        return view('pages.psico.editartigo');
+        $publi = Publicacao_Recomendacao::find($id);
+        return view('pages.psico.editartigo', compact('publi'));
     } 
  
     public function detalhesIndex()

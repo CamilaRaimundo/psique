@@ -66,7 +66,6 @@ class CadastroController extends Controller
         $user->name =$nome;
         $user->email =$email;
         $user->nivel_de_acesso ='1';
-       
 
         $user->save();
 

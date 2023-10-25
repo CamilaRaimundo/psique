@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use App\Models\Mural;
 use App\Models\Publicacao_Recomendacao;
 use Illuminate\Support\Facades\DB;
 
@@ -13,6 +12,8 @@ class ArtigosController extends Controller
     //addartigo e editartigo
     public function adicionaForm(Request $req)
     {
+        //dd($req->all());
+        // Defina as regras de validação para os campos
         $rules = [
             'titulo_publicacao' => 'required',
             'autor_publicacao' => 'required|alpha',
@@ -21,6 +22,7 @@ class ArtigosController extends Controller
             'descricao_publicacao' => 'required',
         ];
     
+        // Defina mensagens de erro personalizadas, se necessário
         $messages = [
             'titulo_publicacao.required' => 'O título da publicação é obrigatório.',
             'autor_publicacao.required' => 'O autor é obrigatório.',
@@ -31,7 +33,7 @@ class ArtigosController extends Controller
         ];
         //dd($req->all());
     
-
+        // Valide os campos
         $validator = Validator::make($req->all(), $rules, $messages);
         //dd($req->all());
 
@@ -41,57 +43,71 @@ class ArtigosController extends Controller
 
         //dd($req->all()); -- parou
         // Process and save data (if validation passes)
-        $artigos = new Publicacao_Recomendacao();
+        $artigo = new Publicacao_Recomendacao();
 
 
-        $artigos->descricao = $req->input('descricao_publicacao');
-        $artigos->titulo = $req->input('titulo_publicacao');
+        $artigo->descricao = $req->input('descricao_publicacao');
+        $artigo->titulo = $req->input('titulo_publicacao');
     
         if ($req->hasFile('img_ilustrativa')) {
-            $path = $req->file('img_ilustrativa')->store('event_images');
-            $artigos->imagem = $path;
+            $path = $req->file('img_ilustrativa')->store('artigo_images');
+            $artigo->imagem = $path;
         }
 
-        $artigos->save();
-    
+        $artigo->link = $req->input('link_publicacao');
+        $artigo->autor = $req->input('autor_publicacao');
+       
+        $artigo->save();
 
-        $artigos2 = new Publicacao_Recomendacao();
-
-        $artigos2->link = $req->input('link_publicacao');
-        $artigos2->autor = $req->input('autor_publicacao');
-        $artigos2->id_mural = $artigos->id;
-    
-        $artigos2->save();
-
-        //dd($artigos2);
-    
-       // return view('pages.mural');
-       return redirect()->route('artigo.ver');
+       return redirect()->route('mural.mostrar');
     }
-
-    public function editarArtigo(Request $req, $id_mural)
+    
+    public function editarArtigo(Request $request)
     {
-        dd($id_mural);
-        $validatedData = $req->validate([
-            // Definir regras de validação para o formulário de edição
-        ]);
+        // $validatedData = $request->validate([
+        //     // Definir regras de validação para o formulário de edição
+        // ]);
 
-        $artigos = Publicacao_Recomendacao::where('id_mural', $id_mural)->first();
-
-        // Verificar se o evento foi encontrado
-        if (!$artigos) {
-            return redirect()->route('mural')->with('error', 'Artigo não encontrado');
-        }
+        $artigo = Publicacao_Recomendacao::where('id', $request->id)->first();
 
         // Atualizar os campos do evento com os novos dados
-        $artigos->descricao = $req->input('descricao_publicacao');
-        $artigos->titulo = $req->input('titulo_publicacao');
-        $artigos->link = $req->input('link_publicacao');
-        $artigos->autor = $req->input('autor_publicacao');
-        $artigos->save();
+        $artigo->descricao = $request->descricao;
+        $artigo->titulo = $request->titulo;
+        $artigo->link = $request->link;
+        $artigo->autor = $request->autor;
 
-        return view('pages.mural');
+        $artigo->save();
+
+        return redirect()->route('mural.mostrar');
     }
+
+
+    public function selecionandoArt()
+     {
+        //  $eventos = Evento::with('mural')->get(); return view('pages.mural', compact('eventos'));
+        $artigo = Publicacao_Recomendacao::all();
+        return view('pages.mural', compact('artigo') );
+   
+     }
+
+     public function excluirArtigo($id) {
+        // Adicione instruções de depuração
+        \Log::info("Excluindo artigo com ID: $id");
+    
+        // Encontre o evento pelo ID
+        $artigo = Publicacao_Recomendacao::find($id);
+    
+        // Verifique se o evento foi encontrado
+        if (!$artigo) {
+            return redirect()->route('artigo.ver');
+        }
+    
+        // Exclua o evento
+        $artigo->delete();
+    
+        return response()->json(['success' => true]);
+    }
+    
 }
 
-    
+   

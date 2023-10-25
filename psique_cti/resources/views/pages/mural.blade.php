@@ -4,7 +4,6 @@
     
 @section('conteudo')
 
-{{-- FAZER CONDIÇÃO PARA SUMIR APENAS SE NÃO FOR A PSICÓLOGA --}}
   @if(!isset($eventos) && !isset($artigos)) {{-- if (não há publicações) --}}
     <div class="pagina_vazia">
       <h3>Não há nenhuma publicação :&#040;</h3>
@@ -68,7 +67,8 @@
                       </div>
                     </div>
 
-                    <a href="{{route('eventos_editar.processar')}}"><i class="fa-solid fa-pen-to-square"></i></a>
+                    {{-- <a href="{{route('eventos_editar.processar')}}"><i class="fa-solid fa-pen-to-square"></i></a> --}}
+                    <a href="{{route('eventos_editar.mostrar', ['id' => $evento->id])}}" tabindex="0" role="button" data-toggle="popover" data-trigger="hover" title="{{$evento->id}}"><i class="fa-solid fa-pen-to-square"></i></a>
                   </div>
                 </div>
               </div>
@@ -112,7 +112,7 @@
                   </div>
                 </div>
 
-                <a href="{{route('artigos_editar.mostrar')}}"><i class="fa-solid fa-pen-to-square"></i></a>
+                <a href="{{route('artigos_editar.mostrar', ['id' => $publi->id])}}"><i class="fa-solid fa-pen-to-square"></i></a>
               </div>
 
               <h5 class="card-title">{{$publi->titulo}}</h5> 
