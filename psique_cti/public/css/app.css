@@ -117,6 +117,63 @@ footer a:hover{
     font-size: 2rem;
 }
 
+.cookies{
+    width: 80%;
+    background-color: #fbf48e;
+    position: fixed;
+    bottom: 5%;
+    left: 50%;
+    transform: translate(-50%);
+    border-radius: 15px;
+    z-index: 10000;
+    display: none;
+    box-shadow: 8px 5px 2px 1px rgba(0, 0, 0, 0.4); 
+}
+
+.cookies.mostrar{
+    display: block;
+}
+
+.cookies .cookies-txt{
+    display: flex;
+    align-items: center;
+    text-align: justify;
+    padding: 20px;
+}
+
+.cookies .cookies-icon{
+    font-size: 30px;
+    margin: 1%;
+}
+
+.cookies .cookies-btn{
+    margin-left: 30px;
+    display: flex;
+}
+
+.cookies .cookies-btn button{
+    background-color: #002e4d;
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+    padding: 10px 40px;
+    cursor: pointer;
+    transition: .2s;
+    border-radius: 20px;
+    border: none;
+    display: flex;
+    width: auto;
+}
+
+.cookies .cookies-btn i{
+    margin: 5%;
+}
+
+.cookies .cookies-btn button:hover{
+    transform: scale(0.9);
+    background-color: #00ADA8;
+}
+
 /* ---------------------------------------- DARK MODE ------------------------------------- */
 
 .dark .nav a:link, .dark .nav a:visited{

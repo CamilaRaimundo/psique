@@ -39,6 +39,7 @@
             </section>
 
             <section class="module content">
+                <a name="lgpd">
                 <div class="container-parallax">
                     <h2>Lei Geral de Proteção de Dados <i class="fa-solid fa-lock"></i></h2>
                     <h5>LGPD</h5>

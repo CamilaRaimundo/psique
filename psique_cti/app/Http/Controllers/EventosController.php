@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Evento;
+use App\Models\Profissional;
 use App\Models\Mural;
 
 class EventosController extends Controller
@@ -33,6 +34,8 @@ class EventosController extends Controller
             'mimes' => 'O campo :attribute deve ser um arquivo de imagem do tipo: :values.',
         ]);
 
+        dd($validatedData);
+
         $evento = new Evento();
 
         $evento->titulo = $validatedData['titulo_evento'];
@@ -43,6 +46,7 @@ class EventosController extends Controller
         $evento->limite_pessoas_evento = $validatedData['limite_pessoas_evento'];
         $evento->link_evento = $validatedData['link_evento'];
 
+// ema
         $profissional = Auth::user();
         if ($profissional) {
             $email = $profissional->email;
@@ -51,14 +55,12 @@ class EventosController extends Controller
                         ->select('cpf')
                         ->first(); 
             if ($result) {
-                $cpf = $result->cpf;
+                $cpf = $result->cpf;    
             }
-            // $emocao->aluno = $ra;
-            $evento->profissional = $cpf;
         }
+        $evento->profissional = $cpf;
+// ema
         
-        
-
         if ($request->hasFile('img_ilustrativa')) {
             $path = $request->file('img_ilustrativa')->store('event_images');
             $evento->imagem= $path;  //ema

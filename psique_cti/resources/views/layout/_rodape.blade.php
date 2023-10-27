@@ -62,8 +62,44 @@
       © 2023 Colégio Técnico Industrial "Prof. Isaac Portal Róldan"
     </div>
   </footer>
-
   
+  <div class="cookies" id="cookies">
+    <div class="cookies-txt">
+      <div class="cookies-icon">
+        <i class="fa-solid fa-user-lock"></i>
+      </div>
+
+      <p>
+        Este site utiliza cookies para melhorar a sua experiência de navegação. Ao continuar a usar o site, você concorda com o uso de cookies. Para mais informações, consulte a nossa política de privacidade.
+        <a href="#lgpd">Leia mais sobre <i class="fa-solid fa-circle-exclamation"></i></a>
+      </p>
+      
+
+      <div class="cookies-btn">
+        <button  onclick="aceito()">Aceito<i class="fa-solid fa-cookie-bite"></i></button>
+      </div>
+    </div>
+  </div>
+
+  {{-- COOKIES --}}
+  <script>
+    var msgCookies = document.getElementById('cookies')
+
+    function aceito(){
+      // o localStorage serve para armazenar valores dentro da memória do navegador 
+      // tendo um guardado aqui, a mensagem de cookies não aparecerão novamente
+      // .lgpd --> é o nome registrado para a memória
+      localStorage.lgpd = "sim"
+      msgCookies.classList.remove('mostrar')
+    }
+
+    if(localStorage.lgpd == 'sim'){
+      msgCookies.classList.remove('mostrar')
+    }else{
+      msgCookies.classList.add('mostrar')
+    }
+  </script>
+
   {{-- ----------------------------------Isabelli----------------------------------------- --}}
   <script>
     //triagem
