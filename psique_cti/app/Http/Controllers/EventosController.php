@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Evento;
 use App\Models\Mural;
-
 
 class EventosController extends Controller
 {
@@ -41,6 +42,22 @@ class EventosController extends Controller
         $evento->responsavel_evento = $validatedData['responsavel_evento'];
         $evento->limite_pessoas_evento = $validatedData['limite_pessoas_evento'];
         $evento->link_evento = $validatedData['link_evento'];
+
+        $profissional = Auth::user();
+        if ($profissional) {
+            $email = $profissional->email;
+            $result = DB::table('profissionais')
+                        ->where('email', $email)
+                        ->select('cpf')
+                        ->first(); 
+            if ($result) {
+                $cpf = $result->cpf;
+            }
+            // $emocao->aluno = $ra;
+            $evento->profissional = $cpf;
+        }
+        
+        
 
         if ($request->hasFile('img_ilustrativa')) {
             $path = $request->file('img_ilustrativa')->store('event_images');
