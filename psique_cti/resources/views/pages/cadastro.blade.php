@@ -9,9 +9,8 @@
         </div>
 
         <div class="form-box">
-            <h2></h2>
+            {{-- <h2></h2> --}}
             <form onsubmit="validaOpcoes(event)" action="{{ route('cadastro.processar') }}" method="POST" id="myForm">
-
             {{ csrf_field() }}
 
                 <div class="input_group">

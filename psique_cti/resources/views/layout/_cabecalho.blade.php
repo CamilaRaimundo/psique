@@ -116,6 +116,7 @@
       @elseif(Auth::check())
         <a href="{{ route('logout') }}" class="icones-padrao"><i class="fa-solid fa-right-to-bracket"></i></a>
       @endif
+      <a href="https://fontawesome.com/icons/circle-info?f=classic&s=solid" class="icones-padrao" target="_blanck"><i class="fa-solid fa-circle-info"></i></a>
       <button onclick id="toggle"><i class="fa-solid fa-circle-half-stroke"></i></button>
     </div>
 
