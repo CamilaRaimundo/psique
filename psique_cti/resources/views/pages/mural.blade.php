@@ -55,24 +55,26 @@
                     <p class="card-text"><small class="text-body-secondary"><a href="{{ $evento->link_evento}}" target="_blank">{{ $evento->link_evento}}</a></small></p>
                   </div> {{-- ema --}} 
                 
-                  {{-- if(section == profissional) --}}
+                 <!-- if(section == profissional)  -->
                   @if(Auth::check())
-            @if( Auth::user()->nivel_de_acesso==2)
+                   @if( Auth::user()->nivel_de_acesso==2)
                   <div class="icones_mural">
-                    <!-- <button class="delete"><i class="fa-solid fa-delete-left"></i></button>
+                  <button class="delete"><i class="fa-solid fa-delete-left"></i></button>
                     
-                    {{-- POP-UP --}}
+                      <!-- POP-UP -->
                     <div class="popup-wrapper">
                       <div class="popup">
                         <div class="popup-content">
                           <h2>Confirmação</h2>
                           <p>Você tem certeza que deseja excluir permanentemente este evento?</p>
-                          <button class="popup-close">Cancelar</button>   -->
-                          <a href="{{route('eventos.excluir', ['id' => $evento->id])}}" tabindex="0" role="button" data-toggle="popover" data-trigger="hover" title="{{$evento->id}}" class="btn-confirma"><i class="fa-solid fa-delete-left"></i></a>
+                          <button class="popup-close">Cancelar</button>   
+                          <a href="{{route('eventos.excluir', ['id' => $evento->id])}}" tabindex="0" role="button" data-toggle="popover" data-trigger="hover" title="{{$evento->id}}" >
+                          <button class="btn-confirma">  Confirmar </button>
+                          </a>
 
-                        <!-- </div>
+                         </div>
                       </div>
-                    </div> -->
+                    </div> 
 
                     <a href="{{route('eventos_edit.mostrar')}}"><i class="fa-solid fa-pen-to-square"></i></a>
                   </div>
@@ -109,22 +111,30 @@
               {{-- if(section == profissional) --}}
               @if(Auth::check())
             @if( Auth::user()->nivel_de_acesso==2)
-              <div class="icones_mural">
-                <!-- <button class="delete"><i class="fa-solid fa-delete-left"></i></button> -->
-                 <!-- POP-UP  -->
-                <!-- <div class="popup-wrapper">
+            <div class="icones_mural">
+              <!-- POP-UP -->
+
+              <button class="delete"><i class="fa-solid fa-delete-left"></i></button>
+             
+                
+            </a> 
+              <div class="popup-wrapper">
                   <div class="popup">
-                    <div class="popup-content">
-                      <h2>Confirmação</h2>
-                      <p>Você tem certeza que deseja excluir permanentemente este evento?</p>
-                      <button class="popup-close">Cancelar</button>    -->
-                      <a href="{{route('artigos.excluir', ['id' => $publi->id])}}" tabindex="0" role="button" data-toggle="popover" data-trigger="hover" title="{{$publi->id}}"><i class="fa-solid fa-delete-left"></i></a>
-                    <!-- </div>
+                      <div class="popup-content">
+                          <h2>Confirmação</h2>
+                          <p>Você tem certeza que deseja excluir permanentemente este evento?</p>
+                          <button class="popup-close">Cancelar</button>
+                          <a href="{{ route('artigos.excluir', ['id' => $publi->id]) }}" tabindex="0" role="button" data-toggle="popover" data-trigger="hover" title="{{ $publi->id }}">
+                          <button class="btn-confirma">  Confirmar </button>
+                          </a>
+                      </div>
                   </div>
-                </div>  -->
-          
+                </div>
+        
                 <a href="{{route('artigos_edit.mostrar')}}"><i class="fa-solid fa-pen-to-square"></i></a>
-              </div>
+         
+          
+            </div>
               @endif
               @endif
 
@@ -145,34 +155,31 @@
 
   {{-- -----------------------------POP-UP------------------------------- --}}
   <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Seu código JavaScript aqui
     const button  = document.querySelectorAll('.delete ')
     const popup = document.querySelector('.popup-wrapper ')
-    for (i = 0; i < button.length; i++) {
- 
-    // const closeButton = document.querySelector('.popup-close')
-
-    button[i].addEventListener('click', () => {
-      popup.style.display = 'block'
-    }) 
     
-  // closeButton.addEventListener('click', () => {
-  //   popup.style.display = 'none'
-  // })
-
-    popup.addEventListener('click', event => {
-      // com a constante criada com essa função pode-se encontar o nome da classe de um elemnto clicadio, exibindo uma lista de informações do elemento, uma espécie de array, com a adição do '[0]', encontramos a classe de nível 0  
-      const classNameOfClickedElement = event.target.classList[0]
-      const classNames = ['popup-close', 'popup-wrapper']
-      const shouldClosePopup = classNames.some(className => className === classNameOfClickedElement) 
+    for (i = 0; i < button.length; i++) {
+        button[i].addEventListener('click', () => {
+            popup.style.display = 'block'
+        }) 
+    
+        popup.addEventListener('click', event => {
+            const classNameOfClickedElement = event.target.classList[0]
+            const classNames = ['popup-close', 'popup-wrapper']
+            const shouldClosePopup = classNames.some(className => className === classNameOfClickedElement) 
       
-      if(shouldClosePopup){
-        popup.style.display = 'none'
-      }
-    })
-  }
+            if (shouldClosePopup) {
+                popup.style.display = 'none'
+            }
+        })
+    }
+});
+
   </script>
     
-  <script>
+  <!-- <script>
     function excluirEvento(eventoId) {
       // Fazer uma solicitação DELETE para a rota do controlador para excluir o evento
       fetch(`/excluir-evento/${eventoId}`, {
@@ -194,5 +201,5 @@
           console.error('Erro ao excluir o evento:', error);
         });
     }
-  </script>  
+  </script>   -->
 @endsection
