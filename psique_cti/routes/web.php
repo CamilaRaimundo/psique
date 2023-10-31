@@ -32,8 +32,8 @@ Route::get('/', [MainController::class, 'index'])->name('home');
 
     Route::post('/editarevento', [EventosController::class, 'editarEvento'])->name('eventos.editar');
 
-    Route::get('/excluir-evento/{id}', 'App\Http\Controllers\EventosController@excluirEvento')->name('eventos.excluir');
-    Route::get('/excluir-artigo/{id}', 'App\Http\Controllers\ArtigosController@excluirArtigo')->name('artigos.excluir');
+    Route::get('/excluirevento/{id}', [EventosController::class, 'excluirEvento'])->name('eventos.excluir');
+    Route::get('/excluirartigo/{id}', [ArtigosController::class, 'excluirArtigo'])->name('artigos.excluir');
 
     Route::middleware(['auth'])->group(function () {
         Route::get('/contato', [ContatoController::class, 'mostraForm'])->name('contato.mostrar');
@@ -63,7 +63,6 @@ Route::post('/emocoes', 'App\Http\Controllers\EmocoesController@registrarEmocao'
 
 //  Psico
 Route::get('/homepsico', function () { return view('pages.psico.home'); })->name('home_psico');
-
 
 Route::get('/detalhesaluno', function () { return view('pages.psico.detalhesaluno'); });
 

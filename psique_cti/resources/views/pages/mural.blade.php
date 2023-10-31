@@ -19,7 +19,7 @@
         {{-- EVENTOS --}}
         <div class="titulo-mural">
           {{-- if(section == profissional)--}}
-          <h1>Eventos <a href="{{route('eventos_adicionar.mostrar')}}" class="icones-padrao"><i class="fa-regular fa-calendar-plus"></i></a></h1> 
+          <h1>Eventos <a href="{{route('eventos_add.mostrar')}}" class="icones-padrao"><i class="fa-regular fa-calendar-plus"></i></a></h1> 
           {{-- else --}}
           {{-- <h1>Eventos</h1>   --}}
         </div>  
@@ -54,7 +54,7 @@
                 
                   {{-- if(section == profissional) --}}
                   <div class="icones_mural">
-                    <button class="delete"><i class="fa-solid fa-delete-left"></i></button>
+                    <!-- <button class="delete"><i class="fa-solid fa-delete-left"></i></button>
                     
                     {{-- POP-UP --}}
                     <div class="popup-wrapper">
@@ -62,13 +62,14 @@
                         <div class="popup-content">
                           <h2>Confirmação</h2>
                           <p>Você tem certeza que deseja excluir permanentemente este evento?</p>
-                          <button class="popup-close">Cancelar</button>  
-                          <button class="btn-confirma" onclick="console.log('Botão Confirmar clicado'); excluirEvento({{ $evento->id }})">Confirmar</button>
-                        </div>
-                      </div>
-                    </div>
+                          <button class="popup-close">Cancelar</button>   -->
+                          <a href="{{route('eventos.excluir', ['id' => $evento->id])}}" tabindex="0" role="button" data-toggle="popover" data-trigger="hover" title="{{$evento->id}}" class="btn-confirma"><i class="fa-solid fa-delete-left"></i></a>
 
-                    <a href="{{route('eventos_editar.processar')}}"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <!-- </div>
+                      </div>
+                    </div> -->
+
+                    <a href="{{route('eventos_edit.mostrar')}}"><i class="fa-solid fa-pen-to-square"></i></a>
                   </div>
                 </div>
               </div>
@@ -81,7 +82,7 @@
         {{-- ARTIGOS --}}
         <div class="titulo-mural"> 
           {{-- if(section == profissional)--}}
-          <h1>Artigos <a href="{{route('artigos_adicionar.processar')}}" class="icones-padrao"><i class="fa-solid fa-newspaper"></i></a></h1>  
+          <h1>Artigos <a href="{{route('artigos_add.mostrar')}}" class="icones-padrao"><i class="fa-solid fa-newspaper"></i></a></h1>  
           {{-- else --}}
           {{-- <h1>Artigos</h1>   --}}
         </div> 
@@ -97,22 +98,20 @@
             <div class="card-body">
               {{-- if(section == profissional) --}}
               <div class="icones_mural">
-                {{-- <a href="/editartigo"><i class="fa-solid fa-pen-to-square"></i></a> --}}
-                <button class="delete"><i class="fa-solid fa-delete-left"></i></button>
-
-                {{-- POP-UP --}}
-                <div class="popup-wrapper">
+                <!-- <button class="delete"><i class="fa-solid fa-delete-left"></i></button> -->
+                 <!-- POP-UP  -->
+                <!-- <div class="popup-wrapper">
                   <div class="popup">
                     <div class="popup-content">
                       <h2>Confirmação</h2>
                       <p>Você tem certeza que deseja excluir permanentemente este evento?</p>
-                      <button class="popup-close">Cancelar</button>  
-                      <button class="btn-confirma">Confirmar</button>
-                    </div>
+                      <button class="popup-close">Cancelar</button>    -->
+                      <a href="{{route('artigos.excluir', ['id' => $publi->id])}}" tabindex="0" role="button" data-toggle="popover" data-trigger="hover" title="{{$publi->id}}"><i class="fa-solid fa-delete-left"></i></a>
+                    <!-- </div>
                   </div>
-                </div>
-
-                <a href="{{route('artigos_editar.mostrar')}}"><i class="fa-solid fa-pen-to-square"></i></a>
+                </div>  -->
+          
+                <a href="{{route('artigos_edit.mostrar')}}"><i class="fa-solid fa-pen-to-square"></i></a>
               </div>
 
               <h5 class="card-title">{{$publi->titulo}}</h5> 
@@ -123,6 +122,7 @@
             @if(isset($publi->imagem))
               <img src="{{$publi->imagem}}  class="card-img-bottom">
             @endif
+          
           </div>
         @endforeach
       {{-- @endif --}}
