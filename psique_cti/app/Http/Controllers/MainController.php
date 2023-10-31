@@ -13,8 +13,8 @@ use App\Models\Aluno_Mood;
 use App\Models\Profissional;
 use Exception;
 use DateTime;
-use App\Models\Evento;
-use App\Models\Publicacao_Recomendacao;
+// use App\Models\Evento;
+// use App\Models\Publicacao_Recomendacao;
 
 // include{{asset('/../../../variavel.php')}}; //variavel global
 

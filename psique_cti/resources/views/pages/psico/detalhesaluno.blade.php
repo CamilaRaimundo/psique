@@ -135,8 +135,12 @@
                     <label for="floatingTextarea2">Comentários</label>
                 </div>
 
+                {{-- <div class="container-graphic">
+                    <canvas class="pie-chart-dia"></canvas>
+                </div> --}}
+
                 <div class="container-graphic">
-                    <canvas class="pie-chart"></canvas>
+                    <canvas class="pie-chart-mes"></canvas>
                 </div>
 
                 {{-- <div class="input_group">
@@ -146,54 +150,49 @@
         </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
         <script>
-            var ctx = document.getElementsByClassName("pie-chart");
-            // import { Colors } from 'chart.js';
-            // type, data e options
-            var chartGraph = new Chart(ctx, {
+            // Defina um objeto com as cores correspondentes às emoções
+            var coresEmocoes = {
+                'Felicidade': 'rgba(255,215,0)',
+                'Tristeza': 'rgba(220,220,220)',
+                'Raiva': 'rgba(255,0,0)',
+                'Confusão': 'rgba(128,128,128)',
+                'Medo': 'rgba(0,0,0)', //(128,0,128)
+                'Estresse': 'rgba(128,0,0)',
+                'Apaixonado': 'rgba(220,20,60)', 
+                'Animação': 'rgba(0,191,255)'
+            };
+        
+        
+            // Gráfico de pizza para emoções do mês
+            var ctxMes = document.getElementsByClassName("pie-chart-mes");
+        
+            var dataMes = {!! json_encode($emocoesMes->pluck('count', 'mood')) !!};
+            var labelsMes = Object.keys(dataMes);
+            var countsMes = Object.values(dataMes);
+        
+            var chartGraphMes = new Chart(ctxMes, {
                 type: 'pie',
-                data:{
-                // eixo X
-                labels: ["Felicidade", "Tristeza", "Raiva", "Confusão", "Medo", "Estresse", "Paixão", "Animação"],
-                datasets: [{
-                    // legenda
-                    // label: "Taxas de acesso",
-                    // eixo Y
-                    data: [5,10,15,5,10,15,5,10],
-                    // cores
-                    borderColor: [
-                    'rgba(255,215,0)', 
-                    'rgba	(220,220,220)',
-                    'rgba(255,0,0)',
-                    'rgba(220,20,60)', 
-                    'rgba(128,0,128)', 
-                    'rgba(255,140,0)',
-                    'rgba(139,0,0)', 
-                    'rgba(70,130,180)',
-                    ],
-                    backgroundColor: [
-                    'rgba(255,215,0)', 
-                    'rgba	(220,220,220)',
-                    'rgba(255,0,0)',
-                    'rgba(220,20,60)', 
-                    'rgba(128,0,128)', 
-                    'rgba(255,140,0)',
-                    'rgba(139,0,0)', 
-                    'rgba(70,130,180)',
-                    ]
-                }]
-                //  para adicionar outro dataset precisa apenas colocar uma vírgula e abrir uma colchete
+                data: {
+                  labels: labelsMes,
+                  datasets: [{
+                    data: countsMes,
+                    backgroundColor: labelsMes.map(emocao => coresEmocoes[emocao])
+                  }]
                 },
                 options: {
-                title: {
+                  title: {
                     display: true,
                     fontSize: 20,
-                    text: 'Sentimento por aluno',
+                    text: 'Sentimentos por Mês do Aluno',
                     color: 'rgba(0,0,0)',
-                },
+                  },
                 }
             });
-        </script>
+        
+            </script>
+
     </div>
     
 

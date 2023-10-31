@@ -52,6 +52,8 @@ Route::post('/emocoes', [EmocoesController::class,'registrarEmocao'])->name('emo
 Route::get('/homepsico', [MainController::class,'psicoIndex'])->name('home_psico');
 
 Route::get('/detalhesaluno', [MainController::class,'detalhesIndex'])->name('detalhes_aluno.mostrar');
+Route::get('/detalhesaluno', [GraficosController::class, 'pegaAluno'])->name('pegaAluno');
+
 
 Route::get('/estatisticas', [MainController::class,'estatisticasIndex'])->name('estatisticas.mostrar');
 Route::get('/estatisticas', [GraficosController::class, 'pegaEmocoes'])->name('pegaEmo');
