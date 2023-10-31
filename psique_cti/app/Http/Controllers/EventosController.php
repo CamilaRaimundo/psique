@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Models\Evento;
 use App\Models\Profissional;
+use App\Models\Evento;
 use App\Models\Mural;
 
 class EventosController extends Controller
@@ -34,7 +34,7 @@ class EventosController extends Controller
             'mimes' => 'O campo :attribute deve ser um arquivo de imagem do tipo: :values.',
         ]);
 
-        dd($validatedData);
+        // dd($validatedData);
 
         $evento = new Evento();
 
@@ -73,11 +73,6 @@ class EventosController extends Controller
     
     public function editarEvento(Request $request)
     {
-        
-        // $validatedData = $request->validate([
-        //     // Definir regras de validação para o formulário de edição
-        // ]);
-
         $evento = Evento::where('id', $request->id)->first();
 
         // Atualizar os campos do evento com os novos dados

@@ -18,7 +18,7 @@
         <form action="{{ route('eventos_adicionar.processar') }}" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
 
-            <input style="display:none;" type="text" id="profissional" name="profissional" placeholder="Digite o título da publicação" value="{{Auth::user()->cpf}}" readonly required>
+            {{-- <input style="display:none;" type="text" id="profissional" name="profissional" placeholder="Digite o título da publicação" value="{{Auth::user()->cpf}}" readonly required> --}}
             {{-- <input type="hidden" name="profissional" value="{{(string)$cpfpro}}"> --}}
 
             <div class="input_group">

@@ -26,12 +26,11 @@
              </div>
          @endif
             <form method="POST" action="{{ route('encontros.store') }}">
-                @csrf
-
+            @csrf
                 <div class="input-group">
                     <input type="date" class="form-control a" name="data">
                     <input type="text" class="form-control a" name="ra_pesquisa" placeholder="Digite o RA">
-                    <button type="button" class="btn btn-secondary a">Procurar</button>
+                    {{-- <button type="button" class="btn btn-secondary a">Procurar</button> --}}
                     {{-- Botão de procurar --> if(existe na tabela aluno?) registrar em seu cadastro --}}
                     {{-- else (!existe) então cadastrar esse RA com  --}}
                     {{-- <button type="button" class="btn btn-outline-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">

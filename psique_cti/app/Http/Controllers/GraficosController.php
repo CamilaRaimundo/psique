@@ -64,7 +64,6 @@ class GraficosController extends Controller
             ->get();
     
         // Retorna a view com os dados das emoções do dia e do mês
-        return view('pages.psico.detalhesaluno', compact('emocoesDia', 'emocoesMes'));
+        return view('pages.psico.home', compact('emocoesDia', 'emocoesMes'));
     }
-    
 }

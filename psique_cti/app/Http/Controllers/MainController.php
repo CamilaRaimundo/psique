@@ -159,9 +159,10 @@ class MainController extends Controller
         return view('pages.admin.adicionarProfissional');
     } 
  
-    public function indexEditPro()
+    public function indexEditPro($cpf)
     {
-        return view('pages.admin.editarPro');
+        $profissional = Profissional::find($cpf);
+        return view('pages.admin.editarPro', compact('profissional'));
     } 
 
     public function indexEncontros()

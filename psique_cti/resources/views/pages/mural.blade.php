@@ -34,12 +34,13 @@
 
         <div class="container text-center">
           @foreach($eventos as $evento)
-            <div class="container-fluid">
+            <div class="container">
+              
 
               {{-- card --}}
               <div class="card mb-3" style="max-width: 500px;">
                 
-                @if(isset($publi->imagem))
+                @if(isset($evento->imagem))
                   <div class="col-md-4">
                     <img src=base href="{{asset('$evento->imagem')}}"  width="100" class="img-fluid rounded-start">
                   </div>

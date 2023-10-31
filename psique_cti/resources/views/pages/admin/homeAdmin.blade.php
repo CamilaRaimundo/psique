@@ -46,7 +46,7 @@
                     @if($pro->ativo) disabled @endif>
                   Ativar</button>
                 </form>
-                <button type="button" class="btn btn-success"><a href="{{route('admin_editar.mostrar')}}">Edit</a></button>
+                <button type="button" class="btn btn-success"><a href="{{route('admin_editar.mostrar', ['cpf' => $pro->cpf])}}" tabindex="0" role="button" data-toggle="popover" data-trigger="hover" title="{{$pro->cpf}}">Edit</a></button>
               </div>
             </td>
           </tr>
