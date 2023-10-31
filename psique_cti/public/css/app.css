@@ -1098,10 +1098,11 @@ input[type="file"]{
     color: #fff;
 }
 
-.dark h2, h5{
+.dark h2{
     font-size: 1.5rem;
     color: #fff;
 }
+
 
 .dark .form-box-form1 h2 {
     text-align: center;
