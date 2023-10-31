@@ -19,7 +19,10 @@
         {{-- EVENTOS --}}
         <div class="titulo-mural">
           {{-- if(section == profissional)--}}
-          <h1>Eventos <a href="{{route('eventos_add.mostrar')}}" class="icones-padrao"><i class="fa-regular fa-calendar-plus"></i></a></h1> 
+          <h1>Eventos @if(Auth::check())
+            @if( Auth::user()->nivel_de_acesso==2) <a href="{{route('eventos_add.mostrar')}}" class="icones-padrao"><i class="fa-regular fa-calendar-plus"></i></a></h1> 
+            @endif
+        @endif
           {{-- else --}}
           {{-- <h1>Eventos</h1>   --}}
         </div>  
@@ -35,7 +38,7 @@
               {{-- card --}}
               <div class="card mb-3" style="max-width: 500px;">
                 
-                @if(isset($publi->imagem))
+                @if(isset($evento->imagem))
                   <div class="col-md-4">
                     <img src=base href="{{asset('$evento->imagem')}}"  width="100" class="img-fluid rounded-start">
                   </div>
@@ -53,6 +56,8 @@
                   </div> {{-- ema --}} 
                 
                   {{-- if(section == profissional) --}}
+                  @if(Auth::check())
+            @if( Auth::user()->nivel_de_acesso==2)
                   <div class="icones_mural">
                     <!-- <button class="delete"><i class="fa-solid fa-delete-left"></i></button>
                     
@@ -71,6 +76,8 @@
 
                     <a href="{{route('eventos_edit.mostrar')}}"><i class="fa-solid fa-pen-to-square"></i></a>
                   </div>
+                  @endif
+                  @endif
                 </div>
               </div>
             </div>
@@ -82,7 +89,10 @@
         {{-- ARTIGOS --}}
         <div class="titulo-mural"> 
           {{-- if(section == profissional)--}}
-          <h1>Artigos <a href="{{route('artigos_add.mostrar')}}" class="icones-padrao"><i class="fa-solid fa-newspaper"></i></a></h1>  
+          <h1>Artigos @if(Auth::check())
+            @if( Auth::user()->nivel_de_acesso==2) <a href="{{route('artigos_add.mostrar')}}" class="icones-padrao"><i class="fa-solid fa-newspaper"></i></a></h1>
+            @endif
+            @endif  
           {{-- else --}}
           {{-- <h1>Artigos</h1>   --}}
         </div> 
@@ -97,6 +107,8 @@
           <div class="card artigo">
             <div class="card-body">
               {{-- if(section == profissional) --}}
+              @if(Auth::check())
+            @if( Auth::user()->nivel_de_acesso==2)
               <div class="icones_mural">
                 <!-- <button class="delete"><i class="fa-solid fa-delete-left"></i></button> -->
                  <!-- POP-UP  -->
@@ -113,6 +125,8 @@
           
                 <a href="{{route('artigos_edit.mostrar')}}"><i class="fa-solid fa-pen-to-square"></i></a>
               </div>
+              @endif
+              @endif
 
               <h5 class="card-title">{{$publi->titulo}}</h5> 
               <p class="card-text">{{$publi->descricao}}</p>

@@ -110,13 +110,74 @@ class MainController extends Controller
 
     public function psicoIndex() 
     {
-        return view('pages.psico.home');
+        if(Auth::check()) 
+        {
+            if(Auth::user()->nivel_de_acesso==2)
+                return view('pages.psico.home');
+        }
+            else
+                return view('index');
+            
     }
  
     public function adminIndex() 
     {
-        return view('pages.admin.homeAdmin');
+        if(Auth::check()) 
+        {
+            if(Auth::user()->nivel_de_acesso==-1)
+                return view('pages.admin.homeAdmin');
+        }
+        else
+            return view('index');
     }
+
+    public function indexEditPro() 
+    {
+        if(Auth::check()) 
+        {
+            if(Auth::user()->nivel_de_acesso==-1)
+                return view('pages.admin.editarPro');
+        }
+        else
+            return view('index');
+    }
+    public function indexAddPro() 
+    {
+        if(Auth::check()) 
+        {
+            if(Auth::user()->nivel_de_acesso==-1)
+                return view('pages.admin.adicionarProfissional');
+        }
+        else
+            return view('index');
+    }
+
+    public function estatisticasIndex()
+    {
+        if(Auth::check()) 
+        {
+            if(Auth::user()->nivel_de_acesso==2)
+                return view('pages.psico.graficos');
+        }
+          else
+             return view('index');
+    } 
+
+
+    public function indexArtigoEdit()
+    {
+        if(Auth::check()) 
+        {
+            if(Auth::user()->nivel_de_acesso==2)
+            return view('pages.psico.editartigo');
+        } 
+        
+        else
+        return view('index');
+    }
+           
+ 
+
 
     public function indexArtigo()
     {
@@ -133,28 +194,9 @@ class MainController extends Controller
         return view('pages.psico.editevento');
     } 
    
-    public function indexArtigoEdit()
-    {
-        return view('pages.psico.editartigo');
-    } 
- 
-    public function detalhesIndex()
-    {
-        return view('pages.psico.detalhesaluno');
-    } 
+    
    
-    public function estatisticasIndex()
-    {
-        return view('pages.psico.graficos');
-    } 
-  
-    public function indexAddPro()
-    {
-        return view('pages.admin.adicionarProfissional');
-    } 
- 
-    public function indexEditPro()
-    {
-        return view('pages.admin.editarPro');
-    } 
+   
+    
+   
 }

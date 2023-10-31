@@ -22,7 +22,9 @@ Route::get('/', [MainController::class, 'index'])->name('home');
 
     Route::post('/adicionartigo', [ArtigosController::class, 'adicionaForm'])->name('artigo.adicionar');
 
-    Route::get('/editartigo', function () { return view('pages.psico.editartigo'); })->name('artigos_edit.mostrar');
+    Route::get('/editartigo',[MainController::class, 'indexArtigoEdit'])->name('artigos_edit.mostrar');
+
+    // Route::get('/editartigo', function () { return view('pages.psico.editartigo'); })->name('artigos_edit.mostrar');
 
     Route::get('/adicionaevento', [EventosController::class, 'mostraFormAdicionar'])->name('eventos_add.mostrar');
 
@@ -62,31 +64,28 @@ Route::get('/emocoes', function () { return view('pages.emocoes'); });
 Route::post('/emocoes', 'App\Http\Controllers\EmocoesController@registrarEmocao')->name('cademocao');
 
 //  Psico
-Route::get('/homepsico', function () { return view('pages.psico.home'); })->name('home_psico');
-
-Route::get('/detalhesaluno', function () { return view('pages.psico.detalhesaluno'); });
+    Route::get('/homepsico',[MainController::class, 'psicoIndex'])->name('home_psico');
 
 // Admin
-Route::middleware([''])->group(function () {
-Route::get('/Admin', function () { return view('pages.admin.homeAdmin');})->name('home_admin');
 
-Route::get('/EditarPro', function () { return view('pages.admin.editarPro');});
-
-
-
-Route::get('/AdicionarPro', function () { return view('pages.admin.adicionarProfissional');});
-
-Route::post('/AdicionarPro', 'App\Http\Controllers\AdminAdicionarController@cadastrarProfissional')->name('addpro');
-Route::post('/AdicionarPro', 'App\Http\Controllers\AdminAdicionarController@pegandoDados')->name('addpro');
-
-Route::post('/inativar-ativar-profissional/{cpf}', [AdminAdicionarController::class, 'inativarAtivarProfissional']);
+Route::get('/Admin',[MainController::class, 'adminIndex'])->name('home_admin');
+Route::get('/EditarPro',[MainController::class, 'indexEditPro']);
+Route::get('/AdicionarPro',[MainController::class, 'indexAddPro']);
 
 
+// Route::middleware(['verificarNivelAcesso'])->group(function () {
+//     Route::get('/Admin', function () { return view('pages.admin.homeAdmin');})->name('home_admin');
 
-Route::get('/Admin', [AdminAdicionarController::class, 'pegandoDados'])->name('Admin');
-});
+    Route::post('/AdicionarPro', 'App\Http\Controllers\AdminAdicionarController@cadastrarProfissional')->name('addpro');
+    Route::post('/AdicionarPro', 'App\Http\Controllers\AdminAdicionarController@pegandoDados')->name('addpro');
+   Route::post('/inativar-ativar-profissional/{cpf}', [AdminAdicionarController::class, 'inativarAtivarProfissional']);
+     Route::get('/Admin', [AdminAdicionarController::class, 'pegandoDados'])->name('Admin');
+// });
 
-Route::get('/estatisticas', function () { return view('pages.psico.graficos');})->name('estatistica.mostrar');
+
+
+Route::get('/estatisticas',[MainController::class, 'estatisticasIndex'])->name('estatistica.mostrar');
+
 
 
 

@@ -4,7 +4,7 @@
     
 @section('conteudo')
   <div class="container-admin">
-    <button type="button" class="btn btn-primary btn-lg"><a href="{{route('admin_adicionar.mostrar')}}">Adicionar profissional</a></button>
+    <button type="button" class="btn btn-primary btn-lg"><a href="{{route('addpro')}}">Adicionar profissional</a></button>
     <h3>Profissionais cadastrados</h3>
     <table class="table">
       <thead>
