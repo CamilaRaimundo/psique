@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MainController; //--> login
+use App\Http\Controllers\MainController; //--> Login
 use App\Http\Controllers\TriagemController; //--> Triagem
 use App\Http\Controllers\ArtigosController; //--> Artigos
 use App\Http\Controllers\CadastroController; //--> Informações adicionais
@@ -12,9 +12,10 @@ use App\Http\Controllers\LogOutController; //--> Logout
 use App\Http\Controllers\EmocoesController; //--> Emoções
 use App\Http\Controllers\AdminAdicionarController; //--> Admin
 use App\Http\Controllers\MuralController; //--> Mural
-use App\Http\Controllers\GraficosController; //--> estatísticas
-use App\Http\Controllers\EncontrosController; //--> estatísticas
+use App\Http\Controllers\GraficosController; //--> Estatísticas
+use App\Http\Controllers\EncontrosController; //--> Gráficos
 use App\Mail\TestMail;
+
 
 Route::get('/', [MainController::class,'index'])->name('home');
 
@@ -50,6 +51,8 @@ Route::post('/emocoes', [EmocoesController::class,'registrarEmocao'])->name('emo
 
 //  PSICÓLOGA
 Route::get('/homepsico', [MainController::class,'psicoIndex'])->name('home_psico');
+Route::get('/homepsico', [GraficosController::class, 'pegaAluno'])->name('pegaAluno');
+
 
 Route::get('/detalhesaluno', [MainController::class,'detalhesIndex'])->name('detalhes_aluno.mostrar');
 
@@ -85,48 +88,10 @@ Route::get('/Admin', [AdminAdicionarController::class, 'pegandoDados'])->name('h
 Route::get('/listarAlunos', [AdminAdicionarController::class, 'pegandoDadosAlunos'])->name('listarAlunos.mostrar');
 Route::delete('/excluir-aluno/{ra}/{email}', [AdminAdicionarController::class, 'excluirAluno'])->name('excluirAluno');
 
-Route::get('/EditarPro', [MainController::class, 'indexEditPro'])->name('admin_editar.mostrar');
-Route::post('/EditarPro', [AdminAdicionarController::class, 'editarProfissional'])->name('admin_editar.processar');
+Route::get('/EditarPro/{cpf}', [MainController::class, 'indexEditPro'])->name('admin_editar.mostrar');
+Route::post('/EditarPro', [AdminAdicionarController::class, 'editarProfissional'])->name('admin_editar.processar'); 
 
 Route::get('/AdicionarPro', [MainController::class, 'indexAddPro'])->name('admin_adicionar.mostrar');
 Route::post('/AdicionarPro', [AdminAdicionarController::class, 'cadastrarProfissional'])->name('admin_adicionar.processar');
 
 Route::post('/inativar-ativar-profissional/{cpf}', [AdminAdicionarController::class, 'inativarAtivarProfissional'])->name('admin.remover');
-
-// Route::get('/AdicionarPro', function () {
-    //     return view('pages.admin.adicionarProfissional');
-    // })->name('admin_adicionar.mostrar');
-    
-    // Route::get('/Admin', [MainController::class,'AdminIndex'])->name('home_admin');
-    
-    // Route::get('/editartigo', function () {
-        //     return view('pages.psico.editartigo');
-        // })->name('artigos_editar.mostrar');
-        
-        // Route::get('/adicionaevento', function () {
-            //     return view('pages.psico.addevento');
-            // })->name('eventos_adicionar.mostrar');
-            
-            // Route::get('/editartigo', function () {
-                //     return view('pages.psico.editartigo');
-                // })->name('artigos_editar.mostrar');
-                
-// Route::get('/editarevento', function () {
-//     return view('pages.psico.editevento');
-// })->name('eventos_editar.postar');
-
-// Route::get('/estatisticas', function () {
-    //     return view('pages.psico.graficos');
-    // })->name('estatisticas.mostrar');
-    
-// Route::get('/detalhesaluno', function () {
-//     return view('pages.psico.detalhesaluno');
-// })->name('detalhes_aluno.mostrar');
-
-// Route::get('/EditarPro', function () {
-    //     return view('pages.admin.editarPro');
-    // })->name('admin_editar.mostrar');
-    // Route::get('/editartigo', [MainController::class,'indexArtigoEdit'])->name('artigos_editar.mostrar');
-    // Route::post('/editartigo', [ArtigosController::class,'editarArtigo'])->name('artigos_editar.processar');
-   
-// Route::get('/listaAluno', [AdminAdicionarController::class, 'pegandoDadosAlunos'])->name('listaAluno');

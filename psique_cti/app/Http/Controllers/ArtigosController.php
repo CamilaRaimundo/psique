@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Publicacao_Recomendacao;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\Profissional;
+use App\Models\Artigo;
 
 class ArtigosController extends Controller
 {
@@ -56,6 +60,21 @@ class ArtigosController extends Controller
 
         $artigo->link = $req->input('link_publicacao');
         $artigo->autor = $req->input('autor_publicacao');
+
+        // ema
+        $profissional = Auth::user();
+        if ($profissional) {
+            $email = $profissional->email;
+            $result = DB::table('profissionais')
+                        ->where('email', $email)
+                        ->select('cpf')
+                        ->first(); 
+            if ($result) {
+                $cpf = $result->cpf;    
+            }
+        }
+        $artigo->profissional = $cpf;
+        // ema
        
         $artigo->save();
 
