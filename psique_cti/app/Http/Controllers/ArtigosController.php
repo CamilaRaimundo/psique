@@ -100,7 +100,7 @@ class ArtigosController extends Controller
         $artigos=Publicacao_Recomendacao::find($id);
 
          if (!$artigos) {
-            return redirect()->route('mural.mostrar');
+            return redirect()->route('mural.mostrar')>with('error', 'Artigo não encontrado');;
          }
 
         $artigos->delete();

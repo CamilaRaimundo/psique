@@ -56,36 +56,31 @@
                   </div> {{-- ema --}} 
                 
                  <!-- if(section == profissional)  -->
-                  @if(Auth::check())
+                 
+        @if(Auth::check())
                    @if( Auth::user()->nivel_de_acesso==2)
                   <div class="icones_mural">
                   <button class="delete"><i class="fa-solid fa-delete-left"></i></button>
                     
                       <!-- POP-UP -->
-                    <div class="popup-wrapper">
-                      <div class="popup">
-                        <div class="popup-content">
-                          <h2>Confirmação</h2>
-                          <p>Você tem certeza que deseja excluir permanentemente este evento?</p>
-                          <button class="popup-close">Cancelar</button>   
-                          <a href="{{route('eventos.excluir', ['id' => $evento->id])}}" tabindex="0" role="button" data-toggle="popover" data-trigger="hover" title="{{$evento->id}}" >
-                          <button class="btn-confirma">  Confirmar </button>
-                          </a>
-
-                         </div>
-                      </div>
-                    </div> 
+                    
 
                     <a href="{{route('eventos_edit.mostrar')}}"><i class="fa-solid fa-pen-to-square"></i></a>
                   </div>
                   @endif
                   @endif
+                 
                 </div>
               </div>
             </div>
           @endforeach
+         
+          
         </div>
-      {{-- @endif --}}
+       
+
+
+      <!-- {{-- @endif --}} -->
 
       {{-- @if(isset($artigos)) --}}
         {{-- ARTIGOS --}}
@@ -114,22 +109,9 @@
             <div class="icones_mural">
               <!-- POP-UP -->
 
-              <button class="delete"><i class="fa-solid fa-delete-left"></i></button>
+              <button class="delete" > <i class="fa-solid fa-delete-left"></i></button>
              
                 
-            </a> 
-              <div class="popup-wrapper">
-                  <div class="popup">
-                      <div class="popup-content">
-                          <h2>Confirmação</h2>
-                          <p>Você tem certeza que deseja excluir permanentemente este evento?</p>
-                          <button class="popup-close">Cancelar</button>
-                          <a href="{{ route('artigos.excluir', ['id' => $publi->id]) }}" tabindex="0" role="button" data-toggle="popover" data-trigger="hover" title="{{ $publi->id }}">
-                          <button class="btn-confirma">  Confirmar </button>
-                          </a>
-                      </div>
-                  </div>
-                </div>
         
                 <a href="{{route('artigos_edit.mostrar')}}"><i class="fa-solid fa-pen-to-square"></i></a>
          
@@ -149,7 +131,29 @@
           
           </div>
         @endforeach
-      {{-- @endif --}}
+
+        <div class="popup-wrapper">
+                      <div class="popup">
+                        <div class="popup-content">
+                          <h2>Confirmação</h2>
+                          <p>Você tem certeza que deseja excluir permanentemente este evento?</p>
+                          <button class="popup-close">Cancelar</button> 
+                          @if(isset($evento)) 
+                          <a href="{{route('eventos.excluir', ['id' => $evento->id])}}"  title="{{$evento->id}}" >
+                          <button class="btn-confirma">  Confirmar </button>
+                          </a>
+                          @elseif(isset($publi))
+                          <a href="{{route('artigos.excluir', ['id' => $publi->id])}}"  title="{{$publi->id}}" >
+                          <button class="btn-confirma">  Confirmar </button>
+                          </a>
+                          @endif
+                         </div>
+                      </div>
+                    </div> 
+       
+
+      
+      <!-- {{-- @endif --}} -->
     </div> {{--- container mural --}}
   @endif
 
@@ -169,7 +173,7 @@
             const classNameOfClickedElement = event.target.classList[0]
             const classNames = ['popup-close', 'popup-wrapper']
             const shouldClosePopup = classNames.some(className => className === classNameOfClickedElement) 
-      
+            
             if (shouldClosePopup) {
                 popup.style.display = 'none'
             }

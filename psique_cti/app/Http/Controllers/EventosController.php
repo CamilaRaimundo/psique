@@ -97,7 +97,7 @@ class EventosController extends Controller
 
         // Verifique se o evento foi encontrado
         if (!$evento) {
-            return redirect()->route('mural.mostrar');
+            return redirect()->route('mural.mostrar')->with('error', 'Evento não encontrado');
         }
 
         // Exclua o evento
