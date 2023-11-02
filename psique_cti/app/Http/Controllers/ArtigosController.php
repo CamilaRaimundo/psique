@@ -112,19 +112,15 @@ class ArtigosController extends Controller
      public function excluirArtigo($id) {
         // Adicione instruções de depuração
         \Log::info("Excluindo artigo com ID: $id");
-    
-        // Encontre o evento pelo ID
-        $artigo = Publicacao_Recomendacao::find($id);
-    
-        // Verifique se o evento foi encontrado
-        if (!$artigo) {
-            return redirect()->route('artigo.ver');
-        }
-    
-        // Exclua o evento
-        $artigo->delete();
-    
-        return response()->json(['success' => true]);
+
+        $artigos=Publicacao_Recomendacao::find($id);
+
+         if (!$artigos) {
+            return redirect()->route('mural.mostrar');
+         }
+
+        $artigos->delete();
+        return redirect()->route('mural.mostrar');
     }
     
 }

@@ -105,13 +105,13 @@ class EventosController extends Controller
 
         // Verifique se o evento foi encontrado
         if (!$evento) {
-            return view('pages.mural');
+            return redirect()->route('mural.mostrar');
         }
 
         // Exclua o evento
         $evento->delete();
 
-        return response()->json(['success' => true]);
+        return redirect()->route('mural.mostrar');
     }
 
    

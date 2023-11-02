@@ -78,8 +78,9 @@ Route::post('/editartigo', [ArtigosController::class,'editarArtigo'])->name('art
 Route::get('/editarevento/{id}', [MainController::class,'indexEventoEdit'])->name('eventos_editar.mostrar');
 Route::post('/editarevento', [EventosController::class,'editarEvento'])->name('eventos_editar.processar');
 
-Route::get('/excluir-evento/{id}', 'App\Http\Controllers\EventosController@excluirEvento')->name('eventos.excluir');
-Route::get('/excluir-artigo/{id}', 'App\Http\Controllers\ArtigosController@excluirArtigo')->name('artigos.excluir');
+
+Route::get('/excluirevento/{id}', [EventosController::class, 'excluirEvento'])->name('eventos.excluir');
+Route::get('/excluirartigo/{id}', [ArtigosController::class, 'excluirArtigo'])->name('artigos.excluir');
 
 
 // ADMINISTRADOR

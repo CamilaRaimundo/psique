@@ -71,17 +71,26 @@ class MainController extends Controller
                 }
 
                 $dataatual = (new DateTime())->format('Y-m-d H:i:s');
+
                 $alunoAutenticado = Auth::user(); // Obtém o usuário autenticado
                 if ($alunoAutenticado) {
                     $email = $alunoAutenticado->email;
-                    $result = DB::table('alunos')
-                                ->where('email', $email)
-                                ->select('ra')
-                                ->first(); 
+                    $alunocadastrado = DB::table('users')
+                    ->where('email', $email)
+                    ->select('email')
+                    ->first(); 
 
-                    if ($result) {
-                        $ra = $result->ra;
-                    }
+                    if($alunocadastrado)
+                        $result = DB::table('alunos')
+                                    ->where('email', $email)
+                                    ->select('ra')
+                                    ->first(); 
+
+                        if ($result) {
+                            $ra = $result->ra;
+                        }
+                    else
+                        return view('pages.cadastro', compact("googl"));
                 }
                     $tememocaohoje = DB::table('aluno_mood')
                     ->where('data', $dataatual)
@@ -114,59 +123,122 @@ class MainController extends Controller
 
     public function psicoIndex() 
     {
-        return view('pages.psico.home');
+        if(Auth::check()) 
+        {
+            if(Auth::user()->nivel_de_acesso==2)
+                return view('pages.psico.home');
+        }
+            else
+                return view('index');
     }
- 
+     
     public function adminIndex() 
     {
-        return view('pages.admin.homeAdmin');
+        if(Auth::check()) 
+        {
+            if(Auth::user()->nivel_de_acesso==-1)
+                return view('pages.admin.homeAdmin');
+        }
+        else
+            return view('index');
     }
 
     public function indexArtigo()
     {
-        return view('pages.psico.addartigo');
+        if(Auth::check()) 
+        {
+            if(Auth::user()->nivel_de_acesso==2)
+                return view('pages.psico.addartigo');
+        }
+        else
+            return view('index');
+        
     } 
   
     public function indexEvento()
-    {
-        return view('pages.psico.addevento');
+    { 
+        if(Auth::check()) 
+        {
+            if(Auth::user()->nivel_de_acesso==2)
+                return view('pages.psico.addevento');  
+        }
+        else
+            return view('index');
     } 
 
     public function indexEventoEdit($id)
     {
-        $evento = Evento::find($id);
-        return view('pages.psico.editevento', compact('evento'));
+        if(Auth::check()) 
+        {
+            if(Auth::user()->nivel_de_acesso==2)
+                $evento = Evento::find($id);
+                return view('pages.psico.editevento', compact('evento'));
+        } 
+        
+        else
+            return view('index');
     } 
    
     public function indexArtigoEdit($id)
     {
-        $publi = Publicacao_Recomendacao::find($id);
-        return view('pages.psico.editartigo', compact('publi'));
-    } 
+        if(Auth::check()) 
+        {
+            if(Auth::user()->nivel_de_acesso==2)
+                $publi = Publicacao_Recomendacao::find($id);
+                return view('pages.psico.editartigo', compact('publi'));
+        } 
+        
+        else
+            return view('index');
+    }
  
-    public function detalhesIndex()
-    {
-        return view('pages.psico.detalhesaluno');
-    } 
-   
+    
     public function estatisticasIndex()
     {
-        return view('pages.psico.graficos');
-    } 
-  
-    public function indexAddPro()
-    {
-        return view('pages.admin.adicionarProfissional');
-    } 
- 
-    public function indexEditPro($cpf)
-    {
-        $profissional = Profissional::find($cpf);
-        return view('pages.admin.editarPro', compact('profissional'));
+        if(Auth::check()) 
+        {
+            if(Auth::user()->nivel_de_acesso==2)
+                return view('pages.psico.graficos');
+        }
+        else
+            return view('index');
     } 
 
     public function indexEncontros()
     {
-        return view ('pages.psico.encontros');
+        if(Auth::check()) 
+        {
+            if(Auth::user()->nivel_de_acesso==2)
+            return view ('pages.psico.encontros');
+        }
+        else
+            return view('index');
+        }
+        
+    public function indexAddPro() 
+    {
+        if(Auth::check()) 
+        {
+            if(Auth::user()->nivel_de_acesso==-1)
+                return view('pages.admin.adicionarProfissional');
+            }
+            else
+            return view('index');
+    }
+    
+    public function indexEditPro($cpf) 
+    {
+        if(Auth::check()) 
+        {
+            if(Auth::user()->nivel_de_acesso==-1)
+            $profissional = Profissional::find($cpf);
+                return view('pages.admin.editarPro', compact('profissional'));
+            }
+            else
+            return view('index');
     }
 }
+            // public function detalhesIndex()
+            // {
+            //     return view('pages.psico.detalhesaluno');
+            // } 

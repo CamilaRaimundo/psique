@@ -90,23 +90,4 @@
 
     </script>
 </div>
-
-{{-- <div class="container">
-    <h2>Emoções Registradas Hoje</h2>
-    <ul>
-        @foreach($emocoesDia as $emo)
-        <li>{{ $emo->mood }}: {{ $emo->count }}</li>
-        @endforeach
-    </ul>
-</div>
-
-<div class="container">
-    <h2>Emoções Registradas Este Mês</h2>
-    <ul>
-        @foreach($emocoesMes as $emo)
-        <li>{{ $emo->mood }}: {{ $emo->count }}</li>
-        @endforeach
-    </ul>
-</div> --}}
-
 @endsection
