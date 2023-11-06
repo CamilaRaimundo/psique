@@ -37,11 +37,11 @@
     
           <span>|</span>
     
-          <a href="/estatisticas"><i class="fa-solid fa-chart-pie"></i></a>
+          <a href="{{route('estatisticas.mostrar')}}"><i class="fa-solid fa-chart-pie"></i></a>
     
           <span>|</span>
     
-          <a href="/encontros"><i class="fa-solid fa-pencil"></i></a>
+          <a href="{{route('encontros.mostrar')}}"><i class="fa-solid fa-pencil"></i></a>
     
         @endif 
     
