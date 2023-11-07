@@ -1267,3 +1267,81 @@ input[type="file"]{
         font-size: 15px;
     }
 }
+
+/* ---------------EXCLUIR------------------------ */
+
+/* List-excluir -------------- */
+.content-list-excluir button{
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    text-align: left;
+}
+
+.square-content--confirma-excluir{
+    width: 50%;
+    position: absolute;
+    margin: 0 auto;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    align-items: center;
+    align-content: center;
+    border: 0 !important;
+    z-index: 1000;
+    background-color: var(--background-color);
+}
+
+#modal_excluir{
+    display: none;
+}
+
+dialog::backdrop{
+    background-color: #0099ff; 
+}
+
+.square-content--confirma-excluir button, .square-content--confirma-excluir a{
+    border: none;
+    color: var(--background-color);
+    border-radius: 5px;
+    width: 110px;
+    text-align: center;
+    padding: 20px;
+    margin: 20px auto;
+    color: var(--text-color);
+}
+
+.square-content--confirma-excluir #btn_execute{
+    background-color: var(--background-error);
+}
+
+.square-content--confirma-excluir #btn_execute:hover{
+    background-color: var(--background-errorer);
+}
+
+.square-content--confirma-excluir .material-symbols-outlined{
+    color: var(--background-error) !important;
+    font-size: 2.5rem !important;
+}
+
+.square-content--confirma-excluir #btn_cancelar{
+    text-decoration: none;
+    cursor: pointer;
+    background-color: var(--background-primary);
+}
+
+.square-content--confirma-excluir #btn_cancelar:hover{
+    text-decoration: none;
+    cursor: pointer;
+    background-color: var(--background-primarier);
+}
+
+.buttons-dialog{
+    width: 100%;
+}
+
+.p-dialog{
+    width: 100%;
+    color: var(--text-color);
+}
+

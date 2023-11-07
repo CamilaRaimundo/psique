@@ -11,8 +11,12 @@
       <p>Volte em breve para conferir!</p>
       <img src="{{ asset('img/pipa-img.png') }}" width="35%" alt="">
     </div>
+    
       
   @elseif(isset($eventos) || isset($artigos)) {{-- else (quando houver publicações) --}}
+
+
+
     <div class="container-mural">
 
       {{-- @if(isset($evento))  --}}
@@ -56,25 +60,42 @@
                   </div> {{-- ema --}} 
                 
                  <!-- if(section == profissional)  -->
+
+              
                  
         @if(Auth::check())
                    @if( Auth::user()->nivel_de_acesso==2)
                   <div class="icones_mural">
-                  <button class="delete"><i class="fa-solid fa-delete-left"></i></button>
-                    
+                 
                       <!-- POP-UP -->
+                      <a href="{{ route('eventos.excluir', ['id' => $evento->id]) }}" title="{{ $evento->id }}">
+                        <button class="delete" onclick="confirmAndRedirect('{{ route('eventos.excluir', ['id' => $evento->id]) }}')">
+                            <i class="fa-solid fa-delete-left"></i> 
+                        </button>
+                    </a>
                     
 
+                      {{-- <a href="{{route('eventos.excluir', ['id' => $evento->id])}}"  title="{{ $evento->id }}">
+                        <i class="fa-solid fa-delete-left" ></i>
+                    </button> --}}
+                  
+                      
                     <a href="{{route('eventos_edit.mostrar')}}"><i class="fa-solid fa-pen-to-square"></i></a>
                   </div>
+                        
                   @endif
                   @endif
                  
                 </div>
               </div>
             </div>
+           
           @endforeach
+
          
+   
+           
+        </div>
           
         </div>
        
@@ -104,17 +125,32 @@
           <div class="card artigo">
             <div class="card-body">
               {{-- if(section == profissional) --}}
+
               @if(Auth::check())
             @if( Auth::user()->nivel_de_acesso==2)
             <div class="icones_mural">
               <!-- POP-UP -->
+              <a href="{{ route('artigos.excluir', ['id' => $publi->id]) }}" title="{{ $publi->id }}">
+                <button class="delete" onclick="confirmAndRedirect('{{ route('artigos.excluir', ['id' => $publi->id]) }}')">
+                    <i class="fa-solid fa-delete-left"></i> 
+                </button>
+            </a>
+           
 
-              <button class="delete" > <i class="fa-solid fa-delete-left"></i></button>
-             
-                
-        
+              {{-- <a href="{{route('artigos.excluir', ['id' => $publi->id])}}"  title="{{ $publi->id }}">
+                <button class="delete" ><i class="fa-solid fa-delete-left" ></i></button>
+                </a>
+     --}}
+     <script>
+      function confirmAndRedirect(url) {
+          if (confirm('Tem certeza que deseja excluir?')  ) {
+              window.location.href = url;
+          }
+      }
+      </script>
+
                 <a href="{{route('artigos_edit.mostrar')}}"><i class="fa-solid fa-pen-to-square"></i></a>
-         
+                
           
             </div>
               @endif
@@ -126,39 +162,26 @@
               <p class="card-text"><small class="text-body-secondary"><a href="{{$publi->link}}" target="_blank">{{ $publi->link}}</a></small></p>       
             </div>
             @if(isset($publi->imagem))
-              <img src="{{$publi->imagem}}  class="card-img-bottom">
+              <img src="{{$publi->imagem}}"  class="card-img-bottom">
             @endif
           
           </div>
+
+          
+         
         @endforeach
 
-        <div class="popup-wrapper">
-                      <div class="popup">
-                        <div class="popup-content">
-                          <h2>Confirmação</h2>
-                          <p>Você tem certeza que deseja excluir permanentemente este evento?</p>
-                          <button class="popup-close">Cancelar</button> 
-                          @if(isset($evento)) 
-                          <a href="{{route('eventos.excluir', ['id' => $evento->id])}}"  title="{{$evento->id}}" >
-                          <button class="btn-confirma">  Confirmar </button>
-                          </a>
-                          @elseif(isset($publi))
-                          <a href="{{route('artigos.excluir', ['id' => $publi->id])}}"  title="{{$publi->id}}" >
-                          <button class="btn-confirma">  Confirmar </button>
-                          </a>
-                          @endif
-                         </div>
-                      </div>
-                    </div> 
-       
+    
+      
 
       
       <!-- {{-- @endif --}} -->
     </div> {{--- container mural --}}
+    
   @endif
 
   {{-- -----------------------------POP-UP------------------------------- --}}
-  <script>
+  {{-- <script>
   document.addEventListener("DOMContentLoaded", function() {
     // Seu código JavaScript aqui
     const button  = document.querySelectorAll('.delete ')
@@ -181,29 +204,7 @@
     }
 });
 
-  </script>
-    
-  <!-- <script>
-    function excluirEvento(eventoId) {
-      // Fazer uma solicitação DELETE para a rota do controlador para excluir o evento
-      fetch(`/excluir-evento/${eventoId}`, {
-        method: 'DELETE', // Use o método DELETE para excluir o evento
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-        .then(response => {
-          if (response.ok) {
-            // O evento foi excluído com sucesso, você pode atualizar a página ou fazer outras ações necessárias
-            window.location.reload(); // Atualizar a página
-          } else {
-            // Lidar com erros, exibir mensagens de erro, etc.
-            console.error('Erro ao excluir o evento');
-          }
-        })
-        .catch(error => {
-          console.error('Erro ao excluir o evento:', error);
-        });
-    }
-  </script>   -->
+  </script> --}}
+
+ 
 @endsection
