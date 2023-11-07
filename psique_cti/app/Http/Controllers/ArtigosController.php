@@ -108,6 +108,21 @@ class ArtigosController extends Controller
         return view('pages.mural', compact('artigo') );
    
      }
+
+     public function excluirArtigo($id) {
+        // Adicione instruções de depuração
+        \Log::info("Excluindo artigo com ID: $id");
+
+        $artigos=Publicacao_Recomendacao::find($id);
+
+         if (!$artigos) {
+            return redirect()->route('mural.mostrar');
+         }
+
+        $artigos->delete();
+        return redirect()->route('mural.mostrar');
+    }
+    
 }
 
    

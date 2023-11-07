@@ -32,50 +32,60 @@
           <img src="{{ asset('img/eventos-img.png') }}" width="30%" class="rounded">
         </div>
 
-        <div class="container text-center">
+        <div class="row">
           @foreach($eventos as $evento)
-            <div class="container">
-              
 
-              {{-- card --}}
-              <div class="card mb-3" style="max-width: 500px;">
-                
-                @if(isset($evento->imagem))
-                  <div class="col-md-4">
-                    <img src=base href="{{asset('$evento->imagem')}}"  width="100" class="img-fluid rounded-start">
-                  </div>
-                @endif
-                
-                <div class="col-md-auto">
-                  <div class="card-body">
-                    <h4 class="card-text"> {{ $evento->titulo}}</h4>
-                    <p class="card-text"> {{ $evento->descricao}}</p>  
-                    <p class="card-text">Local: {{ $evento->local_evento}}</p>
-                    <p class="card-text">Data: {{ $evento->dataehora_evento}}</p>
-                    <p class="card-text">Responsável: {{ $evento->responsavel_evento}}</p>
-                    <p class="card-text">Limite de pessoas: {{ $evento->limite_pessoas_evento}}</p>
-                    <p class="card-text"><small class="text-body-secondary"><a href="{{ $evento->link_evento}}" target="_blank">{{ $evento->link_evento}}</a></small></p>
-                  </div> {{-- ema --}} 
-                
-                 <!-- if(section == profissional)  -->
-                 
-        @if(Auth::check())
-                   @if( Auth::user()->nivel_de_acesso==2)
-                  <div class="icones_mural">
-                  <button class="delete"><i class="fa-solid fa-delete-left"></i></button>
-                    
-                      <!-- POP-UP -->
-                    
+              <div class="col-md-4">
+                {{-- card --}}
+                <div class="card mb-3" style="max-width: 500px;">
+                  
+                  @if(isset($evento->imagem))
+                    <div class="col-md-4">
+                      <img src=base href="{{asset('$evento->imagem')}}"  width="100" class="img-fluid rounded-start">
+                    </div>
+                  @endif
+                  
+                  <div class="col-md-auto">
+                    <div class="card-body">
+                      <h4 class="card-text"> {{ $evento->titulo}}</h4>
+                      <p class="card-text"> {{ $evento->descricao}}</p>  
+                      <p class="card-text">Local: {{ $evento->local_evento}}</p>
+                      <p class="card-text">Data: {{ $evento->dataehora_evento}}</p>
+                      <p class="card-text">Responsável: {{ $evento->responsavel_evento}}</p>
+                      <p class="card-text">Limite de pessoas: {{ $evento->limite_pessoas_evento}}</p>
+                      <p class="card-text"><small class="text-body-secondary"><a href="{{ $evento->link_evento}}" target="_blank">{{ $evento->link_evento}}</a></small></p>
 
-                    {{-- <a href="{{route('eventos_editar.processar')}}"><i class="fa-solid fa-pen-to-square"></i></a> --}}
-                    <a href="{{route('eventos_editar.mostrar', ['id' => $evento->id])}}" tabindex="0" role="button" data-toggle="popover" data-trigger="hover" title="{{$evento->id}}"><i class="fa-solid fa-pen-to-square"></i></a>
+                      {{-- if(section == profissional) --}}
+                      @if(Auth::check())
+                        @if( Auth::user()->nivel_de_acesso==2)
+                          <div class="icones_mural">
+                            <button class="delete"><i class="fa-solid fa-delete-left"></i></button>
+                            
+                            {{-- POP-UP --}}
+                            <div class="popup-wrapper">
+                              <div class="popup">
+                                <div class="popup-content">
+                                  <h2>Confirmação</h2>
+                                  <p>Você tem certeza que deseja excluir permanentemente este evento?</p>
+                                  <button class="popup-close">Cancelar</button>   
+                                  <a href="{{route('eventos.excluir', ['id' => $evento->id])}}" tabindex="0" role="button" data-toggle="popover" data-trigger="hover" title="{{$evento->id}}" >
+                                    <button class="btn-confirma">Confirmar</button>
+                                  </a>
+                                </div>
+                              </div>
+                            </div> 
+
+                            <a href="{{route('eventos_editar.mostrar', ['id' => $evento->id])}}" tabindex="0" role="button" data-toggle="popover" data-trigger="hover" title="{{$evento->id}}"><i class="fa-solid fa-pen-to-square"></i></a>
+                          </div>
+                        @endif
+                      @endif
+                    </div> 
                   </div>
                   @endif
                   @endif
                  
                 </div>
               </div>
-            </div>
           @endforeach
          
           
@@ -109,26 +119,32 @@
           {{-- <img src="{{ asset('img/fundo4.jpg') }}"  class="card-img-bottom" alt="..."> --}}
           <div class="card artigo">
             <div class="card-body">
+
               {{-- if(section == profissional) --}}
               @if(Auth::check())
-            @if( Auth::user()->nivel_de_acesso==2)
-            <div class="icones_mural">
-              <!-- POP-UP -->
+                @if( Auth::user()->nivel_de_acesso==2)
+                  <div class="icones_mural">
+                    {{-- <a href="/editartigo"><i class="fa-solid fa-pen-to-square"></i></a> --}}
+                    <button class="delete"><i class="fa-solid fa-delete-left"></i></button>
 
-                {{-- POP-UP --}}
-                <div class="popup-wrapper">
-                  <div class="popup">
-                    <div class="popup-content">
-                      <h2>Confirmação</h2>
-                      <p>Você tem certeza que deseja excluir permanentemente este evento?</p>
-                      <button class="popup-close">Cancelar</button>  
-                      <button class="btn-confirma">Confirmar</button>
+                    {{-- POP-UP --}}
+                    <div class="popup-wrapper">
+                      <div class="popup">
+                        <div class="popup-content">
+                          <h2>Confirmação</h2>
+                          <p>Você tem certeza que deseja excluir permanentemente este evento?</p>
+                          <button class="popup-close">Cancelar</button>
+                          <a href="{{ route('artigos.excluir', ['id' => $publi->id]) }}" tabindex="0" role="button" data-toggle="popover" data-trigger="hover" title="{{ $publi->id }}">
+                            <button class="btn-confirma">Confirmar</button>
+                          </a>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
 
-                <a href="{{route('artigos_editar.mostrar', ['id' => $publi->id])}}"><i class="fa-solid fa-pen-to-square"></i></a>
-              </div>
+                    <a href="{{route('artigos_editar.mostrar', ['id' => $publi->id])}}"><i class="fa-solid fa-pen-to-square"></i></a>
+                  </div>
+                @endif
+              @endif
 
               <h5 class="card-title">{{$publi->titulo}}</h5> 
               <p class="card-text">{{$publi->descricao}}</p>
