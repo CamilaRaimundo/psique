@@ -19,7 +19,7 @@
             {{-- {{ csrf_field() }}  --}}
             @csrf
             
-            <input style="display:none;" type="text" id="profissional" name="profissional" placeholder="Digite o título da publicação" value="{{Auth::user()->cpf}}" readonly required>
+            {{-- <input style="display:none;" type="text" id="profissional" name="profissional" placeholder="Digite o título da publicação" value="{{Auth::user()->cpf}}" readonly required> --}}
 
             <div class="input_group">
                 <label for="titulo_publicacao">Título da publicação</label>

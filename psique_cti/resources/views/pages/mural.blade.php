@@ -34,7 +34,8 @@
 
         <div class="container text-center">
           @foreach($eventos as $evento)
-            <div class="container-fluid">
+            <div class="container">
+              
 
               {{-- card --}}
               <div class="card mb-3" style="max-width: 500px;">

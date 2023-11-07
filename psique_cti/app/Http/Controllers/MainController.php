@@ -194,14 +194,19 @@ class MainController extends Controller
         $evento = Evento::find($id);
         return view('pages.psico.editevento', compact('evento'));
     } 
+   
+ 
+ 
+    public function detalhesIndex()
+    {
+        return view('pages.psico.detalhesaluno');
+    } 
+
+
 
     public function indexEncontros()
     {
         return view ('pages.psico.encontros');
     }
  
-    public function detalhesIndex()
-    {
-        return view('pages.psico.detalhesaluno');
-    } 
 }

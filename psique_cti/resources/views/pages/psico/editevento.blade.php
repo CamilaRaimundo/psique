@@ -15,16 +15,16 @@
 
             {{-- exibir as informações já cadastradas e permitir edição dos campos --}}
             {{-- então realizar update --}}
-            <form action="{{ route('eventos_editar.processar') }}" method="POST" >
+            <form action="{{ route('eventos_editar.processar') }}" method="POST">
                 @csrf
 
                 <div class="input_group" style = "display:none;">
-                <input type="text" id="id" name="id" value="{{$evento->id}}" display = "none" readonly>
+                    <input type="text" id="id" name="id" value="{{$evento->id}}" display = "none" readonly>
                 </div>
 
                 <div class="input_group">
                     <label for="titulo">Título do evento</label>
-                    <input type="text" id="titulo" name="titulo" placeholder="Digite o título do evento" value="{{$evento->titulo}}" required>
+                    <input type="text" id="titulo" name="titulo" value="{{$evento->titulo}}" required>
                 </div>
 
                 <div class="input_group">

@@ -116,7 +116,22 @@
       @elseif(Auth::check())
         <a href="{{ route('logout') }}" class="icones-padrao"><i class="fa-solid fa-right-to-bracket"></i></a>
       @endif
-      <a href="https://fontawesome.com/icons/circle-info?f=classic&s=solid" class="icones-padrao" target="_blanck"><i class="fa-solid fa-circle-info"></i></a>
+
+      @if((Auth::check()))
+        @if(Auth::user()->nivel_de_acesso==-1)  
+        <a href="{{ asset('PDFs/Help do Sistema - Admin.pdf') }}" class="icones-padrao" target="_blanck"><i class="fa-solid fa-circle-info"></i></a>
+
+        @elseif(Auth::user()->nivel_de_acesso==1)  
+        <a href="{{ asset('PDFs/Help do Sistema - Alunos.pdf') }}" class="icones-padrao" target="_blanck"><i class="fa-solid fa-circle-info"></i></a>
+
+        @elseif(Auth::user()->nivel_de_acesso==2)  
+          <a href="{{ asset('PDFs/Help do Sistema - Profissional.pdf') }}" class="icones-padrao" target="_blanck"><i class="fa-solid fa-circle-info"></i></a>
+        @endif 
+
+      @else
+        <a href="{{ asset('PDFs/Help do Sistema - sem nível de acesso.pdf') }}" class="icones-padrao" target="_blanck"><i class="fa-solid fa-circle-info"></i></a>
+      @endif
+      
       <button onclick id="toggle"><i class="fa-solid fa-circle-half-stroke"></i></button>
     </div>
 

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MainController; //--> login
+use App\Http\Controllers\MainController; //--> Login
 use App\Http\Controllers\TriagemController; //--> Triagem
 use App\Http\Controllers\ArtigosController; //--> Artigos
 use App\Http\Controllers\CadastroController; //--> Informações adicionais
@@ -12,12 +12,12 @@ use App\Http\Controllers\LogOutController; //--> Logout
 use App\Http\Controllers\EmocoesController; //--> Emoções
 use App\Http\Controllers\AdminAdicionarController; //--> Admin
 use App\Http\Controllers\MuralController; //--> Mural
-use App\Http\Controllers\GraficosController; //--> estatísticas
-use App\Http\Controllers\EncontrosController; //--> estatísticas
+use App\Http\Controllers\GraficosController; //--> Estatísticas
+use App\Http\Controllers\EncontrosController; //--> Gráficos
 use App\Mail\TestMail;
 
 
-Route::get('/', [MainController::class, 'index'])->name('home');
+Route::get('/', [MainController::class,'index'])->name('home');
 
 // Mural e publicações
     Route::get('/mural', [MuralController::class, 'mostraForm'])->name('mural.mostrar');
@@ -88,7 +88,21 @@ Route::get('/AdicionarPro',[MainController::class, 'indexAddPro']);
 
 
 
-Route::get('/estatisticas',[MainController::class, 'estatisticasIndex'])->name('estatistica.mostrar');
+
+// EMOÇÕES
+Route::get('/emocoes', [EmocoesController::class,'mostraEmocoes'])->name('emocoes.mostrar');
+Route::post('/emocoes', [EmocoesController::class,'registrarEmocao'])->name('emocoes.processar');
+
+
+//  PSICÓLOGA
+Route::get('/homepsico', [MainController::class,'psicoIndex'])->name('home_psico');
+Route::get('/homepsico', [GraficosController::class, 'pegaAluno'])->name('pegaAluno');
+
+
+Route::get('/detalhesaluno', [MainController::class,'detalhesIndex'])->name('detalhes_aluno.mostrar');
+
+Route::get('/estatisticas', [MainController::class,'estatisticasIndex'])->name('estatisticas.mostrar');
+Route::get('/estatisticas', [GraficosController::class, 'pegaEmocoes'])->name('pegaEmo');
 
 Route::get('/encontros', [MainController::class, 'indexEncontros'])->name('encontros.mostrar');
 Route::POST('/encontros', [EncontrosController::class, 'store'])->name('encontros.store');
@@ -118,8 +132,8 @@ Route::get('/Admin', [AdminAdicionarController::class, 'pegandoDados'])->name('h
 Route::get('/listarAlunos', [AdminAdicionarController::class, 'pegandoDadosAlunos'])->name('listarAlunos.mostrar');
 Route::delete('/excluir-aluno/{ra}/{email}', [AdminAdicionarController::class, 'excluirAluno'])->name('excluirAluno');
 
-Route::get('/EditarPro', [MainController::class, 'indexEditPro'])->name('admin_editar.mostrar');
-Route::post('/EditarPro', [AdminAdicionarController::class, 'editarProfissional'])->name('admin_editar.processar');
+Route::get('/EditarPro/{cpf}', [MainController::class, 'indexEditPro'])->name('admin_editar.mostrar');
+Route::post('/EditarPro', [AdminAdicionarController::class, 'editarProfissional'])->name('admin_editar.processar'); 
 
 Route::get('/AdicionarPro', [MainController::class, 'indexAddPro'])->name('admin_adicionar.mostrar');
 Route::post('/AdicionarPro', [AdminAdicionarController::class, 'cadastrarProfissional'])->name('admin_adicionar.processar');

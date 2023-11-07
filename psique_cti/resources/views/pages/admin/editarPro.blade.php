@@ -12,30 +12,36 @@
             </a>
 
             <h2>Editar informações do Profissional</h2>
-            <form action="#">
-                <div class="input_group">
-                    <label for="nome_pro">Nome</label>
-                    <input type="text" id="nome_pro" placeholder="Nome do profissional" required>
+            <form action="{{ route('admin_editar.processar') }}" method="POST">
+                @csrf
+
+                <div class="input_group" style = "display:none;">
+                    <input type="text" id="cpf" name="cpf" value="{{$profissional->cpf}}" display = "none" readonly>
                 </div>
 
                 <div class="input_group">
-                    <label for="email_pro">E-mail</label>
-                    <input type="text" id="email_pro" placeholder="E-mail profissional" required>
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" name="nome" value="{{$profissional->nome}}" required>
                 </div>
 
                 <div class="input_group">
-                    <label for="cpf_pro">CPF</label>
-                    <input type="number" id="cpf_pro" placeholder="999.999.999-99" required>
+                    <label for="email">E-mail</label>
+                    <input type="text" id="email" name="email" value="{{$profissional->email}}" required>
                 </div>
 
                 <div class="input_group">
-                    <label for="crp_pro">CRP</label>
-                    <input type="number" id="crp_pro" placeholder="9999999" required>
+                    <label for="cpf">CPF</label>
+                    <input type="text" id="cpf" name="cpf" value="{{$profissional->cpf}}" required>
                 </div>
 
                 <div class="input_group">
-                    <label for="tel_pro">Telefone</label>
-                    <input type="text" id="tel_pro" placeholder="(99) 99999-9999" required>
+                    <label for="crp">CRP</label>
+                    <input type="number" id="crp" name="crp" value="{{$profissional->crp}}" required>
+                </div>
+
+                <div class="input_group">
+                    <label for="telefone">Telefone</label>
+                    <input type="text" id="telefone" name="telefone" value="{{$profissional->telefone}}" required>
                 </div>
 
                 <div class="input_group">

@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Profissional;
 use App\Models\Aluno;
 use App\Models\User;
-use Illuminate\Support\Facades\DB;
 
 class AdminAdicionarController extends Controller
 {
@@ -55,15 +56,38 @@ class AdminAdicionarController extends Controller
       
         return view('pages.admin.homeAdmin', compact('profissionais'));
     }
-   
-    // -----------------------------ema
+
     public function pegandoDadosAlunos()
     {
         $alunos = DB::select("select * from alunos");
       
         return view('pages.admin.lista_aluno', compact('alunos'));
     }
-    // -----------------------------ema
+
+    public function editarProfissional(Request $request)
+    {
+        // dd($request);
+        // Encontre o profissional com base no CPF
+        $profissional = Profissional::where('cpf', $request->cpf)->first();
+
+        // Verifique se o profissional foi encontrado
+        if ($profissional) {
+            // Atualizar os campos do profissional com os novos dados
+            $profissional->nome = $request->nome;
+            $profissional->email = $request->email;
+            $profissional->crp = $request->crp;
+            $profissional->telefone = $request->telefone;
+
+            
+            // Salvar as alterações
+            $profissional->save();
+
+            return redirect()->route('home_admin');
+        }
+        else {
+            return redirect()->route('home_admin');
+        }
+    }
 
     public function excluirAluno($ra, $email)
     {
@@ -95,10 +119,13 @@ class AdminAdicionarController extends Controller
         
         return redirect()->back(); // Redireciona de volta para a página
     }
+<<<<<<< HEAD
     
     public function editarProfissional()
     {
         
     }
+=======
+>>>>>>> bec390e (home da psicologa e help do sistema)
 
 }
