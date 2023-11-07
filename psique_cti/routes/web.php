@@ -38,8 +38,8 @@ Route::get('/', [MainController::class,'index'])->name('home');
 
     Route::post('/editarevento', [EventosController::class, 'editarEvento'])->name('eventos.editar');
 
-    Route::get('/excluirevento/{id}', [EventosController::class, 'excluirEvento'])->name('eventos.excluir');
-    Route::get('/excluirartigo/{id}', [ArtigosController::class, 'excluirArtigo'])->name('artigos.excluir');
+    Route::get('/excluir-evento/{id}', [EventosController::class, 'excluirEvento'])->name('eventos.excluir');
+    Route::get('/excluir-artigo/{id}', [ArtigosController::class, 'excluirArtigo'])->name('artigos.excluir');
 
     Route::middleware(['auth'])->group(function () {
         Route::get('/contato', [ContatoController::class, 'mostraForm'])->name('contato.mostrar');

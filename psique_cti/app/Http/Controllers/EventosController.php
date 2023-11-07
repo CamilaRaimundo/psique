@@ -109,7 +109,7 @@ class EventosController extends Controller
         }
 
         // Exclua o evento
-        $evento->delete();
+        $evento->where('id', $id)->delete();
 
         return redirect()->route('mural.mostrar');
     }

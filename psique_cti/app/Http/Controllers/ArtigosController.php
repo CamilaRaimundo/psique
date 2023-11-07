@@ -89,6 +89,11 @@ class ArtigosController extends Controller
 
         $artigo = Publicacao_Recomendacao::where('id', $request->id)->first();
 
+        // Verificar se o evento foi encontrado
+        if (!$artigos) {
+            return redirect()->route('mural.mostrar')->with('error', 'Artigo não encontrado');
+        }
+
         // Atualizar os campos do evento com os novos dados
         $artigo->descricao = $request->descricao;
         $artigo->titulo = $request->titulo;
@@ -116,10 +121,10 @@ class ArtigosController extends Controller
         $artigos=Publicacao_Recomendacao::find($id);
 
          if (!$artigos) {
-            return redirect()->route('mural.mostrar');
+            return redirect()->route('mural.mostrar')->with('error', 'Artigo não encontrado');
          }
 
-        $artigos->delete();
+        $artigos->where('id', $id)->delete();
         return redirect()->route('mural.mostrar');
     }
     
