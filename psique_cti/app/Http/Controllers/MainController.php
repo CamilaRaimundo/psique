@@ -176,8 +176,6 @@ class MainController extends Controller
         return view('index');
     }
            
- 
-
 
     public function indexArtigo()
     {
@@ -193,8 +191,9 @@ class MainController extends Controller
     {
         return view('pages.psico.editevento');
     } 
-   
-    
-   
-   
+
+    public function indexEncontros()
+    {
+        return view ('pages.psico.encontros');
+    }
 }

@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Profissional;
+use App\Models\Aluno;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class AdminAdicionarController extends Controller
@@ -62,6 +64,24 @@ class AdminAdicionarController extends Controller
         return view('pages.admin.lista_aluno', compact('alunos'));
     }
     // -----------------------------ema
+
+    public function excluirAluno($ra, $email)
+    {
+        $aluno = Aluno::where('ra', $ra)->first();
+
+        if ($aluno) {
+            $aluno->delete(); // Exclui o aluno da tabela de alunos
+        }
+
+        $user = User::where('email', $email)->first();
+
+        if ($user) {
+            $user->delete(); // Exclui o usuário da tabela de usuários
+        }
+
+        $alunos = Aluno::all(); // Recarrega a lista de alunos após a exclusão
+        return view('listaAluno', compact('alunos'));
+    }
 
     public function inativarAtivarProfissional($cpf)
     {

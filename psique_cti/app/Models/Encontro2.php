@@ -6,9 +6,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Encontro extends Model
+class Encontros extends Model
 {
-    use HasFactory;
     protected $fillable = [
         'data',
         'aluno',

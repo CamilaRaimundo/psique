@@ -3,9 +3,6 @@
 @section('titulo', 'Informações adicionais')
 
 @section('conteudo')
-
-    {{-- @php --}}
-
     <div class="box centralizado">
         <div class="img-box">
             <img src="{{ asset('img/cad_img.png') }}" alt="">
