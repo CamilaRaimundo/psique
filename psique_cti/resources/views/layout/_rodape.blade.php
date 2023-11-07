@@ -1,4 +1,9 @@
   <footer>
+
+    <div class="voltar_ao_topo">
+      <a href="#"><i class="fa-solid fa-arrow-up-from-bracket"></i></a>
+    </div>
+
     <div class="img-footer">
       <img src="{{ asset('img/icone_sf.png') }}" alt="nicolau" width="80px">
     </div>

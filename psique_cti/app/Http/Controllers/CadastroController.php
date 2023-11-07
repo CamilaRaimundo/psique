@@ -68,7 +68,6 @@ class CadastroController extends Controller
 
         $user->save();
 
-        // return view('pages.triagem');
         return view('pages.triagem', compact('algumacoisa') );
     }
 }

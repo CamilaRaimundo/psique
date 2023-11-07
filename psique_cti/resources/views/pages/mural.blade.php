@@ -14,16 +14,18 @@
   @elseif(isset($eventos) || isset($artigos)) {{-- else (quando houver publicações) --}}
     <div class="container-mural">
 
-      {{-- @if(isset($evento))  --}}
         {{-- EVENTOS --}}
         <div class="titulo-mural">
-          {{-- if(section == profissional)--}}
-          <h1>Eventos @if(Auth::check())
-            @if( Auth::user()->nivel_de_acesso==2) <a href="{{route('eventos_add.mostrar')}}" class="icones-padrao"><i class="fa-regular fa-calendar-plus"></i></a></h1> 
+          @if((Auth::check()))
+            @if(Auth::user()->nivel_de_acesso==2)  
+              <h1>Eventos <a href="{{route('eventos_adicionar.mostrar')}}" class="icones-padrao"><i class="fa-regular fa-calendar-plus"></i></a></h1> 
+            @else
+              <h1>Eventos <i class="fa-solid fa-calendar-day"></i></i></h1>
             @endif
-        @endif
-          {{-- else --}}
-          {{-- <h1>Eventos</h1>   --}}
+
+          @else
+            <h1>Eventos <i class="fa-solid fa-calendar-day"></i></i></h1>
+          @endif
         </div>  
 
         <div class="text-center"> {{-- imagem ilustrativa --}}
@@ -84,14 +86,17 @@
 
       {{-- @if(isset($artigos)) --}}
         {{-- ARTIGOS --}}
-        <div class="titulo-mural"> 
-          {{-- if(section == profissional)--}}
-          <h1>Artigos @if(Auth::check())
-            @if( Auth::user()->nivel_de_acesso==2) <a href="{{route('artigos_add.mostrar')}}" class="icones-padrao"><i class="fa-solid fa-newspaper"></i></a></h1>
+        <div class="titulo-mural">
+          @if((Auth::check()))
+            @if(Auth::user()->nivel_de_acesso==2)  
+              <h1>Artigos <a href="{{route('artigos_adicionar.processar')}}" class="icones-padrao"><i class="fa-solid fa-newspaper"></i></a></h1>  
+            @else
+              <h1>Artigos <i class="fa-solid fa-book-open-reader"></i></h1>
             @endif
-            @endif  
-          {{-- else --}}
-          {{-- <h1>Artigos</h1>   --}}
+
+          @else
+            <h1>Artigos <i class="fa-solid fa-book-open-reader"></i></h1>
+          @endif
         </div> 
 
         <div class="text-center"> {{-- imagem ilustrativa --}}

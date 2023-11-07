@@ -50,8 +50,6 @@ class EventosController extends Controller
         $evento->save();
 
         return redirect()->route('mural.mostrar');
-
-       
     }
     
     public function editarEvento(Request $request)
