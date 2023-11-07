@@ -1,4 +1,4 @@
-<?php
+s<?php
 
 namespace App\Models;
 
@@ -11,10 +11,17 @@ class Publicacao_Recomendacao extends Model
     protected $primaryKey = 'id';
     public $incrementing = false;
     protected $fillable = [
+        'titulo',
+        'descricao',
+        'autor',
+        'imagem',
+        'profissional',
         'link',
-        'autor'
+        'autor',
     ];
-    
 
-    
+    public function Profissional() : BelongsTo
+    {
+        return $this->belongsTo(Profissional::class, 'profissional', 'cpf');
+    }
 }

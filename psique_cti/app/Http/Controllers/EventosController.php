@@ -49,7 +49,7 @@ class EventosController extends Controller
 
         $evento->save();
 
-        return view('pages.mural');
+        return redirect()->route('mural.mostrar');
 
        
     }
@@ -79,7 +79,6 @@ class EventosController extends Controller
 
         return view('pages.mural');
     }
-
 
     public function selecionando()
     {

@@ -100,7 +100,7 @@ Route::POST('/encontros', [EncontrosController::class, 'store'])->name('encontro
 //Route::post('/inativar-ativar-profissional/{cpf}', 'AdminAdicionarController@inativarAtivarProfissional');
 
 Route::get('/adicionartigo', [MainController::class, 'indexArtigo'])->name('artigos_adicionar.mostrar');
-Route::post('/adicionartigo',[ArtigosController::class,'verificaForm'])->name('artigos_adicionar.processar');
+Route::post('/adicionartigo',[ArtigosController::class,'adicionaForm'])->name('artigos_adicionar.processar');
 
 Route::get('/adicionarevento', [MainController::class, 'indexEvento'])->name('eventos_adicionar.mostrar');
 Route::post('/adicionaevento', [EventosController::class,'postarEvento'])->name('eventos_add.processar');
