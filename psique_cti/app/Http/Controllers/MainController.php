@@ -16,7 +16,6 @@ use App\Models\Publicacao_Recomendacao;
 use Exception;
 use DateTime;
 
-
 // include{{asset('/../../../variavel.php')}}; //variavel global
 
 class MainController extends Controller
@@ -65,7 +64,10 @@ class MainController extends Controller
 
                 if($findUser->email=="psique.cti@gmail.com")
                 {
-                    return view('pages.admin.homeAdmin', compact("googl"));
+                    // return view('pages.admin.homeAdmin', compact("googl"));
+                    $profissionais = DB::select("select * from profissionais");
+      
+                    return view('pages.admin.homeAdmin', compact('profissionais'));
                 }
 
                 $dataatual = (new DateTime())->format('Y-m-d H:i:s');
@@ -217,6 +219,8 @@ class MainController extends Controller
     {
         return view('pages.psico.detalhesaluno');
     } 
+
+ 
     
     public function estatisticasIndex()
     {
@@ -239,5 +243,9 @@ class MainController extends Controller
         else
             return view('index');
         }
- 
+        
+
+    
+
 }
+

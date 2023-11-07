@@ -21,16 +21,16 @@
 
 <body>
   <header>
-    <a href="{{route('home')}}"><img src="{{ asset('img/logo_completa_sf.png') }}" alt="psiquê"></a>
+    <a href="{{route('home_admin')}}"><img src="{{ asset('img/logo_completa_sf.png') }}" alt="psiquê"></a>
 
     <div class="nav">
       @if((Auth::check())) {{-- Vê se está logado --}}
         @if(Auth::user()->nivel_de_acesso==-1) {{-- Pega dados da sessão --}}
-          <a href="{{route('Admin')}}">Profissionais</a>
+          <a href="{{route('home_admin')}}">Profissionais</a>
     
           <span>|</span>
 
-          <a href="{{route('listaAluno')}}">Alunos</a>
+          <a href="{{route('listarAlunos.mostrar')}}">Alunos</a>
 
         @elseif(Auth::user()->nivel_de_acesso==1) {{-- Pega dados da sessão --}}
           <a href="{{route('home')}}" id="home">Home</a>
@@ -52,11 +52,11 @@
 
           <span>|</span>
 
-          <a href="/estatisticas"><i class="fa-solid fa-chart-pie"></i></a>
+          <a href="{{route('pegaEmo')}}"><i class="fa-solid fa-chart-pie"></i></a>
 
           <span>|</span>
 
-          <a href="/encontros"><i class="fa-solid fa-pencil"></i></a>
+          <a href="{{route('encontros.mostrar')}}"><i class="fa-solid fa-pencil"></i></a>
 
         @endif 
 
@@ -133,7 +133,7 @@
     
           <span>|</span>
     
-          <a href="{{route('admin_adicionar_lista.mostrar')}}">Alunos</a>
+          <a href="{{route('listarAlunos.mostrar')}}">Alunos</a>
     
         @elseif(Auth::user()->nivel_de_acesso==1)  
           <a href="{{route('home')}}" id="home">Home</a>
@@ -155,11 +155,11 @@
     
           <span>|</span>
     
-          <a href="/estatisticas"><i class="fa-solid fa-chart-pie"></i></a>
+          <a href="{{route('pegaEmo')}}"><i class="fa-solid fa-chart-pie"></i></a>
     
           <span>|</span>
     
-          <a href="/encontros"><i class="fa-solid fa-pencil"></i></a>
+          <a href="{{route('encontros.mostrar')}}"><i class="fa-solid fa-pencil"></i></a>
     
         @endif 
     

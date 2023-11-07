@@ -101,7 +101,7 @@ Route::post('/homepsico', [GraficosController::class, 'pegaAluno'])->name('pegaA
 
 Route::get('/detalhesaluno', [MainController::class,'detalhesIndex'])->name('detalhes_aluno.mostrar');
 
-Route::get('/estatisticas', [MainController::class,'estatisticasIndex'])->name('estatisticas.mostrar');
+//Route::get('/estatisticas', [MainController::class,'estatisticasIndex'])->name('estatisticas.mostrar');
 Route::get('/estatisticas', [GraficosController::class, 'pegaEmocoes'])->name('pegaEmo');
 
 Route::get('/encontros', [MainController::class, 'indexEncontros'])->name('encontros.mostrar');
@@ -140,41 +140,3 @@ Route::get('/AdicionarPro', [MainController::class, 'indexAddPro'])->name('admin
 Route::post('/AdicionarPro', [AdminAdicionarController::class, 'cadastrarProfissional'])->name('admin_adicionar.processar');
 
 Route::post('/inativar-ativar-profissional/{cpf}', [AdminAdicionarController::class, 'inativarAtivarProfissional'])->name('admin.remover');
-
-// Route::get('/AdicionarPro', function () {
-    //     return view('pages.admin.adicionarProfissional');
-    // })->name('admin_adicionar.mostrar');
-    
-    // Route::get('/Admin', [MainController::class,'AdminIndex'])->name('home_admin');
-    
-    // Route::get('/editartigo', function () {
-        //     return view('pages.psico.editartigo');
-        // })->name('artigos_editar.mostrar');
-        
-        // Route::get('/adicionaevento', function () {
-            //     return view('pages.psico.addevento');
-            // })->name('eventos_adicionar.mostrar');
-            
-            // Route::get('/editartigo', function () {
-                //     return view('pages.psico.editartigo');
-                // })->name('artigos_editar.mostrar');
-                
-// Route::get('/editarevento', function () {
-//     return view('pages.psico.editevento');
-// })->name('eventos_editar.postar');
-
-// Route::get('/estatisticas', function () {
-    //     return view('pages.psico.graficos');
-    // })->name('estatisticas.mostrar');
-    
-// Route::get('/detalhesaluno', function () {
-//     return view('pages.psico.detalhesaluno');
-// })->name('detalhes_aluno.mostrar');
-
-// Route::get('/EditarPro', function () {
-    //     return view('pages.admin.editarPro');
-    // })->name('admin_editar.mostrar');
-    // Route::get('/editartigo', [MainController::class,'indexArtigoEdit'])->name('artigos_editar.mostrar');
-    // Route::post('/editartigo', [ArtigosController::class,'editarArtigo'])->name('artigos_editar.processar');
-   
-// Route::get('/listaAluno', [AdminAdicionarController::class, 'pegandoDadosAlunos'])->name('listaAluno');

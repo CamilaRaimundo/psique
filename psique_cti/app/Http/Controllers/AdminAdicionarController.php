@@ -120,6 +120,7 @@ class AdminAdicionarController extends Controller
         return redirect()->back(); // Redireciona de volta para a página
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
     
     public function editarProfissional()
     {
@@ -127,5 +128,7 @@ class AdminAdicionarController extends Controller
     }
 =======
 >>>>>>> bec390e (home da psicologa e help do sistema)
+=======
+>>>>>>> 6ed8a3176f2d60b5bc632ac2b3563f44e532e38e
 
 }
