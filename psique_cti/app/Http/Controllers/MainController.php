@@ -11,6 +11,8 @@ use App\Models\User;
 use App\Models\Aluno;
 use App\Models\Aluno_Mood;
 use App\Models\Profissional;
+use App\Models\Evento;
+use App\Models\Publicacao_Recomendacao;
 use Exception;
 use DateTime;
 
@@ -187,13 +189,19 @@ class MainController extends Controller
         return view('pages.psico.addevento');
     } 
 
-    public function indexEventoEdit()
+    public function indexEventoEdit($id)
     {
-        return view('pages.psico.editevento');
+        $evento = Evento::find($id);
+        return view('pages.psico.editevento', compact('evento'));
     } 
 
     public function indexEncontros()
     {
         return view ('pages.psico.encontros');
     }
+ 
+    public function detalhesIndex()
+    {
+        return view('pages.psico.detalhesaluno');
+    } 
 }

@@ -4,7 +4,6 @@
     
 @section('conteudo')
 
-{{-- FAZER CONDIÇÃO PARA SUMIR APENAS SE NÃO FOR A PSICÓLOGA --}}
   @if(!isset($eventos) && !isset($artigos)) {{-- if (não há publicações) --}}
     <div class="pagina_vazia">
       <h3>Não há nenhuma publicação :&#040;</h3>
@@ -65,7 +64,8 @@
                       <!-- POP-UP -->
                     
 
-                    <a href="{{route('eventos_edit.mostrar')}}"><i class="fa-solid fa-pen-to-square"></i></a>
+                    {{-- <a href="{{route('eventos_editar.processar')}}"><i class="fa-solid fa-pen-to-square"></i></a> --}}
+                    <a href="{{route('eventos_editar.mostrar', ['id' => $evento->id])}}" tabindex="0" role="button" data-toggle="popover" data-trigger="hover" title="{{$evento->id}}"><i class="fa-solid fa-pen-to-square"></i></a>
                   </div>
                   @endif
                   @endif
@@ -109,16 +109,20 @@
             <div class="icones_mural">
               <!-- POP-UP -->
 
-              <button class="delete" > <i class="fa-solid fa-delete-left"></i></button>
-             
-                
-        
-                <a href="{{route('artigos_edit.mostrar')}}"><i class="fa-solid fa-pen-to-square"></i></a>
-         
-          
-            </div>
-              @endif
-              @endif
+                {{-- POP-UP --}}
+                <div class="popup-wrapper">
+                  <div class="popup">
+                    <div class="popup-content">
+                      <h2>Confirmação</h2>
+                      <p>Você tem certeza que deseja excluir permanentemente este evento?</p>
+                      <button class="popup-close">Cancelar</button>  
+                      <button class="btn-confirma">Confirmar</button>
+                    </div>
+                  </div>
+                </div>
+
+                <a href="{{route('artigos_editar.mostrar', ['id' => $publi->id])}}"><i class="fa-solid fa-pen-to-square"></i></a>
+              </div>
 
               <h5 class="card-title">{{$publi->titulo}}</h5> 
               <p class="card-text">{{$publi->descricao}}</p>

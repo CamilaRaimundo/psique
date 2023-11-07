@@ -1,11 +1,8 @@
 <?php
 
-use App\Http\Controllers\ContatoController;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController; //--> login
-use App\Http\Controllers\LogOutController;
-use App\Http\Controllers\MuralController;
 use App\Http\Controllers\TriagemController; //--> Triagem
 use App\Http\Controllers\ArtigosController; //--> Artigos
 use App\Http\Controllers\CadastroController; //--> Informações adicionais
@@ -103,12 +100,12 @@ Route::get('/adicionartigo', [MainController::class, 'indexArtigo'])->name('arti
 Route::post('/adicionartigo',[ArtigosController::class,'adicionaForm'])->name('artigos_adicionar.processar');
 
 Route::get('/adicionarevento', [MainController::class, 'indexEvento'])->name('eventos_adicionar.mostrar');
-Route::post('/adicionaevento', [EventosController::class,'postarEvento'])->name('eventos_add.processar');
+Route::post('/adicionaevento', [EventosController::class,'postarEvento'])->name('eventos_adicionar.processar');
 
-Route::get('/editartigo', [MainController::class,'indexArtigoEdit'])->name('artigos_editar.mostrar');
+Route::get('/editartigo/{id}', [MainController::class,'indexArtigoEdit'])->name('artigos_editar.mostrar');
 Route::post('/editartigo', [ArtigosController::class,'editarArtigo'])->name('artigos_editar.processar');
 
-Route::get('/editarevento', [MainController::class,'indexEventoEdit'])->name('eventos_editar.postar');
+Route::get('/editarevento/{id}', [MainController::class,'indexEventoEdit'])->name('eventos_editar.mostrar');
 Route::post('/editarevento', [EventosController::class,'editarEvento'])->name('eventos_editar.processar');
 
 Route::get('/excluir-evento/{id}', 'App\Http\Controllers\EventosController@excluirEvento')->name('eventos.excluir');
