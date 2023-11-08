@@ -62,7 +62,7 @@ class GraficosController extends Controller
             ->whereMonth('data', '=', $hoje->format('m'))
             ->groupBy('mood')
             ->get();
-    
+
         // Retorna a view com os dados das emoções do dia e do mês
         return view('pages.psico.home', compact('emocoesDia', 'emocoesMes'));
     }

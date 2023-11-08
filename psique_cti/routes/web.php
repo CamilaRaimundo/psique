@@ -14,6 +14,7 @@ use App\Http\Controllers\AdminAdicionarController; //--> Admin
 use App\Http\Controllers\MuralController; //--> Mural
 use App\Http\Controllers\GraficosController; //--> Estatísticas
 use App\Http\Controllers\EncontrosController; //--> Gráficos
+use App\Http\Controllers\DetalhesController; //--> Detalhes
 use App\Mail\TestMail;
 
 
@@ -50,8 +51,9 @@ Route::post('/emocoes', [EmocoesController::class,'registrarEmocao'])->name('emo
 
 
 //  PSICÓLOGA
-Route::get('/homepsico', [MainController::class,'psicoIndex'])->name('home_psico');
+Route::post('/homepsico', [MainController::class, 'psicoIndex'])->name('home_psico');
 Route::get('/homepsico', [GraficosController::class, 'pegaAluno'])->name('pegaAluno');
+Route::get('/home_psico', [DetalhesController::class, 'pesquisaRA'])->name('pesquisaRA');
 
 
 Route::get('/detalhesaluno', [MainController::class,'detalhesIndex'])->name('detalhes_aluno.mostrar');
