@@ -66,13 +66,27 @@
         @if(Auth::check())
                    @if( Auth::user()->nivel_de_acesso==2)
                   <div class="icones_mural">
-                 
-                      <!-- POP-UP -->
-                      <a href="{{ route('eventos.excluir', ['id' => $evento->id]) }}" title="{{ $evento->id }}">
+                  <button class="delete"><i class="fa-solid fa-delete-left"></i></button>
+                    
+                    <!-- POP-UP -->
+                  <div class="popup-wrapper">
+                    <div class="popup">
+                      <div class="popup-content">
+                        <h2>Confirmação</h2>
+                        <p>Você tem certeza que deseja excluir permanentemente este evento?</p>
+                        <button class="popup-close">Cancelar</button>   
+                        <a href="{{ route('eventos.excluir', ['id' => $evento->id]) }}" title="{{ $evento->id }}">
+                        <button class="btn-confirma" onclick="confirmAndRedirect('{{ route('eventos.excluir', ['id' => $evento->id]) }}')">  Confirmar </button>
+                        </a>
+
+                       </div>
+                    </div>
+                  </div> 
+                  
+                      <!-- <a href="{{ route('eventos.excluir', ['id' => $evento->id]) }}" title="{{ $evento->id }}">
                         <button class="delete" onclick="confirmAndRedirect('{{ route('eventos.excluir', ['id' => $evento->id]) }}')">
-                            <i class="fa-solid fa-delete-left"></i> 
-                        </button>
-                    </a>
+                            <i class="fa-solid fa-delete-left"></i>
+                    </a> -->
                     
 
                       {{-- <a href="{{route('eventos.excluir', ['id' => $evento->id])}}"  title="{{ $evento->id }}">
@@ -129,25 +143,43 @@
               @if(Auth::check())
             @if( Auth::user()->nivel_de_acesso==2)
             <div class="icones_mural">
-              <!-- POP-UP -->
-              <a href="{{ route('artigos.excluir', ['id' => $publi->id]) }}" title="{{ $publi->id }}">
+            <button class="delete"><i class="fa-solid fa-delete-left"></i></button>
+                    
+                    <!-- POP-UP -->
+                  <div class="popup-wrapper">
+                    <div class="popup">
+                      <div class="popup-content">
+                        <h2>Confirmação</h2>
+                        <p>Você tem certeza que deseja excluir permanentemente este artigo?</p>
+                        <button class="popup-close">Cancelar</button>   
+                        <a href="{{ route('artigos.excluir', ['id' => $publi->id]) }}" title="{{ $publi->id }}">
+                        <button class="btn-confirma" onclick="confirmAndRedirect('{{ route('artigos.excluir', ['id' => $publi->id]) }}')">  Confirmar </button>
+                        </a>
+
+                       </div>
+                    </div>
+                  </div> 
+              <!-- <a href="{{ route('artigos.excluir', ['id' => $publi->id]) }}" title="{{ $publi->id }}">
                 <button class="delete" onclick="confirmAndRedirect('{{ route('artigos.excluir', ['id' => $publi->id]) }}')">
                     <i class="fa-solid fa-delete-left"></i> 
                 </button>
-            </a>
+            </a> -->
            
 
-              {{-- <a href="{{route('artigos.excluir', ['id' => $publi->id])}}"  title="{{ $publi->id }}">
+              <!-- {{-- <a href="{{route('artigos.excluir', ['id' => $publi->id])}}"  title="{{ $publi->id }}">
                 <button class="delete" ><i class="fa-solid fa-delete-left" ></i></button>
                 </a>
-     --}}
+     --}} -->
      <script>
       function confirmAndRedirect(url) {
-          if (confirm('Tem certeza que deseja excluir?')  ) {
+          if (confirm ) {
               window.location.href = url;
           }
+        
       }
       </script>
+      
+
 
                 <a href="{{route('artigos_edit.mostrar')}}"><i class="fa-solid fa-pen-to-square"></i></a>
                 
@@ -174,37 +206,39 @@
     
       
 
-      
+        <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const buttons = document.querySelectorAll('.delete');
+    
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const popup = button.nextElementSibling; // Obtém a pop-up associada ao botão
+        popup.style.display = 'block';
+      });
+    });
+    
+    const popups = document.querySelectorAll('.popup-wrapper');
+    
+    popups.forEach(popup => {
+      popup.addEventListener('click', event => {
+        const classNameOfClickedElement = event.target.classList[0];
+        const classNames = ['popup-close', 'popup-wrapper'];
+        const shouldClosePopup = classNames.some(className => className === classNameOfClickedElement);
+        
+        if (shouldClosePopup) {
+          popup.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
       <!-- {{-- @endif --}} -->
     </div> {{--- container mural --}}
     
   @endif
 
-  {{-- -----------------------------POP-UP------------------------------- --}}
-  {{-- <script>
-  document.addEventListener("DOMContentLoaded", function() {
-    // Seu código JavaScript aqui
-    const button  = document.querySelectorAll('.delete ')
-    const popup = document.querySelector('.popup-wrapper ')
-    
-    for (i = 0; i < button.length; i++) {
-        button[i].addEventListener('click', () => {
-            popup.style.display = 'block'
-        }) 
-    
-        popup.addEventListener('click', event => {
-            const classNameOfClickedElement = event.target.classList[0]
-            const classNames = ['popup-close', 'popup-wrapper']
-            const shouldClosePopup = classNames.some(className => className === classNameOfClickedElement) 
-            
-            if (shouldClosePopup) {
-                popup.style.display = 'none'
-            }
-        })
-    }
-});
-
-  </script> --}}
+  <!-- {{-- -----------------------------POP-UP------------------------------- --}} -->
+ 
 
  
 @endsection

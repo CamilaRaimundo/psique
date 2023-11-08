@@ -138,7 +138,7 @@
     
     
 
-    {{-- -----------------------------POP-UP------------------------------- --}}
+    <!-- {{-- -----------------------------POP-UP------------------------------- --}}
     <script>
       const teste  = document.querySelectorAll('.teste ')
       const popup = document.querySelector('.popup-wrapper ')
@@ -157,7 +157,7 @@
           popup.style.display = 'none'
         }
       })
-    </script>
+    </script> -->
 
     {{-- DARK MODE --}}
     <script>
@@ -185,4 +185,7 @@
       //acessado o tema da maquina do usuário
       localStorage.getItem('theme'); 
     </script> 
+
+
+
   </header>
