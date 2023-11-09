@@ -37,7 +37,7 @@
     
           <span>|</span>
     
-          <a href="{{route('estatisticas.mostrar')}}"><i class="fa-solid fa-chart-pie"></i></a>
+          <a href="{{route('pegaEmo')}}"><i class="fa-solid fa-chart-pie"></i></a>
     
           <span>|</span>
     

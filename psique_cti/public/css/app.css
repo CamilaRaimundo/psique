@@ -71,14 +71,12 @@ header img{
     transition: 0.3s;
 }
 
-.normal{
-    color: #fff;
-	background: #00ADA8;
+.mobile-menu-icon{
+    display: none;
 }
 
-.branco{
-    color: #00ADA8;
-	background: #fff;
+.mobile-menu{
+    display: none;
 }
 
 /* --------------------------------------- RODAPÉ ------------------------------------------ */
@@ -381,11 +379,15 @@ section.module.parallax h1{
     background-image: url('../img/fundo.png');
     background: cover; /*imagem completa todo o fundo*/
     background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100%;
+    background-position: center center;
     min-height: 100vh;
     padding: 1%;
 
     display: flex;
     align-items: center;
+
 }
 
 .box_img1{
@@ -744,7 +746,7 @@ input[type="file"]{
 }
 
 /* ----------------------------------------POP-UP---------------------------------------------- */
-.delete{
+/*.delete{
     border: none;
     background-color: transparent;
     cursor: pointer;
@@ -757,7 +759,7 @@ input[type="file"]{
     transition: 0.1s;
 }
 
-.popup-wrapper{
+ .popup-wrapper{
     display: none;
     background: rgb(0, 0, 0, .5);
     position: fixed;
@@ -797,7 +799,7 @@ input[type="file"]{
     color: #fff;
     padding: 2%;
     margin: 1%;
-}
+} */
 
 /* ------------------------------------- HOME PSICÓLOGO ----------------------------------- */
 .container-home_pro{
@@ -1217,6 +1219,51 @@ input[type="file"]{
 }
 
 /* ------------------------------------RESPONSIVIDADE--------------------------------- */
+@media screen and (max-width:730px) {
+    .nav{
+        display: none;
+    }
+
+    .icones-padrao{
+        display: none;
+    }
+
+    .mobile-menu-icon{
+        display: block;
+    }
+    .mobile-menu-icon button{
+        background-color: transparent;
+        /* outline: none; */
+        border: none;
+        color: #fff;
+        font-size: 2rem;
+    }
+
+    .logo img{
+        width: 20%;
+    }
+
+    .mobile-menu ul{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        padding-bottom: 1rem;
+    }
+ 
+    .mobile-menu .nav-item{
+        display: block;
+        padding-top: 1.2rem;
+    }
+
+    .open{
+        display: block;
+    }
+
+    
+}
+
+
+
 /* Exemplo de uma Media Query para telas menores que 768px (como dispositivos móveis) */
 @media screen and (max-width: 1000px) {
     /* estilos para telas menores */
@@ -1301,6 +1348,8 @@ input[type="file"]{
     }
 }
 
+
+
 @media screen and (max-width: 600px) {
     /* cabeçalho */
     header img{
@@ -1319,27 +1368,6 @@ input[type="file"]{
         font-size: 15px;
     }
 
-    .popup-content button{
-        border: none;
-        background-color: transparent;
-    }
-
-    .btn-confirma{
-        background: rgb(94, 187, 0) !important;
-        color: #fff;
-        font-weight: bold;
-        padding: 2%;
-        margin: 1%;
-        /* font-size: 50px; */
-    }
-
-    .popup-close{
-        background: darkred !important;
-        color: #fff;
-        padding: 2%;
-        margin: 1%;
-    }
-
     .error{
         color: red;
         font-weight: bold;
@@ -1349,3 +1377,123 @@ input[type="file"]{
         font-size: 15px;
     }
 }
+
+
+
+
+/* --------------------------EMA */
+#logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#nav button{
+    color: #fff;
+}
+  
+#header {
+    box-sizing: border-box;
+    height: 70px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #e7e7e7;
+}
+  
+#menu {
+    display: flex;
+    list-style: none;
+    gap: 0.5rem;
+}
+  
+#menu a {
+    display: block;
+    padding: 0.5rem;
+}
+  
+#btn-mobile {
+    display: none;
+}
+  
+  @media (min-width: 600px) {
+    .nav{
+        display: block;
+    }
+
+    #nav{
+        display: none;
+    }
+  }
+  @media (max-width: 600px) {
+    .nav{
+        display: none;
+    }
+
+    #nav{
+        display: block;
+    }
+
+    #menu {
+      display: block;
+      position: absolute;
+      width: 100%;
+      top: 70px;
+      right: 0px;
+      background: #e7e7e7;
+      transition: 0.6s;
+      z-index: 1000;
+      height: 0px;
+      visibility: hidden;
+      overflow-y: hidden;
+    }
+
+    #nav.active #menu {
+      height: calc(100vh - 70px);
+      visibility: visible;
+      overflow-y: auto;
+    }
+
+    #menu a {
+      padding: 1rem 0;
+      margin: 0 1rem;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+    }
+
+    #btn-mobile {
+      display: flex;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      border: none;
+      background: none;
+      cursor: pointer;
+      gap: 0.5rem;
+    }
+
+    #hamburger {
+      border-top: 2px solid;
+      width: 20px;
+    }
+
+    #hamburger::after,
+    #hamburger::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: currentColor;
+      margin-top: 5px;
+      transition: 0.3s;
+      position: relative;
+    }
+    #nav.active #hamburger {
+      border-top-color: transparent;
+    }
+    #nav.active #hamburger::before {
+      transform: rotate(135deg);
+    }
+    #nav.active #hamburger::after {
+      transform: rotate(-135deg);
+      top: -7px;
+    }
+  }
