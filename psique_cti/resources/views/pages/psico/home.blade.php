@@ -15,12 +15,14 @@
                     <input type="text" class="form-control" placeholder="Digite o RA" aria-describedby="button-addon1">
                     <button class="btn btn-secondary" type="button" id="button-addon1">Pesquisar</button>
                 </div>
+            </form>
                   
+            <form>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="input_group">
                             <label for="nome">Nome Completo</label>
-                            <input type="text" id="nome" placeholder="Nome do indivíduo" class="cursor_blocked">
+                            <input type="text" id="nome" class="cursor_blocked">
                         </div>
                     </div>
 
@@ -116,8 +118,8 @@
                 <div class="input_group">
                     <button>Limpar</button>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
         <script>

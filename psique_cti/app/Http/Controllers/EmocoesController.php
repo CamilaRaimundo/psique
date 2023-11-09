@@ -16,12 +16,6 @@ class EmocoesController extends Controller
 {
     public function registrarEmocao(Request $request)
     {
-        // $validatedData = $request->validate([
-        //     'emocao' => 'required',
-        // ], [
-        //     'emocao.required' => 'Selecione uma emoção.',
-        // ]);
-
         $emocoes = [
         'felicidade' => 'Felicidade',
         'tristeza' => 'Tristeza',

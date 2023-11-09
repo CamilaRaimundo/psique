@@ -57,9 +57,10 @@
 <body>
   <header>
 
-    <a href="{{route('home')}}"><img src="{{ asset('img/logo_completa_sf.png') }}" alt="psiquê"></a>
+    <a href="{{route('home')}}" class="logo"><img src="{{ asset('img/logo_completa_sf.png') }}" alt="psiquê"></a>
 
-    <div class="nav">
+    <nav class="nav">
+
       @if((Auth::check()))
         @if(Auth::user()->nivel_de_acesso==-1)  
           <a href="{{route('home_admin')}}">Profissionais</a>
@@ -92,7 +93,7 @@
 
           <span>|</span>
 
-          <a href="{{route('encontros.mostrar')}}"><i class="fa-solid fa-pencil"></i></a>
+          <a href="{{route('encontros.store')}}"><i class="fa-solid fa-pencil"></i></a>
 
         @endif 
 
@@ -107,12 +108,7 @@
   
         <a href="{{route('login.mostrar')}}" id="n-contato">Contato</a>
       @endif
-    </div>
-
-    {{-- <div>
-      <a href="{{route('login.mostrar')}}" class="icones-padrao"><i class="fa-solid fa-user" ></i></a>
-      <a href="#" class="icones-padrao"><i class="fa-solid fa-circle-half-stroke"></i></a>
-    </div> --}}
+    </nav>
 
     <div  class="icones-padrao">
       @if (Auth::guest())
@@ -139,40 +135,95 @@
       <button onclick id="toggle"><i class="fa-solid fa-circle-half-stroke"></i></button>
     </div>
 
-      {{-- TESTANDO POP-UP --> caso a pessoa faça o login pela primeira vez no dia - deve exibir o pop-up --}}
-      {{-- <button class="teste"><i class="fa-solid fa-hippo"></i></button> --}}
-
-      {{-- <div class="popup-wrapper">
-        <div class="popup">
-          <div class="popup-content">
-            <h2>Registro de Emoções</h2>
-            <p>Como você se sente hoje? Não há registros hoje, registre já, clicando no botão abaixo!</p>
-            <button class="btn-confirma"><a href="/emocoes">Redirecionar!</a></button>
-          </div>
-        </div>
-      </div> --}}
+    <nav id="nav">
+      <button aria-label="Abrir Menu" id="btn-mobile" aria-haspopup="true" aria-controls="menu" aria-expanded="false">Menu
+        <span id="hamburger"></span>
+      </button>
+      <ul id="menu" role="menu">
+        @if((Auth::check()))
+          @if(Auth::user()->nivel_de_acesso==-1)  
+            <li><a href="{{route('home_admin')}}"><i class="fa-solid fa-glasses"></i> Profissionais</a></li>
     
-    
+            <li><a href="{{route('listarAlunos.mostrar')}}"><i class="fa-solid fa-graduation-cap"></i> Alunos</a></li>
+            
+            <li><a href="{{ asset('PDFs/Help do Sistema - Admin.pdf') }}" target="_blanck"><i class="fa-solid fa-circle-info"></i> Help</a></li>
 
-    {{-- -----------------------------POP-UP------------------------------- --}}
+            @if (Auth::guest())
+              <li><a href="{{route('login.mostrar')}}"><i class="fa-solid fa-user"></i> Entrar</a></li>
+            @elseif(Auth::check())
+              <li><a href="{{ route('logout') }}"><i class="fa-solid fa-right-to-bracket"></i> Sair</a></li>
+            @endif
+
+          @elseif(Auth::user()->nivel_de_acesso==1)  
+            <li><a href="{{route('home')}}" id="home"><i class="fa-solid fa-house"></i> Home</a></li>
+
+            <li><a href="{{route('mural.mostrar')}}" id="n-mural"><i class="fa-solid fa-calendar-days"></i> Mural</a></li>
+      
+            <li><a href="{{route('contato.mostrar')}}" id="n-contato"><i class="fa-solid fa-envelope"></i> Contato</a></li>
+            
+            <li><a href="{{ asset('PDFs/Help do Sistema - Alunos.pdf') }}" target="_blanck"><i class="fa-solid fa-circle-info"></i> Help</a></li>
+
+            @if (Auth::guest())
+              <li><a href="{{route('login.mostrar')}}"><i class="fa-solid fa-user"></i> Entrar</a></li>
+            @elseif(Auth::check())
+              <li><a href="{{ route('logout') }}"><i class="fa-solid fa-right-to-bracket"></i> Sair</a></li>
+            @endif
+
+          @elseif(Auth::user()->nivel_de_acesso==2)  
+            <li><a href="{{route('home_psico')}}"><i class="fa-solid fa-house"></i> Home</a></li>
+
+            <li><a href="{{route('mural.mostrar')}}"><i class="fa-solid fa-calendar-days"></i> Mural</a></li>
+
+            <li><a href="{{route('pegaEmo')}}"><i class="fa-solid fa-chart-pie"></i> Estatísticas</a></li>
+
+            <li><a href="{{route('encontros.store')}}"><i class="fa-solid fa-pencil"></i> Encontros</a></li>
+
+            <li><a href="{{ asset('PDFs/Help do Sistema - Profissional.pdf') }}" target="_blanck"><i class="fa-solid fa-circle-info"></i> Help</a></li>
+
+            @if (Auth::guest())
+              <li><a href="{{route('login.mostrar')}}"><i class="fa-solid fa-user"></i> Entrar</a></li>
+            @elseif(Auth::check())
+              <li><a href="{{ route('logout') }}"><i class="fa-solid fa-right-to-bracket"></i> Sair</a></li>
+            @endif
+          @endif 
+
+        @else
+          <li><a href="{{route('home')}}" id="home"><i class="fa-solid fa-house"></i> Home</a></li>
+
+          <li><a href="{{route('mural.mostrar')}}" id="n-mural"><i class="fa-solid fa-calendar-days"></i> Mural</a></li>
+    
+          <li><a href="{{route('login.mostrar')}}" id="n-contato"><i class="fa-solid fa-envelope"></i> Contato</a></li>
+
+          <li><a href="{{ asset('PDFs/Help do Sistema - sem nível de acesso.pdf') }}" target="_blanck"><i class="fa-solid fa-circle-info"></i> Help</a></li>
+
+          @if (Auth::guest())
+            <li><a href="{{route('login.mostrar')}}"><i class="fa-solid fa-user"></i> Entrar</a></li>
+          @elseif(Auth::check())
+            <li><a href="{{ route('logout') }}"><i class="fa-solid fa-right-to-bracket"></i> Sair</a></li>
+          @endif
+        @endif
+      </ul>
+    </nav>
+
+    {{-- MENU --}}
     <script>
-      const teste  = document.querySelectorAll('.teste ')
-      const popup = document.querySelector('.popup-wrapper ')
-      // for (i = 0; i < button.length; i++) {
-  
-      teste.addEventListener('click', () => {
-        popup.style.display = 'block'
-      }) 
+      const btnMobile = document.getElementById('btn-mobile');
 
-      popup.addEventListener('click', event => {
-        const classNameOfClickedElement = event.target.classList
-        const classNames = ['popup-close', 'popup-wrapper']
-        const shouldClosePopup = classNames.some(className => className === classNameOfClickedElement) 
-        
-        if(shouldClosePopup){
-          popup.style.display = 'none'
+      function toggleMenu(event) {
+        if (event.type === 'touchstart') event.preventDefault();
+        const nav = document.getElementById('nav');
+        nav.classList.toggle('active');
+        const active = nav.classList.contains('active');
+        event.currentTarget.setAttribute('aria-expanded', active);
+        if (active) {
+          event.currentTarget.setAttribute('aria-label', 'Fechar Menu');
+        } else {
+          event.currentTarget.setAttribute('aria-label', 'Abrir Menu');
         }
-      })
+      }
+
+      btnMobile.addEventListener('click', toggleMenu);
+      btnMobile.addEventListener('touchstart', toggleMenu);
     </script>
 
     {{-- DARK MODE --}}

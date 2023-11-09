@@ -21,18 +21,20 @@
 
 <body>
   <header>
-    <a href="{{route('home_admin')}}"><img src="{{ asset('img/logo_completa_sf.png') }}" alt="psiquê"></a>
 
-    <div class="nav">
-      @if((Auth::check())) {{-- Vê se está logado --}}
-        @if(Auth::user()->nivel_de_acesso==-1) {{-- Pega dados da sessão --}}
+    <a href="{{route('home')}}" class="logo"><img src="{{ asset('img/logo_completa_sf.png') }}" alt="psiquê"></a>
+
+    <nav class="nav">
+
+      @if((Auth::check()))
+        @if(Auth::user()->nivel_de_acesso==-1)  
           <a href="{{route('home_admin')}}">Profissionais</a>
     
           <span>|</span>
 
           <a href="{{route('listarAlunos.mostrar')}}">Alunos</a>
 
-        @elseif(Auth::user()->nivel_de_acesso==1) {{-- Pega dados da sessão --}}
+        @elseif(Auth::user()->nivel_de_acesso==1)  
           <a href="{{route('home')}}" id="home">Home</a>
 
           <span>|</span>
@@ -43,8 +45,8 @@
     
           <a href="{{route('contato.mostrar')}}" id="n-contato">Contato</a>
 
-        @elseif(Auth::user()->nivel_de_acesso==-2) {{-- Pega dados da sessão --}}
-          <a href="{}"><i class="fa-solid fa-house"></i></a>
+        @elseif(Auth::user()->nivel_de_acesso==2)  
+          <a href="{{route('home_psico')}}"><i class="fa-solid fa-house"></i></a>
 
           <span>|</span>
 
@@ -56,7 +58,7 @@
 
           <span>|</span>
 
-          <a href="{{route('encontros.mostrar')}}"><i class="fa-solid fa-pencil"></i></a>
+          <a href="{{route('encontros.store')}}"><i class="fa-solid fa-pencil"></i></a>
 
         @endif 
 
@@ -71,7 +73,7 @@
   
         <a href="{{route('login.mostrar')}}" id="n-contato">Contato</a>
       @endif
-    </div>
+    </nav>
 
     <div  class="icones-padrao">
       @if (Auth::guest())
@@ -98,6 +100,123 @@
       <button onclick id="toggle"><i class="fa-solid fa-circle-half-stroke"></i></button>
     </div>
 
+    <nav id="nav">
+      <button aria-label="Abrir Menu" id="btn-mobile" aria-haspopup="true" aria-controls="menu" aria-expanded="false">Menu
+        <span id="hamburger"></span>
+      </button>
+      <ul id="menu" role="menu">
+        @if((Auth::check()))
+          @if(Auth::user()->nivel_de_acesso==-1)  
+            <li><a href="{{route('home_admin')}}"><i class="fa-solid fa-glasses"></i> Profissionais</a></li>
+    
+            <li><a href="{{route('listarAlunos.mostrar')}}"><i class="fa-solid fa-graduation-cap"></i> Alunos</a></li>
+            
+            <li><a href="{{ asset('PDFs/Help do Sistema - Admin.pdf') }}" target="_blanck"><i class="fa-solid fa-circle-info"></i> Help</a></li>
+
+            @if (Auth::guest())
+              <li><a href="{{route('login.mostrar')}}"><i class="fa-solid fa-user"></i> Entrar</a></li>
+            @elseif(Auth::check())
+              <li><a href="{{ route('logout') }}"><i class="fa-solid fa-right-to-bracket"></i> Sair</a></li>
+            @endif
+
+          @elseif(Auth::user()->nivel_de_acesso==1)  
+            <li><a href="{{route('home')}}" id="home"><i class="fa-solid fa-house"></i> Home</a></li>
+
+            <li><a href="{{route('mural.mostrar')}}" id="n-mural"><i class="fa-solid fa-calendar-days"></i> Mural</a></li>
+      
+            <li><a href="{{route('contato.mostrar')}}" id="n-contato"><i class="fa-solid fa-envelope"></i> Contato</a></li>
+            
+            <li><a href="{{ asset('PDFs/Help do Sistema - Alunos.pdf') }}" target="_blanck"><i class="fa-solid fa-circle-info"></i> Help</a></li>
+
+            @if (Auth::guest())
+              <li><a href="{{route('login.mostrar')}}"><i class="fa-solid fa-user"></i> Entrar</a></li>
+            @elseif(Auth::check())
+              <li><a href="{{ route('logout') }}"><i class="fa-solid fa-right-to-bracket"></i> Sair</a></li>
+            @endif
+
+          @elseif(Auth::user()->nivel_de_acesso==2)  
+            <li><a href="{{route('home_psico')}}"><i class="fa-solid fa-house"></i> Home</a></li>
+
+            <li><a href="{{route('mural.mostrar')}}"><i class="fa-solid fa-calendar-days"></i> Mural</a></li>
+
+            <li><a href="{{route('pegaEmo')}}"><i class="fa-solid fa-chart-pie"></i> Estatísticas</a></li>
+
+            <li><a href="{{route('encontros.store')}}"><i class="fa-solid fa-pencil"></i> Encontros</a></li>
+
+            <li><a href="{{ asset('PDFs/Help do Sistema - Profissional.pdf') }}" target="_blanck"><i class="fa-solid fa-circle-info"></i> Help</a></li>
+
+            @if (Auth::guest())
+              <li><a href="{{route('login.mostrar')}}"><i class="fa-solid fa-user"></i> Entrar</a></li>
+            @elseif(Auth::check())
+              <li><a href="{{ route('logout') }}"><i class="fa-solid fa-right-to-bracket"></i> Sair</a></li>
+            @endif
+          @endif 
+
+        @else
+          <li><a href="{{route('home')}}" id="home"><i class="fa-solid fa-house"></i> Home</a></li>
+
+          <li><a href="{{route('mural.mostrar')}}" id="n-mural"><i class="fa-solid fa-calendar-days"></i> Mural</a></li>
+    
+          <li><a href="{{route('login.mostrar')}}" id="n-contato"><i class="fa-solid fa-envelope"></i> Contato</a></li>
+
+          <li><a href="{{ asset('PDFs/Help do Sistema - sem nível de acesso.pdf') }}" target="_blanck"><i class="fa-solid fa-circle-info"></i> Help</a></li>
+
+          @if (Auth::guest())
+            <li><a href="{{route('login.mostrar')}}"><i class="fa-solid fa-user"></i> Entrar</a></li>
+          @elseif(Auth::check())
+            <li><a href="{{ route('logout') }}"><i class="fa-solid fa-right-to-bracket"></i> Sair</a></li>
+          @endif
+        @endif
+      </ul>
+    </nav>
+
+    {{-- MENU --}}
+    <script>
+      const btnMobile = document.getElementById('btn-mobile');
+
+      function toggleMenu(event) {
+        if (event.type === 'touchstart') event.preventDefault();
+        const nav = document.getElementById('nav');
+        nav.classList.toggle('active');
+        const active = nav.classList.contains('active');
+        event.currentTarget.setAttribute('aria-expanded', active);
+        if (active) {
+          event.currentTarget.setAttribute('aria-label', 'Fechar Menu');
+        } else {
+          event.currentTarget.setAttribute('aria-label', 'Abrir Menu');
+        }
+      }
+
+      btnMobile.addEventListener('click', toggleMenu);
+      btnMobile.addEventListener('touchstart', toggleMenu);
+    </script>
+
+    {{-- DARK MODE --}}
+    <script>
+      const toggle = document.getElementById("toggle");
+      const refresh = document.getElementById("refresh");
+      const theme = window.localStorage.getItem("theme");
+
+      /* verifica se o tema armazenado no localStorage é escuro
+      se sim aplica o tema escuro ao body */
+      if (theme === "dark") document.body.classList.add("dark");
+
+      // event listener para quando o botão de alterar o tema for clicado
+      toggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark");
+        if (theme === "dark") {
+          window.localStorage.setItem("theme", "light");
+        } else window.localStorage.setItem("theme", "dark");
+      });
+ 
+      refresh.addEventListener("click", () => {
+        window.location.reload();
+      });
+
+      localStorage.setItem('theme', 'dark'); 
+      //acessado o tema da maquina do usuário
+      localStorage.getItem('theme'); 
+    </script> 
   </header>
 
   <div class="container_login"> 
