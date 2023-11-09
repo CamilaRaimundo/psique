@@ -59,7 +59,14 @@ class MainController extends Controller
 
                 if(Profissional::where('email',$user->email)->first())
                 {
-                    return view('pages.psico.home', compact("googl"));
+                    // $alunos = DB::select("select * from alunos");
+                    return view('pages.psico.home');
+                    //     'aluno' => $aluno,
+                    //     'historico' => $historico,
+                    //     'alunoMood' => $alunoMood,
+                    //     'encontros' => $encontros,
+                    //     'ra' => $ra, // Certifique-se de que $ra esteja definida aqui
+                    // ]);
                 }
 
                 if($findUser->email=="psique.cti@gmail.com")
