@@ -746,7 +746,7 @@ input[type="file"]{
 }
 
 /* ----------------------------------------POP-UP---------------------------------------------- */
-/*.delete{
+.delete{
     border: none;
     background-color: transparent;
     cursor: pointer;

@@ -48,17 +48,17 @@ Route::get('/', [MainController::class,'index'])->name('home');
     });
 
 
-    Route::get('/login', function () {return view('pages.login');})->name('login.mostrar');
-    Route::get('/logout', [LogOutController::class, 'logout']);
+Route::get('/login', function () {return view('pages.login');})->name('login.mostrar');
+Route::get('/logout', [LogOutController::class, 'logout']);
 
-    //socialite login urls
-    Route::get('/googleLogin',[MainController::class, 'googleLogin']);
-    Route::get('/auth/google/callback',[MainController::class, 'googleHandle']);
+//socialite login urls
+Route::get('/googleLogin',[MainController::class, 'googleLogin']);
+Route::get('/auth/google/callback',[MainController::class, 'googleHandle']);
 
-    Route::get('/cadastro', [CadastroController::class, 'mostraForm'])->name('cadastro.mostrar');
-    Route::post('/cadastro', [CadastroController::class, 'processaForm'])->name('cadastro.processar');
-    
-    // Route::post('/cadastro', 'App\Http\Controllers\CadastroController@processarFormulario')->name('cad');
+Route::get('/cadastro', [CadastroController::class, 'mostraForm'])->name('cadastro.mostrar');
+Route::post('/cadastro', [CadastroController::class, 'processaForm'])->name('cadastro.processar');
+
+// Route::post('/cadastro', 'App\Http\Controllers\CadastroController@processarFormulario')->name('cad');
 
 Route::get('/triagem', function () {return view('pages.triagem');});
 
